@@ -1,0 +1,57 @@
+.button {
+  position: fixed;
+  z-index: 95;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  gap: 0.65rem;
+  border: 1px solid rgb(91 211 141 / 55%);
+  border-radius: 999px;
+  padding: 0 1rem;
+  color: #d9f7e5;
+  background: rgb(7 25 16 / 94%);
+  box-shadow: 0 0.75rem 2.25rem rgb(0 0 0 / 32%);
+  font: 600 0.66rem/1 var(--font-mono-family);
+  letter-spacing: 0.11em;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.button:hover,
+.button:focus-visible {
+  border-color: #6fe19d;
+  background: #0b2c1a;
+  transform: translateY(-2px);
+}
+
+.button:focus-visible {
+  outline: 2px solid #7ce6a7;
+  outline-offset: 4px;
+}
+
+@media (max-width: 767px) {
+  .button {
+    width: 3rem;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .button span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+}

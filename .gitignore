@@ -12,6 +12,20 @@
 
 # testing
 /coverage
+/playwright-report/
+/test-results/
+/tmp/
+/backend/.venv/
+/backend/.pytest_cache/
+/backend/.ruff_cache/
+/backend/*.db
+/backend/load-test-results*.csv
+**/__pycache__/
+/scripts/source-assets/
+
+# Local source PNGs retained only for asset regeneration; runtime uses WebP.
+/public/images/marcos/vision/*.png
+/public/images/marcos/how-it-works/*.png
 
 # next.js
 /.next/
@@ -29,9 +43,11 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+/debug.log
 
-# env files (can opt-in for committing if needed)
+# env files (only the placeholder template is safe to commit)
 .env*
+!.env.example
 
 # vercel
 .vercel

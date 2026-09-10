@@ -1,0 +1,226 @@
+.section {
+  height: 200svh;
+  position: relative;
+  background: #080a09;
+  color: #f1eee7;
+}
+.stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  min-height: 40rem;
+  overflow: hidden;
+  isolation: isolate;
+}
+.art,
+.art img,
+.shade,
+.floor {
+  position: absolute;
+  inset: 0;
+}
+.art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.shade {
+  z-index: 1;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5, 7, 6, 0.95) 0%,
+      rgba(5, 7, 6, 0.64) 38%,
+      rgba(5, 7, 6, 0.1) 72%
+    ),
+    linear-gradient(0deg, rgba(5, 7, 6, 0.75), transparent 45%);
+}
+.floor {
+  z-index: 2;
+  inset: auto 20% -31% 20%;
+  height: 63%;
+  border: 1px solid rgba(201, 121, 65, 0.28);
+  border-radius: 50%;
+  background: repeating-radial-gradient(
+    circle,
+    transparent 0 13%,
+    rgba(201, 121, 65, 0.1) 13.2% 13.5%,
+    transparent 13.7% 26%
+  );
+}
+.solitude,
+.progress,
+.content,
+.paths {
+  position: absolute;
+  z-index: 3;
+}
+.solitude,
+.progress {
+  left: clamp(1.25rem, 6vw, 6rem);
+  top: 50%;
+  margin: 0;
+  font-family: var(--font-display-family);
+  font-size: clamp(3.4rem, 7vw, 8rem);
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  line-height: 0.84;
+}
+.progress {
+  color: #d7c0ad;
+}
+.content {
+  left: clamp(1.25rem, 6vw, 6rem);
+  bottom: 16%;
+  width: min(52rem, 58vw);
+}
+.eyebrow {
+  margin: 0 0 1.1rem;
+  color: #c97941;
+  font: 600 0.7rem/1 var(--font-mono-family);
+  letter-spacing: 0.2em;
+}
+.content h2 {
+  margin: 0;
+  font-family: var(--font-display-family);
+  font-size: clamp(2.6rem, 4.7vw, 5.5rem);
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 0.9;
+}
+.content h2 span {
+  color: #d4c5b8;
+}
+.copy {
+  max-width: 39rem;
+  margin: 1.35rem 0 0;
+  color: rgba(241, 238, 231, 0.68);
+  font: 500 1rem/1.65 var(--font-body-family);
+}
+.paths {
+  right: clamp(1.25rem, 4vw, 4rem);
+  bottom: 7%;
+  display: flex;
+  gap: 1rem;
+}
+.paths a,
+.paths span {
+  display: inline-flex;
+  min-height: 3.25rem;
+  align-items: center;
+  gap: 0.65rem;
+  border-top: 1px solid rgba(201, 121, 65, 0.65);
+  padding: 0.9rem 0.2rem;
+  color: #f1eee7;
+  font: 700 0.7rem/1 var(--font-mono-family);
+  letter-spacing: 0.12em;
+}
+.paths span {
+  color: rgba(241, 238, 231, 0.42);
+}
+.paths a:hover {
+  color: #d99562;
+}
+.paths a:focus-visible {
+  outline: 2px solid #c97941;
+  outline-offset: 5px;
+}
+@media (max-width: 1023px) {
+  .content {
+    width: min(40rem, 70vw);
+  }
+  .paths {
+    right: auto;
+    left: clamp(1.25rem, 6vw, 6rem);
+  }
+}
+@media (max-width: 767px) {
+  .section {
+    height: 140svh;
+  }
+  .stage {
+    min-height: 34rem;
+  }
+  .art img {
+    object-position: center top;
+  }
+  .shade {
+    background: linear-gradient(
+      0deg,
+      #070908 5%,
+      rgba(7, 9, 8, 0.84) 40%,
+      rgba(7, 9, 8, 0.05) 77%
+    );
+  }
+  .floor {
+    right: 7%;
+    bottom: 23%;
+    left: 7%;
+    height: 38%;
+  }
+  .solitude,
+  .progress {
+    top: auto;
+    bottom: 28%;
+    left: 1rem;
+    font-size: clamp(2.7rem, 14vw, 4.3rem);
+  }
+  .content {
+    right: 1rem;
+    bottom: 17%;
+    left: 1rem;
+    width: auto;
+  }
+  .eyebrow {
+    margin-bottom: 0.75rem;
+  }
+  .content h2 {
+    font-size: clamp(2rem, 9vw, 3.1rem);
+    line-height: 0.92;
+  }
+  .copy {
+    display: block;
+    max-width: 22rem;
+    margin-top: 0.7rem;
+    font-size: 0.76rem;
+    line-height: 1.45;
+  }
+  .paths {
+    right: 1rem;
+    bottom: 3%;
+    left: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .paths a,
+  .paths span {
+    justify-content: center;
+    border: 1px solid rgba(201, 121, 65, 0.42);
+    padding: 0.7rem;
+    font-size: 0.58rem;
+    text-align: center;
+  }
+  .paths a:first-child {
+    padding-left: 3rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .section {
+    height: auto;
+  }
+  .stage {
+    position: relative;
+    height: 100svh;
+  }
+  .solitude,
+  .progress {
+    display: none;
+  }
+  .content,
+  .paths,
+  .floor {
+    opacity: 1;
+    transform: none;
+  }
+}

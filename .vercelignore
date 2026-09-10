@@ -1,0 +1,9 @@
+backend/
+e2e/
+playwright-report/
+test-results/
+scripts/source-assets/
+**/*.db
+**/__pycache__/
+**/.pytest_cache/
+**/.ruff_cache/

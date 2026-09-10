@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MARCOS
 
-## Getting Started
+Premium trading-community website built with Next.js, React, TypeScript,
+Tailwind CSS and GSAP.
 
-First, run the development server:
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Ftilinkkr%2Fmarcoswebsite&project-name=marcos&repository-name=marcoswebsite)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+The public website and bundled Insights article deploy without credentials.
+Contact, team-application and checkout submissions remain unavailable until the
+separate FastAPI service has been deployed and its public HTTPS URL is added to
+Vercel.
+
+## One-click Vercel deployment
+
+1. Select **Deploy with Vercel** above.
+2. Connect the GitHub account that can access this repository.
+3. Keep the detected framework as **Next.js**.
+4. Deploy. No output-directory override is required.
+
+For the correct production canonical URL, add:
+
+```text
+NEXT_PUBLIC_SITE_URL=https://your-domain.example
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+When the API is deployed, add both:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+NEXT_PUBLIC_MARCOS_API_URL=https://api.your-domain.example
+MARCOS_API_URL=https://api.your-domain.example
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Set the backend `APP_BASE_URL` to the exact Vercel production origin. Keep
+`MARCOS_ADMIN_KEY`, database credentials, Supabase service-role keys, payment
+provider secrets and webhook secrets server-side.
 
-## Learn More
+See [`.env.example`](./.env.example) for optional analytics, monitoring,
+Supabase, Redis and future payment-provider configuration.
 
-To learn more about Next.js, take a look at the following resources:
+## Local development
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm install
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Copy `.env.example` to `.env.local` and add local credentials only when a
+service is enabled.
 
-## Deploy on Vercel
+## Validation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run typecheck
+npm run lint
+npm test
+npm run test:e2e
+npm run build
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The FastAPI source is retained in [`backend/`](./backend/README.md), but it is
+not bundled into the Vercel frontend deployment. Production backend storage
+must use PostgreSQL rather than the included local SQLite setup.

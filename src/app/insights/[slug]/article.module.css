@@ -1,0 +1,97 @@
+.page {
+  min-height: 100svh;
+  color: #eee8dc;
+  background: #080a09;
+}
+.header {
+  max-width: 84rem;
+  margin: 0 auto;
+  padding: clamp(10rem, 16vw, 15rem) clamp(1rem, 5vw, 5rem) 4rem;
+}
+.header > p {
+  color: #bd704d;
+  font-family: var(--font-mono-family);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+}
+.header h1 {
+  max-width: 78rem;
+  margin: 1.5rem 0 3rem;
+  font-family: var(--font-display-family);
+  font-size: clamp(3rem, 7.6vw, 8rem);
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  line-height: 0.9;
+}
+.header > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  color: rgb(238 226 214 / 60%);
+  font-size: 0.82rem;
+}
+.header span {
+  color: #bd704d;
+}
+.hero {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 76svh;
+  object-fit: cover;
+}
+.article {
+  max-width: 47rem;
+  margin: 0 auto;
+  padding: clamp(4rem, 8vw, 8rem) 1rem;
+}
+.article h2 {
+  scroll-margin-top: 3rem;
+  margin: 4.5rem 0 1.2rem;
+  font-family: var(--font-display-family);
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+.article h3 {
+  margin: 3rem 0 1rem;
+  font-family: var(--font-display-family);
+  font-size: 1.65rem;
+}
+.article p,
+.article li {
+  color: rgb(240 231 221 / 74%);
+  font-size: 1.05rem;
+  line-height: 1.82;
+}
+.article ul {
+  padding-left: 1.25rem;
+}
+.article li + li {
+  margin-top: 0.65rem;
+}
+.article a {
+  color: #d7956e;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@media (max-width: 767px) {
+  .header {
+    padding-top: 9rem;
+  }
+  .header h1 {
+    font-size: clamp(2.75rem, 12vw, 4.5rem);
+  }
+  .header > div {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .hero {
+    min-height: 17rem;
+  }
+  .article p,
+  .article li {
+    font-size: 1rem;
+    line-height: 1.72;
+  }
+}

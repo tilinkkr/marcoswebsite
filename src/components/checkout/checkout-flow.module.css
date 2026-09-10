@@ -1,0 +1,510 @@
+.shell {
+  display: grid;
+  grid-template-columns: minmax(19rem, 0.72fr) minmax(0, 1.28fr);
+  min-height: 100svh;
+  background: #0b0d0c;
+  color: #f1eee7;
+}
+.summary {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  padding: clamp(7rem, 9vw, 9rem) clamp(1.5rem, 4vw, 4rem) 3rem;
+  border-right: 1px solid rgba(241, 238, 231, 0.14);
+  background: radial-gradient(
+    circle at 20% 20%,
+    rgba(112, 23, 34, 0.27),
+    transparent 43%
+  );
+}
+.eyebrow,
+.stepLabel,
+.policy,
+.progress,
+.paymentDue span,
+.paymentDue small,
+.confirmation div span {
+  font-family: var(--font-mono-family);
+  letter-spacing: 0.15em;
+}
+.eyebrow {
+  margin: 0;
+  color: #c97941;
+  font-size: 0.68rem;
+}
+.summary h1 {
+  margin: 1.2rem 0;
+  font: 600 clamp(3rem, 5vw, 6rem)/0.87 var(--font-display-family);
+  letter-spacing: -0.06em;
+}
+.summary > p:not(.eyebrow, .policy) {
+  max-width: 28rem;
+  color: rgba(241, 238, 231, 0.62);
+  line-height: 1.65;
+}
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  margin: 3rem 0;
+}
+.price del {
+  color: rgba(241, 238, 231, 0.35);
+  font: 500 1.4rem var(--font-mono-family);
+}
+.price strong {
+  font: 500 clamp(4rem, 7vw, 7.2rem)/0.8 var(--font-mono-family);
+  letter-spacing: -0.08em;
+}
+.price span {
+  color: #c97941;
+  font: 0.7rem var(--font-mono-family);
+}
+.policy {
+  position: absolute;
+  bottom: 3rem;
+  color: rgba(241, 238, 231, 0.34);
+  font-size: 0.58rem;
+}
+.flow {
+  padding: clamp(6rem, 8vw, 8rem) clamp(1.25rem, 6vw, 6rem);
+}
+.progress {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 0 0 5rem;
+  padding: 0;
+  border-top: 1px solid rgba(241, 238, 231, 0.15);
+  list-style: none;
+}
+.progress li {
+  display: flex;
+  gap: 0.55rem;
+  padding-top: 0.8rem;
+  color: rgba(241, 238, 231, 0.3);
+  font-size: 0.58rem;
+}
+.progress li span {
+  color: inherit;
+}
+.progress li[data-active="true"] {
+  border-top: 1px solid #c97941;
+  color: #f1eee7;
+}
+.progress li[data-done="true"] {
+  color: #c97941;
+}
+.stepLabel {
+  margin: 0 0 1.1rem;
+  color: #c97941;
+  font-size: 0.65rem;
+}
+.panel {
+  max-width: 58rem;
+}
+.panel h2 {
+  margin: 0;
+  max-width: 52rem;
+  font: 600 clamp(2.6rem, 5vw, 5.4rem)/0.88 var(--font-display-family);
+  letter-spacing: -0.06em;
+}
+.panel > p {
+  max-width: 44rem;
+  color: rgba(241, 238, 231, 0.62);
+  line-height: 1.65;
+}
+.fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin: 2.5rem 0;
+}
+.fields label,
+.consents label,
+.panel > label {
+  display: grid;
+  gap: 0.6rem;
+  color: rgba(241, 238, 231, 0.7);
+  font: 0.72rem var(--font-mono-family);
+  letter-spacing: 0.07em;
+}
+.wide {
+  grid-column: 1/-1;
+}
+.fields input,
+.consents input[type="text"],
+.panel > label input {
+  width: 100%;
+  height: 3.6rem;
+  border: 1px solid rgba(241, 238, 231, 0.17);
+  border-radius: 0;
+  padding: 0 1rem;
+  color: #f1eee7;
+  background: #101311;
+  font: 500 1rem var(--font-body-family);
+  outline: none;
+}
+.fields input:focus,
+.consents input:focus,
+.panel > label input:focus {
+  border-color: #c97941;
+}
+.primary {
+  display: inline-flex;
+  min-height: 3.5rem;
+  align-items: center;
+  gap: 0.7rem;
+  border: 1px solid rgba(201, 121, 65, 0.6);
+  padding: 0 1.2rem;
+  color: #f1eee7;
+  background: rgba(112, 23, 34, 0.2);
+  font: 700 0.7rem var(--font-mono-family);
+  letter-spacing: 0.12em;
+  cursor: pointer;
+}
+.primary:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+}
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  border: 0;
+  color: rgba(241, 238, 231, 0.55);
+  background: none;
+  font: 0.65rem var(--font-mono-family);
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}
+.riskText {
+  margin: 2.5rem 0;
+  border-top: 1px solid rgba(241, 238, 231, 0.14);
+}
+.riskText article {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 1rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(241, 238, 231, 0.12);
+}
+.riskText article > span {
+  color: #c97941;
+  font: 0.65rem var(--font-mono-family);
+}
+.riskText h3 {
+  margin: 0 0 0.45rem;
+  text-transform: uppercase;
+  font: 600 0.77rem var(--font-finance-family);
+  letter-spacing: 0.08em;
+}
+.riskText p {
+  margin: 0;
+  color: rgba(241, 238, 231, 0.58);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+.consents {
+  display: grid;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.consents .check {
+  grid-template-columns: 1.3rem 1fr;
+  align-items: start;
+  border: 1px solid rgba(241, 238, 231, 0.14);
+  padding: 1rem;
+  font-family: var(--font-body-family);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+.check input {
+  width: 1.05rem;
+  height: 1.05rem;
+  margin-top: 0.15rem;
+  accent-color: #a62932;
+}
+.fieldError,
+.error {
+  color: #e18d83;
+}
+.fieldError {
+  font-size: 0.68rem;
+}
+.error {
+  max-width: 58rem;
+  margin-top: 1rem;
+  border-left: 2px solid #a62932;
+  padding: 0.8rem 1rem;
+  background: rgba(112, 23, 34, 0.15);
+  font-size: 0.86rem;
+}
+.paymentDue {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.paymentDue span {
+  color: rgba(241, 238, 231, 0.45);
+  font-size: 0.62rem;
+}
+.paymentDue strong {
+  font: 500 5rem/0.8 var(--font-mono-family);
+  letter-spacing: -0.07em;
+}
+.paymentDue small {
+  color: #c97941;
+  font-size: 0.65rem;
+}
+.paymentNotice {
+  display: grid;
+  max-width: 49rem;
+  grid-template-columns: auto 1fr;
+  gap: 0.9rem;
+  align-items: start;
+  border: 1px solid rgb(201 121 65 / 28%);
+  padding: 1rem;
+  background: rgb(112 23 34 / 12%);
+}
+.paymentNotice svg {
+  color: #d39a72;
+}
+.paymentNotice p {
+  margin: 0;
+  color: rgb(241 238 231 / 72%);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+.paymentGrid {
+  display: grid;
+  max-width: 52rem;
+  grid-template-columns: minmax(17rem, 0.88fr) minmax(17rem, 1fr);
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  align-items: stretch;
+  margin: 2rem 0;
+}
+.qr {
+  display: grid;
+  width: 100%;
+  aspect-ratio: 532 / 522;
+  place-items: center;
+  border: 1px solid rgba(201, 121, 65, 0.35);
+  padding: 0.7rem;
+  background: #1c1d1f;
+  color: #f1eee7;
+  text-align: center;
+}
+.qr img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.qr span,
+.qr strong {
+  display: block;
+  font-family: var(--font-mono-family);
+}
+.qr span {
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+}
+.qr strong {
+  margin: 0.7rem 0;
+  font-size: 1.2rem;
+}
+.qr p {
+  font-size: 0.8rem;
+}
+.paymentDetails {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgb(201 121 65 / 45%);
+  border-bottom: 1px solid rgb(241 238 231 / 14%);
+  padding: 1.25rem 0;
+}
+.paymentDetails > span,
+.paymentDetails dt {
+  color: rgb(241 238 231 / 42%);
+  font: 0.62rem/1.4 var(--font-mono-family);
+  letter-spacing: 0.14em;
+}
+.paymentDetails h3 {
+  margin: 1.1rem 0 1.8rem;
+  font: 600 clamp(2.3rem, 4vw, 4rem)/0.9 var(--font-display-family);
+  letter-spacing: -0.05em;
+}
+.paymentDetails dl {
+  display: grid;
+  gap: 1rem;
+  margin: 0 0 auto;
+}
+.paymentDetails dl div {
+  display: grid;
+  gap: 0.35rem;
+}
+.paymentDetails dd {
+  overflow-wrap: anywhere;
+  margin: 0;
+  color: #eee8dc;
+  font: 500 0.9rem/1.5 var(--font-mono-family);
+}
+.paymentDetails button,
+.paymentDetails a,
+.whatsappAction {
+  display: flex;
+  min-height: 3rem;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid rgb(241 238 231 / 16%);
+  padding: 0 0.9rem;
+  color: rgb(241 238 231 / 78%);
+  background: transparent;
+  font: 600 0.64rem/1 var(--font-mono-family);
+  letter-spacing: 0.09em;
+  cursor: pointer;
+}
+.paymentDetails button {
+  margin-top: 1.5rem;
+}
+.paymentDetails a {
+  margin-top: 0.6rem;
+}
+.paymentDetails a:last-child,
+.whatsappAction {
+  border-color: rgb(91 211 141 / 42%);
+  color: #bdeccf;
+  background: rgb(21 82 46 / 14%);
+}
+.paymentDetails button:hover,
+.paymentDetails button:focus-visible,
+.paymentDetails a:hover,
+.paymentDetails a:focus-visible,
+.whatsappAction:hover,
+.whatsappAction:focus-visible {
+  border-color: #c97941;
+  color: #f1eee7;
+}
+.paymentInstructions {
+  display: grid;
+  max-width: 52rem;
+  grid-template-columns: 2.4rem 1fr;
+  margin: 2.25rem 0;
+  border-top: 1px solid rgb(241 238 231 / 14%);
+}
+.paymentInstructions span,
+.paymentInstructions p {
+  margin: 0;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid rgb(241 238 231 / 11%);
+}
+.paymentInstructions span {
+  color: #c97941;
+  font: 0.63rem/1.6 var(--font-mono-family);
+}
+.paymentInstructions p {
+  color: rgb(241 238 231 / 66%);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+.panel > .paymentDisclaimer,
+.panel > .verificationNote {
+  color: rgb(241 238 231 / 46%);
+  font-size: 0.78rem;
+}
+.whatsappAction {
+  width: fit-content;
+  margin-top: 1.5rem;
+}
+.verificationNote {
+  margin-top: 0.8rem;
+}
+.confirmation {
+  padding-top: 5rem;
+}
+.confirmation svg {
+  color: #c97941;
+}
+.confirmation .eyebrow {
+  margin-top: 1.5rem;
+}
+.confirmation div {
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 2.5rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(241, 238, 231, 0.15);
+  border-bottom: 1px solid rgba(241, 238, 231, 0.15);
+}
+.confirmation div span {
+  color: rgba(241, 238, 231, 0.4);
+  font-size: 0.6rem;
+}
+.confirmation div strong {
+  font: 500 1.6rem var(--font-mono-family);
+}
+@media (max-width: 800px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+  .summary {
+    position: relative;
+    height: auto;
+    min-height: 42svh;
+    padding: 6rem 1rem 2.5rem;
+    border-right: 0;
+    border-bottom: 1px solid rgba(241, 238, 231, 0.14);
+  }
+  .summary h1 {
+    font-size: 3.6rem;
+  }
+  .summary .price {
+    margin: 2rem 0 0;
+  }
+  .policy {
+    position: static;
+    margin-top: 2rem;
+  }
+  .flow {
+    padding: 3.5rem 1rem 5rem;
+  }
+  .progress {
+    margin-bottom: 3rem;
+  }
+  .progress li {
+    font-size: 0;
+  }
+  .progress li span {
+    font-size: 0.6rem;
+  }
+  .fields {
+    grid-template-columns: 1fr;
+  }
+  .wide {
+    grid-column: auto;
+  }
+  .panel h2 {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+  }
+  .riskText article {
+    grid-template-columns: 2rem 1fr;
+  }
+  .paymentDue strong {
+    font-size: 4rem;
+  }
+  .paymentGrid {
+    grid-template-columns: 1fr;
+  }
+  .paymentDetails {
+    min-height: 25rem;
+  }
+  .paymentDetails button,
+  .paymentDetails a,
+  .whatsappAction {
+    min-height: 3.25rem;
+  }
+  .qr {
+    width: min(100%, 32rem);
+  }
+}

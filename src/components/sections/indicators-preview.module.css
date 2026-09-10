@@ -1,0 +1,261 @@
+.section {
+  height: 190svh;
+  position: relative;
+  background: #090b0a;
+  color: #f1eee7;
+}
+.stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  min-height: 40rem;
+  overflow: hidden;
+  isolation: isolate;
+}
+.art,
+.art img,
+.shade,
+.chart {
+  position: absolute;
+  inset: 0;
+}
+.art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.shade {
+  z-index: 1;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(6, 8, 7, 0.9),
+      rgba(6, 8, 7, 0.22) 58%,
+      rgba(6, 8, 7, 0.67)
+    ),
+    linear-gradient(0deg, rgba(6, 8, 7, 0.65), transparent 50%);
+}
+.chart {
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  opacity: 0.7;
+}
+.chart path {
+  fill: none;
+  stroke: rgba(166, 41, 50, 0.27);
+  stroke-width: 1;
+}
+.chart path:nth-child(even) {
+  stroke: rgba(201, 121, 65, 0.18);
+}
+.chart .signal {
+  stroke: #c97941;
+  stroke-width: 2;
+}
+.message,
+.card {
+  position: absolute;
+  z-index: 3;
+}
+.message {
+  top: 50%;
+  left: clamp(1.25rem, 6vw, 6rem);
+  width: min(54rem, 58vw);
+  transform: translateY(-50%);
+}
+.message p,
+.eyebrow {
+  margin: 0 0 1rem;
+  color: #c97941;
+  font: 600 0.68rem/1 var(--font-mono-family);
+  letter-spacing: 0.19em;
+}
+.message h2 {
+  margin: 0;
+  font-family: var(--font-display-family);
+  font-size: clamp(3rem, 5.8vw, 6.7rem);
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  line-height: 0.87;
+}
+.message h2 span {
+  display: block;
+  margin-top: 0.5rem;
+  color: #d8d1c7;
+}
+.card {
+  right: clamp(1.25rem, 5vw, 5rem);
+  bottom: 7%;
+  width: min(31rem, 40vw);
+  border-top: 1px solid rgba(201, 121, 65, 0.62);
+  border-bottom: 1px solid rgba(241, 238, 231, 0.16);
+  padding: 1.55rem 0;
+  background: linear-gradient(
+    90deg,
+    rgba(8, 10, 9, 0.93),
+    rgba(8, 10, 9, 0.62)
+  );
+}
+.card h3 {
+  margin: 0;
+  font: 600 clamp(2.3rem, 4vw, 4.5rem)/0.9 var(--font-display-family);
+  letter-spacing: -0.055em;
+}
+.tagline {
+  margin: 1rem 0;
+  color: #d0bca9;
+  font: 600 1.15rem/1.1 var(--font-display-family);
+}
+.card ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55rem 1rem;
+  margin: 1.2rem 0;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(241, 238, 231, 0.11);
+  border-bottom: 1px solid rgba(241, 238, 231, 0.11);
+  list-style: none;
+}
+.card li {
+  color: rgba(241, 238, 231, 0.62);
+  font: 500 0.74rem/1.4 var(--font-finance-family);
+}
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  font-family: var(--font-mono-family);
+}
+.old {
+  position: relative;
+  color: rgba(241, 238, 231, 0.38);
+  font-size: 1.2rem;
+}
+.old i {
+  position: absolute;
+  top: 50%;
+  right: -0.1em;
+  left: -0.1em;
+  height: 1px;
+  background: #a62932;
+  transform: rotate(-8deg);
+}
+.price strong {
+  font-size: 3.1rem;
+  font-weight: 500;
+  letter-spacing: -0.06em;
+}
+.price small {
+  color: #c97941;
+  letter-spacing: 0.12em;
+}
+.card a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 1rem;
+  color: #f1eee7;
+  font: 700 0.7rem/1 var(--font-mono-family);
+  letter-spacing: 0.13em;
+}
+.card a:hover {
+  color: #c97941;
+}
+@media (max-width: 1023px) {
+  .message {
+    width: 75vw;
+  }
+  .card {
+    width: min(34rem, 55vw);
+  }
+}
+@media (max-width: 767px) {
+  .section {
+    height: 140svh;
+  }
+  .stage {
+    min-height: 36rem;
+  }
+  .art img {
+    object-position: center top;
+  }
+  .shade {
+    background: linear-gradient(
+      0deg,
+      #070908 7%,
+      rgba(7, 9, 8, 0.86) 43%,
+      rgba(7, 9, 8, 0.1) 80%
+    );
+  }
+  .chart {
+    height: 66%;
+    top: 8%;
+  }
+  .message {
+    top: auto;
+    right: 1rem;
+    bottom: 23%;
+    left: 1rem;
+    width: auto;
+    transform: none;
+  }
+  .message p {
+    margin-bottom: 0.7rem;
+  }
+  .message h2 {
+    font-size: clamp(2.25rem, 10.8vw, 3.5rem);
+  }
+  .card {
+    right: 1rem;
+    bottom: 2.5%;
+    left: 1rem;
+    width: auto;
+    padding: 1rem 0;
+  }
+  .card h3 {
+    font-size: 2.6rem;
+  }
+  .tagline {
+    font-size: 1rem;
+  }
+  .card ul {
+    display: none;
+  }
+  .price strong {
+    font-size: 2.5rem;
+  }
+  .card a {
+    position: static;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 0.8rem;
+    border-top: 1px solid rgb(241 238 231 / 12%);
+    padding: 0.85rem 0 0 3.2rem;
+  }
+  .eyebrow {
+    margin-bottom: 0.55rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .section {
+    height: auto;
+  }
+  .stage {
+    position: relative;
+    height: 100svh;
+  }
+  .message {
+    display: none;
+  }
+  .card {
+    opacity: 1;
+    transform: none;
+  }
+  .chart path {
+    opacity: 0.1;
+  }
+  .chart .signal {
+    stroke-dashoffset: 0;
+  }
+}
