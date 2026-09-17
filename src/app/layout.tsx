@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { LenisProvider } from "@/components/animations/lenis-provider";
 import { RouteBackButton } from "@/components/layout/RouteBackButton";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import { ibmPlexMono, ibmPlexSans, manrope, spaceGrotesk } from "@/lib/fonts";
@@ -31,12 +32,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${spaceGrotesk.variable} ${manrope.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable} h-full antialiased`}
     >
       <body className="font-body flex min-h-full flex-col">
-        <RouteBackButton />
-        {children}
-        <WhatsAppButton />
+        <LenisProvider>
+          <RouteBackButton />
+          {children}
+          <WhatsAppButton />
+        </LenisProvider>
       </body>
     </html>
   );

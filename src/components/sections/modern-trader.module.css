@@ -1,6 +1,7 @@
 .section {
   position: relative;
-  min-height: 215svh;
+  min-height: 215vh;
+  min-height: 215dvh;
   overflow: clip;
   color: #f1eee7;
   background: #080a09;
@@ -10,7 +11,8 @@
   position: sticky;
   top: 0;
   width: 100%;
-  height: 100svh;
+  height: 100vh;
+  height: 100dvh;
   min-height: 40rem;
   overflow: hidden;
   background: #080a09;
@@ -199,11 +201,15 @@
 
 @media (max-width: 767px) {
   .section {
-    min-height: 155svh;
+    min-height: auto;
   }
   .stage {
-    height: 100svh;
-    min-height: 100svh;
+    position: relative;
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: max(4.75rem, env(safe-area-inset-top)) 0
+      max(5rem, env(safe-area-inset-bottom));
   }
   .scene {
     top: 0;
@@ -232,11 +238,17 @@
     );
   }
   .copy {
+    position: relative;
     top: auto;
-    right: 1.1rem;
-    bottom: max(2rem, env(safe-area-inset-bottom));
-    left: 1.1rem;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    display: flex;
+    min-height: calc(100dvh - 9.75rem);
+    flex-direction: column;
+    justify-content: flex-end;
     width: auto;
+    margin-inline: 1.1rem;
     transform: none;
   }
   .eyebrow {
@@ -285,7 +297,8 @@
   .stage {
     position: relative;
     height: auto;
-    min-height: 100svh;
+    min-height: 100vh;
+    min-height: 100dvh;
     padding: 7rem 0 4rem;
   }
   .scene,

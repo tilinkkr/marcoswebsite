@@ -37,6 +37,8 @@ const groups = [
   },
 ];
 
+const brandLetters = "MARCOS".split("");
+
 export function SiteFooter() {
   const footerRef = useRef<HTMLElement>(null);
 
@@ -47,35 +49,85 @@ export function SiteFooter() {
     const context = gsap.context(() => {
       const light = footer.querySelector<HTMLElement>("[data-footer-light]");
       const word = footer.querySelector<HTMLElement>("[data-footer-word]");
+      const letters = footer.querySelectorAll<HTMLElement>("[data-footer-letter]");
+      const ruler = footer.querySelector<HTMLElement>("[data-footer-ruler]");
       if (
         !light ||
         !word ||
+        letters.length === 0 ||
+        !ruler ||
         window.matchMedia("(prefers-reduced-motion: reduce)").matches
       )
         return;
-      gsap.set(light, { backgroundPosition: "115% 50%", autoAlpha: 0.5 });
-      gsap.set(word, { autoAlpha: 0.38 });
+
+      const isMobile = window.matchMedia("(max-width: 640px)").matches;
+
+      gsap.set(letters, {
+        autoAlpha: isMobile ? 0.34 : 0.18,
+        yPercent: isMobile ? 12 : 30,
+        rotateX: isMobile ? 0 : -18,
+        transformOrigin: "50% 100%",
+      });
+      gsap.set(light, { backgroundPosition: "118% 50%", autoAlpha: 0 });
+      gsap.set(word, { autoAlpha: 1 });
+      gsap.set(ruler, { scaleX: 0, transformOrigin: "50% 50%" });
+
       const timeline = gsap.timeline({
         scrollTrigger: {
           trigger: footer,
-          start: "top bottom",
+          start: "top 88%",
           end: "bottom bottom",
-          scrub: 0.45,
+          scrub: isMobile ? 0.35 : 0.55,
         },
       });
+
       timeline
-        .to(word, { autoAlpha: 0.52, duration: 0.25 })
+        .to(
+          letters,
+          {
+            autoAlpha: isMobile ? 0.72 : 0.82,
+            yPercent: 0,
+            rotateX: 0,
+            stagger: isMobile ? 0.025 : 0.045,
+            duration: 0.52,
+            ease: "power3.out",
+          },
+          0,
+        )
+        .to(
+          word,
+          {
+            color: isMobile
+              ? "rgba(232,225,215,0.28)"
+              : "rgba(232,225,215,0.32)",
+            textShadow:
+              "0 0 2.4rem rgba(201,121,65,0.18), 0 0 4rem rgba(112,23,34,0.12)",
+            duration: 0.52,
+            ease: "power2.out",
+          },
+          0.12,
+        )
+        .to(ruler, { scaleX: 1, duration: 0.5, ease: "power2.out" }, 0.1)
         .to(
           light,
           {
             autoAlpha: 1,
-            backgroundPosition: "-15% 50%",
-            duration: 0.62,
+            backgroundPosition: "8% 50%",
+            duration: 0.75,
             ease: "none",
           },
-          0.22,
+          0.16,
         )
-        .to(word, { autoAlpha: 0.58, duration: 0.18 }, 0.78);
+        .to(
+          letters,
+          {
+            autoAlpha: isMobile ? 0.82 : 0.9,
+            duration: 0.22,
+            stagger: isMobile ? 0.015 : 0.025,
+          },
+          0.72,
+        );
+
       return () => timeline.kill();
     }, footer);
     return () => context.revert();
@@ -108,11 +160,16 @@ export function SiteFooter() {
       </p>
       <div className={styles.wordWrap} aria-label="MARCOS">
         <span className={styles.word} data-footer-word aria-hidden>
-          MARCOS
+          {brandLetters.map((letter) => (
+            <span key={letter} data-footer-letter>
+              {letter}
+            </span>
+          ))}
         </span>
         <span className={styles.wordLight} data-footer-light aria-hidden>
           MARCOS
         </span>
+        <span className={styles.ruler} data-footer-ruler aria-hidden />
       </div>
       <div className={styles.bottom}>
         <span>© 2026 MARCOS</span>

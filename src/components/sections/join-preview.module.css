@@ -1,5 +1,6 @@
 .section {
-  height: 200svh;
+  height: 200vh;
+  height: 200dvh;
   position: relative;
   background: #080a09;
   color: #f1eee7;
@@ -7,7 +8,8 @@
 .stage {
   position: sticky;
   top: 0;
-  height: 100svh;
+  height: 100vh;
+  height: 100dvh;
   min-height: 40rem;
   overflow: hidden;
   isolation: isolate;
@@ -136,10 +138,17 @@
 }
 @media (max-width: 767px) {
   .section {
-    height: 140svh;
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
   }
   .stage {
-    min-height: 34rem;
+    position: relative;
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: max(4.25rem, env(safe-area-inset-top)) 0
+      max(6.5rem, env(safe-area-inset-bottom));
   }
   .art img {
     object-position: center top;
@@ -166,10 +175,16 @@
     font-size: clamp(2.7rem, 14vw, 4.3rem);
   }
   .content {
-    right: 1rem;
-    bottom: 17%;
-    left: 1rem;
+    position: relative;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    display: flex;
+    min-height: calc(100dvh - 16rem);
+    flex-direction: column;
+    justify-content: flex-end;
     width: auto;
+    margin-inline: 1rem;
   }
   .eyebrow {
     margin-bottom: 0.75rem;
@@ -186,12 +201,15 @@
     line-height: 1.45;
   }
   .paths {
-    right: 1rem;
-    bottom: 3%;
-    left: 1rem;
+    position: relative;
+    right: auto;
+    bottom: auto;
+    left: auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.75rem;
+    margin-top: 1.1rem;
+    margin-inline: 1rem;
   }
   .paths a,
   .paths span {
@@ -211,7 +229,8 @@
   }
   .stage {
     position: relative;
-    height: 100svh;
+    height: 100vh;
+    height: 100dvh;
   }
   .solitude,
   .progress {

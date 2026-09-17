@@ -128,10 +128,27 @@
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
-  }
   html {
     @apply font-sans;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    overflow-x: hidden;
+  }
+
+  main {
+    overflow-x: clip;
+  }
+
+  html[data-lenis-active] {
+    scroll-behavior: auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 }

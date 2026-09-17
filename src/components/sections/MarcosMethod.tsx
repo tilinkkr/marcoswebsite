@@ -64,15 +64,41 @@ export function MarcosMethod() {
         return;
       }
 
+      const isMobile = window.matchMedia("(max-width: 767px)").matches;
+
       gsap.set(cards, { autoAlpha: 0.42, y: 24 });
       gsap.set(line, { scaleX: 0, transformOrigin: "left center" });
+
+      if (isMobile) {
+        const mobileTimeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top 82%",
+            once: true,
+          },
+        });
+
+        mobileTimeline.to(line, { scaleX: 1, duration: 0.45, ease: "none" }).to(
+          cards,
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.5,
+            stagger: 0.08,
+            ease: "power2.out",
+          },
+          0.12,
+        );
+
+        return () => mobileTimeline.kill();
+      }
 
       const timeline = gsap.timeline({
         scrollTrigger: {
           trigger: section,
           start: "top 74%",
           end: "bottom 56%",
-          scrub: window.matchMedia("(max-width: 767px)").matches ? true : 0.42,
+          scrub: 0.42,
         },
       });
 

@@ -1,6 +1,7 @@
 .section {
   position: relative;
-  min-height: 180svh;
+  min-height: 195vh;
+  min-height: 195dvh;
   overflow: clip;
   color: #f1ece3;
   background: #030404;
@@ -12,7 +13,8 @@
   top: 0;
   display: grid;
   width: 100%;
-  min-height: 100svh;
+  min-height: 100vh;
+  min-height: 100dvh;
   place-items: center;
   overflow: hidden;
   border-top: 1px solid rgb(201 139 90 / 14%);
@@ -234,7 +236,8 @@
 
   .stage {
     position: relative;
-    min-height: 100svh;
+    min-height: 100vh;
+    min-height: 100dvh;
     padding: 4.5rem 0 3rem;
   }
 

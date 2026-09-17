@@ -18,6 +18,6 @@ export default async function CheckoutPage({
   const productKind =
     params.product === "indicator" ? "indicator" : "membership";
   const qrAsset =
-    process.env.PAYMENT_QR_ASSET ?? "/images/payments/marcos-upi-qr.png";
+    process.env.PAYMENT_QR_ASSET ?? "/images/payments/marcos-upi-qr.webp";
   return <CheckoutFlow productKind={productKind} qrAsset={qrAsset} />;
 }

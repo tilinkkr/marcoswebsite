@@ -1,6 +1,7 @@
 .section {
   position: relative;
-  min-height: 270svh;
+  min-height: 285vh;
+  min-height: 285dvh;
   overflow: clip;
   color: #f1eee7;
   background: #0b0d0c;
@@ -27,7 +28,8 @@
   position: sticky;
   top: 0;
   width: 100%;
-  height: 100svh;
+  height: 100vh;
+  height: 100dvh;
   min-height: 40rem;
   overflow: hidden;
   perspective: 1300px;
@@ -323,11 +325,15 @@
 
 @media (max-width: 767px) {
   .section {
-    min-height: 175svh;
+    min-height: auto;
   }
   .stage {
-    height: 100svh;
-    min-height: 100svh;
+    position: relative;
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: max(4.5rem, env(safe-area-inset-top)) 0
+      max(6rem, env(safe-area-inset-bottom));
     perspective: none;
   }
   .background {
@@ -383,11 +389,18 @@
     will-change: transform, opacity;
   }
   .copy {
+    position: relative;
+    z-index: 8;
     top: auto;
-    right: 1.15rem;
-    bottom: max(2.75rem, env(safe-area-inset-bottom));
-    left: 1.15rem;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    display: flex;
+    min-height: calc(100dvh - 10.5rem);
+    flex-direction: column;
+    justify-content: flex-end;
     width: auto;
+    margin-inline: 1.15rem;
     transform: none;
   }
   .phaseRail {
@@ -474,7 +487,8 @@
   }
   .stage {
     position: relative;
-    min-height: 100svh;
+    min-height: 100vh;
+    min-height: 100dvh;
     height: auto;
     padding: 7rem 0 5rem;
   }

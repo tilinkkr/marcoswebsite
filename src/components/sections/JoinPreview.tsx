@@ -53,6 +53,31 @@ export function JoinPreview() {
             return;
           }
 
+          if (mobile) {
+            gsap.set(solitude, { display: "none" });
+            gsap.set(progress, { autoAlpha: 0, y: 0 });
+            gsap.set(art, { scale: 1.01, xPercent: 0 });
+            gsap.set(floor, { autoAlpha: 0.52, scale: 1 });
+            gsap.set([content, paths], { autoAlpha: 1, y: 0 });
+
+            const mobileTimeline = gsap.timeline({
+              defaults: { ease: "power2.out" },
+              scrollTrigger: {
+                trigger: section,
+                start: "top 78%",
+                once: true,
+              },
+            });
+
+            mobileTimeline.fromTo(
+              [floor, content, paths],
+              { autoAlpha: 0, y: 18 },
+              { autoAlpha: 1, y: 0, duration: 0.58, stagger: 0.08 },
+            );
+
+            return () => mobileTimeline.kill();
+          }
+
           gsap.set(progress, { autoAlpha: 0, y: mobile ? 20 : 34 });
           gsap.set(floor, { autoAlpha: 0, scale: 0.72 });
           gsap.set(content, { autoAlpha: 0, y: mobile ? 18 : 28 });
@@ -64,7 +89,7 @@ export function JoinPreview() {
               trigger: section,
               start: "top top",
               end: "bottom bottom",
-              scrub: mobile ? 0.25 : 0.55,
+              scrub: 0.22,
               invalidateOnRefresh: true,
             },
           });
@@ -72,7 +97,7 @@ export function JoinPreview() {
           timeline
             .fromTo(
               art,
-              { scale: mobile ? 1.04 : 1.12, xPercent: mobile ? 0 : 5 },
+              { scale: 1.12, xPercent: 5 },
               { scale: 1, xPercent: 0, duration: 0.35 },
             )
             .to(solitude, { autoAlpha: 0, y: -20, duration: 0.16 }, 0.18)

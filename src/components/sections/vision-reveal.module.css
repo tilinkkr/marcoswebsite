@@ -1,6 +1,7 @@
 .story {
   position: relative;
-  min-height: 100svh;
+  min-height: 100vh;
+  min-height: 100dvh;
   overflow: clip;
   color: #eee8dc;
   background: #050505;
@@ -10,7 +11,8 @@
   isolation: isolate;
   position: relative;
   width: 100%;
-  height: 100svh;
+  height: 100vh;
+  height: 100dvh;
   min-height: 38rem;
   overflow: hidden;
   background:
@@ -329,7 +331,7 @@
   .stage {
     position: relative;
     height: auto;
-    min-height: max(100svh, 44rem);
+    min-height: max(100dvh, 44rem);
   }
 
   .stage::after {
@@ -474,7 +476,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .story {
-    min-height: 100svh;
+    min-height: 100vh;
+    min-height: 100dvh;
   }
 
   .layer,

@@ -56,12 +56,52 @@ export function FinalConversion() {
           gsap.set(content, { autoAlpha: 0.68, y: 18 });
           gsap.set(beam, { scaleX: 0.12, transformOrigin: "left center" });
 
+          if (mobile) {
+            const mobileTimeline = gsap.timeline({
+              scrollTrigger: {
+                trigger: section,
+                start: "top 82%",
+                once: true,
+              },
+            });
+
+            words.forEach((word, index) => {
+              mobileTimeline.to(
+                word,
+                {
+                  autoAlpha: 1,
+                  x: 0,
+                  duration: 0.24,
+                  ease: "power2.out",
+                },
+                index * 0.08,
+              );
+            });
+
+            mobileTimeline
+              .to(words, { autoAlpha: 0.7, duration: 0.16 }, 0.38)
+              .to(
+                lockup,
+                {
+                  autoAlpha: 0.2,
+                  scale: 1,
+                  duration: 0.22,
+                  ease: "power2.out",
+                },
+                0.42,
+              )
+              .to(beam, { scaleX: 1, duration: 0.26, ease: "none" }, 0.44)
+              .to(content, { autoAlpha: 1, y: 0, duration: 0.28 }, 0.48);
+
+            return () => mobileTimeline.kill();
+          }
+
           const timeline = gsap.timeline({
             scrollTrigger: {
               trigger: section,
               start: "top 76%",
               end: "bottom 48%",
-              scrub: mobile ? true : 0.42,
+              scrub: 0.42,
             },
           });
 

@@ -20,7 +20,8 @@
   align-items: center;
   gap: clamp(4rem, 8vw, 10rem);
   width: min(92rem, calc(100% - 3rem));
-  min-height: 100svh;
+  min-height: 100vh;
+  min-height: 100dvh;
   margin: 0 auto;
   padding: clamp(6rem, 9vw, 9rem) 0;
 }

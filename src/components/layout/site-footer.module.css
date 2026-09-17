@@ -80,6 +80,7 @@
   width: 100%;
   margin-top: clamp(3rem, 5vw, 5rem);
   overflow: hidden;
+  perspective: 900px;
 }
 .wordWrap::after {
   content: "";
@@ -98,41 +99,74 @@
   box-shadow: 0 -0.5rem 1.4rem rgb(112 23 34 / 24%);
 }
 .word {
-  display: block;
-  color: #202421;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  color: rgb(232 225 215 / 17%);
   font-family: var(--font-display-family);
-  font-size: clamp(8rem, 20vw, 22rem);
+  font-size: clamp(6rem, 17.3vw, 20rem);
   font-weight: 700;
-  letter-spacing: -0.08em;
+  letter-spacing: 0;
   line-height: 0.72;
   white-space: nowrap;
+  text-shadow: 0 0 3rem rgb(201 121 65 / 6%);
+}
+.word span {
+  display: inline-block;
+  will-change: transform, opacity;
 }
 .wordLight {
   position: absolute;
   inset: 0;
-  display: block;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
   color: transparent;
   font-family: var(--font-display-family);
-  font-size: clamp(8rem, 20vw, 22rem);
+  font-size: clamp(6rem, 17.3vw, 20rem);
   font-weight: 700;
-  letter-spacing: -0.08em;
+  letter-spacing: 0;
   line-height: 0.72;
   white-space: nowrap;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    transparent 38%,
-    #8d2b32 44%,
-    #d79b72 49%,
-    #f1eee7 52%,
-    #b96842 56%,
-    transparent 64%,
+    transparent 34%,
+    #5c1118 42%,
+    #b3232f 46%,
+    #d79b72 50%,
+    #fff7ed 53%,
+    #c97941 57%,
+    #711822 62%,
+    transparent 70%,
     transparent 100%
   );
   background-position: 115% 50%;
   background-size: 300% 100%;
   background-clip: text;
   -webkit-background-clip: text;
+  filter: drop-shadow(0 0 1.8rem rgb(201 121 65 / 28%));
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+.ruler {
+  position: absolute;
+  right: 2%;
+  bottom: 0;
+  left: 2%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(112 23 34 / 84%),
+    rgb(201 121 65 / 92%),
+    rgb(112 23 34 / 84%),
+    transparent
+  );
+  box-shadow:
+    0 0 1rem rgb(201 121 65 / 38%),
+    0 -0.85rem 2rem rgb(112 23 34 / 22%);
+  pointer-events: none;
 }
 .bottom {
   display: flex;
@@ -160,10 +194,14 @@
     grid-column: 1 / -1;
   }
   .word {
-    font-size: 25vw;
+    justify-content: flex-start;
+    font-size: clamp(3.6rem, 17vw, 6rem);
+    line-height: 0.82;
   }
   .wordLight {
-    font-size: 25vw;
+    justify-content: flex-start;
+    font-size: clamp(3.6rem, 17vw, 6rem);
+    line-height: 0.82;
   }
   .bottom {
     align-items: flex-start;
@@ -176,7 +214,14 @@
     opacity: 0.48;
     transform: none;
   }
+  .word span {
+    opacity: 1;
+    transform: none;
+  }
   .wordLight {
     display: none;
+  }
+  .ruler {
+    transform: none;
   }
 }

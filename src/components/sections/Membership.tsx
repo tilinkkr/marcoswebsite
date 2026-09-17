@@ -72,13 +72,38 @@ export function Membership() {
           gsap.set(strike, { scaleX: 0, transformOrigin: "left center" });
           gsap.set([currentPrice, offer, items, cta], { autoAlpha: 0, y: 18 });
 
+          if (mobile) {
+            const mobileTimeline = gsap.timeline({
+              defaults: { ease: "power2.out" },
+              scrollTrigger: {
+                trigger: section,
+                start: "top 82%",
+                once: true,
+              },
+            });
+
+            mobileTimeline
+              .to(oldPrice, { autoAlpha: 0.55, duration: 0.18 })
+              .to(strike, { scaleX: 1, duration: 0.22 }, 0.08)
+              .to(currentPrice, { autoAlpha: 1, y: 0, duration: 0.28 }, 0.18)
+              .to(offer, { autoAlpha: 1, y: 0, duration: 0.2 }, 0.3)
+              .to(
+                items,
+                { autoAlpha: 1, y: 0, duration: 0.24, stagger: 0.045 },
+                0.4,
+              )
+              .to(cta, { autoAlpha: 1, y: 0, duration: 0.2 }, 0.68);
+
+            return () => mobileTimeline.kill();
+          }
+
           const timeline = gsap.timeline({
             defaults: { ease: "power1.out" },
             scrollTrigger: {
               trigger: section,
               start: "top 78%",
-              end: mobile ? "top 24%" : "top 18%",
-              scrub: mobile ? true : 0.45,
+              end: "top 18%",
+              scrub: 0.45,
               once: false,
             },
           });

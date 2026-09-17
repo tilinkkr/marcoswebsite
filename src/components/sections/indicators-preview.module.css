@@ -1,5 +1,6 @@
 .section {
-  height: 190svh;
+  height: 190vh;
+  height: 190dvh;
   position: relative;
   background: #090b0a;
   color: #f1eee7;
@@ -7,7 +8,8 @@
 .stage {
   position: sticky;
   top: 0;
-  height: 100svh;
+  height: 100vh;
+  height: 100dvh;
   min-height: 40rem;
   overflow: hidden;
   isolation: isolate;
@@ -172,10 +174,17 @@
 }
 @media (max-width: 767px) {
   .section {
-    height: 140svh;
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
   }
   .stage {
-    min-height: 36rem;
+    position: relative;
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: max(4.25rem, env(safe-area-inset-top)) 0
+      max(6.5rem, env(safe-area-inset-bottom));
   }
   .art img {
     object-position: center top;
@@ -207,10 +216,13 @@
     font-size: clamp(2.25rem, 10.8vw, 3.5rem);
   }
   .card {
-    right: 1rem;
-    bottom: 2.5%;
-    left: 1rem;
+    position: relative;
+    right: auto;
+    bottom: auto;
+    left: auto;
     width: auto;
+    margin-top: calc(100dvh - 28rem);
+    margin-inline: 1rem;
     padding: 1rem 0;
   }
   .card h3 {
@@ -243,7 +255,8 @@
   }
   .stage {
     position: relative;
-    height: 100svh;
+    height: 100vh;
+    height: 100dvh;
   }
   .message {
     display: none;

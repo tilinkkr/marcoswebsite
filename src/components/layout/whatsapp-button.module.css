@@ -21,6 +21,10 @@
     transform 160ms ease;
 }
 
+:global(body:has([data-marcos-sticky-funnel])) .button {
+  display: none;
+}
+
 .button:hover,
 .button:focus-visible {
   border-color: #6fe19d;

@@ -27,12 +27,23 @@ export function useAnimationPreferences(): AnimationPreferences {
         "deviceMemory" in navigator
           ? Number(
               (navigator as Navigator & { deviceMemory?: number }).deviceMemory,
-            )
-          : 4;
+          )
+        : 8;
+      const saveData = Boolean(
+        (navigator as Navigator & { connection?: { saveData?: boolean } })
+          .connection?.saveData,
+      );
+
+      // Four logical cores alone is not a reliable low-power signal. Treating
+      // it as one disabled smooth scrolling on many capable laptops.
+      const constrainedHardware =
+        hardwareConcurrency <= 2 ||
+        deviceMemory <= 2 ||
+        (hardwareConcurrency <= 4 && deviceMemory <= 4);
 
       setPreferences({
         isMobile: mobileQuery.matches,
-        isLowPower: hardwareConcurrency <= 4 || deviceMemory <= 2,
+        isLowPower: saveData || constrainedHardware,
         reducedMotion: reducedMotionQuery.matches,
       });
     };

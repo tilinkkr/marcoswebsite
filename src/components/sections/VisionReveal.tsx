@@ -132,10 +132,10 @@ export function VisionReveal() {
             scrollTrigger: {
               trigger: section,
               start: "top top",
-              end: () => `+=${window.innerHeight * (isTablet ? 2.2 : 3)}`,
+              end: () => `+=${window.innerHeight * (isTablet ? 2.35 : 3.2)}`,
               pin: stage,
               pinSpacing: true,
-              scrub: isLowPower ? 0.35 : isTablet ? 0.65 : 0.9,
+              scrub: isLowPower ? 0.12 : isTablet ? 0.2 : 0.24,
               anticipatePin: 1,
               invalidateOnRefresh: true,
             },

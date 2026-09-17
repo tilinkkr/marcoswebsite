@@ -172,184 +172,58 @@ export function CapitalMotion() {
             const mobileNotes = [midOne, midTwo, heroOne];
 
             gsap.set([farOne, farTwo, heroTwo], { display: "none" });
-            gsap.set(background, { autoAlpha: 0.48, scale: 1 });
-            gsap.set(redLight, { autoAlpha: 0, scale: 1, xPercent: 10 });
-            gsap.set(mobileNotes, { autoAlpha: 0, force3D: true });
-            gsap.set(transition, {
-              autoAlpha: 0.72,
-              xPercent: 28,
-              yPercent: -42,
-              scale: 1.08,
-              rotationZ: 12,
+            gsap.set(background, { autoAlpha: 0.58, scale: 1.02 });
+            gsap.set(redLight, { autoAlpha: 0.32, scale: 1, xPercent: 0 });
+            gsap.set(midOne, {
+              autoAlpha: 0.6,
+              xPercent: 16,
+              yPercent: 8,
+              scale: 0.9,
+              rotationZ: -8,
               force3D: true,
             });
-            gsap.set([eyebrow, body, meta, cta], { autoAlpha: 0, y: 14 });
-            gsap.set(lines, { yPercent: 104, rotateX: 0, autoAlpha: 1 });
-            gsap.set(ghost, { autoAlpha: 0, xPercent: -2 });
-            gsap.set(attraction, { autoAlpha: 1, y: 0 });
-            gsap.set(pressure, { autoAlpha: 0, y: 10 });
+            gsap.set(midTwo, {
+              autoAlpha: 0.54,
+              xPercent: -14,
+              yPercent: -8,
+              scale: 0.84,
+              rotationZ: 11,
+              force3D: true,
+            });
+            gsap.set(heroOne, {
+              autoAlpha: 0.72,
+              xPercent: 7,
+              yPercent: -6,
+              scale: 1.06,
+              rotationZ: -7,
+              force3D: true,
+            });
+            gsap.set(transition, {
+              display: "none",
+            });
+            gsap.set([eyebrow, body, meta, cta], { autoAlpha: 1, y: 0 });
+            gsap.set(lines, { yPercent: 0, rotateX: 0, autoAlpha: 1 });
+            gsap.set(ghost, { autoAlpha: 0.045, xPercent: 0 });
+            gsap.set([attraction, pressure], { display: "none" });
 
             const mobileTimeline = gsap.timeline({
-              defaults: { ease: "none" },
               scrollTrigger: {
                 trigger: section,
-                start: "top top",
-                end: "bottom bottom",
-                scrub: true,
-                invalidateOnRefresh: true,
+                start: "top 78%",
+                once: true,
               },
             });
 
-            mobileTimeline
-              .to(
-                transition,
-                {
-                  xPercent: -6,
-                  yPercent: -8,
-                  scale: 1.32,
-                  autoAlpha: 0,
-                  duration: 0.18,
-                },
-                0,
-              )
-              .addLabel("arrival", 0.02)
-              .to(
-                midOne,
-                {
-                  autoAlpha: 0.66,
-                  xPercent: 16,
-                  yPercent: 8,
-                  scale: 0.9,
-                  rotationZ: -8,
-                  duration: 0.24,
-                },
-                "arrival",
-              )
-              .to(
-                midTwo,
-                {
-                  autoAlpha: 0.6,
-                  xPercent: -14,
-                  yPercent: -8,
-                  scale: 0.84,
-                  rotationZ: 11,
-                  duration: 0.24,
-                },
-                "arrival+=0.07",
-              )
-              .to(
-                heroOne,
-                {
-                  autoAlpha: 0.88,
-                  xPercent: 8,
-                  yPercent: -2,
-                  scale: 0.94,
-                  rotationZ: -7,
-                  duration: 0.25,
-                },
-                "arrival+=0.12",
-              )
-              .addLabel("forward", 0.22)
-              .to(
-                attraction,
-                { autoAlpha: 0, y: -8, duration: 0.08 },
-                "forward",
-              )
-              .to(
-                pressure,
-                { autoAlpha: 1, y: 0, duration: 0.1 },
-                "forward+=0.05",
-              )
-              .to(
-                midOne,
-                { xPercent: 44, yPercent: -18, scale: 1.2, duration: 0.24 },
-                "forward",
-              )
-              .to(
-                midTwo,
-                { xPercent: -40, yPercent: 14, scale: 1.22, duration: 0.24 },
-                "forward",
-              )
-              .to(
-                heroOne,
-                {
-                  xPercent: 24,
-                  yPercent: -22,
-                  scale: 1.55,
-                  rotationZ: 8,
-                  duration: 0.28,
-                },
-                "forward",
-              )
-              .to(background, { scale: 1.035, duration: 0.3 }, "forward")
-              .addLabel("intensity", 0.42)
-              .to(
-                redLight,
-                { autoAlpha: 0.52, xPercent: 0, duration: 0.18 },
-                "intensity",
-              )
-              .to(
-                transition,
-                {
-                  autoAlpha: 1,
-                  xPercent: -30,
-                  yPercent: 24,
-                  scale: 1.1,
-                  duration: 0.13,
-                },
-                "intensity+=0.08",
-              )
-              .addLabel("wipe", 0.54)
-              .to(pressure, { autoAlpha: 0, y: -8, duration: 0.07 }, "wipe")
-              .to(
-                transition,
-                {
-                  xPercent: 28,
-                  yPercent: -14,
-                  scale: 3,
-                  rotationZ: 7,
-                  duration: 0.12,
-                  ease: "power1.inOut",
-                },
-                "wipe",
-              )
-              .to(
-                mobileNotes,
-                { autoAlpha: 0, duration: 0.09, stagger: 0.01 },
-                "wipe+=0.035",
-              )
-              .addLabel("message", 0.62)
-              .to(
-                transition,
-                { autoAlpha: 0, xPercent: 76, yPercent: -48, duration: 0.08 },
-                "message",
-              )
-              .to(
-                ghost,
-                { autoAlpha: 0.045, xPercent: 0, duration: 0.08 },
-                "message",
-              )
-              .to(
-                eyebrow,
-                { autoAlpha: 1, y: 0, duration: 0.06 },
-                "message+=0.01",
-              )
-              .to(lines[0], { yPercent: 0, duration: 0.06 }, "message+=0.025")
-              .to(lines[1], { yPercent: 0, duration: 0.06 }, "message+=0.05")
-              .to(lines[2], { yPercent: 0, duration: 0.06 }, "message+=0.075")
-              .to(
-                body,
-                { autoAlpha: 1, y: 0, duration: 0.06 },
-                "message+=0.105",
-              )
-              .to(
-                meta,
-                { autoAlpha: 1, y: 0, duration: 0.05 },
-                "message+=0.135",
-              )
-              .to(cta, { autoAlpha: 1, y: 0, duration: 0.05 }, "message+=0.16")
-              .addLabel("hold", 0.86)
-              .to(redLight, { xPercent: -1, duration: 0.12 }, "hold");
+            mobileTimeline.fromTo(
+              [background, redLight, ...mobileNotes, ghost],
+              { y: 18 },
+              {
+                y: 0,
+                duration: 0.7,
+                stagger: 0.04,
+                ease: "power2.out",
+              },
+            );
 
             return () => mobileTimeline.kill();
           }
@@ -379,7 +253,7 @@ export function CapitalMotion() {
               trigger: section,
               start: "top top",
               end: "bottom bottom",
-              scrub: isLowPower ? 0.45 : mobile ? 0.55 : 0.9,
+              scrub: isLowPower ? 0.12 : 0.24,
               invalidateOnRefresh: true,
             },
           });
@@ -731,27 +605,27 @@ export function CapitalMotion() {
         <div className={styles.depthField} aria-hidden>
           <CapitalNote
             className={styles.farOne}
-            file="note-far-01.png"
+            file="note-far-01.webp"
             name="far-01"
           />
           <CapitalNote
             className={styles.farTwo}
-            file="note-far-02.png"
+            file="note-far-02.webp"
             name="far-02"
           />
           <CapitalNote
             className={styles.midOne}
-            file="note-mid-01.png"
+            file="note-mid-01.webp"
             name="mid-01"
           />
           <CapitalNote
             className={styles.midTwo}
-            file="note-mid-02.png"
+            file="note-mid-02.webp"
             name="mid-02"
           />
           <CapitalNote
             className={styles.heroOne}
-            file="note-hero-01.png"
+            file="note-hero-01.webp"
             name="hero-01"
             preload
             width={1280}
@@ -759,7 +633,7 @@ export function CapitalMotion() {
           />
           <CapitalNote
             className={styles.heroTwo}
-            file="note-hero-02.png"
+            file="note-hero-02.webp"
             name="hero-02"
             width={1280}
             height={760}
@@ -835,7 +709,7 @@ export function CapitalMotion() {
 
         <CapitalNote
           className={styles.transitionNote}
-          file="note-transition.png"
+          file="note-transition.webp"
           name="transition"
           width={1280}
           height={720}

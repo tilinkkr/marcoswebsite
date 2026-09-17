@@ -26,6 +26,7 @@ export function IndicatorsPreview() {
         },
         ({ conditions }) => {
           const reduced = Boolean(conditions?.reduced);
+          const mobile = Boolean(conditions?.mobile);
           const art = section.querySelector<HTMLElement>(
             "[data-indicator-art]",
           );
@@ -52,12 +53,40 @@ export function IndicatorsPreview() {
             gsap.set(noise, { autoAlpha: 0.18 });
             return;
           }
+
+          if (mobile) {
+            gsap.set(art, { scale: 1.01, filter: "brightness(.74)" });
+            gsap.set(noise, { autoAlpha: 0.07 });
+            gsap.set(signal, { strokeDasharray: 1400, strokeDashoffset: 0 });
+            gsap.set(message, { display: "none" });
+            gsap.set(see, { color: "#c97941" });
+            gsap.set(card, { autoAlpha: 1, x: 0, y: 0 });
+            gsap.set(strike, { scaleX: 1, transformOrigin: "left center" });
+
+            const mobileTimeline = gsap.timeline({
+              defaults: { ease: "power2.out" },
+              scrollTrigger: {
+                trigger: section,
+                start: "top 78%",
+                once: true,
+              },
+            });
+
+            mobileTimeline.fromTo(
+              card,
+              { autoAlpha: 0, y: 22 },
+              { autoAlpha: 1, y: 0, duration: 0.62 },
+            );
+
+            return () => mobileTimeline.kill();
+          }
+
           gsap.set(message, { autoAlpha: 0, y: 24 });
           gsap.set(see, { color: "#6b6a65" });
           gsap.set(card, {
             autoAlpha: 0,
-            x: Boolean(conditions?.mobile) ? 0 : 32,
-            y: Boolean(conditions?.mobile) ? 20 : 0,
+            x: 32,
+            y: 0,
           });
           gsap.set(strike, { scaleX: 0, transformOrigin: "left center" });
           gsap.set(signal, { strokeDasharray: 1400, strokeDashoffset: 1400 });
@@ -67,7 +96,7 @@ export function IndicatorsPreview() {
               trigger: section,
               start: "top top",
               end: "bottom bottom",
-              scrub: Boolean(conditions?.mobile) ? 0.25 : 0.55,
+              scrub: 0.22,
               invalidateOnRefresh: true,
             },
           });

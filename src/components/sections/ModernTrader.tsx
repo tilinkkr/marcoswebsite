@@ -92,10 +92,41 @@ export function ModernTrader() {
             return;
           }
 
+          if (mobile) {
+            gsap.set(scene, { autoAlpha: 0.86, scale: 1.015, yPercent: 0 });
+            gsap.set(atmosphere, { autoAlpha: 0.48, scale: 1.01 });
+            gsap.set(light, { autoAlpha: 0.34, xPercent: 0, scale: 1 });
+            gsap.set(screen, { autoAlpha: 0 });
+            gsap.set([eyebrow, body, cta], { autoAlpha: 1, y: 0 });
+            gsap.set(lines, { yPercent: 0, autoAlpha: 1 });
+
+            const mobileTimeline = gsap.timeline({
+              defaults: { ease: "power2.out" },
+              scrollTrigger: {
+                trigger: section,
+                start: "top 78%",
+                once: true,
+              },
+            });
+
+            mobileTimeline.fromTo(
+              [scene, light, eyebrow, ...lines, body, cta],
+              { autoAlpha: 0, y: 18 },
+              {
+                autoAlpha: 1,
+                y: 0,
+                duration: 0.58,
+                stagger: 0.035,
+              },
+            );
+
+            return () => mobileTimeline.kill();
+          }
+
           gsap.set(scene, {
-            autoAlpha: mobile ? 0.58 : 0.08,
-            scale: mobile ? 1.04 : 1.08,
-            yPercent: mobile ? -2 : 1,
+            autoAlpha: 0.08,
+            scale: 1.08,
+            yPercent: 1,
           });
           gsap.set(atmosphere, { autoAlpha: 0.28, scale: 1 });
           gsap.set(light, { autoAlpha: 0.08, xPercent: 24, scale: 0.86 });
@@ -109,7 +140,7 @@ export function ModernTrader() {
               trigger: section,
               start: "top top",
               end: "bottom bottom",
-              scrub: mobile ? true : isLowPower ? 0.35 : 0.72,
+              scrub: isLowPower ? 0.12 : 0.22,
               invalidateOnRefresh: true,
             },
           });
@@ -135,21 +166,21 @@ export function ModernTrader() {
             .to(
               scene,
               {
-                autoAlpha: mobile ? 0.9 : 0.94,
-                scale: mobile ? 1.015 : 1.025,
-                yPercent: mobile ? -0.5 : -1,
+                autoAlpha: 0.94,
+                scale: 1.025,
+                yPercent: -1,
                 duration: 0.36,
               },
               "discovery",
             )
             .to(screen, { autoAlpha: 0.34, duration: 0.2 }, "discovery+=0.18")
-            .addLabel("copy", mobile ? 0.48 : 0.53)
+            .addLabel("copy", 0.53)
             .to(eyebrow, { autoAlpha: 1, y: 0, duration: 0.08 }, "copy")
             .to(lines[0], { yPercent: 0, duration: 0.08 }, "copy+=0.035")
             .to(lines[1], { yPercent: 0, duration: 0.08 }, "copy+=0.085")
             .to(lines[2], { yPercent: 0, duration: 0.08 }, "copy+=0.16")
             .to(lines[3], { yPercent: 0, duration: 0.08 }, "copy+=0.21")
-            .addLabel("discipline", mobile ? 0.72 : 0.76)
+            .addLabel("discipline", 0.76)
             .to(
               scene,
               { scale: 1.01, yPercent: 0, duration: 0.18 },
@@ -157,7 +188,7 @@ export function ModernTrader() {
             )
             .to(
               light,
-              { autoAlpha: mobile ? 0.42 : 0.58, xPercent: -2, duration: 0.18 },
+              { autoAlpha: 0.58, xPercent: -2, duration: 0.18 },
               "discipline",
             )
             .to(
