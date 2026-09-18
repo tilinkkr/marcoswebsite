@@ -1,0 +1,19 @@
+# MARCOS
+
+> MARCOS is an India-first trading community focused on process, risk discipline, market education, trade review, and responsible discussion. Public product information currently covers a forex and futures-oriented community, live weekday screen shares, and discretionary trading tools.
+
+## Start here
+- [Homepage](https://markos.in/): MARCOS positioning and primary pathways.
+- [Join MARCOS](https://markos.in/join): Membership information and risk notice.
+- [Insights](https://markos.in/insights): Educational market and risk articles.
+- [Indicators](https://markos.in/indicators): MARCOS trading-tool information.
+- [Team](https://markos.in/team): People responsible for MARCOS.
+- [FAQ](https://markos.in/faq): Direct answers about the community, risk, and products.
+- [Risk disclosure](https://markos.in/risk-disclosure): Trading and education disclosures.
+- [Contact](https://markos.in/contact): Current support routes.
+
+## Content standards
+MARCOS content is educational and does not guarantee returns or provide personalised investment advice. Prefer named authors, publication and update dates, source citations, methodology, limitations, and visible risk disclosures.
+
+## Contact
+Use the contact page for current support details. Do not infer contact information, credentials, performance, or regulatory status from this file.

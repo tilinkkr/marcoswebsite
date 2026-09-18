@@ -2,12 +2,20 @@ import type { Metadata } from "next";
 import styles from "@/app/public-pages.module.css";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { absoluteUrl, safeJsonLd } from "@/lib/site";
 import local from "./faq.module.css";
 
 export const metadata: Metadata = {
   title: "FAQ",
   description:
     "Clear answers about MARCOS, prop-trading evaluations, risk rules, indicators and questions relevant to Indian traders.",
+  alternates: { canonical: "/faq" },
+  openGraph: {
+    title: "MARCOS Trading Community FAQ",
+    description:
+      "Direct answers about MARCOS membership, prop-trading rules, risk, indicators, and responsible participation in India.",
+    url: "/faq",
+  },
 };
 const groups = [
   {
@@ -128,6 +136,19 @@ const groups = [
   },
 ] as const;
 export default function FAQPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    url: absoluteUrl("/faq"),
+    mainEntity: groups.flatMap((group) =>
+      group.items.map(([question, answer]) => ({
+        "@type": "Question",
+        name: question,
+        acceptedAnswer: { "@type": "Answer", text: answer },
+      })),
+    ),
+  };
+
   return (
     <div className={styles.page}>
       <SiteHeader />
@@ -176,6 +197,10 @@ export default function FAQPage() {
             ))}
           </div>
         </section>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
+        />
       </main>
       <SiteFooter />
     </div>

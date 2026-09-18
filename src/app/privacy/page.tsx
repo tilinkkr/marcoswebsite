@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { EditorialPage } from "@/components/layout/EditorialPage";
-export const metadata: Metadata = { title: "Privacy" };
+export const metadata: Metadata = {
+  title: "Privacy",
+  alternates: { canonical: "/privacy" },
+};
 export default function Privacy() {
   return (
     <EditorialPage

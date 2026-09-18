@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { EditorialPage } from "@/components/layout/EditorialPage";
-export const metadata: Metadata = { title: "Risk Disclosure" };
+export const metadata: Metadata = {
+  title: "Risk Disclosure",
+  description:
+    "Read the MARCOS trading-risk, education, community, and no-guaranteed-outcomes disclosure before participating.",
+  alternates: { canonical: "/risk-disclosure" },
+};
 export default function Risk() {
   return (
     <EditorialPage

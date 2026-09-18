@@ -1,3 +1,17 @@
+.principles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 2rem;
+}
+.principles span {
+  min-height: 2.25rem;
+  border: 1px solid rgb(221 182 148 / 18%);
+  padding: 0.72rem 0.85rem;
+  color: rgb(235 220 205 / 56%);
+  font: 600 0.62rem var(--font-mono-family);
+  letter-spacing: 0.13em;
+}
 .featured {
   display: grid;
   grid-template-columns: 1fr minmax(22rem, 0.85fr);
@@ -93,6 +107,117 @@
   font: 500 0.6rem var(--font-mono-family);
   letter-spacing: 0.08em;
 }
+.roadmap {
+  margin-top: clamp(5rem, 10vw, 10rem);
+  border-top: 1px solid rgb(231 216 201 / 16%);
+  padding-top: clamp(2.5rem, 5vw, 5rem);
+}
+.roadmap > header {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
+  gap: clamp(2rem, 7vw, 8rem);
+  align-items: end;
+}
+.roadmap header span,
+.roadmapCard span,
+.editorialNote > span {
+  color: #c97941;
+  font: 600 0.65rem var(--font-mono-family);
+  letter-spacing: 0.15em;
+}
+.roadmap header h2 {
+  max-width: 52rem;
+  margin: 1rem 0 0;
+  font: 600 clamp(2.6rem, 5vw, 5.7rem) / 0.92 var(--font-display-family);
+  letter-spacing: -0.055em;
+}
+.roadmap header > p {
+  margin: 0;
+  color: rgb(239 228 216 / 62%);
+  line-height: 1.7;
+}
+.roadmapGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin-top: clamp(3rem, 6vw, 6rem);
+  background: rgb(221 182 148 / 14%);
+}
+.roadmapCard {
+  display: grid;
+  grid-template-columns: minmax(8.5rem, 0.72fr) minmax(0, 1.28fr);
+  min-height: 13rem;
+  background: #0a0d0b;
+}
+.imagePlaceholder {
+  position: relative;
+  display: flex;
+  aspect-ratio: 4 / 3;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 1rem;
+  color: rgb(226 205 185 / 38%);
+  background:
+    linear-gradient(
+      135deg,
+      transparent 48%,
+      rgb(184 109 74 / 18%) 49%,
+      transparent 51%
+    ),
+    radial-gradient(circle at 70% 30%, rgb(166 41 50 / 22%), transparent 45%),
+    #101310;
+}
+.imagePlaceholder::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgb(221 182 148 / 12%);
+}
+.imagePlaceholder span {
+  color: rgb(226 205 185 / 38%);
+  font-size: 0.55rem;
+}
+.imagePlaceholder strong {
+  align-self: flex-end;
+  font: 500 clamp(3.5rem, 6vw, 6rem) / 0.8 var(--font-display-family);
+  letter-spacing: -0.06em;
+}
+.roadmapCopy {
+  align-self: center;
+  padding: clamp(1.2rem, 2.5vw, 2rem);
+}
+.roadmapCopy h3 {
+  margin: 0.8rem 0 1.5rem;
+  font: 600 clamp(1.45rem, 2vw, 2.15rem) / 1 var(--font-display-family);
+  letter-spacing: -0.035em;
+}
+.roadmapCopy p {
+  margin: 0;
+  color: rgb(239 228 216 / 46%);
+  font-size: 0.78rem;
+}
+.editorialNote {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: clamp(1rem, 3vw, 3rem);
+  align-items: center;
+  margin-top: 1px;
+  border: 1px solid rgb(221 182 148 / 14%);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  background: #0c0f0d;
+}
+.editorialNote p {
+  max-width: 52rem;
+  margin: 0;
+  color: rgb(239 228 216 / 62%);
+  line-height: 1.65;
+}
+.editorialNote a {
+  color: #d7956e;
+  font: 700 0.72rem var(--font-body-family);
+  letter-spacing: 0.08em;
+}
 @media (max-width: 767px) {
   .featured {
     grid-template-columns: 1fr;
@@ -105,5 +230,26 @@
   }
   .grid {
     grid-template-columns: 1fr;
+  }
+  .principles {
+    gap: 0.45rem;
+  }
+  .principles span {
+    font-size: 0.56rem;
+  }
+  .roadmap > header,
+  .roadmapGrid,
+  .editorialNote {
+    grid-template-columns: 1fr;
+  }
+  .roadmapCard {
+    grid-template-columns: 7.75rem minmax(0, 1fr);
+    min-height: 11rem;
+  }
+  .imagePlaceholder {
+    aspect-ratio: auto;
+  }
+  .editorialNote {
+    align-items: start;
   }
 }

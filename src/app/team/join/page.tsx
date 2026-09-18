@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "Build with MARCOS",
   description:
     "Tell MARCOS how you can contribute across trading, content, technology, design, operations or community.",
+  alternates: { canonical: "/team/join" },
 };
 export default function TeamJoinPage() {
   return (

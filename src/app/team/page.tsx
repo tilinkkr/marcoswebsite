@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Team",
   description:
     "Meet the people responsible for MARCOS strategy, operations, technology and trading education.",
+  alternates: { canonical: "/team" },
 };
 const people = [
   [
@@ -29,8 +30,8 @@ const people = [
   ],
   [
     "SAHAL",
-    "TOP TRADER & CONTENT CREATOR",
-    "Sahal brings the trading perspective into MARCOS through market-focused education, content and community interaction.",
+    "CONTENT & COMMUNITY",
+    "Sahal supports MARCOS through market-focused content, communication and community interaction.",
   ],
 ] as const;
 export default function TeamPage() {
@@ -46,8 +47,8 @@ export default function TeamPage() {
             ONE STANDARD.
           </h1>
           <p className={shared.lede}>
-            MARCOS is built across strategy, operations, technology and real
-            market experience.
+            MARCOS is built across strategy, operations, technology, content and
+            community accountability.
           </p>
         </section>
         <TeamSystem />

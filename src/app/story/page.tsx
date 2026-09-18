@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { EditorialPage } from "@/components/layout/EditorialPage";
-export const metadata: Metadata = { title: "Our Story" };
+export const metadata: Metadata = {
+  title: "Our Story",
+  description:
+    "Why MARCOS is building a process-led trading community around preparation, risk, review, and continuous improvement.",
+  alternates: { canonical: "/story" },
+};
 export default function Story() {
   return (
     <EditorialPage

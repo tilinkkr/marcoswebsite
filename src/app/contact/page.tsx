@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Contact MARCOS about membership, indicators, partnerships, the team or technical support.",
+  alternates: { canonical: "/contact" },
 };
 
 const routes = [

@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "More",
   description:
     "Explore the MARCOS story, contact routes, insights, frequently asked questions and risk information.",
+  alternates: { canonical: "/more" },
 };
 export default function MorePageThis() {
   return (
