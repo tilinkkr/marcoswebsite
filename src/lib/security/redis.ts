@@ -53,6 +53,11 @@ export async function checkRateLimit(
         reset: new Date(String(result.reset_at)).getTime(),
       };
     }
+
+    console.error("Supabase rate-limit fallback failed", {
+      code: error?.code ?? "missing_result",
+      message: error?.message ?? "No result returned by consume_rate_limit",
+    });
   }
 
   return { success: process.env.NODE_ENV !== "production", reset: null };

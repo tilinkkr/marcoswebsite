@@ -23,7 +23,13 @@ export function AdminLogin() {
       body: JSON.stringify({ username, password }),
     });
     if (!result.ok) {
-      setError("Invalid credentials or account unavailable.");
+      if (result.status === 429) {
+        setError("Too many attempts. Wait a few minutes, then try again.");
+      } else if (result.status >= 500) {
+        setError("Secure access is temporarily unavailable. Try again shortly.");
+      } else {
+        setError("Invalid username or password.");
+      }
       setPending(false);
       return;
     }
