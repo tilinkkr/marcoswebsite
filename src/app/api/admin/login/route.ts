@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
-import { getAdmin } from "@/lib/auth/admin";
+import { getAdminForUser } from "@/lib/auth/admin";
 import { guardPublicMutation } from "@/lib/security/route-guards";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const { error } = await client.auth.signInWithPassword({
+  const { data, error } = await client.auth.signInWithPassword({
     email: loginEmail(body.data.username),
     password: body.data.password,
   });
@@ -46,7 +46,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
   }
 
-  const admin = await getAdmin();
+  // Authorize the identity returned by Supabase directly. Reading the session
+  // again in the same request races the Set-Cookie response and rejects a
+  // valid first login even though authentication succeeded.
+  const admin = data.user ? await getAdminForUser(data.user) : null;
   if (!admin) {
     await client.auth.signOut();
     return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });

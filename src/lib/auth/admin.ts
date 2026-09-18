@@ -1,5 +1,6 @@
 import "server-only";
 
+import type { User } from "@supabase/supabase-js";
 import { redirect } from "next/navigation";
 
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
@@ -19,15 +20,11 @@ function allowedAdminEmails() {
   return new Set(emails).size === 3 ? emails : [];
 }
 
-export async function getAdmin(): Promise<MarcosAdmin | null> {
-  const sessionClient = await createSupabaseServerClient();
+export async function getAdminForUser(
+  user: User,
+): Promise<MarcosAdmin | null> {
   const adminClient = createSupabaseAdminClient();
-  if (!sessionClient || !adminClient) return null;
-
-  const {
-    data: { user },
-  } = await sessionClient.auth.getUser();
-  if (!user) return null;
+  if (!adminClient) return null;
 
   let { data } = await adminClient
     .from("admin_users")
@@ -58,6 +55,18 @@ export async function getAdmin(): Promise<MarcosAdmin | null> {
     email: data.email as string,
     displayName: data.display_name as string,
   };
+}
+
+export async function getAdmin(): Promise<MarcosAdmin | null> {
+  const sessionClient = await createSupabaseServerClient();
+  if (!sessionClient) return null;
+
+  const {
+    data: { user },
+  } = await sessionClient.auth.getUser();
+  if (!user) return null;
+
+  return getAdminForUser(user);
 }
 
 export async function requireAdmin() {
