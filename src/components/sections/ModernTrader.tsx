@@ -140,7 +140,7 @@ export function ModernTrader() {
               trigger: section,
               start: "top top",
               end: "bottom bottom",
-              scrub: isLowPower ? 0.12 : 0.22,
+              scrub: true,
               invalidateOnRefresh: true,
             },
           });

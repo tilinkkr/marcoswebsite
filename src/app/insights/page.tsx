@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 export default async function InsightsPage() {
   const posts = await getBlogs();
   const featured = posts.find((x) => x.featured) ?? posts[0];
+  const remaining = posts.filter((post) => post.id !== featured?.id);
   return (
     <div className={styles.page}>
       <SiteHeader />
@@ -56,6 +57,32 @@ export default async function InsightsPage() {
             </Link>
           ) : (
             <p>No published insights yet.</p>
+          )}
+          {remaining.length > 0 && (
+            <div className={local.grid}>
+              {remaining.map((post) => (
+                <Link
+                  className={local.card}
+                  href={`/insights/${post.slug}`}
+                  key={post.id}
+                >
+                  <Image
+                    src={post.hero_image}
+                    alt=""
+                    width={960}
+                    height={540}
+                    sizes="(max-width: 767px) 100vw, 33vw"
+                  />
+                  <span>{post.category}</span>
+                  <h2>{post.title}</h2>
+                  <p>{post.excerpt}</p>
+                  <small>
+                    {post.reading_time} MIN READ ·{" "}
+                    {new Date(post.updated_at).toLocaleDateString("en-IN")}
+                  </small>
+                </Link>
+              ))}
+            </div>
           )}
         </section>
       </main>

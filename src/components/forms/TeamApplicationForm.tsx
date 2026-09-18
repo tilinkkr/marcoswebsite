@@ -4,7 +4,6 @@ import { useState } from "react";
 import { z } from "zod";
 
 import styles from "@/app/public-pages.module.css";
-import { getPublicApiUrl } from "@/lib/api";
 
 const schema = z.object({
   full_name: z.string().min(2),
@@ -34,11 +33,7 @@ export function TeamApplicationForm() {
     }
     setState("sending");
     try {
-      const apiUrl = getPublicApiUrl();
-      if (!apiUrl) {
-        throw new Error("Application service is not configured");
-      }
-      const response = await fetch(`${apiUrl}/api/v1/team-applications`, {
+      const response = await fetch("/api/forms/team", {
         method: "POST",
         body: form,
       });

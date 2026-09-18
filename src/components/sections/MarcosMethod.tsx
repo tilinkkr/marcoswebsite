@@ -98,7 +98,7 @@ export function MarcosMethod() {
           trigger: section,
           start: "top 74%",
           end: "bottom 56%",
-          scrub: 0.42,
+          scrub: true,
         },
       });
 

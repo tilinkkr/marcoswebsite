@@ -1,5 +1,8 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
+import { unstable_cache } from "next/cache";
+
+import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 
 export type BlogPost = {
   id: string;
@@ -58,32 +61,41 @@ async function fallback(): Promise<BlogPost> {
     reading_time: 10,
   };
 }
-const base =
-  process.env.MARCOS_API_URL ??
-  process.env.NEXT_PUBLIC_MARCOS_API_URL ??
-  (process.env.NODE_ENV === "development" ? "http://localhost:8000" : null);
+const getPublishedBlogs = unstable_cache(
+  async (): Promise<BlogPost[]> => {
+    const client = createSupabaseAdminClient();
+    if (!client) return [await fallback()];
+    const { data, error } = await client
+      .from("blog_posts")
+      .select("*")
+      .eq("status", "published")
+      .order("published_at", { ascending: false });
+    if (error || !data?.length) return [await fallback()];
+    return data as BlogPost[];
+  },
+  ["published-blogs"],
+  { revalidate: 60, tags: ["blogs"] },
+);
+
 export async function getBlogs(): Promise<BlogPost[]> {
-  if (!base) return [await fallback()];
-  try {
-    const r = await fetch(`${base}/api/v1/blogs`, {
-      next: { revalidate: 300 },
-    });
-    if (!r.ok) throw new Error();
-    return (await r.json()) as BlogPost[];
-  } catch {
-    return [await fallback()];
-  }
+  return getPublishedBlogs();
 }
+
 export async function getBlog(requested: string): Promise<BlogPost | null> {
-  if (!base) return requested === slug ? fallback() : null;
-  try {
-    const r = await fetch(`${base}/api/v1/blogs/${requested}`, {
-      next: { revalidate: 300 },
-    });
-    if (r.status === 404) return requested === slug ? fallback() : null;
-    if (!r.ok) throw new Error();
-    return (await r.json()) as BlogPost;
-  } catch {
-    return requested === slug ? fallback() : null;
-  }
+  return unstable_cache(
+    async () => {
+      const client = createSupabaseAdminClient();
+      if (!client) return requested === slug ? fallback() : null;
+      const { data, error } = await client
+        .from("blog_posts")
+        .select("*")
+        .eq("slug", requested)
+        .eq("status", "published")
+        .maybeSingle();
+      if (error || !data) return requested === slug ? fallback() : null;
+      return data as BlogPost;
+    },
+    ["published-blog", requested],
+    { revalidate: 60, tags: ["blogs", `blog:${requested}`] },
+  )();
 }

@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { z } from "zod";
 import styles from "@/app/public-pages.module.css";
-import { getPublicApiUrl } from "@/lib/api";
 const schema = z.object({
   name: z.string().min(2),
   email: z.email(),
@@ -26,11 +25,7 @@ export function ContactForm() {
     }
     setState("sending");
     try {
-      const base = getPublicApiUrl();
-      if (!base) {
-        throw new Error("Contact service is not configured");
-      }
-      const r = await fetch(base + "/api/v1/contact-messages", {
+      const r = await fetch("/api/forms/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

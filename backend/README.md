@@ -1,4 +1,8 @@
-# MARCOS checkout backend
+# MARCOS legacy checkout backend
+
+This prototype is not deployed by Vercel and is not part of the production
+trust boundary. Production submissions and administration use the Next.js
+route handlers and Supabase schema in the repository root.
 
 FastAPI + SQLAlchemy 2 checkout evidence service for membership and indicator orders. SQLite is the development database; application code uses portable ORM types and can move to PostgreSQL through `DATABASE_URL`.
 
@@ -21,8 +25,7 @@ The current fixed-window limiter is process-local and suitable only for this moc
 
 - `DATABASE_URL=sqlite:///./marcos.db`
 - `APP_BASE_URL=http://localhost:3000` controls the single allowed browser origin.
-- `MARCOS_ADMIN_KEY` protects the manual payment decision endpoint. Never expose it to the browser.
-- The public frontend API origin is configured separately as `NEXT_PUBLIC_MARCOS_API_URL`.
+- `MARCOS_ADMIN_KEY` has no fallback and is required only when running this legacy service locally. Never expose it to the browser.
 
 The risk policy has one source in `app/policy.py`. Update `RISK_POLICY_VERSION` whenever approved wording changes. Keep the matching frontend display version in sync. The policy, consent state, server-resolved price, UTC acceptance time and identity details are snapshotted per agreement.
 

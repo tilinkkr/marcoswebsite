@@ -103,7 +103,7 @@ export function Membership() {
               trigger: section,
               start: "top 78%",
               end: "top 18%",
-              scrub: 0.45,
+              scrub: true,
               once: false,
             },
           });

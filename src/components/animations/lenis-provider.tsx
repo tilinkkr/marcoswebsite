@@ -55,40 +55,42 @@ export function LenisProvider({
 
     let lenis: import("lenis").default | undefined;
     let cancelled = false;
-    let ticker: ((time: number) => void) | undefined;
     let cleanupRefreshListeners: (() => void) | undefined;
-    const { gsap, ScrollTrigger } = getGSAP();
+    let updateScrollTrigger: (() => void) | undefined;
+    const { ScrollTrigger } = getGSAP();
 
     void import("lenis").then(({ default: Lenis }) => {
       if (cancelled) return;
 
       lenis = new Lenis({
-        autoRaf: false,
-        lerp: 0.115,
+        autoRaf: true,
+        lerp: 0.16,
         orientation: "vertical",
         gestureOrientation: "vertical",
         smoothWheel: true,
-        wheelMultiplier: 0.82,
+        wheelMultiplier: 1,
         touchMultiplier: 1,
         infinite: false,
       });
 
-      const updateScrollTrigger = () => ScrollTrigger.update();
+      updateScrollTrigger = () => ScrollTrigger.update();
       lenis.on("scroll", updateScrollTrigger);
-
-      ticker = (time: number) => {
-        lenis?.raf(time * 1000);
-      };
-
-      gsap.ticker.add(ticker);
-      gsap.ticker.lagSmoothing(0);
+      lenis.resize();
       document.documentElement.setAttribute("data-lenis-active", "true");
 
-      ScrollTrigger.config({ ignoreMobileResize: true, limitCallbacks: true });
+      ScrollTrigger.config({ ignoreMobileResize: true, limitCallbacks: false });
 
       const refresh = () => {
         if (cancelled) return;
-        window.requestAnimationFrame(() => ScrollTrigger.refresh());
+        window.requestAnimationFrame(() => {
+          window.requestAnimationFrame(() => {
+            if (cancelled) return;
+            lenis?.resize();
+            ScrollTrigger.sort();
+            ScrollTrigger.refresh(true);
+            ScrollTrigger.update();
+          });
+        });
       };
 
       refresh();
@@ -110,10 +112,11 @@ export function LenisProvider({
     return () => {
       cancelled = true;
       cleanupRefreshListeners?.();
-      if (ticker) gsap.ticker.remove(ticker);
+      if (lenis && updateScrollTrigger) {
+        lenis.off("scroll", updateScrollTrigger);
+      }
       lenis?.destroy();
       document.documentElement.removeAttribute("data-lenis-active");
-      ScrollTrigger.refresh();
     };
   }, [
     disableOnLowPower,

@@ -135,8 +135,12 @@ export function VisionReveal() {
               end: () => `+=${window.innerHeight * (isTablet ? 2.35 : 3.2)}`,
               pin: stage,
               pinSpacing: true,
-              scrub: isLowPower ? 0.12 : isTablet ? 0.2 : 0.24,
+              // Lenis already eases the physical scroll position. A numeric
+              // scrub adds a second lag layer and makes the story catch up
+              // only after the user stops scrolling.
+              scrub: true,
               anticipatePin: 1,
+              refreshPriority: 100,
               invalidateOnRefresh: true,
             },
           });

@@ -253,7 +253,7 @@ export function CapitalMotion() {
               trigger: section,
               start: "top top",
               end: "bottom bottom",
-              scrub: isLowPower ? 0.12 : 0.24,
+              scrub: true,
               invalidateOnRefresh: true,
             },
           });

@@ -96,7 +96,7 @@ export function IndicatorsPreview() {
               trigger: section,
               start: "top top",
               end: "bottom bottom",
-              scrub: 0.22,
+              scrub: true,
               invalidateOnRefresh: true,
             },
           });

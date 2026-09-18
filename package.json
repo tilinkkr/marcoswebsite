@@ -11,6 +11,7 @@
     "test:watch": "vitest",
     "pretest:e2e": "npm run build",
     "test:e2e": "node scripts/run-playwright.mjs",
+    "test:stress": "node scripts/stress-read.mjs",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check ."

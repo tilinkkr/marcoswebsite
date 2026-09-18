@@ -80,7 +80,7 @@ def require_order_token(order: Order, supplied: str | None) -> None:
 
 
 def require_admin(supplied: str | None) -> None:
-    if not supplied or not hmac.compare_digest(settings.admin_key, supplied):
+    if not settings.admin_key or not supplied or not hmac.compare_digest(settings.admin_key, supplied):
         raise HTTPException(404, "Record not found")
 
 

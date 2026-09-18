@@ -101,7 +101,7 @@ export function FinalConversion() {
               trigger: section,
               start: "top 76%",
               end: "bottom 48%",
-              scrub: 0.42,
+              scrub: true,
             },
           });
 

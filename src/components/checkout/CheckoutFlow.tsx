@@ -15,7 +15,6 @@ import { useForm, useWatch } from "react-hook-form";
 
 import { indicatorProduct, membershipProduct } from "@/config/products";
 import { RISK_POLICY_VERSION, riskPolicySections } from "@/config/risk-policy";
-import { getPublicApiUrl } from "@/lib/api";
 import {
   checkoutSchema,
   detailsFields,
@@ -36,7 +35,6 @@ type CheckoutSession = {
   currency: string;
 };
 
-const apiUrl = getPublicApiUrl();
 const upiId = "linubabu210905@okicici";
 const upiUrl = "upi://pay?pa=linubabu210905%40okicici&pn=LINU&cu=INR";
 
@@ -124,16 +122,10 @@ export function CheckoutFlow({
       "typedName",
     ]);
     if (!valid || !consentReady) return;
-    if (!apiUrl) {
-      setRequestError(
-        "Secure checkout is not connected yet. Contact MARCOS on WhatsApp.",
-      );
-      return;
-    }
     setSubmitting(true);
     setRequestError(null);
     try {
-      const response = await fetch(`${apiUrl}/api/v1/checkout/agreements`, {
+      const response = await fetch("/api/checkout/agreements", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -172,18 +164,12 @@ export function CheckoutFlow({
       setRequestError("Enter your payment reference");
       return;
     }
-    if (!apiUrl) {
-      setRequestError(
-        "Secure checkout is not connected yet. Contact MARCOS on WhatsApp.",
-      );
-      return;
-    }
     setSubmitting(true);
     setRequestError(null);
     try {
       const screenshotBase64 = await fileToBase64(screenshot);
       const response = await fetch(
-        `${apiUrl}/api/v1/payments/${session.payment_id}/submit`,
+        `/api/payments/${session.payment_id}/submit`,
         {
           method: "POST",
           headers: {

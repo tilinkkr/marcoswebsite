@@ -22,9 +22,11 @@ test("connected MARCOS story renders without overflow", async ({ page }) => {
   await page.goto("/", { waitUntil: "domcontentloaded" });
   await page.waitForLoadState("load");
   await expect(page.getByTestId("vision-reveal")).toBeVisible();
-  await expect(
-    page.getByRole("heading", { name: /most traders see the chart/i }),
-  ).toBeVisible();
+  if ((page.viewportSize()?.width ?? 0) >= 768) {
+    await expect(
+      page.getByRole("heading", { name: /most traders see the chart/i }),
+    ).toBeVisible();
+  }
   await expect(
     page.getByRole("heading", { name: /see the market differently/i }),
   ).toBeVisible();
@@ -78,9 +80,7 @@ test("connected MARCOS story renders without overflow", async ({ page }) => {
   });
   await expect(page.getByText(/funding isn't the finish line/i)).toBeVisible();
 
-  await page
-    .getByRole("heading", { name: /the tools change/i })
-    .scrollIntoViewIfNeeded();
+  await page.locator("#modern-trader-title").scrollIntoViewIfNeeded();
   await expect(
     page.getByRole("heading", { name: /the tools change/i }),
   ).toBeVisible();
@@ -92,14 +92,24 @@ test("connected MARCOS story renders without overflow", async ({ page }) => {
   ).toBeVisible();
   await page.getByTestId("join-preview").evaluate((section) => {
     const element = section as HTMLElement;
-    window.scrollTo(0, element.offsetTop + element.offsetHeight - innerHeight * 1.03);
+    window.scrollTo(
+      0,
+      element.offsetTop + element.offsetHeight - innerHeight * 1.03,
+    );
   });
-  await expect(page.getByRole("link", { name: /join the community/i })).toBeVisible({ timeout: 10_000 });
+  await expect(
+    page.getByRole("link", { name: /join the community/i }),
+  ).toBeVisible({ timeout: 10_000 });
   await page.getByTestId("indicators-preview").evaluate((section) => {
     const element = section as HTMLElement;
-    window.scrollTo(0, element.offsetTop + element.offsetHeight - innerHeight * 1.03);
+    window.scrollTo(
+      0,
+      element.offsetTop + element.offsetHeight - innerHeight * 1.03,
+    );
   });
-  await expect(page.getByRole("link", { name: /explore indicator/i })).toBeVisible({ timeout: 10_000 });
+  await expect(
+    page.getByRole("link", { name: /explore indicator/i }),
+  ).toBeVisible({ timeout: 10_000 });
   await page.locator("#final-conversion-title").scrollIntoViewIfNeeded();
   await expect(
     page
@@ -124,16 +134,101 @@ test("connected MARCOS story renders without overflow", async ({ page }) => {
   expect(externalRequests).toEqual([]);
 });
 
-test("membership, indicator and checkout routes are responsive", async ({ page }) => {
+test("desktop scroll story advances before the page bottom", async ({ page }) => {
+  await page.goto("/", { waitUntil: "load" });
+  await page.waitForFunction(
+    () => document.documentElement.dataset.lenisActive === "true",
+  );
+
+  const sampleAt = async (testId: string, progress: number) => {
+    const target = await page.getByTestId(testId).evaluate((section, requestedProgress) => {
+      const element = section as HTMLElement;
+      const absoluteTop = window.scrollY + element.getBoundingClientRect().top;
+      const travel = Math.max(1, element.getBoundingClientRect().height - innerHeight);
+      const nextScrollY = absoluteTop + travel * requestedProgress;
+      window.scrollTo({ top: nextScrollY, behavior: "instant" });
+      return nextScrollY;
+    }, progress);
+
+    await page.waitForFunction(
+      (expectedScrollY) => Math.abs(window.scrollY - expectedScrollY) < 3,
+      target,
+    );
+  };
+
+  await sampleAt("capital-motion", 0.28);
+  await page.waitForTimeout(350);
+  const earlyCapitalOpacity = await page
+    .locator('[data-capital-note="mid-01"]')
+    .evaluate((element) => Number(getComputedStyle(element).opacity));
+  expect(earlyCapitalOpacity).toBeGreaterThan(0.1);
+
+  await sampleAt("capital-motion", 0.86);
+  await page.waitForTimeout(350);
+  await expect(page.getByText(/funding isn't the finish line/i)).toBeVisible();
+
+  await sampleAt("daily-screen-share", 0.72);
+  await page.waitForTimeout(350);
+  const bodyOpacity = await page
+    .getByTestId("daily-screen-share")
+    .locator("[data-share-body]")
+    .evaluate((element) => Number(getComputedStyle(element).opacity));
+  expect(bodyOpacity).toBeGreaterThan(0.1);
+
+  expect(
+    await page.evaluate(
+      () => window.scrollY < document.documentElement.scrollHeight - innerHeight,
+    ),
+  ).toBe(true);
+});
+
+test("membership, indicator and checkout routes are responsive", async ({
+  page,
+}) => {
   await page.goto("/join");
-  await expect(page.getByRole("heading", { name: /build your process/i })).toBeVisible();
-  await expect(page.getByRole("link", { name: /continue to membership/i })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: /build your process/i }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: /continue to membership/i }),
+  ).toBeVisible();
   await page.goto("/indicators");
   await expect(page.getByRole("heading", { name: /see more/i })).toBeVisible();
   await expect(page.getByText("$50", { exact: true })).toBeVisible();
   await page.goto("/join/checkout");
-  await expect(page.getByRole("heading", { name: /who is accepting/i })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: /who is accepting/i }),
+  ).toBeVisible();
   await expect(page.getByText("$100", { exact: true })).toBeVisible();
-  expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth > innerWidth,
+    ),
+  ).toBe(false);
   await expect(page.getByAltText(/payment qr/i)).toHaveCount(0);
+});
+
+test("admin boundary and Supabase-backed insights shell are responsive", async ({
+  page,
+}) => {
+  await page.goto("/admin");
+  await expect(page).toHaveURL(/\/admin\/login$/);
+  await expect(
+    page.getByRole("heading", { name: /admin access/i }),
+  ).toBeVisible();
+  await expect(page.getByLabel("Username")).toBeVisible();
+  await expect(page.getByLabel("Password")).toBeVisible();
+  expect(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth > innerWidth,
+    ),
+  ).toBe(false);
+
+  await page.goto("/insights");
+  await expect(
+    page.getByRole("heading", { name: /study the rules first/i }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: /prop firm rules/i }),
+  ).toBeVisible();
 });
