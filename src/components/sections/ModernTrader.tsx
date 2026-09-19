@@ -220,6 +220,7 @@ export function ModernTrader() {
       ref={sectionRef}
       className={styles.section}
       aria-labelledby="modern-trader-title"
+      data-testid="modern-trader"
     >
       <div className={styles.stage}>
         <div className={styles.atmosphere} data-trader-atmosphere aria-hidden>

@@ -41,7 +41,19 @@ test("connected MARCOS story renders without overflow", async ({ page }) => {
   );
   await page.getByTestId("vision-reveal").evaluate((section) => {
     const element = section as HTMLElement;
-    window.scrollTo(0, element.offsetTop + element.offsetHeight - innerHeight);
+    const pinSpacer = element.querySelector(
+      ".pin-spacer",
+    ) as HTMLElement | null;
+    const scrollRange = pinSpacer
+      ? pinSpacer.getBoundingClientRect().height - innerHeight
+      : element.getBoundingClientRect().height - innerHeight;
+    window.scrollTo({
+      top:
+        window.scrollY +
+        element.getBoundingClientRect().top +
+        scrollRange * 0.9,
+      behavior: "instant",
+    });
   });
   await expect(page.getByText("Trading alone leaves you")).toBeVisible({
     timeout: 10_000,
@@ -59,7 +71,18 @@ test("connected MARCOS story renders without overflow", async ({ page }) => {
   ).toBeVisible({ timeout: 10_000 });
   await expect(page.getByText(/funding isn't the finish line/i)).toBeVisible();
 
-  await page.getByTestId("daily-screen-share").scrollIntoViewIfNeeded();
+  if ((page.viewportSize()?.width ?? 0) >= 768) {
+    await page.getByTestId("daily-screen-share").evaluate((section) => {
+      const rect = section.getBoundingClientRect();
+      const top = window.scrollY + rect.top;
+      window.scrollTo({
+        top: top + (rect.height - innerHeight) * 0.85,
+        behavior: "instant",
+      });
+    });
+  } else {
+    await page.getByTestId("daily-screen-share").scrollIntoViewIfNeeded();
+  }
   await expect(page.getByTestId("daily-screen-share")).toBeVisible();
   await expect(
     page.getByRole("heading", {
@@ -134,21 +157,29 @@ test("connected MARCOS story renders without overflow", async ({ page }) => {
   expect(externalRequests).toEqual([]);
 });
 
-test("desktop scroll story advances before the page bottom", async ({ page }) => {
+test("desktop scroll story advances before the page bottom", async ({
+  page,
+}) => {
   await page.goto("/", { waitUntil: "load" });
   await page.waitForFunction(
     () => document.documentElement.dataset.lenisActive === "true",
   );
 
   const sampleAt = async (testId: string, progress: number) => {
-    const target = await page.getByTestId(testId).evaluate((section, requestedProgress) => {
-      const element = section as HTMLElement;
-      const absoluteTop = window.scrollY + element.getBoundingClientRect().top;
-      const travel = Math.max(1, element.getBoundingClientRect().height - innerHeight);
-      const nextScrollY = absoluteTop + travel * requestedProgress;
-      window.scrollTo({ top: nextScrollY, behavior: "instant" });
-      return nextScrollY;
-    }, progress);
+    const target = await page
+      .getByTestId(testId)
+      .evaluate((section, requestedProgress) => {
+        const element = section as HTMLElement;
+        const absoluteTop =
+          window.scrollY + element.getBoundingClientRect().top;
+        const travel = Math.max(
+          1,
+          element.getBoundingClientRect().height - innerHeight,
+        );
+        const nextScrollY = absoluteTop + travel * requestedProgress;
+        window.scrollTo({ top: nextScrollY, behavior: "instant" });
+        return nextScrollY;
+      }, progress);
 
     await page.waitForFunction(
       (expectedScrollY) => Math.abs(window.scrollY - expectedScrollY) < 3,
@@ -177,7 +208,8 @@ test("desktop scroll story advances before the page bottom", async ({ page }) =>
 
   expect(
     await page.evaluate(
-      () => window.scrollY < document.documentElement.scrollHeight - innerHeight,
+      () =>
+        window.scrollY < document.documentElement.scrollHeight - innerHeight,
     ),
   ).toBe(true);
 });

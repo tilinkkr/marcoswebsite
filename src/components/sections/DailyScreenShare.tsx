@@ -105,11 +105,11 @@ export function DailyScreenShare() {
             scale: isLowPower ? 1.02 : 1.08,
             yPercent: isLowPower ? 0 : -3,
           });
-          gsap.set(eyebrow, { autoAlpha: 0, y: 14 });
+          gsap.set(eyebrow, { autoAlpha: 1, y: 0 });
           gsap.set(words, {
-            autoAlpha: isLowPower ? 0.18 : 0.1,
-            yPercent: isLowPower ? 72 : 112,
-            rotateX: isLowPower ? 0 : 7,
+            autoAlpha: 0.38,
+            y: isLowPower ? 8 : 14,
+            rotateX: isLowPower ? 0 : 4,
             transformOrigin: "50% 100%",
           });
           gsap.set([body, status, cta], { autoAlpha: 0, y: 20 });
@@ -118,7 +118,7 @@ export function DailyScreenShare() {
             defaults: { ease: "power1.inOut" },
             scrollTrigger: {
               trigger: section,
-              start: "top bottom",
+              start: "top top",
               end: "bottom bottom",
               scrub: true,
               invalidateOnRefresh: true,
@@ -138,22 +138,20 @@ export function DailyScreenShare() {
               },
               "handoff",
             )
-            .addLabel("context", 0.18)
-            .to(eyebrow, { autoAlpha: 1, y: 0, duration: 0.14 }, "context")
-            .addLabel("statement", 0.26)
+            .addLabel("statement", 0.08)
             .to(
               words,
               {
                 autoAlpha: 1,
-                yPercent: 0,
+                y: 0,
                 rotateX: 0,
-                duration: 0.34,
-                stagger: 0.035,
+                duration: 0.32,
+                stagger: 0.025,
                 ease: "power2.out",
               },
               "statement",
             )
-            .addLabel("proof", 0.68)
+            .addLabel("proof", 0.55)
             .to(body, { autoAlpha: 1, y: 0, duration: 0.13 }, "proof")
             .to(status, { autoAlpha: 1, y: 0, duration: 0.11 }, "proof+=0.09")
             .to(cta, { autoAlpha: 1, y: 0, duration: 0.1 }, "proof+=0.16")

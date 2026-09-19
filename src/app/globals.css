@@ -135,7 +135,8 @@
   }
   body {
     @apply bg-background text-foreground;
-    overflow-x: hidden;
+    /* hidden creates a non-scrolling overflow container and breaks sticky story stages. */
+    overflow-x: clip;
   }
 
   main {
