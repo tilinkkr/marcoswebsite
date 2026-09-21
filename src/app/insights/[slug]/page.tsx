@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { MarkdownArticle } from "@/components/insights/MarkdownArticle";
+import { authorPath, getAuthor } from "@/lib/authors";
 import { getBlog } from "@/lib/blogs";
 import { absoluteUrl, safeJsonLd, SITE_URL } from "@/lib/site";
 import local from "./article.module.css";
@@ -43,7 +44,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ArticlePage({ params }: Props) {
   const post = await getBlog((await params).slug);
   if (!post) notFound();
+  const author = getAuthor(post.author_slug);
+  if (!author) notFound();
   const articleUrl = absoluteUrl(`/insights/${post.slug}`);
+  const authorUrl = absoluteUrl(authorPath(author.slug));
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -54,7 +58,17 @@ export default async function ArticlePage({ params }: Props) {
         description: post.seo_description,
         url: articleUrl,
         mainEntityOfPage: { "@id": articleUrl },
-        author: { "@type": "Person", name: post.author_name },
+        author: {
+          "@type": "Person",
+          "@id": `${authorUrl}#person`,
+          name: author.name,
+          url: authorUrl,
+        },
+        reviewedBy: {
+          "@type": "Person",
+          name: post.reviewer_name,
+          url: post.reviewer_proof_url,
+        },
         datePublished: post.published_at,
         dateModified: post.updated_at,
         image: absoluteUrl(post.hero_image),
@@ -106,10 +120,10 @@ export default async function ArticlePage({ params }: Props) {
           </p>
           <h1>{post.title}</h1>
           <div>
-            <Link href="/team">
-              {post.author_name}
+            <Link href={authorPath(author.slug)}>
+              {author.name}
               <br />
-              <span>Named contributor</span>
+              <span>{author.role}</span>
             </Link>
             <p>
               {post.published_at && (
@@ -122,6 +136,17 @@ export default async function ArticlePage({ params }: Props) {
               <time dateTime={post.updated_at}>
                 Updated {new Date(post.updated_at).toLocaleDateString("en-IN")}
               </time>
+              {post.last_reviewed_at && (
+                <>
+                  <br />
+                  <time dateTime={post.last_reviewed_at}>
+                    Reviewed{" "}
+                    {new Date(post.last_reviewed_at).toLocaleDateString(
+                      "en-IN",
+                    )}
+                  </time>
+                </>
+              )}
             </p>
           </div>
         </header>
@@ -137,30 +162,75 @@ export default async function ArticlePage({ params }: Props) {
         <aside className={local.trustPanel} aria-label="Article standards">
           <div>
             <span>METHOD</span>
+            <p>{post.methodology}</p>
+          </div>
+          <div>
+            <span>HUMAN REVIEW</span>
             <p>
-              Definitions, examples, and limitations are separated so readers
-              can distinguish educational explanation from interpretation.
+              Reviewed by {post.reviewer_name}. {post.reviewer_qualification}
             </p>
           </div>
           <div>
-            <span>REVIEW STATUS</span>
-            <p>
-              {post.requires_regulatory_review
-                ? "Financial and regulatory details require periodic review against current primary sources."
-                : "Reviewed under the MARCOS editorial process."}
-            </p>
+            <span>LIMITATIONS</span>
+            <p>{post.limitations}</p>
           </div>
           <div>
-            <span>LIMITATION</span>
-            <p>
-              Educational information only. Not personalised investment, legal,
-              or tax advice and not a promise of any market outcome.
-            </p>
+            <span>DISCLOSURE</span>
+            <p>{post.conflicts_disclosure}</p>
           </div>
         </aside>
         <article className={local.article}>
           <MarkdownArticle markdown={post.content_markdown} />
         </article>
+        <section className={local.evidence} aria-labelledby="evidence-title">
+          <div>
+            <p>ARTICLE RECORD</p>
+            <h2 id="evidence-title">Evidence and accountability</h2>
+            <p>
+              These links support the article&apos;s named authorship and
+              review. They are evidence to inspect, not a guarantee of market
+              outcomes.
+            </p>
+          </div>
+          <div className={local.evidenceGrid}>
+            <article>
+              <span>AUTHOR EVIDENCE</span>
+              <h3>{author.name}</h3>
+              <p>{author.focus}</p>
+              <a
+                href={post.author_proof_url}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                Inspect supporting profile ↗
+              </a>
+            </article>
+            <article>
+              <span>REVIEWER EVIDENCE</span>
+              <h3>{post.reviewer_name}</h3>
+              <p>{post.reviewer_qualification}</p>
+              <a
+                href={post.reviewer_proof_url}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                Inspect reviewer evidence ↗
+              </a>
+            </article>
+            <article className={local.sources}>
+              <span>PRIMARY / AUTHORITATIVE SOURCES</span>
+              <ol>
+                {post.source_urls.map((source, index) => (
+                  <li key={source}>
+                    <a href={source} target="_blank" rel="noreferrer noopener">
+                      Source {index + 1}: {new URL(source).hostname}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </article>
+          </div>
+        </section>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

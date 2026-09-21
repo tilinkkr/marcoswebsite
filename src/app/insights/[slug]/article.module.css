@@ -60,7 +60,7 @@
 }
 .trustPanel {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   max-width: 84rem;
   margin: 0 auto;
   border-right: 1px solid rgb(221 182 148 / 14%);
@@ -119,6 +119,67 @@
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+.evidence {
+  display: grid;
+  grid-template-columns: minmax(14rem, 0.65fr) minmax(0, 1.35fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  max-width: 84rem;
+  margin: 0 auto;
+  border-top: 1px solid rgb(221 182 148 / 14%);
+  padding: clamp(4rem, 8vw, 7rem) clamp(1rem, 5vw, 5rem);
+}
+.evidence > div:first-child > p:first-child,
+.evidence article > span {
+  color: #bd704d;
+  font: 600 0.62rem var(--font-mono-family);
+  letter-spacing: 0.14em;
+}
+.evidence h2 {
+  margin: 0.8rem 0 1.25rem;
+  font-family: var(--font-display-family);
+  font-size: clamp(2.2rem, 4vw, 4.5rem);
+  letter-spacing: -0.05em;
+  line-height: 0.95;
+}
+.evidence > div:first-child > p:last-child,
+.evidence article p,
+.evidence li {
+  color: rgb(240 231 221 / 64%);
+  line-height: 1.65;
+}
+.evidenceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: rgb(221 182 148 / 14%);
+}
+.evidence article {
+  min-width: 0;
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  background: #0b0d0c;
+}
+.evidence article h3 {
+  margin: 1.2rem 0 0.5rem;
+  font-family: var(--font-display-family);
+  font-size: 1.65rem;
+}
+.evidence article a {
+  color: #d7956e;
+  font-size: 0.8rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+.evidence .sources {
+  grid-column: 1 / -1;
+}
+.sources ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem 2rem;
+  margin: 1.2rem 0 0;
+  padding-left: 1.4rem;
+}
 @media (max-width: 767px) {
   .breadcrumbs {
     margin-bottom: -7rem;
@@ -153,5 +214,13 @@
   .trustPanel > div + div {
     border-top: 1px solid rgb(221 182 148 / 14%);
     border-left: 0;
+  }
+  .evidence,
+  .evidenceGrid,
+  .sources ol {
+    grid-template-columns: 1fr;
+  }
+  .evidence .sources {
+    grid-column: auto;
   }
 }

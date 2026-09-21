@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
+import { authorPath, MARCOS_AUTHORS } from "@/lib/authors";
 import { getBlogs } from "@/lib/blogs";
 import { absoluteUrl } from "@/lib/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const siteUpdated = new Date("2026-09-18T00:00:00.000Z");
+  const siteUpdated = new Date("2026-09-21T00:00:00.000Z");
   const routes = [
     "",
     "/join",
@@ -32,5 +33,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly" as const,
       priority: 0.8,
     }));
-  return [...routes, ...posts];
+  const authors = MARCOS_AUTHORS.map((author) => ({
+    url: absoluteUrl(authorPath(author.slug)),
+    lastModified: siteUpdated,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+  return [...routes, ...authors, ...posts];
 }

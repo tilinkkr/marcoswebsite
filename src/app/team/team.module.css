@@ -30,6 +30,9 @@
   font-size: clamp(2rem, 3vw, 3.5rem);
   letter-spacing: -0.05em;
 }
+.profile h3 a {
+  color: inherit;
+}
 .rule {
   height: 1px;
   background: linear-gradient(90deg, #8d3e34, transparent);
@@ -39,6 +42,13 @@
   color: rgb(239 229 217 / 64%);
   font-size: 0.95rem;
   line-height: 1.7;
+}
+.profileLink {
+  display: inline-block;
+  margin-top: 1.5rem;
+  color: #d7956e;
+  font: 600 0.65rem var(--font-mono-family);
+  letter-spacing: 0.1em;
 }
 .recruit {
   padding: clamp(5rem, 10vw, 10rem) clamp(1rem, 5vw, 5rem);

@@ -1,0 +1,71 @@
+.hero {
+  min-height: 75svh;
+}
+.role {
+  margin: 0 0 1.5rem;
+  color: #d7956e;
+  font: 600 0.72rem var(--font-mono-family);
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+.standard,
+.work {
+  display: grid;
+  grid-template-columns: minmax(16rem, 0.7fr) minmax(0, 1.3fr);
+  gap: clamp(3rem, 8vw, 9rem);
+}
+.statement {
+  max-width: 48rem;
+}
+.statement p,
+.empty {
+  color: rgb(239 229 217 / 68%);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+.statement a {
+  display: inline-block;
+  margin-top: 1.5rem;
+  color: #d7956e;
+  font: 600 0.68rem var(--font-mono-family);
+  letter-spacing: 0.1em;
+}
+.work {
+  border-top: 1px solid rgb(224 190 161 / 12%);
+  background: #090b0a;
+}
+.posts {
+  display: grid;
+  gap: 1px;
+  align-content: start;
+  background: rgb(224 190 161 / 12%);
+}
+.posts > a,
+.empty {
+  display: block;
+  padding: clamp(1.4rem, 3vw, 2.4rem);
+  background: #0c0e0d;
+}
+.posts span {
+  color: #b96f4b;
+  font: 600 0.62rem var(--font-mono-family);
+  letter-spacing: 0.14em;
+}
+.posts h3 {
+  margin: 1rem 0;
+  color: #eee8dc;
+  font-family: var(--font-display-family);
+  font-size: clamp(1.7rem, 3vw, 2.8rem);
+  letter-spacing: -0.04em;
+}
+.posts p {
+  margin: 0;
+  color: rgb(239 229 217 / 55%);
+  font-size: 0.78rem;
+}
+@media (max-width: 767px) {
+  .standard,
+  .work {
+    grid-template-columns: 1fr;
+  }
+}

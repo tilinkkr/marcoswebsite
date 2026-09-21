@@ -6,7 +6,7 @@ import { writeAuditEvent } from "@/lib/audit";
 import { getAdmin } from "@/lib/auth/admin";
 import { guardPublicMutation } from "@/lib/security/route-guards";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
-import { blogInputSchema } from "@/lib/validation/blog";
+import { blogDatabaseValues, blogInputSchema } from "@/lib/validation/blog";
 
 export async function POST(request: NextRequest) {
   const admin = await getAdmin();
@@ -31,12 +31,11 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Service unavailable" }, { status: 503 });
 
   const now = new Date().toISOString();
+  const values = blogDatabaseValues(parsed.data);
   const { data, error } = await client
     .from("blog_posts")
     .insert({
-      ...parsed.data,
-      canonical_url: parsed.data.canonical_url || null,
-      og_image: parsed.data.og_image || null,
+      ...values,
       published_at: parsed.data.status === "published" ? now : null,
       last_reviewed_at: parsed.data.status === "published" ? now : null,
       created_by: admin.userId,
@@ -50,7 +49,9 @@ export async function POST(request: NextRequest) {
         error:
           error.code === "23505"
             ? "Slug already exists"
-            : "Could not create article",
+            : error.code === "23514"
+              ? "The article does not satisfy the publication evidence gate."
+              : "Could not create article",
       },
       { status: 400 },
     );

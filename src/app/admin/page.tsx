@@ -27,7 +27,9 @@ export default async function AdminPage() {
       .limit(100),
     client
       .from("blog_posts")
-      .select("id,slug,title,status,updated_at")
+      .select(
+        "id,slug,title,excerpt,content_markdown,hero_image,author_name,author_slug,author_proof_url,status,seo_title,seo_description,canonical_url,og_image,featured,category,tags,requires_regulatory_review,reading_time,reviewer_name,reviewer_qualification,reviewer_proof_url,methodology,limitations,conflicts_disclosure,source_urls,editorial_verified,updated_at",
+      )
       .order("updated_at", { ascending: false })
       .limit(100),
     client

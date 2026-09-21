@@ -21,24 +21,16 @@ export const metadata: Metadata = {
 };
 
 const plannedGuides = [
-  ["START HERE", "India Stock-Market Starter Kit", "Rahul Raja"],
-  ["LONG-TERM", "SIP, Mutual Funds and Index Investing", "Linu Babu"],
-  ["RISK", "The Reality and Risks of F&O Trading in India", "Linu Babu"],
-  ["PROCESS", "Trading Psychology and Risk Management", "Linu Babu"],
-  ["TAX", "Stock-Market Tax, F&O, STCG, LTCG and ITR", "Tilin Bijoy"],
-  ["IPOS", "ASBA, UPI Mandates and Allotment", "Sahal"],
-  [
-    "COMPARE",
-    "ETF vs Index Fund vs Mutual Fund vs Direct Stocks",
-    "Tilin Bijoy",
-  ],
-  [
-    "ANALYSIS",
-    "How to Analyse Indian Companies Without Guessing",
-    "Rahul Raja",
-  ],
-  ["CHARTS", "Technical Analysis Without Selling Signals", "Rahul Raja"],
-  ["SAFETY", "Trading Scams, Telegram Tips and WhatsApp Safety", "Sahal"],
+  ["START HERE", "India Stock-Market Starter Kit"],
+  ["LONG-TERM", "SIP, Mutual Funds and Index Investing"],
+  ["RISK", "The Reality and Risks of F&O Trading in India"],
+  ["PROCESS", "Trading Psychology and Risk Management"],
+  ["TAX", "Stock-Market Tax, F&O, STCG, LTCG and ITR"],
+  ["IPOS", "ASBA, UPI Mandates and Allotment"],
+  ["COMPARE", "ETF vs Index Fund vs Mutual Fund vs Direct Stocks"],
+  ["ANALYSIS", "How to Analyse Indian Companies Without Guessing"],
+  ["CHARTS", "Technical Analysis Without Selling Signals"],
+  ["SAFETY", "Trading Scams, Telegram Tips and WhatsApp Safety"],
 ] as const;
 
 export default async function InsightsPage() {
@@ -155,7 +147,7 @@ export default async function InsightsPage() {
               </p>
             </header>
             <div className={local.roadmapGrid}>
-              {plannedGuides.map(([category, title, author], index) => (
+              {plannedGuides.map(([category, title], index) => (
                 <article className={local.roadmapCard} key={title}>
                   <div className={local.imagePlaceholder} aria-hidden="true">
                     <span>IMAGE PLACEHOLDER</span>
@@ -164,7 +156,7 @@ export default async function InsightsPage() {
                   <div className={local.roadmapCopy}>
                     <span>{category} / IN REVIEW</span>
                     <h3>{title}</h3>
-                    <p>Provisional author: {author}</p>
+                    <p>Author assigned after evidence and expertise review.</p>
                   </div>
                 </article>
               ))}

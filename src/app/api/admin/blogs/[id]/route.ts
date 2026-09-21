@@ -6,7 +6,12 @@ import { writeAuditEvent } from "@/lib/audit";
 import { getAdmin } from "@/lib/auth/admin";
 import { guardPublicMutation } from "@/lib/security/route-guards";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
-import { blogPatchSchema } from "@/lib/validation/blog";
+import {
+  blogDatabaseValues,
+  blogInputSchema,
+  blogPatchSchema,
+  editorialMaterialFields,
+} from "@/lib/validation/blog";
 
 type Context = { params: Promise<{ id: string }> };
 
@@ -33,25 +38,70 @@ export async function PATCH(request: NextRequest, { params }: Context) {
     return NextResponse.json({ error: "Service unavailable" }, { status: 503 });
 
   const { id } = await params;
-  const { data: existing } = await client
+  const { data: existing, error: existingError } = await client
     .from("blog_posts")
-    .select("slug,status,published_at")
+    .select("*")
     .eq("id", id)
     .maybeSingle();
-  if (!existing)
+  if (existingError || !existing)
     return NextResponse.json({ error: "Article not found" }, { status: 404 });
+
+  const changedMaterial = editorialMaterialFields.some((field) => {
+    if (parsed.data[field] === undefined) return false;
+    return (
+      JSON.stringify(parsed.data[field]) !== JSON.stringify(existing[field])
+    );
+  });
   const nextStatus = parsed.data.status ?? existing.status;
+  if (
+    nextStatus === "published" &&
+    changedMaterial &&
+    parsed.data.editorial_verified !== true
+  ) {
+    return NextResponse.json(
+      {
+        error:
+          "A human editor must re-attest after changing article evidence or content.",
+      },
+      { status: 400 },
+    );
+  }
+
+  const merged = blogInputSchema.safeParse({
+    ...existing,
+    ...parsed.data,
+    status: nextStatus,
+    editorial_verified:
+      nextStatus === "published"
+        ? (parsed.data.editorial_verified ?? existing.editorial_verified)
+        : false,
+  });
+  if (!merged.success) {
+    return NextResponse.json(
+      {
+        error: "The article does not satisfy the publication evidence gate.",
+        issues: merged.error.flatten(),
+      },
+      { status: 400 },
+    );
+  }
+
+  const normalized = blogDatabaseValues(merged.data);
+  const now = new Date().toISOString();
   const update = {
     ...parsed.data,
-    canonical_url:
-      parsed.data.canonical_url === "" ? null : parsed.data.canonical_url,
-    og_image: parsed.data.og_image === "" ? null : parsed.data.og_image,
+    author_proof_url: normalized.author_proof_url,
+    reviewer_proof_url: normalized.reviewer_proof_url,
+    canonical_url: normalized.canonical_url,
+    og_image: normalized.og_image,
+    editorial_verified: normalized.editorial_verified,
     published_at:
-      nextStatus === "published"
-        ? (existing.published_at ?? new Date().toISOString())
-        : null,
+      nextStatus === "published" ? (existing.published_at ?? now) : null,
     last_reviewed_at:
-      nextStatus === "published" ? new Date().toISOString() : undefined,
+      nextStatus === "published" &&
+      (existing.status !== "published" || changedMaterial)
+        ? now
+        : existing.last_reviewed_at,
     updated_by: admin.userId,
   };
   const { data, error } = await client
@@ -62,7 +112,12 @@ export async function PATCH(request: NextRequest, { params }: Context) {
     .single();
   if (error)
     return NextResponse.json(
-      { error: "Could not update article" },
+      {
+        error:
+          error.code === "23514"
+            ? "The article does not satisfy the publication evidence gate."
+            : "Could not update article",
+      },
       { status: 400 },
     );
 

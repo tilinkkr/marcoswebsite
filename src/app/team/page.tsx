@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { TeamSystem } from "@/components/team/TeamSystem";
+import { authorPath, MARCOS_AUTHORS } from "@/lib/authors";
 import shared from "@/app/public-pages.module.css";
 import styles from "./team.module.css";
 
@@ -12,28 +13,6 @@ export const metadata: Metadata = {
     "Meet the people responsible for MARCOS strategy, operations, technology and trading education.",
   alternates: { canonical: "/team" },
 };
-const people = [
-  [
-    "RAHUL RAJA",
-    "FOUNDER",
-    "Rahul sets the direction for MARCOS — shaping the community, its standards and the long-term vision behind the platform.",
-  ],
-  [
-    "LINU",
-    "CEO",
-    "Linu leads operations and execution across MARCOS, turning the vision into a community and product that can scale.",
-  ],
-  [
-    "TILIN",
-    "CTO",
-    "Tilin leads MARCOS technology — from the product experience and backend systems to the tools that support the community.",
-  ],
-  [
-    "SAHAL",
-    "CONTENT & COMMUNITY",
-    "Sahal supports MARCOS through market-focused content, communication and community interaction.",
-  ],
-] as const;
 export default function TeamPage() {
   return (
     <div className={shared.page}>
@@ -65,13 +44,23 @@ export default function TeamPage() {
             </h2>
           </div>
           <div className={styles.grid}>
-            {people.map(([name, role, copy], i) => (
-              <article key={name} className={styles.profile}>
+            {MARCOS_AUTHORS.map((person, i) => (
+              <article key={person.slug} className={styles.profile}>
                 <span>0{i + 1}</span>
-                <p>{role}</p>
-                <h3>{name}</h3>
+                <p>{person.role.toUpperCase()}</p>
+                <h3>
+                  <Link href={authorPath(person.slug)}>
+                    {person.name.toUpperCase()}
+                  </Link>
+                </h3>
                 <div className={styles.rule} />
-                <p className={styles.copy}>{copy}</p>
+                <p className={styles.copy}>{person.bio}</p>
+                <Link
+                  className={styles.profileLink}
+                  href={authorPath(person.slug)}
+                >
+                  VIEW ACCOUNTABILITY PROFILE →
+                </Link>
               </article>
             ))}
           </div>
