@@ -5,7 +5,7 @@ import { CheckoutFlow } from "@/components/checkout/CheckoutFlow";
 export const metadata: Metadata = {
   title: "Checkout",
   description:
-    "Complete your MARCOS details, risk acknowledgement and manual payment submission.",
+    "Complete your MARKOS details, risk acknowledgement and manual payment submission.",
   robots: { index: false, follow: false },
 };
 

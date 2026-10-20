@@ -131,7 +131,7 @@ export function MarcosMethod() {
       <div className={styles.inner}>
         <header className={styles.header}>
           <div>
-            <p className={styles.eyebrow}>THE MARCOS METHOD</p>
+            <p className={styles.eyebrow}>THE MARKOS METHOD</p>
             <h2 id="marcos-method-title" className={styles.headline}>
               <span>ONE SESSION.</span>
               <span>ONE REPEATABLE LOOP.</span>
@@ -139,7 +139,7 @@ export function MarcosMethod() {
           </div>
           <div className={styles.introduction}>
             <p>
-              MARCOS turns a trading day into a process you can understand,
+              MARKOS turns a trading day into a process you can understand,
               observe, review and improve—not a signal to copy.
             </p>
             <p className={styles.loop}>PLAN / WATCH / REVIEW / REFINE</p>
@@ -168,7 +168,7 @@ export function MarcosMethod() {
         <div className={styles.footerRow}>
           <p>THE LOOP REPEATS. THE PROCESS GETS SHARPER.</p>
           <Link className={styles.cta} href="/method" prefetch={false}>
-            EXPLORE THE MARCOS METHOD{" "}
+            EXPLORE THE MARKOS METHOD{" "}
             <ArrowUpRight size={17} strokeWidth={1.7} aria-hidden />
           </Link>
         </div>

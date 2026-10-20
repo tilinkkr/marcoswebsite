@@ -1,5 +1,5 @@
 export const SITE_URL = "https://markos.in";
-export const SITE_NAME = "MARCOS";
+export const SITE_NAME = "MARKOS";
 
 export function absoluteUrl(pathname = "/") {
   return new URL(pathname, SITE_URL).toString();

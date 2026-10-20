@@ -12,7 +12,7 @@ const items = [
   [
     "02",
     "OUR STORY",
-    "Why MARCOS exists, how the community thinks and what it refuses to promise.",
+    "Why MARKOS exists, how the community thinks and what it refuses to promise.",
     "/story",
   ],
   [
@@ -29,8 +29,20 @@ const items = [
   ],
   [
     "05",
+    "THE MARKOS METHOD",
+    "A practical plan, watch, review, and refine loop for building a deliberate trading process.",
+    "/method",
+  ],
+  [
+    "06",
+    "TEAM",
+    "Meet the people responsible for operations, technology, market analysis, and community standards.",
+    "/team",
+  ],
+  [
+    "07",
     "LEGAL / RISK",
-    "Read the risk disclosure, terms and privacy foundations behind MARCOS.",
+    "Understand trading risks, site terms, privacy information, and product boundaries before participating.",
     "/risk-disclosure",
   ],
 ] as const;

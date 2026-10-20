@@ -10,30 +10,30 @@ export const MARCOS_AUTHORS: readonly MarcosAuthor[] = [
   {
     slug: "rahul-raja",
     name: "Rahul Raja",
-    role: "Founder",
-    focus: "Strategy and community standards",
-    bio: "Rahul sets the direction for MARCOS, including its community standards and long-term platform vision.",
+    role: "COO",
+    focus: "Operations, execution, and community standards",
+    bio: "Rahul leads day-to-day operations and execution at MARKOS, helping keep community standards and member experiences consistent.",
   },
   {
     slug: "linu-babu",
     name: "Linu Babu",
     role: "CEO",
     focus: "Operations and execution",
-    bio: "Linu leads operations and execution across MARCOS, turning the platform vision into repeatable systems.",
+    bio: "Linu leads operations and execution across MARKOS, turning the platform vision into repeatable systems.",
   },
   {
     slug: "tilin-bijoy",
     name: "Tilin Bijoy",
     role: "CTO",
     focus: "Product and platform technology",
-    bio: "Tilin leads MARCOS technology, including product experience, backend systems, and community tooling.",
+    bio: "Tilin leads MARKOS technology, including product experience, backend systems, and community tooling.",
   },
   {
     slug: "sahal",
     name: "Sahal",
-    role: "Content & Community",
-    focus: "Content and community communication",
-    bio: "Sahal supports MARCOS through market-focused content, communication, and community interaction.",
+    role: "Content Creator & Analyst",
+    focus: "Market education, analysis, and content",
+    bio: "Sahal creates market-focused educational content and analysis for the MARKOS community, with a focus on explaining process and risk.",
   },
 ] as const;
 

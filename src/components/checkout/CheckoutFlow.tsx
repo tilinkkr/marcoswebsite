@@ -96,8 +96,8 @@ export function CheckoutFlow({
   );
   const whatsappPaymentUrl = getWhatsAppUrl(
     session
-      ? `Hi MARCOS, I completed the payment for ${product.name}. Order: ${session.order_reference}. Payment reference: ${paymentReference || "I will attach the receipt"}. Please verify it and confirm my access.`
-      : `Hi MARCOS, I'd like to confirm the exact INR amount for ${product.name} before using UPI.`,
+      ? `Hi MARKOS, I completed the payment for ${product.name}. Order: ${session.order_reference}. Payment reference: ${paymentReference || "I will attach the receipt"}. Please verify it and confirm my access.`
+      : `Hi MARKOS, I'd like to confirm the exact INR amount for ${product.name} before using UPI.`,
   );
 
   const copyUpiId = async () => {
@@ -201,7 +201,7 @@ export function CheckoutFlow({
   return (
     <div className={styles.shell}>
       <aside className={styles.summary}>
-        <p className={styles.eyebrow}>MARCOS / SECURE CHECKOUT</p>
+        <p className={styles.eyebrow}>MARKOS / SECURE CHECKOUT</p>
         <h1>{product.name}</h1>
         <p>
           A deliberate checkout: identity, explicit risk acceptance, then manual
@@ -305,7 +305,7 @@ export function CheckoutFlow({
             </button>
             <h2 id="checkout-step-title">IMPORTANT RISK ACKNOWLEDGEMENT</h2>
             <p>
-              Read this before payment. MARCOS is education and community; it
+              Read this before payment. MARKOS is education and community; it
               does not guarantee outcomes.
             </p>
             <div className={styles.riskText}>
@@ -326,7 +326,7 @@ export function CheckoutFlow({
               </CheckField>
               <CheckField error={form.formState.errors.noGuarantee?.message}>
                 <input type="checkbox" {...form.register("noGuarantee")} />I
-                understand that MARCOS does not guarantee trading profits,
+                understand that MARKOS does not guarantee trading profits,
                 funding or evaluation success.
               </CheckField>
               <CheckField error={form.formState.errors.agreeTerms?.message}>
@@ -375,7 +375,7 @@ export function CheckoutFlow({
             <div className={styles.paymentNotice}>
               <ShieldCheck size={20} strokeWidth={1.5} aria-hidden />
               <p>
-                UPI settles in INR. Confirm the exact INR amount with MARCOS
+                UPI settles in INR. Confirm the exact INR amount with MARKOS
                 before transferring. Scanning the QR never activates access
                 automatically.
               </p>
@@ -385,7 +385,7 @@ export function CheckoutFlow({
                 {!qrFailed ? (
                   <Image
                     src={qrAsset}
-                    alt="UPI payment QR code for MARCOS membership"
+                    alt="UPI payment QR code for MARKOS membership"
                     width={532}
                     height={522}
                     unoptimized
@@ -395,7 +395,7 @@ export function CheckoutFlow({
                   <div>
                     <span>PAYMENT QR</span>
                     <strong>QR UNAVAILABLE</strong>
-                    <p>Use the UPI ID or contact MARCOS on WhatsApp.</p>
+                    <p>Use the UPI ID or contact MARKOS on WhatsApp.</p>
                   </div>
                 )}
               </div>
@@ -493,7 +493,7 @@ export function CheckoutFlow({
               <ArrowUpRight size={16} aria-hidden />
             </a>
             <p className={styles.verificationNote}>
-              Include your order reference and payment screenshot. MARCOS will
+              Include your order reference and payment screenshot. MARKOS will
               confirm access only after matching the payment independently.
             </p>
           </div>

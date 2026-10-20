@@ -8,10 +8,14 @@ import { getGSAP } from "@/lib/animations/gsap";
 import styles from "./team-system.module.css";
 
 const streams = [
-  ["RAHUL / FOUNDER", "VISION / DIRECTION / STANDARD", styles.vision],
+  ["RAHUL / COO", "OPERATIONS / EXECUTION / STANDARD", styles.vision],
   ["LINU / CEO", "OPERATIONS / COMMUNITY / EXECUTION", styles.operations],
   ["TILIN / CTO", "TECHNOLOGY / INFRASTRUCTURE / PRODUCT", styles.tech],
-  ["SAHAL / TRADER + CREATOR", "TRADING / EDUCATION / CONTENT", styles.market],
+  [
+    "SAHAL / CONTENT CREATOR + ANALYST",
+    "MARKET EDUCATION / ANALYSIS / CONTENT",
+    styles.market,
+  ],
 ] as const;
 
 export function TeamSystem() {
@@ -142,7 +146,7 @@ export function TeamSystem() {
           ))}
         </div>
         <div data-team-core className={styles.core}>
-          <span>MARCOS</span>
+          <span>MARKOS</span>
         </div>
         <div data-team-reveal className={styles.reveal}>
           <p>DIFFERENT ROLES.</p>

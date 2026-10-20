@@ -12,10 +12,10 @@ import styles from "../marketing.module.css";
 export const metadata: Metadata = {
   title: "Membership",
   description:
-    "Build a more deliberate trading process through MARCOS community, education, risk frameworks and review.",
+    "Build a more deliberate trading process through MARKOS community, education, risk frameworks and review.",
   alternates: { canonical: "/join" },
   openGraph: {
-    title: "MARCOS Membership",
+    title: "MARKOS Membership",
     description:
       "A serious environment for traders building process, discipline and market understanding.",
     url: "/join",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 export default function JoinPage() {
   const whatsapp = getWhatsAppUrl(
-    "Hi MARCOS, I'd like to know more about joining the community.",
+    "Hi MARKOS, I'd like to know more about joining the community.",
   );
   return (
     <div className={styles.page}>
@@ -32,7 +32,7 @@ export default function JoinPage() {
       <main>
         <section className={styles.hero}>
           <div>
-            <p className={styles.eyebrow}>MARCOS / MEMBERSHIP</p>
+            <p className={styles.eyebrow}>MARKOS / MEMBERSHIP</p>
             <h1>
               BUILD YOUR PROCESS
               <br />
@@ -55,7 +55,7 @@ export default function JoinPage() {
           </div>
           <div className={styles.paths}>
             <article className={styles.path}>
-              <p className={styles.label}>OPTION 01 / MARCOS MEMBERSHIP</p>
+              <p className={styles.label}>OPTION 01 / MARKOS MEMBERSHIP</p>
               <h3>
                 ENTER THE
                 <br />
@@ -75,7 +75,7 @@ export default function JoinPage() {
               <h3>
                 TALK TO
                 <br />
-                MARCOS.
+                MARKOS.
               </h3>
               <p>
                 Ask what the membership includes and decide without pressure.
@@ -111,7 +111,7 @@ export default function JoinPage() {
             ))}
           </ul>
           <p className={styles.legal}>
-            MARCOS provides education and community, not financial advice or
+            MARKOS provides education and community, not financial advice or
             guaranteed outcomes. Billing frequency, refund and cancellation
             terms remain subject to approved business policy and legal review.
           </p>

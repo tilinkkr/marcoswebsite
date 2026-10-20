@@ -12,7 +12,7 @@ import local from "./contact.module.css";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact MARCOS about membership, indicators, partnerships, the team or technical support.",
+    "Contact MARKOS about membership, indicators, partnerships, the team or technical support.",
   alternates: { canonical: "/contact" },
 };
 
@@ -46,11 +46,11 @@ export default function ContactPage() {
       <SiteHeader />
       <main className={styles.main}>
         <section className={styles.hero}>
-          <p className={styles.eyebrow}>MARCOS / CONTACT</p>
+          <p className={styles.eyebrow}>MARKOS / CONTACT</p>
           <h1 className={styles.title}>
             TALK TO
             <br />
-            MARCOS.
+            MARKOS.
           </h1>
           <p className={styles.lede}>
             Choose the route that best matches your question, or send a clear
@@ -65,7 +65,7 @@ export default function ContactPage() {
               const href = key.includes("EMAIL")
                 ? `mailto:${value}`
                 : getWhatsAppUrl(
-                    "Hi MARCOS, I'd like to know more about membership.",
+                    "Hi MARKOS, I'd like to know more about membership.",
                   );
               return (
                 <article key={label}>

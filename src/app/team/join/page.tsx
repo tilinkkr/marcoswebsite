@@ -4,9 +4,9 @@ import { SiteHeader } from "@/components/layout/SiteHeader";
 import { TeamApplicationForm } from "@/components/forms/TeamApplicationForm";
 import styles from "@/app/public-pages.module.css";
 export const metadata: Metadata = {
-  title: "Build with MARCOS",
+  title: "Build with MARKOS",
   description:
-    "Tell MARCOS how you can contribute across trading, content, technology, design, operations or community.",
+    "Tell MARKOS how you can contribute across trading, content, technology, design, operations or community.",
   alternates: { canonical: "/team/join" },
 };
 export default function TeamJoinPage() {
@@ -23,7 +23,7 @@ export default function TeamJoinPage() {
           </h1>
           <p className={styles.lede}>
             This is not a job listing. It is a direct line for people who
-            believe they can contribute meaningfully to MARCOS.
+            believe they can contribute meaningfully to MARKOS.
           </p>
         </section>
         <section className={styles.section}>

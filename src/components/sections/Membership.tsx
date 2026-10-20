@@ -70,31 +70,11 @@ export function Membership() {
           }
 
           gsap.set(strike, { scaleX: 0, transformOrigin: "left center" });
-          gsap.set([currentPrice, offer, items, cta], { autoAlpha: 0, y: 18 });
+          gsap.set([currentPrice, offer, items, cta], { autoAlpha: 1, y: 0 });
 
           if (mobile) {
-            const mobileTimeline = gsap.timeline({
-              defaults: { ease: "power2.out" },
-              scrollTrigger: {
-                trigger: section,
-                start: "top 82%",
-                once: true,
-              },
-            });
-
-            mobileTimeline
-              .to(oldPrice, { autoAlpha: 0.55, duration: 0.18 })
-              .to(strike, { scaleX: 1, duration: 0.22 }, 0.08)
-              .to(currentPrice, { autoAlpha: 1, y: 0, duration: 0.28 }, 0.18)
-              .to(offer, { autoAlpha: 1, y: 0, duration: 0.2 }, 0.3)
-              .to(
-                items,
-                { autoAlpha: 1, y: 0, duration: 0.24, stagger: 0.045 },
-                0.4,
-              )
-              .to(cta, { autoAlpha: 1, y: 0, duration: 0.2 }, 0.68);
-
-            return () => mobileTimeline.kill();
+            gsap.set(strike, { scaleX: 1, transformOrigin: "left center" });
+            return;
           }
 
           const timeline = gsap.timeline({
@@ -145,14 +125,14 @@ export function Membership() {
           <span>IN ISOLATION.</span>
         </h2>
         <p className={styles.introCopy}>
-          Join MARCOS and build your process around traders focused on learning,
+          Join MARKOS and build your process around traders focused on learning,
           execution, risk and improvement.
         </p>
       </div>
 
       <div className={styles.offerCard}>
         <div className={styles.offerTopline}>
-          <span>MARCOS ACCESS</span>
+          <span>MARKOS ACCESS</span>
           <span>FOUNDING ACCESS</span>
         </div>
         <div className={styles.pricePanel}>
@@ -171,7 +151,7 @@ export function Membership() {
           <p className={styles.priceContext}>
             ONE MEMBERSHIP.
             <br />
-            THE FULL MARCOS LOOP.
+            THE FULL MARKOS LOOP.
           </p>
         </div>
         <div className={styles.offerDetails}>
@@ -197,7 +177,7 @@ export function Membership() {
             prefetch={false}
             data-membership-cta
           >
-            JOIN MARCOS — $100{" "}
+            JOIN MARKOS — $100{" "}
             <ArrowUpRight size={18} strokeWidth={1.8} aria-hidden />
           </Link>
         </div>

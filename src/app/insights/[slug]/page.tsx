@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: post.seo_title,
       description: post.seo_description,
       url: canonical,
-      siteName: "MARCOS",
+      siteName: "MARKOS",
       locale: "en_IN",
       images: [absoluteUrl(post.og_image ?? post.hero_image)],
       publishedTime: post.published_at ?? undefined,

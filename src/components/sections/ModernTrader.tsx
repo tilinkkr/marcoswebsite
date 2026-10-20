@@ -100,39 +100,20 @@ export function ModernTrader() {
             gsap.set([eyebrow, body, cta], { autoAlpha: 1, y: 0 });
             gsap.set(lines, { yPercent: 0, autoAlpha: 1 });
 
-            const mobileTimeline = gsap.timeline({
-              defaults: { ease: "power2.out" },
-              scrollTrigger: {
-                trigger: section,
-                start: "top 78%",
-                once: true,
-              },
-            });
-
-            mobileTimeline.fromTo(
-              [scene, light, eyebrow, ...lines, body, cta],
-              { autoAlpha: 0, y: 18 },
-              {
-                autoAlpha: 1,
-                y: 0,
-                duration: 0.58,
-                stagger: 0.035,
-              },
-            );
-
-            return () => mobileTimeline.kill();
+            gsap.set([eyebrow, lines, body, cta], { clearProps: "all" });
+            return;
           }
 
           gsap.set(scene, {
-            autoAlpha: 0.08,
+            autoAlpha: 0.38,
             scale: 1.08,
             yPercent: 1,
           });
-          gsap.set(atmosphere, { autoAlpha: 0.28, scale: 1 });
+          gsap.set(atmosphere, { autoAlpha: 0.52, scale: 1 });
           gsap.set(light, { autoAlpha: 0.08, xPercent: 24, scale: 0.86 });
           gsap.set(screen, { autoAlpha: 0 });
-          gsap.set([eyebrow, body, cta], { autoAlpha: 0, y: 16 });
-          gsap.set(lines, { yPercent: 108, autoAlpha: 1 });
+          gsap.set([eyebrow, body, cta], { autoAlpha: 1, y: 0 });
+          gsap.set(lines, { yPercent: 0, autoAlpha: 1 });
 
           const timeline = gsap.timeline({
             defaults: { ease: "none" },
@@ -174,13 +155,13 @@ export function ModernTrader() {
               "discovery",
             )
             .to(screen, { autoAlpha: 0.34, duration: 0.2 }, "discovery+=0.18")
-            .addLabel("copy", 0.53)
+            .addLabel("copy", 0.15)
             .to(eyebrow, { autoAlpha: 1, y: 0, duration: 0.08 }, "copy")
             .to(lines[0], { yPercent: 0, duration: 0.08 }, "copy+=0.035")
             .to(lines[1], { yPercent: 0, duration: 0.08 }, "copy+=0.085")
             .to(lines[2], { yPercent: 0, duration: 0.08 }, "copy+=0.16")
             .to(lines[3], { yPercent: 0, duration: 0.08 }, "copy+=0.21")
-            .addLabel("discipline", 0.76)
+            .addLabel("discipline", 0.38)
             .to(
               scene,
               { scale: 1.01, yPercent: 0, duration: 0.18 },
@@ -201,7 +182,7 @@ export function ModernTrader() {
               { autoAlpha: 1, y: 0, duration: 0.09 },
               "discipline+=0.105",
             )
-            .addLabel("hold", 0.9)
+            .addLabel("hold", 0.68)
             .to(screen, { autoAlpha: 0.26, duration: 0.1 }, "hold");
 
           return () => timeline.kill();
@@ -250,7 +231,7 @@ export function ModernTrader() {
 
         <div className={styles.copy}>
           <p className={styles.eyebrow} data-trader-eyebrow>
-            MARCOS / THE CRAFT
+            MARKOS / THE CRAFT
           </p>
           <h2 id="modern-trader-title" className={styles.headline}>
             <span className={styles.mask}>
@@ -272,7 +253,7 @@ export function ModernTrader() {
               The traders who improve keep studying, reviewing, adapting and
               managing themselves when the market gets loud.
             </p>
-            <p>MARCOS exists to make that process less isolated.</p>
+            <p>MARKOS exists to make that process less isolated.</p>
           </div>
           <Link className={styles.cta} href="#membership" data-trader-cta>
             MEET THE COMMUNITY{" "}

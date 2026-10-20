@@ -13,13 +13,13 @@ const groups = [
     label: "EXPLORE",
     links: [
       ["HOME", "/"],
-      ["JOIN MARCOS", "/join"],
+      ["JOIN MARKOS", "/join"],
       ["INDICATORS", "/indicators"],
       ["TEAM", "/team"],
     ],
   },
   {
-    label: "MARCOS",
+    label: "MARKOS",
     links: [
       ["OUR STORY", "/story"],
       ["INSIGHTS", "/insights"],
@@ -37,7 +37,7 @@ const groups = [
   },
 ];
 
-const brandLetters = "MARCOS".split("");
+const brandLetters = "MARKOS".split("");
 
 export function SiteFooter() {
   const footerRef = useRef<HTMLElement>(null);
@@ -138,7 +138,7 @@ export function SiteFooter() {
       <div className={styles.top}>
         <p>JOIN THE FLOOR.</p>
         <Link href="/join" prefetch={false}>
-          JOIN MARCOS <ArrowUpRight size={18} aria-hidden />
+          JOIN MARKOS <ArrowUpRight size={18} aria-hidden />
         </Link>
       </div>
       <div className={styles.links}>
@@ -155,10 +155,10 @@ export function SiteFooter() {
       </div>
       <p className={styles.risk}>
         Trading involves substantial risk and is not suitable for every person.
-        MARCOS provides education and community—not financial advice or
+        MARKOS provides education and community—not financial advice or
         guaranteed outcomes.
       </p>
-      <div className={styles.wordWrap} aria-label="MARCOS">
+      <div className={styles.wordWrap} aria-label="MARKOS">
         <span className={styles.word} data-footer-word aria-hidden>
           {brandLetters.map((letter) => (
             <span key={letter} data-footer-letter>
@@ -167,12 +167,12 @@ export function SiteFooter() {
           ))}
         </span>
         <span className={styles.wordLight} data-footer-light aria-hidden>
-          MARCOS
+          MARKOS
         </span>
         <span className={styles.ruler} data-footer-ruler aria-hidden />
       </div>
       <div className={styles.bottom}>
-        <span>© 2026 MARCOS</span>
+        <span>© 2026 MARKOS</span>
         <span>PROCESS OVER PROMISES.</span>
       </div>
     </footer>

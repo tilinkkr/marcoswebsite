@@ -171,7 +171,7 @@ export function AdminConsole({
     <main className={styles.shell}>
       <header className={styles.topbar}>
         <div>
-          <p className={styles.eyebrow}>MARCOS / CONTROL ROOM</p>
+          <p className={styles.eyebrow}>MARKOS / CONTROL ROOM</p>
           <h1>OPERATIONS DESK</h1>
           <span>Signed in as {adminName}</span>
         </div>
@@ -310,7 +310,7 @@ export function AdminConsole({
             )}
           </div>
           <p className={styles.editorGuide}>
-            Drafts may be incomplete. Publishing requires a matched MARCOS
+            Drafts may be incomplete. Publishing requires a matched MARKOS
             byline, public author and reviewer evidence, three authoritative
             sources, visible method and limitations, a conflicts disclosure, and
             fresh human attestation.

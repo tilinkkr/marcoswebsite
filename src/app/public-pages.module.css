@@ -67,6 +67,38 @@
   font-size: 1rem;
   line-height: 1.75;
 }
+.prose h2 {
+  margin: 2.75rem 0 0.75rem;
+  color: #eee8dc;
+  font-family: var(--font-display-family);
+  font-size: clamp(1.55rem, 3vw, 2.15rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+.prose h3 {
+  margin: 1.6rem 0 0.4rem;
+  color: rgb(239 230 220 / 88%);
+  font-size: 1.08rem;
+  line-height: 1.4;
+}
+.prose p {
+  margin: 0.75rem 0 1.15rem;
+}
+.prose a {
+  color: #e4a274;
+  text-decoration: underline;
+  text-decoration-color: rgb(228 162 116 / 50%);
+  text-underline-offset: 0.2em;
+}
+.prose a:hover,
+.prose a:focus-visible {
+  color: #ffd2ad;
+}
+.prose a:focus-visible {
+  outline: 2px solid #c97941;
+  outline-offset: 3px;
+}
 .cta {
   display: inline-flex;
   min-height: 3.25rem;

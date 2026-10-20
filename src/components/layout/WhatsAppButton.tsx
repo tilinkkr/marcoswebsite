@@ -6,7 +6,7 @@ import styles from "./whatsapp-button.module.css";
 
 export function WhatsAppButton() {
   const href = getWhatsAppUrl(
-    "Hi MARCOS, I'd like to know more about membership.",
+    "Hi MARKOS, I'd like to know more about membership.",
   );
 
   return (
@@ -15,7 +15,7 @@ export function WhatsAppButton() {
       href={href}
       target="_blank"
       rel="noreferrer"
-      aria-label="Message MARCOS on WhatsApp"
+      aria-label="Message MARKOS on WhatsApp"
     >
       <MessageCircle size={20} strokeWidth={1.8} aria-hidden />
       <span>WHATSAPP</span>

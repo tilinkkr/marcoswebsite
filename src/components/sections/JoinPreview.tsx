@@ -10,7 +10,7 @@ import { getWhatsAppUrl } from "@/lib/whatsapp";
 import styles from "./join-preview.module.css";
 
 const whatsappUrl = getWhatsAppUrl(
-  "Hi MARCOS, I'd like to know more about joining the community.",
+  "Hi MARKOS, I'd like to know more about joining the community.",
 );
 
 export function JoinPreview() {
@@ -60,28 +60,14 @@ export function JoinPreview() {
             gsap.set(floor, { autoAlpha: 0.52, scale: 1 });
             gsap.set([content, paths], { autoAlpha: 1, y: 0 });
 
-            const mobileTimeline = gsap.timeline({
-              defaults: { ease: "power2.out" },
-              scrollTrigger: {
-                trigger: section,
-                start: "top 78%",
-                once: true,
-              },
-            });
-
-            mobileTimeline.fromTo(
-              [floor, content, paths],
-              { autoAlpha: 0, y: 18 },
-              { autoAlpha: 1, y: 0, duration: 0.58, stagger: 0.08 },
-            );
-
-            return () => mobileTimeline.kill();
+            gsap.set([content, paths], { clearProps: "all" });
+            return;
           }
 
           gsap.set(progress, { autoAlpha: 0, y: mobile ? 20 : 34 });
           gsap.set(floor, { autoAlpha: 0, scale: 0.72 });
-          gsap.set(content, { autoAlpha: 0, y: mobile ? 18 : 28 });
-          gsap.set(paths, { autoAlpha: 0, y: 16 });
+          gsap.set(content, { autoAlpha: 1, y: 0 });
+          gsap.set(paths, { autoAlpha: 1, y: 0 });
 
           const timeline = gsap.timeline({
             defaults: { ease: "none" },
@@ -102,10 +88,10 @@ export function JoinPreview() {
             )
             .to(solitude, { autoAlpha: 0, y: -20, duration: 0.16 }, 0.18)
             .to(floor, { autoAlpha: 0.58, scale: 1, duration: 0.25 }, 0.28)
-            .to(progress, { autoAlpha: 1, y: 0, duration: 0.2 }, 0.42)
-            .to(progress, { autoAlpha: 0, y: -18, duration: 0.13 }, 0.64)
-            .to(content, { autoAlpha: 1, y: 0, duration: 0.19 }, 0.68)
-            .to(paths, { autoAlpha: 1, y: 0, duration: 0.13 }, 0.81)
+            .to(progress, { autoAlpha: 1, y: 0, duration: 0.2 }, 0.2)
+            .to(progress, { autoAlpha: 0, y: -18, duration: 0.13 }, 0.34)
+            .to(content, { autoAlpha: 1, y: 0, duration: 0.19 }, 0.2)
+            .to(paths, { autoAlpha: 1, y: 0, duration: 0.13 }, 0.4)
             .to({}, { duration: 0.06 });
 
           return () => timeline.kill();
@@ -148,14 +134,14 @@ export function JoinPreview() {
           TO BE.
         </p>
         <div className={styles.content} data-join-content>
-          <p className={styles.eyebrow}>MARCOS / THE FLOOR</p>
+          <p className={styles.eyebrow}>MARKOS / THE FLOOR</p>
           <h2 id="join-preview-title">
             TRADE YOUR ACCOUNT.
             <br />
             <span>DON&apos;T BUILD YOUR PROCESS ALONE.</span>
           </h2>
           <p className={styles.copy}>
-            MARCOS brings traders together around market study, execution, risk,
+            MARKOS brings traders together around market study, execution, risk,
             review and continuous improvement.
           </p>
         </div>

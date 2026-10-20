@@ -11,10 +11,10 @@ import styles from "../marketing.module.css";
 export const metadata: Metadata = {
   title: "Trading Indicators",
   description:
-    "Explore a MARCOS analytical indicator designed to add market context without replacing trader judgment.",
+    "Explore a MARKOS analytical indicator designed to add market context without replacing trader judgment.",
   alternates: { canonical: "/indicators" },
   openGraph: {
-    title: "MARCOS Trading Tools",
+    title: "MARKOS Trading Tools",
     description: "See more without adding noise.",
     url: "/indicators",
   },
@@ -30,7 +30,7 @@ const rails = [
     "Market context, structure and cleaner chart relationships.",
   ],
   [
-    "HOW MARCOS USES IT",
+    "HOW MARKOS USES IT",
     "As one input inside a wider preparation, risk and review process.",
   ],
   [
@@ -42,16 +42,16 @@ const rails = [
     "It does not guarantee outcomes, predict with certainty or execute trades.",
   ],
   [
-    "SUPPORTED PLATFORM",
-    "Final platform compatibility requires product confirmation.",
+    "PLATFORM DETAILS",
+    "Check the current product or checkout details for supported platform and access requirements before placing an order. Ask MARKOS through the Contact page if anything is unclear.",
   ],
   [
     "INSTALLATION",
     "Access and installation guidance will follow manual payment verification.",
   ],
   [
-    "FAQ",
-    "Product name, version and platform details are pending final approval.",
+    "ACCESS & INSTALLATION",
+    "After payment is submitted, the order is reviewed manually. Access and installation instructions are provided after verification; contact MARKOS with your order reference if you need help.",
   ],
 ] as const;
 
@@ -62,7 +62,7 @@ export default function IndicatorsPage() {
       <main>
         <section className={styles.hero}>
           <div>
-            <p className={styles.eyebrow}>MARCOS / TRADING TOOLS</p>
+            <p className={styles.eyebrow}>MARKOS / TRADING TOOLS</p>
             <h1>
               SEE MORE
               <br />
@@ -85,12 +85,18 @@ export default function IndicatorsPage() {
               aria-label="Institutional market analysis instrument"
             />
             <article className={styles.productInfo}>
-              <p className={styles.label}>MARCOS / INDICATOR 01</p>
+              <p className={styles.label}>MARKOS / INDICATOR 01</p>
               <h2>{indicatorProduct.name}</h2>
               <p>
                 Less noise. More context. A restrained analytical layer designed
                 to make structure easier to read without pretending to know what
                 happens next.
+              </p>
+              <p>
+                The tool is intended to support a discretionary workflow: review
+                the chart, define the setup and risk independently, and decide
+                whether the conditions meet your own rules. It does not place
+                trades or make decisions on your behalf.
               </p>
               <div className={styles.price}>
                 <del>${indicatorProduct.originalPrice}</del>
@@ -125,7 +131,7 @@ export default function IndicatorsPage() {
             ))}
           </div>
           <p className={styles.legal}>
-            MARCOS tools assist analysis only. They do not remove trading risk
+            MARKOS tools assist analysis only. They do not remove trading risk
             or guarantee profits, funding, evaluation success or any market
             outcome.
           </p>

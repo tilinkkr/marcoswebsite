@@ -63,25 +63,11 @@ export function IndicatorsPreview() {
             gsap.set(card, { autoAlpha: 1, x: 0, y: 0 });
             gsap.set(strike, { scaleX: 1, transformOrigin: "left center" });
 
-            const mobileTimeline = gsap.timeline({
-              defaults: { ease: "power2.out" },
-              scrollTrigger: {
-                trigger: section,
-                start: "top 78%",
-                once: true,
-              },
-            });
-
-            mobileTimeline.fromTo(
-              card,
-              { autoAlpha: 0, y: 22 },
-              { autoAlpha: 1, y: 0, duration: 0.62 },
-            );
-
-            return () => mobileTimeline.kill();
+            gsap.set(card, { clearProps: "all" });
+            return;
           }
 
-          gsap.set(message, { autoAlpha: 0, y: 24 });
+          gsap.set(message, { autoAlpha: 1, y: 0 });
           gsap.set(see, { color: "#6b6a65" });
           gsap.set(card, {
             autoAlpha: 0,
@@ -109,7 +95,7 @@ export function IndicatorsPreview() {
             .to(noise, { autoAlpha: 0.08, stagger: 0.018, duration: 0.2 }, 0.26)
             .to(signal, { strokeDashoffset: 0, duration: 0.26 }, 0.34)
             .to(noise, { autoAlpha: 0, duration: 0.16 }, 0.48)
-            .to(message, { autoAlpha: 1, y: 0, duration: 0.18 }, 0.54)
+            .to(message, { autoAlpha: 1, y: 0, duration: 0.18 }, 0.2)
             .to(
               see,
               {
@@ -117,11 +103,10 @@ export function IndicatorsPreview() {
                 textShadow: "0 0 28px rgba(166,41,50,.45)",
                 duration: 0.12,
               },
-              0.67,
+              0.36,
             )
-            .to(message, { autoAlpha: 0, y: -18, duration: 0.12 }, 0.75)
-            .to(card, { autoAlpha: 1, x: 0, y: 0, duration: 0.17 }, 0.78)
-            .to(strike, { scaleX: 1, duration: 0.1 }, 0.88)
+            .to(card, { autoAlpha: 1, x: 0, y: 0, duration: 0.17 }, 0.5)
+            .to(strike, { scaleX: 1, duration: 0.1 }, 0.64)
             .to({}, { duration: 0.05 });
           return () => timeline.kill();
         },
@@ -172,7 +157,7 @@ export function IndicatorsPreview() {
           />
         </svg>
         <div className={styles.message} data-indicator-message>
-          <p>MARCOS / MARKET CLARITY</p>
+          <p>MARKOS / MARKET CLARITY</p>
           <h2 id="indicator-preview-title">
             AN INDICATOR SHOULDN&apos;T TELL YOU WHAT TO THINK.
             <br />
@@ -180,7 +165,7 @@ export function IndicatorsPreview() {
           </h2>
         </div>
         <article className={styles.card} data-indicator-card>
-          <p className={styles.eyebrow}>MARCOS / INDICATOR 01</p>
+          <p className={styles.eyebrow}>MARKOS / INDICATOR 01</p>
           <h3>{indicatorProduct.name}</h3>
           <p className={styles.tagline}>
             LESS NOISE.

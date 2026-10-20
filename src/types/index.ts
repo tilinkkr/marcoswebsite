@@ -1,1 +1,1 @@
-export type Brand = "MARCOS";
+export type Brand = "MARKOS";

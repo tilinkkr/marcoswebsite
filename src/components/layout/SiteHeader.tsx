@@ -10,7 +10,7 @@ import styles from "./site-header.module.css";
 
 const primaryLinks = [
   ["HOME", "/"],
-  ["JOIN MARCOS", "/join"],
+  ["JOIN MARKOS", "/join"],
   ["INDICATORS", "/indicators"],
   ["TEAM", "/team"],
   ["INSIGHTS", "/insights"],
@@ -27,13 +27,13 @@ const moreLinks = [
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const whatsappUrl = getWhatsAppUrl(
-    "Hi MARCOS, I'd like to know more about membership.",
+    "Hi MARKOS, I'd like to know more about membership.",
   );
 
   return (
     <header className={styles.header}>
-      <Link className={styles.brand} href="/" aria-label="MARCOS home">
-        MARCOS
+      <Link className={styles.brand} href="/" aria-label="MARKOS home">
+        MARKOS
       </Link>
       <nav className={styles.desktopNav} aria-label="Primary navigation">
         {primaryLinks.map(([label, href]) => (
@@ -62,7 +62,7 @@ export function SiteHeader() {
         href={whatsappUrl}
         target="_blank"
         rel="noreferrer"
-        aria-label="Message MARCOS on WhatsApp"
+        aria-label="Message MARKOS on WhatsApp"
       >
         <MessageCircle size={16} aria-hidden />
         <span>WHATSAPP</span>
@@ -82,7 +82,7 @@ export function SiteHeader() {
         className={`${styles.mobilePanel} ${open ? styles.mobilePanelOpen : ""}`}
         aria-label="Mobile navigation"
       >
-        <p>MARCOS / NAVIGATION</p>
+        <p>MARKOS / NAVIGATION</p>
         {primaryLinks.map(([label, href]) => (
           <Link
             key={label}
@@ -112,7 +112,7 @@ export function SiteHeader() {
           prefetch={false}
           onClick={() => setOpen(false)}
         >
-          JOIN MARCOS →
+          JOIN MARKOS →
         </Link>
         <a
           className={styles.mobileWhatsApp}

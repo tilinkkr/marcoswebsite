@@ -31,6 +31,6 @@ describe("CheckoutFlow", () => {
   it("renders the indicator price from shared configuration", () => {
     render(<CheckoutFlow productKind="indicator" qrAsset="/missing.png" />);
     expect(screen.getByText("$50")).toBeInTheDocument();
-    expect(screen.getByText("MARCOS ONE")).toBeInTheDocument();
+    expect(screen.getByText("MARKOS ONE")).toBeInTheDocument();
   });
 });

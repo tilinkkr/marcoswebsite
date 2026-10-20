@@ -132,7 +132,7 @@ export function VisionReveal() {
             scrollTrigger: {
               trigger: section,
               start: "top top",
-              end: () => `+=${window.innerHeight * (isTablet ? 2.35 : 3.2)}`,
+              end: () => `+=${window.innerHeight * (isTablet ? 1.2 : 1.5)}`,
               pin: stage,
               pinSpacing: true,
               // Lenis already eases the physical scroll position. A numeric
@@ -242,7 +242,7 @@ export function VisionReveal() {
               },
               "shift",
             )
-            .addLabel("copy", 0.65)
+            .addLabel("copy", 0.25)
             .to(
               eyebrow,
               { autoAlpha: 1, y: 0, letterSpacing: "0.18em", duration: 0.07 },
@@ -251,17 +251,17 @@ export function VisionReveal() {
             .to(
               headlineLines[0],
               { yPercent: 0, rotateX: 0, duration: 0.09, ease: "power2.out" },
-              "copy+=0.045",
+              "copy+=0.025",
             )
             .to(
               headlineLines[1],
               { yPercent: 0, rotateX: 0, duration: 0.1, ease: "power2.out" },
-              "copy+=0.115",
+              "copy+=0.065",
             )
-            .to(body, { autoAlpha: 1, y: 0, duration: 0.08 }, "copy+=0.16")
-            .to(meta, { autoAlpha: 1, y: 0, duration: 0.06 }, "copy+=0.195")
-            .to(cta, { autoAlpha: 1, y: 0, duration: 0.06 }, "copy+=0.215")
-            .addLabel("hold", 0.88)
+            .to(body, { autoAlpha: 1, y: 0, duration: 0.08 }, "copy+=0.1")
+            .to(meta, { autoAlpha: 1, y: 0, duration: 0.06 }, "copy+=0.13")
+            .to(cta, { autoAlpha: 1, y: 0, duration: 0.06 }, "copy+=0.15")
+            .addLabel("hold", 0.65)
             .to(
               art,
               { scale: isMobile ? 1.024 : 1.092, duration: 0.08 },
@@ -275,7 +275,7 @@ export function VisionReveal() {
               },
               "hold",
             )
-            .addLabel("release", 0.96)
+            .addLabel("release", 0.9)
             .to(
               atmosphere,
               {
@@ -398,7 +398,7 @@ export function VisionReveal() {
         <div className={styles.copy}>
           <p className={styles.eyebrow} data-vision-eyebrow>
             <span aria-hidden />
-            MARCOS / THE TRADING COMMUNITY
+            MARKOS / THE TRADING COMMUNITY
           </p>
           <h2 id="vision-reveal-title" className={styles.headline}>
             <span className={styles.lineMask}>
@@ -411,7 +411,7 @@ export function VisionReveal() {
           <div className={styles.body} data-vision-body>
             <p>Trading alone leaves you with one perspective.</p>
             <p>
-              MARCOS brings traders together through structure, shared analysis,
+              MARKOS brings traders together through structure, shared analysis,
               risk discipline and community — helping members work toward
               becoming funded traders.
             </p>
@@ -425,7 +425,7 @@ export function VisionReveal() {
             prefetch={false}
             data-vision-cta
           >
-            <span>ENTER MARCOS</span>
+            <span>ENTER MARKOS</span>
             <span className={styles.arrow} aria-hidden>
               →
             </span>

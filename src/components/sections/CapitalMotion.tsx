@@ -228,8 +228,8 @@ export function CapitalMotion() {
             return () => mobileTimeline.kill();
           }
 
-          gsap.set(background, { autoAlpha: 0.22, scale: 1 });
-          gsap.set(redLight, { autoAlpha: 0, scale: 0.94, xPercent: 8 });
+          gsap.set(background, { autoAlpha: 0.42, scale: 1 });
+          gsap.set(redLight, { autoAlpha: 0.1, scale: 0.94, xPercent: 8 });
           gsap.set(notes, { autoAlpha: 0, force3D: true });
           gsap.set(transition, {
             autoAlpha: 0.78,
@@ -241,8 +241,11 @@ export function CapitalMotion() {
             rotationY: 14,
             force3D: true,
           });
-          gsap.set([eyebrow, body, meta, cta], { autoAlpha: 0, y: 20 });
-          gsap.set(lines, { yPercent: 112, rotateX: 5, autoAlpha: 1 });
+          // Keep essential copy readable at every scrub position. Motion is
+          // reserved for the artwork, so a fast scroll cannot leave a blank
+          // panel or a headline stranded between masked lines.
+          gsap.set([eyebrow, body, meta, cta], { autoAlpha: 1, y: 0 });
+          gsap.set(lines, { yPercent: 0, rotateX: 0, autoAlpha: 1 });
           gsap.set(ghost, { autoAlpha: 0, xPercent: -2 });
           gsap.set(attraction, { autoAlpha: 1, y: 0 });
           gsap.set(pressure, { autoAlpha: 0, y: 12 });
@@ -459,7 +462,7 @@ export function CapitalMotion() {
               },
               "intensity",
             )
-            .addLabel("approach", 0.56)
+            .addLabel("approach", 0.18)
             .set(
               transition,
               { xPercent: -34, yPercent: 30, scale: 1.05, rotationZ: -12 },
@@ -489,7 +492,7 @@ export function CapitalMotion() {
               },
               "approach+=0.055",
             )
-            .addLabel("wipe", 0.65)
+            .addLabel("wipe", 0.08)
             .to(pressure, { autoAlpha: 0, y: -10, duration: 0.08 }, "wipe")
             .to(
               transition,
@@ -509,7 +512,7 @@ export function CapitalMotion() {
               { autoAlpha: 0, duration: 0.08, stagger: 0.005 },
               "wipe+=0.045",
             )
-            .addLabel("message", 0.7)
+            .addLabel("message", 0.12)
             .to(
               transition,
               {
@@ -541,7 +544,7 @@ export function CapitalMotion() {
               { yPercent: 0, rotateX: 0, duration: 0.055, ease: "power2.out" },
               "message+=0.05",
             )
-            .addLabel("settle", 0.77)
+            .addLabel("settle", 0.2)
             .to(
               lines[2],
               { yPercent: 0, rotateX: 0, duration: 0.05, ease: "power2.out" },
@@ -564,7 +567,7 @@ export function CapitalMotion() {
             .to(body, { autoAlpha: 1, y: 0, duration: 0.045 }, "settle+=0.04")
             .to(meta, { autoAlpha: 1, y: 0, duration: 0.04 }, "settle+=0.06")
             .to(cta, { autoAlpha: 1, y: 0, duration: 0.04 }, "settle+=0.08")
-            .addLabel("release", 0.92)
+            .addLabel("release", 0.64)
             .to(background, { scale: 1.07, duration: 0.08 }, "release")
             .to(redLight, { xPercent: -1.5, duration: 0.08 }, "release");
 
@@ -657,7 +660,7 @@ export function CapitalMotion() {
 
         <div className={styles.copy}>
           <p className={styles.eyebrow} data-capital-eyebrow>
-            MARCOS / DISCIPLINE OVER IMPULSE
+            MARKOS / DISCIPLINE OVER IMPULSE
           </p>
           <h2
             id="capital-motion-title"

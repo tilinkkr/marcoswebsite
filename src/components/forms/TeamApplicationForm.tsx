@@ -42,7 +42,7 @@ export function TeamApplicationForm() {
     } catch {
       setState("error");
       setError(
-        "Applications are temporarily unavailable. Please contact MARCOS on WhatsApp.",
+        "Applications are temporarily unavailable. Please contact MARKOS on WhatsApp.",
       );
     }
   }
@@ -100,7 +100,7 @@ export function TeamApplicationForm() {
         <input id="portfolio_url" name="portfolio_url" type="url" />
       </div>
       <div className={`${styles.field} ${styles.fieldFull}`}>
-        <label htmlFor="why_marcos">Why do you want to work with MARCOS?</label>
+        <label htmlFor="why_marcos">Why do you want to work with MARKOS?</label>
         <textarea id="why_marcos" name="why_marcos" required minLength={30} />
       </div>
       <div className={`${styles.field} ${styles.fieldFull}`}>

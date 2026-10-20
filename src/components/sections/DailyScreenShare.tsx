@@ -76,43 +76,26 @@ export function DailyScreenShare() {
           }
 
           if (isMobile) {
-            gsap.set(words, { autoAlpha: 1, yPercent: 0 });
-            const mobileTimeline = gsap.timeline({
-              scrollTrigger: {
-                trigger: section,
-                start: "top 82%",
-                once: true,
-              },
+            gsap.set([eyebrow, words, body, status, cta], {
+              clearProps: "all",
             });
-
-            mobileTimeline.fromTo(
-              [eyebrow, body, status, cta],
-              { autoAlpha: 0, y: 18 },
-              {
-                autoAlpha: 1,
-                y: 0,
-                duration: 0.48,
-                stagger: 0.07,
-                ease: "power1.out",
-              },
-            );
-            return () => mobileTimeline.kill();
+            return;
           }
 
           gsap.set(bridge, { scaleX: 0, transformOrigin: "left center" });
           gsap.set(backdrop, {
-            autoAlpha: 0.18,
+            autoAlpha: 0.38,
             scale: isLowPower ? 1.02 : 1.08,
             yPercent: isLowPower ? 0 : -3,
           });
           gsap.set(eyebrow, { autoAlpha: 1, y: 0 });
           gsap.set(words, {
-            autoAlpha: 0.38,
-            y: isLowPower ? 8 : 14,
-            rotateX: isLowPower ? 0 : 4,
+            autoAlpha: 1,
+            y: 0,
+            rotateX: 0,
             transformOrigin: "50% 100%",
           });
-          gsap.set([body, status, cta], { autoAlpha: 0, y: 20 });
+          gsap.set([body, status, cta], { autoAlpha: 1, y: 0 });
 
           const timeline = gsap.timeline({
             defaults: { ease: "power1.inOut" },
@@ -151,11 +134,11 @@ export function DailyScreenShare() {
               },
               "statement",
             )
-            .addLabel("proof", 0.55)
+            .addLabel("proof", 0.2)
             .to(body, { autoAlpha: 1, y: 0, duration: 0.13 }, "proof")
             .to(status, { autoAlpha: 1, y: 0, duration: 0.11 }, "proof+=0.09")
             .to(cta, { autoAlpha: 1, y: 0, duration: 0.1 }, "proof+=0.16")
-            .addLabel("settle", 0.9)
+            .addLabel("settle", 0.68)
             .to(
               backdrop,
               {

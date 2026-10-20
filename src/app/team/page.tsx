@@ -10,7 +10,7 @@ import styles from "./team.module.css";
 export const metadata: Metadata = {
   title: "Team",
   description:
-    "Meet the people responsible for MARCOS strategy, operations, technology and trading education.",
+    "Meet the people responsible for MARKOS strategy, operations, technology and trading education.",
   alternates: { canonical: "/team" },
 };
 export default function TeamPage() {
@@ -19,14 +19,14 @@ export default function TeamPage() {
       <SiteHeader />
       <main className={shared.main}>
         <section className={shared.hero}>
-          <p className={shared.eyebrow}>THE PEOPLE BEHIND MARCOS</p>
+          <p className={shared.eyebrow}>THE PEOPLE BEHIND MARKOS</p>
           <h1 className={shared.title}>
             DIFFERENT ROLES.
             <br />
             ONE STANDARD.
           </h1>
           <p className={shared.lede}>
-            MARCOS is built across strategy, operations, technology, content and
+            MARKOS is built across strategy, operations, technology, content and
             community accountability.
           </p>
         </section>
@@ -66,7 +66,7 @@ export default function TeamPage() {
           </div>
         </section>
         <section className={styles.recruit}>
-          <p className={shared.eyebrow}>WANT TO BUILD WITH MARCOS?</p>
+          <p className={shared.eyebrow}>WANT TO BUILD WITH MARKOS?</p>
           <h2>
             IF YOU THINK
             <br />
@@ -79,7 +79,7 @@ export default function TeamPage() {
           <p>
             We&apos;re always open to hearing from traders, builders, creators
             and operators who believe they can contribute meaningfully to
-            MARCOS.
+            MARKOS.
           </p>
           <Link className={shared.cta} href="/team/join">
             SEND A REQUEST →

@@ -11,12 +11,12 @@ import { ModernTrader } from "@/components/sections/ModernTrader";
 import { VisionReveal } from "@/components/sections/VisionReveal";
 
 export const metadata: Metadata = {
-  title: { absolute: "MARCOS | Trade With Process and Risk Discipline" },
+  title: { absolute: "MARKOS | Trade With Process and Risk Discipline" },
   description:
     "Plan, watch, review, and refine with an India-first trading community built around live reasoning, structured education, practical tools, and risk discipline.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "MARCOS | Trade With Process and Risk Discipline",
+    title: "MARKOS | Trade With Process and Risk Discipline",
     description:
       "Learn with people, review decisions honestly, and build a repeatable trading process without guaranteed-return claims or signal hype.",
     url: "/",

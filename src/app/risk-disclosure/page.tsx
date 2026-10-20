@@ -3,7 +3,7 @@ import { EditorialPage } from "@/components/layout/EditorialPage";
 export const metadata: Metadata = {
   title: "Risk Disclosure",
   description:
-    "Read the MARCOS trading-risk, education, community, and no-guaranteed-outcomes disclosure before participating.",
+    "Read the MARKOS trading-risk, education, community, and no-guaranteed-outcomes disclosure before participating.",
   alternates: { canonical: "/risk-disclosure" },
 };
 export default function Risk() {
@@ -11,7 +11,7 @@ export default function Risk() {
     <EditorialPage
       eyebrow="LEGAL / RISK"
       title="RISK IS NOT OPTIONAL."
-      lede="Read this before using MARCOS education, community content or tools."
+      lede="Read this before using MARKOS education, community content or tools."
     >
       <h2>Trading risk</h2>
       <p>
@@ -21,7 +21,7 @@ export default function Risk() {
       </p>
       <h2>No guarantee</h2>
       <p>
-        MARCOS provides education and community. It does not provide legal or
+        MARKOS provides education and community. It does not provide legal or
         tax advice and does not guarantee profit, funding, challenge success or
         payouts.
       </p>

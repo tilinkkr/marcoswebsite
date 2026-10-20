@@ -1,7 +1,7 @@
 export const membershipProduct = {
   slug: "marcos-membership",
   type: "membership",
-  name: "MARCOS Membership",
+  name: "MARKOS Membership",
   originalPrice: 200,
   offerPrice: 100,
   currency: "USD",
@@ -12,7 +12,7 @@ export const membershipProduct = {
 export const indicatorProduct = {
   slug: "marcos-one",
   type: "indicator",
-  name: "MARCOS ONE",
+  name: "MARKOS ONE",
   originalPrice: 100,
   offerPrice: 50,
   currency: "USD",

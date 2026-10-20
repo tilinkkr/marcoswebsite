@@ -154,7 +154,7 @@ export function FinalConversion() {
       <div className={styles.beam} data-final-beam aria-hidden />
       <div className={styles.inner}>
         <div className={styles.processPanel}>
-          <p className={styles.panelLabel}>THE MARCOS LOOP / EVERY SESSION</p>
+          <p className={styles.panelLabel}>THE MARKOS LOOP / EVERY SESSION</p>
           <div className={styles.verbRail}>
             {steps.map(([number, verb, description]) => (
               <article key={verb} data-final-word>
@@ -165,12 +165,12 @@ export function FinalConversion() {
             ))}
           </div>
           <p className={styles.lockup} data-final-lockup aria-hidden>
-            MARCOS.
+            MARKOS.
           </p>
         </div>
 
         <div className={styles.content} data-final-content>
-          <p className={styles.eyebrow}>MARCOS / YOUR MOVE</p>
+          <p className={styles.eyebrow}>MARKOS / YOUR MOVE</p>
           <h2 id="final-conversion-title" className={styles.headline}>
             <span>THE MARKET</span>
             <span>WILL KEEP MOVING.</span>
@@ -183,7 +183,7 @@ export function FinalConversion() {
           </p>
           <div className={styles.actions}>
             <Link className={styles.primary} href="/join" prefetch={false}>
-              JOIN MARCOS — $100 <ArrowRight size={18} aria-hidden />
+              JOIN MARKOS — $100 <ArrowRight size={18} aria-hidden />
             </Link>
             <Link className={styles.secondary} href="#community">
               EXPLORE THE COMMUNITY

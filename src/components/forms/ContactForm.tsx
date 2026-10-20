@@ -43,7 +43,7 @@ export function ContactForm() {
     return (
       <div className={styles.success} role="status">
         <strong>MESSAGE RECEIVED.</strong>
-        <p>Thank you. Your message is now with the MARCOS team.</p>
+        <p>Thank you. Your message is now with the MARKOS team.</p>
       </div>
     );
   return (

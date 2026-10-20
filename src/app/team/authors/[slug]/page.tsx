@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!author) return {};
   return {
     title: `${author.name} — ${author.role}`,
-    description: `${author.name}'s public MARCOS role, editorial focus, and published contributions.`,
+    description: `${author.name}'s public MARKOS role, editorial focus, and published contributions.`,
     alternates: { canonical: authorPath(author.slug) },
   };
 }
@@ -50,7 +50,7 @@ export default async function AuthorPage({ params }: Props) {
       <SiteHeader />
       <main className={shared.main}>
         <section className={`${shared.hero} ${styles.hero}`}>
-          <p className={shared.eyebrow}>MARCOS / AUTHOR ACCOUNTABILITY</p>
+          <p className={shared.eyebrow}>MARKOS / AUTHOR ACCOUNTABILITY</p>
           <h1 className={shared.title}>{author.name.toUpperCase()}</h1>
           <p className={styles.role}>
             {author.role} / {author.focus}
@@ -70,9 +70,9 @@ export default async function AuthorPage({ params }: Props) {
           <div className={styles.statement}>
             <p>
               This page identifies the person&apos;s public role and area of
-              responsibility at MARCOS. It does not claim investment
+              responsibility at MARKOS. It does not claim investment
               performance, regulated status, academic credentials, or years of
-              market experience that MARCOS has not independently evidenced.
+              market experience that MARKOS has not independently evidenced.
             </p>
             <p>
               Every published article must separately link the evidence used to

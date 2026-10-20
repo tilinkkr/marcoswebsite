@@ -1,6 +1,6 @@
 .sequence {
   position: relative;
-  min-height: 215svh;
+  min-height: 145svh;
   color: #eee8dc;
   background: #060807;
 }
@@ -140,7 +140,7 @@
 }
 @media (max-width: 767px) {
   .sequence {
-    min-height: 150svh;
+    min-height: 115svh;
   }
   .stage {
     min-height: 100svh;
@@ -204,7 +204,8 @@
   }
   .stage {
     position: relative;
-    height: 44rem;
+    height: min(44rem, 100svh);
+    min-height: 36rem;
   }
   .stream,
   .core,

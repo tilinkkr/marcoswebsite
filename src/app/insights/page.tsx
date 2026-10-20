@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     "Evidence-led trading education for Indian market participants: risk, prop-firm rules, market analysis, psychology, tax, investing, and scam safety.",
   alternates: { canonical: "/insights" },
   openGraph: {
-    title: "MARCOS Trading Insights",
+    title: "MARKOS Trading Insights",
     description:
       "People-first guides about trading process, risk, Indian markets, and safer participation.",
     url: "/insights",
@@ -40,7 +40,7 @@ export default async function InsightsPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "MARCOS Trading Insights",
+    name: "MARKOS Trading Insights",
     description:
       "Educational articles about trading process, risk, Indian markets, and responsible participation.",
     url: absoluteUrl("/insights"),
@@ -61,7 +61,7 @@ export default async function InsightsPage() {
       <SiteHeader />
       <main className={styles.main}>
         <section className={styles.hero}>
-          <p className={styles.eyebrow}>MARCOS / INSIGHTS</p>
+          <p className={styles.eyebrow}>MARKOS / INSIGHTS</p>
           <h1 className={styles.title}>
             STUDY THE
             <br />
@@ -169,7 +169,7 @@ export default async function InsightsPage() {
           >
             <span>OUR STANDARD</span>
             <p>
-              MARCOS separates fact, interpretation, educational examples, and
+              MARKOS separates fact, interpretation, educational examples, and
               opinion. Nothing here is personalised investment, legal, or tax
               advice. Verify current rules with the relevant regulator,
               exchange, provider, or qualified professional.

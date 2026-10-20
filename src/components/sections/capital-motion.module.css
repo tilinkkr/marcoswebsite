@@ -1,7 +1,7 @@
 .section {
   position: relative;
-  min-height: 285vh;
-  min-height: 285dvh;
+  min-height: 145vh;
+  min-height: 145dvh;
   overflow: clip;
   color: #f1eee7;
   background: #0b0d0c;

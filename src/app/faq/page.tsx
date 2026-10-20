@@ -8,12 +8,12 @@ import local from "./faq.module.css";
 export const metadata: Metadata = {
   title: "FAQ",
   description:
-    "Clear answers about MARCOS, prop-trading evaluations, risk rules, indicators and questions relevant to Indian traders.",
+    "Clear answers about MARKOS, prop-trading evaluations, risk rules, indicators and questions relevant to Indian traders.",
   alternates: { canonical: "/faq" },
   openGraph: {
-    title: "MARCOS Trading Community FAQ",
+    title: "MARKOS Trading Community FAQ",
     description:
-      "Direct answers about MARCOS membership, prop-trading rules, risk, indicators, and responsible participation in India.",
+      "Direct answers about MARKOS membership, prop-trading rules, risk, indicators, and responsible participation in India.",
     url: "/faq",
   },
 };
@@ -23,16 +23,16 @@ const groups = [
     label: "GETTING STARTED",
     items: [
       [
-        "What is MARCOS?",
-        "MARCOS is an education and community platform built around structured learning, live weekday screen shares and deliberate risk process.",
+        "What is MARKOS?",
+        "MARKOS is an education and community platform built around structured learning, live weekday screen shares and deliberate risk process.",
       ],
       [
-        "Can beginners join MARCOS?",
+        "Can beginners join MARKOS?",
         "Yes. Beginners can join, but should expect education and process—not signals, guaranteed outcomes or a shortcut around practice.",
       ],
       [
-        "How do I join MARCOS?",
-        "Use the Join MARCOS page, review the current membership information and risk acknowledgement, then follow the displayed checkout steps.",
+        "How do I join MARKOS?",
+        "Use the Join MARKOS page, review the current membership information and risk acknowledgement, then follow the displayed checkout steps.",
       ],
       [
         "What is included in membership?",
@@ -79,29 +79,29 @@ const groups = [
         "A breach commonly ends the evaluation or account under that provider's terms, even if a profit target was reached earlier.",
       ],
       [
-        "Can MARCOS guarantee that I will pass a prop-firm challenge?",
-        "No. MARCOS cannot guarantee profits, funding, payouts or evaluation success. Trading outcomes depend on risk, execution and rules outside MARCOS's control.",
+        "Can MARKOS guarantee that I will pass a prop-firm challenge?",
+        "No. MARKOS cannot guarantee profits, funding, payouts or evaluation success. Trading outcomes depend on risk, execution and rules outside MARKOS's control.",
       ],
     ],
   },
   {
     id: "marcos",
-    label: "MARCOS",
+    label: "MARKOS",
     items: [
       [
-        "Is MARCOS a prop firm?",
-        "No. MARCOS is a trading education and community platform; it does not present itself as a prop firm.",
+        "Is MARKOS a prop firm?",
+        "No. MARKOS is a trading education and community platform; it does not present itself as a prop firm.",
       ],
       [
-        "Does MARCOS provide trading signals?",
-        "MARCOS focuses on education, reasoning and live process. It does not promise a signal service or guaranteed entries.",
+        "Does MARKOS provide trading signals?",
+        "MARKOS focuses on education, reasoning and live process. It does not promise a signal service or guaranteed entries.",
       ],
       [
-        "Do I need a large personal trading account to learn with MARCOS?",
+        "Do I need a large personal trading account to learn with MARKOS?",
         "No large personal account is required to study process. Any decision to trade or purchase an evaluation should be based on your own circumstances and risk tolerance.",
       ],
       [
-        "How do I contact MARCOS?",
+        "How do I contact MARKOS?",
         "Use the Contact page and select the topic that best matches membership, indicators, partnerships, team or technical support.",
       ],
     ],
@@ -111,7 +111,7 @@ const groups = [
     label: "INDICATORS",
     items: [
       [
-        "Do MARCOS indicators automatically place trades?",
+        "Do MARKOS indicators automatically place trades?",
         "No. Indicators are decision-support tools. They do not replace judgment, risk management or automatically guarantee profitable execution.",
       ],
       [
@@ -126,7 +126,7 @@ const groups = [
     items: [
       [
         "Can Indian traders use prop firms?",
-        "Provider structures, instruments, platforms and payment arrangements vary. Indian traders should verify current Indian law and authoritative regulatory guidance before participating; MARCOS does not provide legal or tax advice.",
+        "Provider structures, instruments, platforms and payment arrangements vary. Indian traders should verify current Indian law and authoritative regulatory guidance before participating; MARKOS does not provide legal or tax advice.",
       ],
       [
         "How should an Indian trader choose a prop firm?",
@@ -154,14 +154,14 @@ export default function FAQPage() {
       <SiteHeader />
       <main className={styles.main}>
         <section className={styles.hero}>
-          <p className={styles.eyebrow}>MARCOS / FAQ</p>
+          <p className={styles.eyebrow}>MARKOS / FAQ</p>
           <h1 className={styles.title}>
             ASK BEFORE
             <br />
             YOU COMMIT.
           </h1>
           <p className={styles.lede}>
-            Answer-first guidance about the system, the risk and what MARCOS
+            Answer-first guidance about the system, the risk and what MARKOS
             does—and does not—provide.
           </p>
         </section>

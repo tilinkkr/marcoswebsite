@@ -41,9 +41,9 @@ export function AdminLogin() {
     <main className={styles.loginShell}>
       <form className={styles.loginCard} onSubmit={submit}>
         <LockKeyhole aria-hidden />
-        <p className={styles.eyebrow}>MARCOS / RESTRICTED OPERATIONS</p>
+        <p className={styles.eyebrow}>MARKOS / RESTRICTED OPERATIONS</p>
         <h1>ADMIN ACCESS</h1>
-        <p>Only the three approved MARCOS administrators can continue.</p>
+        <p>Only the three approved MARKOS administrators can continue.</p>
         <label>
           Username
           <input

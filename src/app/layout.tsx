@@ -10,12 +10,12 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "MARCOS | India-First Trading Community",
-    template: "%s | MARCOS",
+    default: "MARKOS | India-First Trading Community",
+    template: "%s | MARKOS",
   },
   description:
-    "MARCOS helps Indian traders build a repeatable process through structured education, live market learning, risk discipline, practical tools, and community review.",
-  applicationName: "MARCOS",
+    "MARKOS helps Indian traders build a repeatable process through structured education, live market learning, risk discipline, practical tools, and community review.",
+  applicationName: "MARKOS",
   metadataBase: new URL(SITE_URL),
   category: "finance",
   keywords: [

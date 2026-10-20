@@ -4,7 +4,7 @@ import { getBlogs } from "@/lib/blogs";
 import { absoluteUrl } from "@/lib/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const siteUpdated = new Date("2026-09-21T00:00:00.000Z");
+  const siteUpdated = new Date("2026-10-20T00:00:00.000Z");
   const routes = [
     "",
     "/join",
@@ -13,6 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/team/join",
     "/more",
     "/story",
+    "/method",
     "/contact",
     "/insights",
     "/faq",
