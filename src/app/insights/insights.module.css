@@ -12,6 +12,14 @@
   font: 600 0.62rem var(--font-mono-family);
   letter-spacing: 0.13em;
 }
+.noPosts {
+  padding-top: clamp(2rem, 4vw, 4rem);
+}
+.noPosts .guideHub {
+  margin-top: 0;
+  border-top: 0;
+  padding-top: 0;
+}
 .featured {
   display: grid;
   grid-template-columns: 1fr minmax(22rem, 0.85fr);
@@ -107,95 +115,131 @@
   font: 500 0.6rem var(--font-mono-family);
   letter-spacing: 0.08em;
 }
-.roadmap {
+.guideHub {
   margin-top: clamp(5rem, 10vw, 10rem);
   border-top: 1px solid rgb(231 216 201 / 16%);
   padding-top: clamp(2.5rem, 5vw, 5rem);
 }
-.roadmap > header {
+.guideHub > header {
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
   gap: clamp(2rem, 7vw, 8rem);
   align-items: end;
 }
-.roadmap header span,
-.roadmapCard span,
+.guideHub header span,
+.guideCard > span,
 .editorialNote > span {
   color: #c97941;
   font: 600 0.65rem var(--font-mono-family);
   letter-spacing: 0.15em;
 }
-.roadmap header h2 {
+.guideHub header h2 {
   max-width: 52rem;
   margin: 1rem 0 0;
   font: 600 clamp(2.6rem, 5vw, 5.7rem) / 0.92 var(--font-display-family);
   letter-spacing: -0.055em;
 }
-.roadmap header > p {
+.guideHub header > p {
   margin: 0;
   color: rgb(239 228 216 / 62%);
   line-height: 1.7;
 }
-.roadmapGrid {
+.guideGrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1px;
+  gap: 1rem;
   margin-top: clamp(3rem, 6vw, 6rem);
-  background: rgb(221 182 148 / 14%);
 }
-.roadmapCard {
-  display: grid;
-  grid-template-columns: minmax(8.5rem, 0.72fr) minmax(0, 1.28fr);
-  min-height: 13rem;
-  background: #0a0d0b;
-}
-.imagePlaceholder {
-  position: relative;
+.guideCard {
   display: flex;
-  aspect-ratio: 4 / 3;
+  min-height: 20rem;
   flex-direction: column;
+  align-items: flex-start;
+  border: 1px solid rgb(221 182 148 / 14%);
+  padding: clamp(1.35rem, 2.5vw, 2.25rem);
+  background: #0a0d0b;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+.guideCard:hover {
+  border-color: rgb(201 121 65 / 48%);
+  background: #0c100d;
+}
+.guideTopline {
+  display: flex;
+  width: 100%;
   justify-content: space-between;
-  overflow: hidden;
-  padding: 1rem;
-  color: rgb(226 205 185 / 38%);
-  background:
-    linear-gradient(
-      135deg,
-      transparent 48%,
-      rgb(184 109 74 / 18%) 49%,
-      transparent 51%
-    ),
-    radial-gradient(circle at 70% 30%, rgb(166 41 50 / 22%), transparent 45%),
-    #101310;
+  color: #c97941;
+  font: 600 0.62rem var(--font-mono-family);
+  letter-spacing: 0.14em;
 }
-.imagePlaceholder::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border: 1px solid rgb(221 182 148 / 12%);
+.guideTopline span + span {
+  color: rgb(235 220 205 / 38%);
 }
-.imagePlaceholder span {
-  color: rgb(226 205 185 / 38%);
-  font-size: 0.55rem;
-}
-.imagePlaceholder strong {
-  align-self: flex-end;
-  font: 500 clamp(3.5rem, 6vw, 6rem) / 0.8 var(--font-display-family);
-  letter-spacing: -0.06em;
-}
-.roadmapCopy {
-  align-self: center;
-  padding: clamp(1.2rem, 2.5vw, 2rem);
-}
-.roadmapCopy h3 {
-  margin: 0.8rem 0 1.5rem;
-  font: 600 clamp(1.45rem, 2vw, 2.15rem) / 1 var(--font-display-family);
+.guideCard h3 {
+  margin: 2rem 0 0.8rem;
+  font: 600 clamp(1.55rem, 2.2vw, 2.25rem) / 1.03 var(--font-display-family);
   letter-spacing: -0.035em;
 }
-.roadmapCopy p {
+.guideCard p {
+  margin: 0 0 1.5rem;
+  color: rgb(239 228 216 / 66%);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+.guideCard a,
+.indiaContext a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: auto;
+  color: #d7956e;
+  font: 700 0.68rem var(--font-body-family);
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+.guideCard a:hover,
+.guideCard a:focus-visible,
+.indiaContext a:hover,
+.indiaContext a:focus-visible {
+  color: #ffd2ad;
+}
+.guideCard a:focus-visible,
+.indiaContext a:focus-visible {
+  outline: 2px solid #c97941;
+  outline-offset: 4px;
+}
+.indiaContext {
+  display: grid;
+  grid-template-columns: minmax(13rem, 0.8fr) minmax(0, 1.4fr) auto;
+  gap: clamp(1.25rem, 3vw, 3rem);
+  align-items: center;
+  margin-top: 1rem;
+  border: 1px solid rgb(221 182 148 / 14%);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  background:
+    radial-gradient(circle at 0% 100%, rgb(184 109 74 / 10%), transparent 45%),
+    #0c0f0d;
+}
+.indiaContext > div > span {
+  color: #c97941;
+  font: 600 0.62rem var(--font-mono-family);
+  letter-spacing: 0.14em;
+}
+.indiaContext h3 {
+  margin: 0.8rem 0 0;
+  font: 600 clamp(1.5rem, 2vw, 2rem) / 1.04 var(--font-display-family);
+}
+.indiaContext p {
   margin: 0;
-  color: rgb(239 228 216 / 46%);
-  font-size: 0.78rem;
+  color: rgb(239 228 216 / 62%);
+  font-size: 0.86rem;
+  line-height: 1.7;
+}
+.indiaContext a {
+  margin-top: 0;
+  white-space: nowrap;
 }
 .editorialNote {
   display: grid;
@@ -237,17 +281,21 @@
   .principles span {
     font-size: 0.56rem;
   }
-  .roadmap > header,
-  .roadmapGrid,
+  .guideHub > header,
+  .guideGrid,
+  .indiaContext,
   .editorialNote {
     grid-template-columns: 1fr;
   }
-  .roadmapCard {
-    grid-template-columns: 7.75rem minmax(0, 1fr);
-    min-height: 11rem;
+  .guideCard {
+    min-height: 0;
   }
-  .imagePlaceholder {
-    aspect-ratio: auto;
+  .guideCard h3 {
+    margin-top: 1.35rem;
+  }
+  .indiaContext a {
+    margin-top: 0.25rem;
+    white-space: normal;
   }
   .editorialNote {
     align-items: start;

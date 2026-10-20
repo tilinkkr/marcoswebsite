@@ -8,29 +8,51 @@ import { getBlogs } from "@/lib/blogs";
 import { absoluteUrl, safeJsonLd } from "@/lib/site";
 import local from "./insights.module.css";
 export const metadata: Metadata = {
-  title: "Trading Insights for Indian Traders",
+  title: "Trading Risk, Process & Prop-Firm Guides for India",
   description:
-    "Evidence-led trading education for Indian market participants: risk, prop-firm rules, market analysis, psychology, tax, investing, and scam safety.",
+    "Practical, answer-first guides for Indian traders on drawdown rules, prop-firm evaluations, trade review, indicators and risk-aware decision-making.",
   alternates: { canonical: "/insights" },
   openGraph: {
     title: "MARKOS Trading Insights",
     description:
-      "People-first guides about trading process, risk, Indian markets, and safer participation.",
+      "Practical guides to trading process, risk, evaluation rules and Indian market participation.",
     url: "/insights",
   },
 };
 
-const plannedGuides = [
-  ["START HERE", "India Stock-Market Starter Kit"],
-  ["LONG-TERM", "SIP, Mutual Funds and Index Investing"],
-  ["RISK", "The Reality and Risks of F&O Trading in India"],
-  ["PROCESS", "Trading Psychology and Risk Management"],
-  ["TAX", "Stock-Market Tax, F&O, STCG, LTCG and ITR"],
-  ["IPOS", "ASBA, UPI Mandates and Allotment"],
-  ["COMPARE", "ETF vs Index Fund vs Mutual Fund vs Direct Stocks"],
-  ["ANALYSIS", "How to Analyse Indian Companies Without Guessing"],
-  ["CHARTS", "Technical Analysis Without Selling Signals"],
-  ["SAFETY", "Trading Scams, Telegram Tips and WhatsApp Safety"],
+const practicalGuides = [
+  {
+    category: "EVALUATION CHECKLIST",
+    question: "What should I check before paying for a prop-firm evaluation?",
+    answer:
+      "Read the current rules before the price: daily and total loss limits, how drawdown is calculated, payout conditions, prohibited strategies, data or reset fees, and what happens after a breach. Rules differ by provider, so verify them in the provider’s own terms and never treat an evaluation as guaranteed income.",
+    href: "/faq",
+    action: "REVIEW COMMON QUESTIONS",
+  },
+  {
+    category: "RISK BASICS",
+    question: "What is the difference between daily loss and maximum drawdown?",
+    answer:
+      "A daily loss limit usually caps losses within a defined trading day; maximum drawdown limits losses across a longer period or from a specified balance or equity peak. Providers define timing, open-position treatment and reset rules differently—check the exact calculation, not just the headline percentage.",
+    href: "/risk-disclosure",
+    action: "READ THE RISK DISCLOSURE",
+  },
+  {
+    category: "TRADE REVIEW",
+    question: "How can I review a trading session without copying trades?",
+    answer:
+      "Compare the plan with the decisions actually made: market context, entry reason, invalidation, position risk, exit and any rule breaks. Judge the quality of the process separately from the result; one profitable trade does not prove a sound method, and one loss does not automatically disprove it.",
+    href: "/method",
+    action: "SEE THE MARKOS METHOD",
+  },
+  {
+    category: "INDICATOR EDUCATION",
+    question: "Do trading indicators tell you when to buy or sell?",
+    answer:
+      "An indicator transforms price or volume data into a view that may help describe conditions; it cannot know what happens next or remove risk. Learn its inputs, lag and failure modes, test it in context, and define risk independently rather than treating an indicator as a guaranteed signal.",
+    href: "/indicators",
+    action: "EXPLORE INDICATOR TOOLS",
+  },
 ] as const;
 
 export default async function InsightsPage() {
@@ -77,7 +99,9 @@ export default async function InsightsPage() {
             <span>NO GUARANTEED RETURNS</span>
           </div>
         </section>
-        <section className={styles.section}>
+        <section
+          className={`${styles.section} ${posts.length === 0 ? local.noPosts : ""}`}
+        >
           {featured ? (
             <Link
               className={local.featured}
@@ -101,9 +125,7 @@ export default async function InsightsPage() {
                 sizes="(max-width: 767px) 100vw, 46vw"
               />
             </Link>
-          ) : (
-            <p>No published insights yet.</p>
-          )}
+          ) : null}
           {remaining.length > 0 && (
             <div className={local.grid}>
               {remaining.map((post) => (
@@ -131,36 +153,58 @@ export default async function InsightsPage() {
             </div>
           )}
 
-          <section className={local.roadmap} aria-labelledby="roadmap-title">
+          <section className={local.guideHub} aria-labelledby="guide-title">
             <header>
               <div>
-                <span>EDITORIAL DESK / NEXT</span>
-                <h2 id="roadmap-title">
-                  THE KNOWLEDGE BASE WE&apos;RE BUILDING.
-                </h2>
+                <span>MARKOS FIELD NOTES / INDIA</span>
+                <h2 id="guide-title">PRACTICAL ANSWERS. CLEAR RISK.</h2>
               </div>
               <p>
-                Upcoming guides are shown as an editorial roadmap—not published
-                advice. Each article will require source verification, human
-                review, visible limitations, and a current risk note before it
-                goes live.
+                Start with the question, understand the limits, then verify the
+                current rules that apply to you. These educational guides are
+                written for Indian traders—not as personalised financial advice.
               </p>
             </header>
-            <div className={local.roadmapGrid}>
-              {plannedGuides.map(([category, title], index) => (
-                <article className={local.roadmapCard} key={title}>
-                  <div className={local.imagePlaceholder} aria-hidden="true">
-                    <span>IMAGE PLACEHOLDER</span>
-                    <strong>{String(index + 1).padStart(2, "0")}</strong>
+            <div className={local.guideGrid}>
+              {practicalGuides.map((guide, index) => (
+                <article className={local.guideCard} key={guide.category}>
+                  <div className={local.guideTopline}>
+                    <span>{guide.category}</span>
+                    <span aria-hidden="true">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
                   </div>
-                  <div className={local.roadmapCopy}>
-                    <span>{category} / IN REVIEW</span>
-                    <h3>{title}</h3>
-                    <p>Author assigned after evidence and expertise review.</p>
-                  </div>
+                  <h3>{guide.question}</h3>
+                  <p>{guide.answer}</p>
+                  <Link href={guide.href}>
+                    {guide.action} <span aria-hidden="true">↗</span>
+                  </Link>
                 </article>
               ))}
             </div>
+            <aside className={local.indiaContext}>
+              <div>
+                <span>INDIA / INVESTOR CONTEXT</span>
+                <h3>
+                  Good market information starts with the right questions.
+                </h3>
+              </div>
+              <p>
+                SEBI&apos;s 2025 Investor Survey reports that market insights
+                were an information need for 81% of surveyed investors; risk
+                factors were named by 35%. These are survey findings—not
+                keyword-volume data or a prediction of returns. Use them as a
+                reminder to examine both opportunity and downside.
+              </p>
+              <a
+                href="https://www.sebi.gov.in/sebi_data/commondocs/jan-2026/Investor%20Survey%202025%20Main%20Report.pdf"
+                target="_blank"
+                rel="noreferrer"
+              >
+                READ SEBI&apos;S INVESTOR SURVEY{" "}
+                <span aria-hidden="true">↗</span>
+              </a>
+            </aside>
           </section>
 
           <aside

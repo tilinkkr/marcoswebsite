@@ -11,9 +11,9 @@ import { getGSAP } from "@/lib/animations/gsap";
 import styles from "./daily-screen-share.module.css";
 
 const headlineLines = [
-  ["WE", "SHARE", "OUR"],
-  ["TRADOVATE", "SCREEN"],
-  ["LIVE", "ON", "KICK."],
+  ["WATCH", "OUR"],
+  ["LIVE", "TRADING"],
+  ["SESSION."],
   ["EVERY", "WEEKDAY."],
 ];
 
@@ -194,20 +194,13 @@ export function DailyScreenShare() {
           <h2
             id="daily-screen-share-title"
             className={styles.headline}
-            aria-label="We share our Tradovate screen live on Kick. Every weekday."
+            aria-label="Watch our live trading session every weekday."
           >
             {headlineLines.map((line, lineIndex) => (
               <span className={styles.wordLine} key={lineIndex} aria-hidden>
                 {line.map((word) => (
                   <span className={styles.wordMask} key={word}>
-                    <span
-                      className={
-                        word === "KICK." ? styles.platformWord : undefined
-                      }
-                      data-share-word
-                    >
-                      {word}
-                    </span>
+                    <span data-share-word>{word}</span>
                   </span>
                 ))}
               </span>
@@ -215,20 +208,17 @@ export function DailyScreenShare() {
           </h2>
 
           <div className={styles.body} data-share-body>
-            <p>No delayed recaps. No hiding the difficult sessions.</p>
             <p>
-              Watch the Tradovate chart we trade — entries, exits, stops, and
-              the reasoning behind each decision — shared live on Kick every
-              weekday.
+              Follow the session as it unfolds: market context, entries, exits,
+              stops, and the reasoning behind each decision. Educational
+              observation—not a signal to copy.
             </p>
           </div>
 
           <div className={styles.status} data-share-status>
             <Radio size={15} strokeWidth={1.8} aria-hidden />
             <span className={styles.live}>LIVE</span>
-            <span>TRADOVATE</span>
-            <i aria-hidden />
-            <span>KICK</span>
+            <span>TRADING SESSION</span>
             <i aria-hidden />
             <span>WEEKDAYS</span>
           </div>

@@ -22,7 +22,7 @@ const principles = [
     phase: "WATCH",
     title: "SEE DECISIONS LIVE",
     description:
-      "Watch our Tradovate screen on Kick and hear entries, exits, stops and market decisions explained as they happen.",
+      "Watch the live trading session and hear market context, entries, exits, stops and decisions explained as they happen.",
     outcome: "REAL-TIME CONTEXT",
   },
   {

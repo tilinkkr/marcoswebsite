@@ -133,10 +133,6 @@
   will-change: transform;
 }
 
-.platformWord {
-  color: #d3a17b;
-}
-
 .body {
   width: min(39rem, 82vw);
   margin: clamp(1.4rem, 2.5vw, 2.4rem) auto 0;
