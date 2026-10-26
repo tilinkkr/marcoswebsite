@@ -8,7 +8,7 @@ import { getWhatsAppUrl } from "@/lib/whatsapp";
 import local from "./faq.module.css";
 
 export const metadata: Metadata = {
-  title: "Forex, Prop-Firm & Trading FAQs for India | MARKOS",
+  title: "Forex, Prop-Firm & Trading FAQs for India",
   description:
     "Clear answers on forex pairs and rules in India, futures vs forex, crypto questions, broker checks and prop-firm evaluations—with official resources.",
   alternates: { canonical: "/faq" },
