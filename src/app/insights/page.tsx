@@ -113,6 +113,9 @@ export default async function InsightsPage() {
                 <p>{featured.excerpt}</p>
                 <small>
                   {featured.author_name} · {featured.reading_time} MIN READ ·
+                  {featured.publication_mode === "automated"
+                    ? " AI-ASSISTED · NOT HUMAN REVIEWED ·"
+                    : ""}
                   UPDATED{" "}
                   {new Date(featured.updated_at).toLocaleDateString("en-IN")}
                 </small>
@@ -146,6 +149,9 @@ export default async function InsightsPage() {
                   <p>{post.excerpt}</p>
                   <small>
                     {post.reading_time} MIN READ ·{" "}
+                    {post.publication_mode === "automated"
+                      ? "AI-ASSISTED · NOT HUMAN REVIEWED · "
+                      : ""}
                     {new Date(post.updated_at).toLocaleDateString("en-IN")}
                   </small>
                 </Link>

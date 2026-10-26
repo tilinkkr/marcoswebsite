@@ -1,6 +1,6 @@
 # MARCOS evidence-led editorial workflow
 
-This is the operating standard for MARCOS Insights. It turns the editorial brief into a repeatable human-reviewed process. Automation may assist research, comparison, drafting, and QA; it may not invent evidence, verify a person by inference, or publish without a human attestation.
+This is the operating standard for MARCOS Insights. Human-reviewed publishing remains available; a separate automated route may publish eligible articles only with explicit AI attribution, recorded checks, current source links, and no claim of human review. Automation may not invent evidence, verify a person by inference, or use a personal byline without that person's approval.
 
 ## 1. Brief and search intent
 
@@ -48,7 +48,7 @@ The article must:
 
 Unresolved notes such as `[VERIFY]`, `[AUTHOR PROOF REQUIRED]`, `[SOURCE REQUIRED]`, and `[INSERT TOPIC]` are allowed in drafts and review copies. The application blocks them from publication.
 
-## 5. Human QA and status transitions
+## 5. Review routes and status transitions
 
 ### Draft
 
@@ -66,9 +66,15 @@ The assigned editor checks:
 - mobile readability, links, images, and accessibility;
 - plagiarism, unsupported certainty, and accidental advice language.
 
-### Published
+### Human-reviewed publication
 
 Publication is rejected unless all evidence fields are complete, at least three source URLs are present, no unresolved markers remain, and an admin checks the human-attestation box for that exact version. Material edits to a published article require fresh attestation and update the review date.
+
+### Automated publication
+
+Automation may publish only through `publication_mode='automated'`, with the byline `MARKOS AI Editorial Desk`; it must leave `editorial_verified=false`. It records the review timestamp, a machine-readable report, and checks for source validity, claim support, risk language, and the absence of personal bylines. At least three distinct primary or authoritative source URLs, methodology, limitations, and conflicts disclosure are required. The public page must state that the article is AI-assisted and was not reviewed by a human. No article may imply a person's endorsement, expertise, trading record, or personal experience unless that person supplied and approved it. Unsupported or time-sensitive provider claims stay unpublished. Automated checking is not a guarantee of correctness; readers are directed to verify current terms at the source.
+
+Material edits invalidate the previous automated report and require a new check before publication.
 
 ### Archived
 

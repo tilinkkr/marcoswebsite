@@ -44,10 +44,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ArticlePage({ params }: Props) {
   const post = await getBlog((await params).slug);
   if (!post) notFound();
-  const author = getAuthor(post.author_slug);
-  if (!author) notFound();
+  const isAutomated = post.publication_mode === "automated";
+  const author = isAutomated ? null : getAuthor(post.author_slug ?? "");
+  if (!isAutomated && !author) notFound();
   const articleUrl = absoluteUrl(`/insights/${post.slug}`);
-  const authorUrl = absoluteUrl(authorPath(author.slug));
+  const authorUrl = author ? absoluteUrl(authorPath(author.slug)) : null;
+  const automatedSummary = post.automated_review_report.summary;
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -58,17 +60,27 @@ export default async function ArticlePage({ params }: Props) {
         description: post.seo_description,
         url: articleUrl,
         mainEntityOfPage: { "@id": articleUrl },
-        author: {
-          "@type": "Person",
-          "@id": `${authorUrl}#person`,
-          name: author.name,
-          url: authorUrl,
-        },
-        reviewedBy: {
-          "@type": "Person",
-          name: post.reviewer_name,
-          url: post.reviewer_proof_url,
-        },
+        author: author
+          ? {
+              "@type": "Person",
+              "@id": `${authorUrl}#person`,
+              name: author.name,
+              url: authorUrl,
+            }
+          : {
+              "@type": "Organization",
+              name: "MARKOS AI Editorial Desk",
+              url: absoluteUrl("/insights"),
+            },
+        ...(isAutomated
+          ? {}
+          : {
+              reviewedBy: {
+                "@type": "Person",
+                name: post.reviewer_name,
+                url: post.reviewer_proof_url,
+              },
+            }),
         datePublished: post.published_at,
         dateModified: post.updated_at,
         image: absoluteUrl(post.hero_image),
@@ -120,11 +132,19 @@ export default async function ArticlePage({ params }: Props) {
           </p>
           <h1>{post.title}</h1>
           <div>
-            <Link href={authorPath(author.slug)}>
-              {author.name}
-              <br />
-              <span>{author.role}</span>
-            </Link>
+            {author ? (
+              <Link href={authorPath(author.slug)}>
+                {author.name}
+                <br />
+                <span>{author.role}</span>
+              </Link>
+            ) : (
+              <p>
+                MARKOS AI Editorial Desk
+                <br />
+                <span>AI-assisted educational content; no human review</span>
+              </p>
+            )}
             <p>
               {post.published_at && (
                 <time dateTime={post.published_at}>
@@ -140,7 +160,7 @@ export default async function ArticlePage({ params }: Props) {
                 <>
                   <br />
                   <time dateTime={post.last_reviewed_at}>
-                    Reviewed{" "}
+                    {isAutomated ? "Automated checks run " : "Reviewed "}
                     {new Date(post.last_reviewed_at).toLocaleDateString(
                       "en-IN",
                     )}
@@ -165,9 +185,15 @@ export default async function ArticlePage({ params }: Props) {
             <p>{post.methodology}</p>
           </div>
           <div>
-            <span>HUMAN REVIEW</span>
+            <span>
+              {isAutomated ? "AUTOMATED CONTENT CHECK" : "HUMAN REVIEW"}
+            </span>
             <p>
-              Reviewed by {post.reviewer_name}. {post.reviewer_qualification}
+              {isAutomated
+                ? typeof automatedSummary === "string"
+                  ? automatedSummary
+                  : "Automated source, claim, risk-language, and attribution checks passed. No human editor reviewed this article."
+                : `Reviewed by ${post.reviewer_name}. ${post.reviewer_qualification}`}
             </p>
           </div>
           <div>
@@ -187,36 +213,44 @@ export default async function ArticlePage({ params }: Props) {
             <p>ARTICLE RECORD</p>
             <h2 id="evidence-title">Evidence and accountability</h2>
             <p>
-              These links support the article&apos;s named authorship and
-              review. They are evidence to inspect, not a guarantee of market
-              outcomes.
+              {isAutomated
+                ? "These primary or authoritative links were checked by an automated editorial workflow. Automated checks can miss errors; verify current rules directly. They are not a guarantee of market outcomes."
+                : "These links support the article's named authorship and review. They are evidence to inspect, not a guarantee of market outcomes."}
             </p>
           </div>
           <div className={local.evidenceGrid}>
-            <article>
-              <span>AUTHOR EVIDENCE</span>
-              <h3>{author.name}</h3>
-              <p>{author.focus}</p>
-              <a
-                href={post.author_proof_url}
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                Inspect supporting profile ↗
-              </a>
-            </article>
-            <article>
-              <span>REVIEWER EVIDENCE</span>
-              <h3>{post.reviewer_name}</h3>
-              <p>{post.reviewer_qualification}</p>
-              <a
-                href={post.reviewer_proof_url}
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                Inspect reviewer evidence ↗
-              </a>
-            </article>
+            {author && (
+              <>
+                <article>
+                  <span>AUTHOR EVIDENCE</span>
+                  <h3>{author.name}</h3>
+                  <p>{author.focus}</p>
+                  {post.author_proof_url && (
+                    <a
+                      href={post.author_proof_url}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
+                      Inspect supporting profile ↗
+                    </a>
+                  )}
+                </article>
+                <article>
+                  <span>REVIEWER EVIDENCE</span>
+                  <h3>{post.reviewer_name}</h3>
+                  <p>{post.reviewer_qualification}</p>
+                  {post.reviewer_proof_url && (
+                    <a
+                      href={post.reviewer_proof_url}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
+                      Inspect reviewer evidence ↗
+                    </a>
+                  )}
+                </article>
+              </>
+            )}
             <article className={local.sources}>
               <span>PRIMARY / AUTHORITATIVE SOURCES</span>
               <ol>

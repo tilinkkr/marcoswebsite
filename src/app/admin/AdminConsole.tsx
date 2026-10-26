@@ -30,6 +30,7 @@ type Blog = {
   author_name: string;
   author_slug: string;
   author_proof_url: string | null;
+  publication_mode: "human" | "automated";
   status: "draft" | "review" | "published" | "archived";
   seo_title: string;
   seo_description: string;
@@ -310,10 +311,11 @@ export function AdminConsole({
             )}
           </div>
           <p className={styles.editorGuide}>
-            Drafts may be incomplete. Publishing requires a matched MARKOS
-            byline, public author and reviewer evidence, three authoritative
-            sources, visible method and limitations, a conflicts disclosure, and
-            fresh human attestation.
+            Manual publishing requires a matched MARKOS byline, public author
+            and reviewer evidence, three authoritative sources, visible method
+            and limitations, a conflicts disclosure, and fresh human
+            attestation. Daily campaign articles use a separate AI-labeled
+            workflow and are never presented as human-reviewed.
           </p>
           <form
             className={styles.editor}
@@ -559,6 +561,11 @@ export function AdminConsole({
                 </div>
                 <div>
                   <code>{blog.status}</code>
+                  <small>
+                    {blog.publication_mode === "automated"
+                      ? "AI reviewed — no human review"
+                      : "Human editorial route"}
+                  </small>
                   <small>
                     {new Date(blog.updated_at).toLocaleDateString("en-IN")}
                   </small>

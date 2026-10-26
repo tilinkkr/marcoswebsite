@@ -10,8 +10,11 @@ export type BlogPost = {
   content_markdown: string;
   hero_image: string;
   author_name: string;
-  author_slug: string;
-  author_proof_url: string;
+  author_slug: string | null;
+  author_proof_url: string | null;
+  publication_mode: "human" | "automated";
+  automated_reviewed_at: string | null;
+  automated_review_report: Record<string, unknown>;
   status: "draft" | "review" | "published" | "archived";
   published_at: string | null;
   updated_at: string;
@@ -28,7 +31,7 @@ export type BlogPost = {
   reading_time: number;
   reviewer_name: string;
   reviewer_qualification: string;
-  reviewer_proof_url: string;
+  reviewer_proof_url: string | null;
   methodology: string;
   limitations: string;
   conflicts_disclosure: string;
@@ -43,7 +46,9 @@ const getPublishedBlogs = unstable_cache(
       .from("blog_posts")
       .select("*")
       .eq("status", "published")
-      .eq("editorial_verified", true)
+      .or(
+        "editorial_verified.eq.true,and(publication_mode.eq.automated,automated_reviewed_at.not.is.null)",
+      )
       .order("published_at", { ascending: false });
     if (error || !data?.length) return [];
     return data as BlogPost[];
@@ -66,7 +71,9 @@ export async function getBlog(requested: string): Promise<BlogPost | null> {
         .select("*")
         .eq("slug", requested)
         .eq("status", "published")
-        .eq("editorial_verified", true)
+        .or(
+          "editorial_verified.eq.true,and(publication_mode.eq.automated,automated_reviewed_at.not.is.null)",
+        )
         .maybeSingle();
       if (error || !data) return null;
       return data as BlogPost;
