@@ -55,6 +55,44 @@ const practicalGuides = [
   },
 ] as const;
 
+const indiaSearchGuides = [
+  {
+    question: "What is forex trading in India, and how does it work?",
+    answer:
+      "Forex trading is the exchange or trading of currency instruments. For Indian residents, the instrument, purpose, authorised counterparty and trading venue matter; an overseas app offering a familiar currency pair is not automatically permitted. Start by checking the RBI’s current guidance and the recognised exchange or authorised provider.",
+    href: "https://www.rbi.org.in/scripts/FS_FAQs.aspx?Id=146",
+    label: "RBI FOREX FAQ",
+  },
+  {
+    question: "Which forex pairs can Indian residents trade?",
+    answer:
+      "There is no safe shortcut such as assuming every major pair on an international platform is available to Indian residents. RBI guidance says permitted electronic forex transactions must use RBI-authorised electronic platforms or recognised exchanges, subject to applicable terms. Check the current contract specifications and rules with the exchange and an authorised intermediary.",
+    href: "https://www.rbi.org.in/scripts/FS_FAQs.aspx?Id=146",
+    label: "CHECK RBI GUIDANCE",
+  },
+  {
+    question: "Futures vs forex: what is the difference for a beginner?",
+    answer:
+      "A futures contract is an exchange-traded, standardised agreement; ‘forex’ can refer to several different products, venues and counterparties. Compare contract size, expiry, margin, trading hours, costs, liquidity and the rules that apply to your location. The label alone does not tell you which is suitable.",
+    href: "https://www.nseindia.com/static/products-services/currency-derivatives-contract-specification-inr",
+    label: "EXPLORE EXCHANGE MARKETS",
+  },
+  {
+    question: "Is crypto trading legal in India?",
+    answer:
+      "Avoid a one-word legal answer: crypto assets, payment use, exchange services, tax treatment and cross-border activity raise different questions. The RBI cautions users about risks, and the Income Tax Department publishes separate virtual-digital-asset tax guidance. Neither tax rules nor an app’s availability by itself confirms that a particular activity is authorised or suitable; check current official requirements and qualified advice.",
+    href: "https://www.incometax.gov.in/iec/foportal/help/FileITR-2Online-FAQ",
+    label: "INCOME TAX VDA FAQ",
+  },
+  {
+    question: "How do I verify a broker in India?",
+    answer:
+      "Check the exact legal entity, registration details, exchange membership and product permission on the regulator or exchange’s own records. Do not rely on an app-store listing, influencer endorsement, search ad or a broker’s claim that it is ‘not banned’. RBI’s forex alert list is explicitly not exhaustive, so absence from that list is not proof of authorisation.",
+    href: "https://www.rbi.org.in/scripts/FS_FAQs.aspx?Id=146",
+    label: "RBI AUTHORISATION CHECKS",
+  },
+] as const;
+
 export default async function InsightsPage() {
   const posts = await getBlogs();
   const featured = posts.find((x) => x.featured) ?? posts[0];
@@ -211,6 +249,45 @@ export default async function InsightsPage() {
                 <span aria-hidden="true">↗</span>
               </a>
             </aside>
+          </section>
+
+          <section
+            className={local.guideHub}
+            aria-labelledby="india-guide-title"
+          >
+            <header>
+              <div>
+                <span>INDIA / SEARCH QUESTIONS</span>
+                <h2 id="india-guide-title">
+                  FOREX, FUTURES &amp; MARKET RULES
+                </h2>
+              </div>
+              <p>
+                Straight answers to common beginner questions, with official
+                sources for rules that can change. Search suggestions show
+                possible questions—not verified search volume or legal advice.
+              </p>
+            </header>
+            <div className={local.guideGrid}>
+              {indiaSearchGuides.map((guide) => (
+                <article className={local.guideCard} key={guide.question}>
+                  <div className={local.guideTopline}>
+                    <span>INDIA / BEGINNER GUIDE</span>
+                  </div>
+                  <h3>{guide.question}</h3>
+                  <p>{guide.answer}</p>
+                  <a href={guide.href} target="_blank" rel="noreferrer">
+                    {guide.label} <span aria-hidden="true">↗</span>
+                  </a>
+                </article>
+              ))}
+            </div>
+            <p>
+              Looking for a comparison of{" "}
+              <Link href="/insights">prop firms for Indian traders</Link>?
+              Compare current written terms rather than relying on an unverified
+              “best” or “top” ranking.
+            </p>
           </section>
 
           <aside

@@ -3,17 +3,19 @@ import styles from "@/app/public-pages.module.css";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { absoluteUrl, safeJsonLd } from "@/lib/site";
+import { WhatsAppLink } from "@/components/layout/WhatsAppLink";
+import { getWhatsAppUrl } from "@/lib/whatsapp";
 import local from "./faq.module.css";
 
 export const metadata: Metadata = {
-  title: "FAQ",
+  title: "Forex, Prop-Firm & Trading FAQs for India | MARKOS",
   description:
-    "Clear answers about MARKOS, prop-trading evaluations, risk rules, indicators and questions relevant to Indian traders.",
+    "Clear answers on forex pairs and rules in India, futures vs forex, crypto questions, broker checks and prop-firm evaluations—with official resources.",
   alternates: { canonical: "/faq" },
   openGraph: {
-    title: "MARKOS Trading Community FAQ",
+    title: "Forex, Prop-Firm & Trading FAQs for India | MARKOS",
     description:
-      "Direct answers about MARKOS membership, prop-trading rules, risk, indicators, and responsible participation in India.",
+      "Clear answers on forex pairs and rules in India, futures vs forex, crypto questions, broker checks and prop-firm evaluations.",
     url: "/faq",
   },
 };
@@ -129,8 +131,40 @@ const groups = [
         "Provider structures, instruments, platforms and payment arrangements vary. Indian traders should verify current Indian law and authoritative regulatory guidance before participating; MARKOS does not provide legal or tax advice.",
       ],
       [
-        "How should an Indian trader choose a prop firm?",
-        "Review the provider's current official rules, legal entity, evaluation model, drawdown method, payout terms, supported instruments, payment routes and dispute process. Regulatory and tax treatment may vary, so verify authoritative current sources.",
+        "What prop-firm rules should Indian traders check before paying?",
+        "Read the provider's current official terms—not just the headline profit target. Check how daily loss and maximum drawdown are calculated (including open losses, fees and reset time), breach consequences, minimum trading days, news or overnight restrictions, payout conditions, the contracting entity, supported instruments and payment route. Rules and legal or tax treatment can differ; verify current authoritative guidance for your situation. MARKOS is not a prop firm and cannot provide legal or tax advice or guarantee an evaluation result.",
+      ],
+      [
+        "What is forex trading in India, in simple words?",
+        "Forex means exchanging or trading currency instruments. For Indian residents, legality depends on the specific instrument, purpose, authorised counterparty and venue. RBI guidance says permitted electronic forex transactions should use RBI-authorised ETPs or recognised exchanges under applicable terms. This is general information, not legal advice.",
+      ],
+      [
+        "Which forex pairs are allowed in India?",
+        "Do not infer that every pair shown by an overseas app is available to Indian residents. Check the current RBI guidance, recognised-exchange contract specifications and authorised intermediary for the particular product and purpose. Rules can change, so verify directly with official sources before acting.",
+      ],
+      [
+        "What is the best time to trade forex pairs in India?",
+        "There is no universally best time: venue hours, instrument, liquidity and your own plan matter. For exchange-traded currency derivatives, check the current exchange schedule and contract details rather than assuming overseas spot-FX hours apply. More activity can also mean faster price changes and risk; this is not a trading recommendation.",
+      ],
+      [
+        "Futures vs forex: what is the difference?",
+        "Futures are standardised contracts traded on an exchange; forex may refer to different currency products and venues. Compare contract terms, expiry, margin, hours, costs and applicable rules. The phrase ‘futures vs forex which is better’ has no universal answer and is not a personal recommendation.",
+      ],
+      [
+        "Is crypto trading legal in India?",
+        "A simple yes or no can be misleading because crypto assets, payment use, exchange services, taxation and cross-border activity raise separate questions. Check current official requirements, including tax guidance, and obtain qualified advice for your circumstances. An app being accessible does not establish authorisation or suitability.",
+      ],
+      [
+        "How can I check whether a broker is authorised in India?",
+        "Verify the exact legal entity and the relevant product or venue against official regulator and exchange records. Do not treat a search result, influencer recommendation, app listing or absence from an alert list as proof of authorisation. RBI notes its forex alert list is not exhaustive.",
+      ],
+      [
+        "Can you name the best prop firms in India for 2026?",
+        "MARKOS does not publish a universal ‘best’ or ‘top’ ranking. Provider availability, product structure, fees, drawdown rules and payout terms can change. Compare current official contracts and independently check legal, payment and tax considerations before paying; a ranking is not a guarantee of safety or payout.",
+      ],
+      [
+        "What are the best prop firms for beginners?",
+        "There is no provider that is best for every beginner. Before paying, check whether the rules are understandable, the evaluation and funded-stage structures are clearly described, the fees are affordable to lose, and the current contract explains drawdown, restrictions, payout conditions and dispute handling. Do not treat a ranking or a passed challenge as guaranteed income.",
       ],
     ],
   },
@@ -156,13 +190,14 @@ export default function FAQPage() {
         <section className={styles.hero}>
           <p className={styles.eyebrow}>MARKOS / FAQ</p>
           <h1 className={styles.title}>
-            ASK BEFORE
+            PROP-FIRM RULES.
             <br />
-            YOU COMMIT.
+            ASK BEFORE YOU COMMIT.
           </h1>
           <p className={styles.lede}>
-            Answer-first guidance about the system, the risk and what MARKOS
-            does—and does not—provide.
+            Clear answers about evaluation rules, drawdown and the checks Indian
+            traders should make before paying. Verify current terms with the
+            provider and relevant authorities.
           </p>
         </section>
         <div className={local.chips}>
@@ -198,6 +233,32 @@ export default function FAQPage() {
           </div>
         </section>
         <section
+          className={local.whatsappCta}
+          aria-labelledby="faq-whatsapp-title"
+        >
+          <div>
+            <p>MARKOS / MEMBERSHIP QUESTIONS</p>
+            <h2 id="faq-whatsapp-title">
+              WANT TO KNOW WHAT LEARNING HERE INCLUDES?
+            </h2>
+            <span>
+              Ask us about the community, live weekday screen shares and
+              education before deciding. We do not recommend prop firms or
+              assess legal eligibility.
+            </span>
+          </div>
+          <WhatsAppLink
+            href={getWhatsAppUrl(
+              "Hi MARKOS, I found your prop-firm rules FAQ. Could you explain what the education and membership include?",
+            )}
+            placement="faq-prop-rules"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ASK MARKOS ON WHATSAPP <span aria-hidden="true">↗</span>
+          </WhatsAppLink>
+        </section>
+        <section
           className={local.resources}
           aria-labelledby="official-resources-title"
         >
@@ -216,6 +277,33 @@ export default function FAQPage() {
                 rel="noopener noreferrer"
               >
                 SEBI Investor: education and reading material ↗
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.rbi.org.in/scripts/FS_FAQs.aspx?Id=146"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                RBI: Foreign Exchange (Forex) Transactions FAQ ↗
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.rbi.org.in/scripts/bs_viewcontent.aspx?Id=4235"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                RBI: Forex Alert List and authorisation checks ↗
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.incometax.gov.in/iec/foportal/help/FileITR-2Online-FAQ"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Income Tax Department: virtual digital asset FAQ ↗
               </a>
             </li>
             <li>

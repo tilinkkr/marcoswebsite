@@ -107,6 +107,68 @@
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+.whatsappCta {
+  display: flex;
+  max-width: 78rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin: 0 auto clamp(3rem, 7vw, 6rem);
+  border: 1px solid rgb(221 182 148 / 18%);
+  padding: clamp(1.5rem, 4vw, 3rem);
+  background:
+    radial-gradient(circle at 0% 100%, rgb(184 109 74 / 10%), transparent 45%),
+    #0c0f0d;
+}
+.whatsappCta > div > p {
+  color: #bd704d;
+  font-family: var(--font-mono-family);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+}
+.whatsappCta h2 {
+  max-width: 42rem;
+  margin: 0.8rem 0;
+  color: #eee8dc;
+  font-family: var(--font-display-family);
+  font-size: clamp(1.5rem, 3.2vw, 2.6rem);
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+}
+.whatsappCta > div > span {
+  display: block;
+  max-width: 42rem;
+  color: rgb(239 228 216 / 65%);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+.whatsappCta > a {
+  display: inline-flex;
+  min-height: 3.25rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  border: 1px solid #c97941;
+  padding: 0.85rem 1.1rem;
+  color: #f3e8dc;
+  font-family: var(--font-mono-family);
+  font-size: 0.67rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition:
+    color 160ms ease,
+    background-color 160ms ease;
+}
+.whatsappCta > a:hover {
+  background: #c97941;
+  color: #090b0a;
+}
+.whatsappCta > a:focus-visible {
+  outline: 2px solid #f3e8dc;
+  outline-offset: 4px;
+}
 .chips {
   display: none;
 }
@@ -135,6 +197,12 @@
   }
   .faq > nav {
     display: none;
+  }
+  .whatsappCta {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-right: 1rem;
+    margin-left: 1rem;
   }
   .group {
     margin-bottom: 3.5rem;
