@@ -197,6 +197,47 @@ export default function FAQPage() {
             ))}
           </div>
         </section>
+        <section
+          className={local.resources}
+          aria-labelledby="official-resources-title"
+        >
+          <p>INDEPENDENT LEARNING</p>
+          <h2 id="official-resources-title">CHECK THE PRIMARY SOURCES.</h2>
+          <p>
+            Before committing money, use independent investor-education material
+            and verify current rules with the relevant provider or authority.
+            These resources are not endorsements of MARKOS.
+          </p>
+          <ul>
+            <li>
+              <a
+                href="https://investor.sebi.gov.in/iematerial.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                SEBI Investor: education and reading material ↗
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.nseindia.com/static/invest/first-time-investor-getting-started"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                NSE India: getting started and investor precautions ↗
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://online.nism.ac.in/module/Investor%20Education%20%28Basic%29.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                NISM: free basic investor-education course ↗
+              </a>
+            </li>
+          </ul>
+        </section>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}

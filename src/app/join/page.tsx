@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { WhatsAppLink } from "@/components/layout/WhatsAppLink";
 import { membershipBenefits, membershipProduct } from "@/config/products";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
 
@@ -81,14 +82,15 @@ export default function JoinPage() {
                 Ask what the membership includes and decide without pressure.
               </p>
               {whatsapp ? (
-                <a
+                <WhatsAppLink
                   className={`${styles.action} ${styles.actionMuted}`}
                   href={whatsapp}
+                  placement="membership-question"
                   target="_blank"
                   rel="noreferrer"
                 >
                   WHATSAPP US <ArrowUpRight size={17} aria-hidden />
-                </a>
+                </WhatsAppLink>
               ) : (
                 <span
                   className={`${styles.action} ${styles.actionMuted}`}

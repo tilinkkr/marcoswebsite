@@ -7,6 +7,7 @@ import { useEffect, useRef } from "react";
 import { getGSAP } from "@/lib/animations/gsap";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
 
+import { WhatsAppLink } from "@/components/layout/WhatsAppLink";
 import styles from "./join-preview.module.css";
 
 const whatsappUrl = getWhatsAppUrl(
@@ -150,9 +151,14 @@ export function JoinPreview() {
             JOIN THE COMMUNITY <ArrowUpRight size={17} aria-hidden />
           </Link>
           {whatsappUrl ? (
-            <a href={whatsappUrl} target="_blank" rel="noreferrer">
+            <WhatsAppLink
+              href={whatsappUrl}
+              placement="home-join-preview"
+              target="_blank"
+              rel="noreferrer"
+            >
               TALK TO US ON WHATSAPP <ArrowUpRight size={17} aria-hidden />
-            </a>
+            </WhatsAppLink>
           ) : (
             <span aria-disabled="true">WHATSAPP / NUMBER PENDING</span>
           )}

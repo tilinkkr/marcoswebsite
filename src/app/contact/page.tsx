@@ -5,6 +5,7 @@ import styles from "@/app/public-pages.module.css";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { WhatsAppLink } from "@/components/layout/WhatsAppLink";
 import { getWhatsAppUrl, MARCOS_WHATSAPP_DISPLAY } from "@/lib/whatsapp";
 
 import local from "./contact.module.css";
@@ -70,7 +71,18 @@ export default function ContactPage() {
               return (
                 <article key={label}>
                   <span>{label}</span>
-                  <Link href={href}>{value}</Link>
+                  {key.includes("WHATSAPP") ? (
+                    <WhatsAppLink
+                      href={href}
+                      placement="contact-route"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {value}
+                    </WhatsAppLink>
+                  ) : (
+                    <Link href={href}>{value}</Link>
+                  )}
                 </article>
               );
             })}

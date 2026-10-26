@@ -21,6 +21,7 @@ import {
   type CheckoutValues,
 } from "@/lib/validation/checkout";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
+import { WhatsAppLink } from "@/components/layout/WhatsAppLink";
 
 import styles from "./checkout-flow.module.css";
 
@@ -420,10 +421,15 @@ export function CheckoutFlow({
                   <Smartphone size={16} aria-hidden />
                   OPEN A UPI APP
                 </a>
-                <a href={whatsappPaymentUrl} target="_blank" rel="noreferrer">
+                <WhatsAppLink
+                  href={whatsappPaymentUrl}
+                  placement="checkout-amount-question"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <MessageCircle size={16} aria-hidden />
                   CONFIRM INR AMOUNT
-                </a>
+                </WhatsAppLink>
               </div>
             </div>
             <div className={styles.paymentInstructions}>
@@ -482,16 +488,17 @@ export function CheckoutFlow({
               <span>REFERENCE</span>
               <strong>{session.order_reference}</strong>
             </div>
-            <a
+            <WhatsAppLink
               className={styles.whatsappAction}
               href={whatsappPaymentUrl}
+              placement="checkout-payment-confirmation"
               target="_blank"
               rel="noreferrer"
             >
               <MessageCircle size={18} aria-hidden />
               SEND RECEIPT ON WHATSAPP
               <ArrowUpRight size={16} aria-hidden />
-            </a>
+            </WhatsAppLink>
             <p className={styles.verificationNote}>
               Include your order reference and payment screenshot. MARKOS will
               confirm access only after matching the payment independently.

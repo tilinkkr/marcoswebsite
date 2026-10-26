@@ -72,6 +72,41 @@
   font-size: 1rem;
   line-height: 1.7;
 }
+.resources {
+  max-width: 78rem;
+  margin: 0 auto;
+  border-top: 1px solid rgb(235 217 200 / 15%);
+  padding: clamp(3rem, 7vw, 6rem) clamp(1rem, 5vw, 5rem);
+}
+.resources > p:first-child {
+  color: #bd704d;
+  font-family: var(--font-mono-family);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+}
+.resources h2 {
+  margin: 1rem 0;
+  font-family: var(--font-display-family);
+  font-size: clamp(1.8rem, 4vw, 3.5rem);
+  letter-spacing: -0.04em;
+}
+.resources > p:not(:first-child) {
+  max-width: 45rem;
+  color: rgb(239 228 216 / 65%);
+  line-height: 1.7;
+}
+.resources ul {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1.5rem 0 0;
+  padding-left: 1.2rem;
+}
+.resources a {
+  color: #d7956e;
+  line-height: 1.6;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 .chips {
   display: none;
 }

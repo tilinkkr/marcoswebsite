@@ -119,7 +119,7 @@ export default async function InsightsPage() {
               </div>
               <Image
                 src={featured.hero_image}
-                alt={`Editorial illustration for ${featured.title}`}
+                alt={featured.title}
                 width={1600}
                 height={900}
                 sizes="(max-width: 767px) 100vw, 46vw"
@@ -136,7 +136,7 @@ export default async function InsightsPage() {
                 >
                   <Image
                     src={post.hero_image}
-                    alt={`Editorial illustration for ${post.title}`}
+                    alt={post.title}
                     width={960}
                     height={540}
                     sizes="(max-width: 767px) 100vw, 33vw"

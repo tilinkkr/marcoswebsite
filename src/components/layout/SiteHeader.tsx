@@ -6,6 +6,7 @@ import { useState } from "react";
 
 import { getWhatsAppUrl } from "@/lib/whatsapp";
 
+import { WhatsAppLink } from "./WhatsAppLink";
 import styles from "./site-header.module.css";
 
 const primaryLinks = [
@@ -57,16 +58,17 @@ export function SiteHeader() {
           </div>
         </details>
       </nav>
-      <a
+      <WhatsAppLink
         className={styles.whatsapp}
         href={whatsappUrl}
+        placement="header-desktop"
         target="_blank"
         rel="noreferrer"
         aria-label="Message MARKOS on WhatsApp"
       >
         <MessageCircle size={16} aria-hidden />
         <span>WHATSAPP</span>
-      </a>
+      </WhatsAppLink>
       <button
         className={styles.menuButton}
         type="button"
@@ -114,15 +116,16 @@ export function SiteHeader() {
         >
           JOIN MARKOS →
         </Link>
-        <a
+        <WhatsAppLink
           className={styles.mobileWhatsApp}
           href={whatsappUrl}
+          placement="header-mobile-menu"
           target="_blank"
           rel="noreferrer"
           onClick={() => setOpen(false)}
         >
           <MessageCircle size={18} aria-hidden /> MESSAGE US ON WHATSAPP
-        </a>
+        </WhatsAppLink>
       </nav>
     </header>
   );

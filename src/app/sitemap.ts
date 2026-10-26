@@ -4,7 +4,6 @@ import { getBlogs } from "@/lib/blogs";
 import { absoluteUrl } from "@/lib/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const siteUpdated = new Date("2026-10-20T00:00:00.000Z");
   const routes = [
     "",
     "/join",
@@ -22,7 +21,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/privacy",
   ].map((route) => ({
     url: absoluteUrl(route || "/"),
-    lastModified: siteUpdated,
     changeFrequency: route === "" ? ("weekly" as const) : ("monthly" as const),
     priority: route === "" ? 1 : route === "/insights" ? 0.9 : 0.7,
   }));
@@ -36,7 +34,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }));
   const authors = MARCOS_AUTHORS.map((author) => ({
     url: absoluteUrl(authorPath(author.slug)),
-    lastModified: siteUpdated,
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));

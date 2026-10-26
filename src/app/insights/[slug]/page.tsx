@@ -153,7 +153,7 @@ export default async function ArticlePage({ params }: Props) {
         <Image
           className={local.hero}
           src={post.hero_image}
-          alt={`Editorial illustration for ${post.title}`}
+          alt={post.title}
           width={1600}
           height={900}
           priority

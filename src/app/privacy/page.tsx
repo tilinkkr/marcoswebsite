@@ -38,26 +38,27 @@ export default function Privacy() {
         are not intended to be public website files. MARKOS uses Supabase for
         submitted records and authentication where those services are enabled.
         Optional PostHog analytics runs only when its public key and host are
-        configured. Authentication may use browser cookies to maintain a
-        session. These providers process information to deliver the configured
-        website services.
+        configured. When enabled, clicking a MARKOS WhatsApp link records the
+        page path and button placement as an outbound-click event; it does not
+        confirm that a message was sent or read. Authentication may use browser
+        cookies to maintain a session. These providers process information to
+        deliver the configured website services.
       </p>
       <h2>Retention and your choices</h2>
       <p>
-        Submission records and attachments are kept for operational review;
-        this site does not currently publish a fixed deletion schedule. To ask
-        about a submission or request its deletion, contact MARKOS and include
-        enough information for us to locate it. We may need to retain records
-        where required to resolve an order, protect the service or meet an
-        applicable obligation. Do not send payment card details through these
-        forms.
+        Submission records and attachments are kept for operational review; this
+        site does not currently publish a fixed deletion schedule. To ask about
+        a submission or request its deletion, contact MARKOS and include enough
+        information for us to locate it. We may need to retain records where
+        required to resolve an order, protect the service or meet an applicable
+        obligation. Do not send payment card details through these forms.
       </p>
       <h2>Privacy questions</h2>
       <p>
-        For a privacy question, use the <a href="/contact">Contact page</a>.
-        The site does not currently publish a separate postal address or a
-        fixed retention period; please contact us before submitting information
-        if you need those details.
+        For a privacy question, use the <a href="/contact">Contact page</a>. The
+        site does not currently publish a separate postal address or a fixed
+        retention period; please contact us before submitting information if you
+        need those details.
       </p>
     </EditorialPage>
   );
