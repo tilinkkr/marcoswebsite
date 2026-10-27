@@ -8,14 +8,14 @@ import { blogHeroImage, getBlogs } from "@/lib/blogs";
 import { absoluteUrl, safeJsonLd } from "@/lib/site";
 import local from "./insights.module.css";
 export const metadata: Metadata = {
-  title: "Trading Risk, Process & Prop-Firm Guides for India",
+  title: "Trading Guides for India: Prop-Firm Rules, Forex & Risk",
   description:
-    "Practical, answer-first guides for Indian traders on drawdown rules, prop-firm evaluations, trade review, indicators and risk-aware decision-making.",
+    "Clear guides for Indian traders: prop-firm rules to check before paying, forex and futures basics, drawdown, trade review and risk-aware decisions.",
   alternates: { canonical: "/insights" },
   openGraph: {
-    title: "MARKOS Trading Insights",
+    title: "Trading Guides for India: Prop-Firm Rules, Forex & Risk | MARKOS",
     description:
-      "Practical guides to trading process, risk, evaluation rules and Indian market participation.",
+      "Answer-first guides to prop-firm evaluation rules, Indian forex and futures questions, trade process and risk.",
     url: "/insights",
   },
 };
@@ -128,8 +128,9 @@ export default async function InsightsPage() {
             RULES FIRST.
           </h1>
           <p className={styles.lede}>
-            Evidence-led guides for Indian traders who want to understand the
-            decision, define the risk, and review the outcome—not chase tips.
+            Evidence-led guides to prop-firm rules, forex and futures questions
+            in India. Understand the terms, define the risk, and review the
+            decision—not chase tips.
           </p>
           <div className={local.principles} aria-label="Editorial principles">
             <span>PROCESS OVER IMPULSE</span>
