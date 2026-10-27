@@ -61,6 +61,7 @@
 .progress {
   left: clamp(1.25rem, 6vw, 6rem);
   top: 50%;
+  visibility: hidden;
   margin: 0;
   font-family: var(--font-display-family);
   font-size: clamp(3.4rem, 7vw, 8rem);

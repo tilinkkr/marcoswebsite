@@ -2,7 +2,7 @@
 
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 
 import { getGSAP } from "@/lib/animations/gsap";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
@@ -17,7 +17,7 @@ const whatsappUrl = getWhatsAppUrl(
 export function JoinPreview() {
   const sectionRef = useRef<HTMLElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
     const { gsap } = getGSAP();
@@ -50,13 +50,12 @@ export function JoinPreview() {
             gsap.set([art, progress, floor, content, paths], {
               clearProps: "all",
             });
-            gsap.set(solitude, { display: "none" });
+            gsap.set([solitude, progress], { display: "none" });
             return;
           }
 
           if (mobile) {
-            gsap.set(solitude, { display: "none" });
-            gsap.set(progress, { autoAlpha: 0, y: 0 });
+            gsap.set([solitude, progress], { display: "none" });
             gsap.set(art, { scale: 1.01, xPercent: 0 });
             gsap.set(floor, { autoAlpha: 0.52, scale: 1 });
             gsap.set([content, paths], { autoAlpha: 1, y: 0 });
@@ -65,10 +64,12 @@ export function JoinPreview() {
             return;
           }
 
-          gsap.set(progress, { autoAlpha: 0, y: mobile ? 20 : 34 });
+          // The progress words and the final headline occupy the same visual
+          // field. Keep them mutually exclusive throughout the scroll story.
+          gsap.set(solitude, { autoAlpha: 1, y: 0 });
+          gsap.set(progress, { autoAlpha: 0, y: 34 });
           gsap.set(floor, { autoAlpha: 0, scale: 0.72 });
-          gsap.set(content, { autoAlpha: 1, y: 0 });
-          gsap.set(paths, { autoAlpha: 1, y: 0 });
+          gsap.set([content, paths], { autoAlpha: 0, y: 24 });
 
           const timeline = gsap.timeline({
             defaults: { ease: "none" },
@@ -87,12 +88,12 @@ export function JoinPreview() {
               { scale: 1.12, xPercent: 5 },
               { scale: 1, xPercent: 0, duration: 0.35 },
             )
-            .to(solitude, { autoAlpha: 0, y: -20, duration: 0.16 }, 0.18)
+            .to(solitude, { autoAlpha: 0, y: -20, duration: 0.12 }, 0.08)
             .to(floor, { autoAlpha: 0.58, scale: 1, duration: 0.25 }, 0.28)
-            .to(progress, { autoAlpha: 1, y: 0, duration: 0.2 }, 0.2)
-            .to(progress, { autoAlpha: 0, y: -18, duration: 0.13 }, 0.34)
-            .to(content, { autoAlpha: 1, y: 0, duration: 0.19 }, 0.2)
-            .to(paths, { autoAlpha: 1, y: 0, duration: 0.13 }, 0.4)
+            .to(progress, { autoAlpha: 1, y: 0, duration: 0.14 }, 0.22)
+            .to(progress, { autoAlpha: 0, y: -18, duration: 0.12 }, 0.39)
+            .to(content, { autoAlpha: 1, y: 0, duration: 0.19 }, 0.52)
+            .to(paths, { autoAlpha: 1, y: 0, duration: 0.13 }, 0.67)
             .to({}, { duration: 0.06 });
 
           return () => timeline.kill();
@@ -154,6 +155,7 @@ export function JoinPreview() {
             <WhatsAppLink
               href={whatsappUrl}
               placement="home-join-preview"
+              data-whatsapp-primary
               target="_blank"
               rel="noreferrer"
             >

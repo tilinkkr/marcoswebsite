@@ -6,6 +6,8 @@ import { useEffect, useRef } from "react";
 
 import { useAnimationPreferences } from "@/hooks/use-animation-preferences";
 import { getGSAP } from "@/lib/animations/gsap";
+import { getWhatsAppUrl } from "@/lib/whatsapp";
+import { WhatsAppLink } from "@/components/layout/WhatsAppLink";
 
 import styles from "./vision-reveal.module.css";
 
@@ -419,17 +421,27 @@ export function VisionReveal() {
           <p className={styles.meta} data-vision-meta>
             LEARN / TRADE / IMPROVE / GET FUNDED
           </p>
-          <Link
-            className={styles.cta}
-            href="/join"
-            prefetch={false}
-            data-vision-cta
-          >
-            <span>ENTER MARKOS</span>
-            <span className={styles.arrow} aria-hidden>
-              →
-            </span>
-          </Link>
+          <div className={styles.actions} data-vision-cta>
+            <Link className={styles.cta} href="/join" prefetch={false}>
+              <span>EXPLORE MEMBERSHIP</span>
+              <span className={styles.arrow} aria-hidden>
+                →
+              </span>
+            </Link>
+            <WhatsAppLink
+              className={styles.whatsappCta}
+              href={getWhatsAppUrl(
+                "Hi MARKOS, I'd like to understand the education and membership options.",
+              )}
+              placement="home-hero"
+              data-whatsapp-primary
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span>ASK ON WHATSAPP</span>
+              <span aria-hidden>↗</span>
+            </WhatsAppLink>
+          </div>
         </div>
 
         <p className={styles.scrollCue} aria-hidden>

@@ -18,7 +18,15 @@
   transition:
     border-color 160ms ease,
     background-color 160ms ease,
-    transform 160ms ease;
+    transform 160ms ease,
+    opacity 160ms ease,
+    visibility 160ms ease;
+}
+
+.button[data-suppressed="true"] {
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
 }
 
 :global(body:has([data-marcos-sticky-funnel])) .button {
