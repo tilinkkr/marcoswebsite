@@ -6,13 +6,14 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { MarkdownArticle } from "@/components/insights/MarkdownArticle";
 import { authorPath, getAuthor } from "@/lib/authors";
-import { getBlog } from "@/lib/blogs";
+import { blogHeroImage, getBlog } from "@/lib/blogs";
 import { absoluteUrl, safeJsonLd, SITE_URL } from "@/lib/site";
 import local from "./article.module.css";
 type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getBlog((await params).slug);
   if (!post) return {};
+  const heroImage = blogHeroImage(post);
   const canonical =
     post.canonical_url?.startsWith(SITE_URL) === true
       ? post.canonical_url
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: canonical,
       siteName: "MARKOS",
       locale: "en_IN",
-      images: [absoluteUrl(post.og_image ?? post.hero_image)],
+      images: [absoluteUrl(post.og_image ?? heroImage)],
       publishedTime: post.published_at ?? undefined,
       modifiedTime: post.updated_at,
       authors: [post.author_name],
@@ -37,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: post.seo_title,
       description: post.seo_description,
-      images: [absoluteUrl(post.og_image ?? post.hero_image)],
+      images: [absoluteUrl(post.og_image ?? heroImage)],
     },
   };
 }
@@ -48,6 +49,7 @@ export default async function ArticlePage({ params }: Props) {
   const author = isAutomated ? null : getAuthor(post.author_slug ?? "");
   if (!isAutomated && !author) notFound();
   const articleUrl = absoluteUrl(`/insights/${post.slug}`);
+  const heroImage = blogHeroImage(post);
   const authorUrl = author ? absoluteUrl(authorPath(author.slug)) : null;
   const automatedSummary = post.automated_review_report.summary;
   const jsonLd = {
@@ -83,7 +85,7 @@ export default async function ArticlePage({ params }: Props) {
             }),
         datePublished: post.published_at,
         dateModified: post.updated_at,
-        image: absoluteUrl(post.hero_image),
+        image: absoluteUrl(heroImage),
         keywords: post.tags.join(", "),
         articleSection: post.category,
         inLanguage: "en-IN",
@@ -172,11 +174,11 @@ export default async function ArticlePage({ params }: Props) {
         </header>
         <Image
           className={local.hero}
-          src={post.hero_image}
+          src={heroImage}
           alt={post.title}
           width={1600}
           height={900}
-          priority
+          preload
           sizes="100vw"
         />
         <aside className={local.trustPanel} aria-label="Article standards">

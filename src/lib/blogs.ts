@@ -1,6 +1,6 @@
 import { unstable_cache } from "next/cache";
 
-import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+import { createSupabasePublicClient } from "@/lib/supabase/public";
 
 export type BlogPost = {
   id: string;
@@ -38,9 +38,17 @@ export type BlogPost = {
   source_urls: string[];
   editorial_verified: boolean;
 };
+
+export const DEFAULT_BLOG_HERO_IMAGE =
+  "/images/marcos/insights/prop-firm-rules-india-2026.webp";
+
+export function blogHeroImage(post: Pick<BlogPost, "hero_image">): string {
+  return post.hero_image?.trim() || DEFAULT_BLOG_HERO_IMAGE;
+}
+
 const getPublishedBlogs = unstable_cache(
   async (): Promise<BlogPost[]> => {
-    const client = createSupabaseAdminClient();
+    const client = createSupabasePublicClient();
     if (!client) return [];
     const { data, error } = await client
       .from("blog_posts")
@@ -64,7 +72,7 @@ export async function getBlogs(): Promise<BlogPost[]> {
 export async function getBlog(requested: string): Promise<BlogPost | null> {
   return unstable_cache(
     async () => {
-      const client = createSupabaseAdminClient();
+      const client = createSupabasePublicClient();
       if (!client) return null;
       const { data, error } = await client
         .from("blog_posts")

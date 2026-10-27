@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from "@/app/public-pages.module.css";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
-import { getBlogs } from "@/lib/blogs";
+import { blogHeroImage, getBlogs } from "@/lib/blogs";
 import { absoluteUrl, safeJsonLd } from "@/lib/site";
 import local from "./insights.module.css";
 export const metadata: Metadata = {
@@ -159,7 +159,7 @@ export default async function InsightsPage() {
                 </small>
               </div>
               <Image
-                src={featured.hero_image}
+                src={blogHeroImage(featured)}
                 alt={featured.title}
                 width={1600}
                 height={900}
@@ -176,7 +176,7 @@ export default async function InsightsPage() {
                   key={post.id}
                 >
                   <Image
-                    src={post.hero_image}
+                    src={blogHeroImage(post)}
                     alt={post.title}
                     width={960}
                     height={540}
