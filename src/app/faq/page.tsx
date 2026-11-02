@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import styles from "@/app/public-pages.module.css";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
@@ -8,14 +9,14 @@ import { getWhatsAppUrl } from "@/lib/whatsapp";
 import local from "./faq.module.css";
 
 export const metadata: Metadata = {
-  title: "Forex, Prop-Firm & Trading FAQs for India",
+  title: "Funded Accounts & Prop-Firm FAQs for India | MARKOS",
   description:
-    "Clear answers on forex pairs and rules in India, futures vs forex, crypto questions, broker checks and prop-firm evaluations—with official resources.",
+    "Clear answers on funded accounts, payout checks, prop-firm evaluations and Indian forex questions—with official resources and no pass or payout promises.",
   alternates: { canonical: "/faq" },
   openGraph: {
-    title: "Forex, Prop-Firm & Trading FAQs for India | MARKOS",
+    title: "Funded Accounts & Prop-Firm FAQs for India | MARKOS",
     description:
-      "Clear answers on forex pairs and rules in India, futures vs forex, crypto questions, broker checks and prop-firm evaluations.",
+      "Answers on funded accounts, payout checks, prop-firm evaluations and Indian forex questions.",
     url: "/faq",
   },
 };
@@ -199,6 +200,10 @@ export default function FAQPage() {
             traders should make before paying. Verify current terms with the
             provider and relevant authorities.
           </p>
+          <Link className={styles.cta} href="/funded-account-guide">
+            READ THE FUNDED-ACCOUNT &amp; PAYOUT GUIDE{" "}
+            <span aria-hidden="true">↗</span>
+          </Link>
         </section>
         <div className={local.chips}>
           {groups.map((g) => (

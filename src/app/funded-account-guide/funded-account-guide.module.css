@@ -1,0 +1,223 @@
+.hero {
+  min-height: 68svh;
+}
+.content {
+  max-width: 90rem;
+  margin: 0 auto;
+}
+.content > .sectionTitle {
+  max-width: 68rem;
+}
+.callout {
+  max-width: 54rem;
+  margin: 3rem 0 6rem;
+  border-left: 2px solid #c97941;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(90deg, rgb(201 121 65 / 10%), transparent);
+}
+.callout span,
+.answer > span {
+  color: #d18b5b;
+  font-family: var(--font-mono-family);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+}
+.callout p,
+.intro,
+.note,
+.payout > p,
+.answer p {
+  color: rgb(239 230 220 / 70%);
+  line-height: 1.75;
+}
+.callout p {
+  margin: 0.7rem 0 0;
+}
+.answers,
+.compare,
+.payout {
+  max-width: 68rem;
+  margin: 0 0 6rem;
+  scroll-margin-top: 6rem;
+}
+.subheading {
+  margin: 0 0 2rem;
+  color: #eee8dc;
+  font-family: var(--font-display-family);
+  font-size: clamp(1.8rem, 4vw, 3.4rem);
+  letter-spacing: -0.045em;
+  line-height: 0.98;
+}
+.answer {
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: 1rem;
+  border-top: 1px solid rgb(235 217 200 / 15%);
+  padding: 1.6rem 0;
+}
+.answer:last-child {
+  border-bottom: 1px solid rgb(235 217 200 / 15%);
+}
+.answer h3 {
+  margin: 0 0 0.55rem;
+  color: #eee8dc;
+  font-family: var(--font-finance-family);
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  line-height: 1.35;
+}
+.answer p {
+  max-width: 54rem;
+  margin: 0;
+}
+.intro {
+  max-width: 52rem;
+  margin: -0.75rem 0 1.5rem;
+}
+.tableWrap {
+  overflow-x: auto;
+  border: 1px solid rgb(235 217 200 / 15%);
+}
+.tableWrap table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+.tableWrap th,
+.tableWrap td {
+  border-bottom: 1px solid rgb(235 217 200 / 12%);
+  padding: 1rem;
+  color: rgb(239 230 220 / 75%);
+  line-height: 1.6;
+  vertical-align: top;
+}
+.tableWrap thead th {
+  color: #d18b5b;
+  font-family: var(--font-mono-family);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+}
+.tableWrap tbody th {
+  width: 11rem;
+  color: #eee8dc;
+  font-weight: 600;
+}
+.note {
+  font-size: 0.88rem;
+}
+.sources {
+  display: grid;
+  gap: 0.75rem;
+  padding-left: 1.2rem;
+}
+.sources a,
+.related a {
+  color: #e4a274;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.sources a:focus-visible,
+.related a:focus-visible {
+  outline: 2px solid #c97941;
+  outline-offset: 3px;
+}
+.payout ol {
+  display: grid;
+  gap: 0.9rem;
+  padding-left: 1.4rem;
+  color: rgb(239 230 220 / 78%);
+  line-height: 1.7;
+}
+.payout li::marker {
+  color: #d18b5b;
+  font-family: var(--font-mono-family);
+}
+.whatsapp {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  margin: 0 0 3rem;
+  border: 1px solid rgb(221 182 148 / 18%);
+  padding: clamp(1.5rem, 4vw, 3rem);
+  background:
+    radial-gradient(circle at 0% 100%, rgb(184 109 74 / 12%), transparent 45%),
+    #0c0f0d;
+}
+.whatsapp h2 {
+  max-width: 43rem;
+  margin: 0.4rem 0 0.8rem;
+  color: #eee8dc;
+  font-family: var(--font-display-family);
+  font-size: clamp(1.5rem, 3.2vw, 2.6rem);
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+}
+.whatsapp > div > p:last-child {
+  max-width: 42rem;
+  margin-bottom: 0;
+  color: rgb(239 228 216 / 65%);
+  line-height: 1.7;
+}
+.whatsapp > a {
+  display: inline-flex;
+  min-height: 3.25rem;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  border: 1px solid #c97941;
+  padding: 0.85rem 1.1rem;
+  color: #f3e8dc;
+  font-family: var(--font-mono-family);
+  font-size: 0.67rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  transition:
+    color 160ms ease,
+    background-color 160ms ease;
+}
+.whatsapp > a:hover {
+  background: #c97941;
+  color: #090b0a;
+}
+.whatsapp > a:focus-visible {
+  outline: 2px solid #f3e8dc;
+  outline-offset: 4px;
+}
+.related {
+  color: rgb(239 230 220 / 65%);
+  line-height: 1.8;
+}
+@media (max-width: 767px) {
+  .hero {
+    min-height: 68svh;
+  }
+  .callout {
+    margin: 2rem 0 4rem;
+    padding: 1rem;
+  }
+  .answers,
+  .compare,
+  .payout {
+    margin-bottom: 4rem;
+  }
+  .answer {
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: 0.6rem;
+  }
+  .tableWrap th,
+  .tableWrap td {
+    min-width: 9rem;
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+  .whatsapp {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .whatsapp > a {
+    width: 100%;
+    text-align: center;
+  }
+}

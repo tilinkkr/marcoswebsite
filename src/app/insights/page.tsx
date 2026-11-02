@@ -22,6 +22,14 @@ export const metadata: Metadata = {
 
 const practicalGuides = [
   {
+    category: "FUNDED ACCOUNT GUIDE",
+    question: "What is a funded account—and what should I verify first?",
+    answer:
+      "Understand the account structure, evaluation rules, payout conditions and total costs before paying. A funded label is not a guarantee of live capital, a successful pass or a payout.",
+    href: "/funded-account-guide",
+    action: "READ THE FUNDED-ACCOUNT GUIDE",
+  },
+  {
     category: "EVALUATION CHECKLIST",
     question: "What should I check before paying for a prop-firm evaluation?",
     answer:
