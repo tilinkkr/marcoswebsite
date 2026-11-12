@@ -263,6 +263,43 @@ export default function FundedAccountGuidePage() {
             </p>
           </section>
 
+          <section
+            className={local.relatedGuides}
+            aria-labelledby="related-guides-title"
+          >
+            <p className={styles.sectionLabel}>CONTINUE YOUR RESEARCH</p>
+            <h2 id="related-guides-title" className={local.subheading}>
+              MORE PROP-FIRM CHECKS, FROM THE SOURCE
+            </h2>
+            <p className={local.intro}>
+              Use these focused guides to compare written rules and verify
+              claims. They are research starting points, not provider rankings
+              or endorsements.
+            </p>
+            <ul>
+              <li>
+                <Link href="/insights/prop-firms-india-10-names-before-paying">
+                  Ten prop-firm names to research before paying
+                </Link>
+              </li>
+              <li>
+                <Link href="/insights/prop-firm-payout-request-12-checks">
+                  What to check when a prop-firm payout is requested
+                </Link>
+              </li>
+              <li>
+                <Link href="/insights/how-to-compare-cfd-prop-firm-evaluations">
+                  How to compare CFD prop-firm evaluations
+                </Link>
+              </li>
+              <li>
+                <Link href="/insights/forex-prop-firms-india-legal-checklist">
+                  India-specific forex eligibility questions to verify
+                </Link>
+              </li>
+            </ul>
+          </section>
+
           <aside className={local.whatsapp} aria-labelledby="whatsapp-title">
             <div>
               <p className={styles.sectionLabel}>MARKOS / EDUCATION</p>

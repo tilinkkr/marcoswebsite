@@ -35,7 +35,8 @@
 }
 .answers,
 .compare,
-.payout {
+.payout,
+.relatedGuides {
   max-width: 68rem;
   margin: 0 0 6rem;
   scroll-margin-top: 6rem;
@@ -110,13 +111,15 @@
   padding-left: 1.2rem;
 }
 .sources a,
-.related a {
+.related a,
+.relatedGuides a {
   color: #e4a274;
   text-decoration: underline;
   text-underline-offset: 0.2em;
 }
 .sources a:focus-visible,
-.related a:focus-visible {
+.related a:focus-visible,
+.relatedGuides a:focus-visible {
   outline: 2px solid #c97941;
   outline-offset: 3px;
 }
@@ -130,6 +133,17 @@
 .payout li::marker {
   color: #d18b5b;
   font-family: var(--font-mono-family);
+}
+.relatedGuides > ul {
+  display: grid;
+  gap: 0.85rem;
+  margin: 1.25rem 0 0;
+  padding-left: 1.2rem;
+  color: rgb(239 230 220 / 78%);
+  line-height: 1.65;
+}
+.relatedGuides li::marker {
+  color: #d18b5b;
 }
 .whatsapp {
   display: flex;
@@ -199,7 +213,8 @@
   }
   .answers,
   .compare,
-  .payout {
+  .payout,
+  .relatedGuides {
     margin-bottom: 4rem;
   }
   .answer {

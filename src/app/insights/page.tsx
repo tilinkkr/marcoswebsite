@@ -68,14 +68,14 @@ const indiaSearchGuides = [
     question: "What is forex trading in India, and how does it work?",
     answer:
       "Forex trading is the exchange or trading of currency instruments. For Indian residents, the instrument, purpose, authorised counterparty and trading venue matter; an overseas app offering a familiar currency pair is not automatically permitted. Start by checking the RBI’s current guidance and the recognised exchange or authorised provider.",
-    href: "https://www.rbi.org.in/scripts/FS_FAQs.aspx?Id=146",
+    href: "https://rbi.org.in/Scripts/FAQDisplay.aspx?Id=146",
     label: "RBI FOREX FAQ",
   },
   {
     question: "Which forex pairs can Indian residents trade?",
     answer:
       "There is no safe shortcut such as assuming every major pair on an international platform is available to Indian residents. RBI guidance says permitted electronic forex transactions must use RBI-authorised electronic platforms or recognised exchanges, subject to applicable terms. Check the current contract specifications and rules with the exchange and an authorised intermediary.",
-    href: "https://www.rbi.org.in/scripts/FS_FAQs.aspx?Id=146",
+    href: "https://rbi.org.in/Scripts/FAQDisplay.aspx?Id=146",
     label: "CHECK RBI GUIDANCE",
   },
   {
@@ -96,7 +96,7 @@ const indiaSearchGuides = [
     question: "How do I verify a broker in India?",
     answer:
       "Check the exact legal entity, registration details, exchange membership and product permission on the regulator or exchange’s own records. Do not rely on an app-store listing, influencer endorsement, search ad or a broker’s claim that it is ‘not banned’. RBI’s forex alert list is explicitly not exhaustive, so absence from that list is not proof of authorisation.",
-    href: "https://www.rbi.org.in/scripts/FS_FAQs.aspx?Id=146",
+    href: "https://rbi.org.in/Scripts/FAQDisplay.aspx?Id=146",
     label: "RBI AUTHORISATION CHECKS",
   },
 ] as const;
