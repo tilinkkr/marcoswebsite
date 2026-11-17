@@ -393,7 +393,8 @@ export function VisionReveal() {
             <span>FEW SEE WHAT MOVES IT.</span>
           </h1>
           <p className={styles.openingPrompt}>
-            Scroll slowly. Clarity is on the other side.
+            An India-first trading community for education, live market learning
+            and risk discipline.
           </p>
         </div>
 

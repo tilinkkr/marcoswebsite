@@ -1,4 +1,4 @@
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
@@ -131,5 +131,7 @@ export async function PATCH(request: NextRequest, { params }: Context) {
   revalidatePath("/insights");
   revalidatePath(`/insights/${existing.slug}`);
   revalidatePath(`/insights/${data.slug}`);
+  revalidatePath("/sitemap.xml");
+  revalidateTag("blogs", { expire: 0 });
   return NextResponse.json({ updated: true });
 }

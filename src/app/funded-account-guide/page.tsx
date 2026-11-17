@@ -9,7 +9,7 @@ import { getWhatsAppUrl } from "@/lib/whatsapp";
 import local from "./funded-account-guide.module.css";
 
 export const metadata: Metadata = {
-  title: "Funded Accounts: Rules, Payouts & Prop-Firm Checks | MARKOS",
+  title: "Funded Accounts: Rules, Payouts & Prop-Firm Checks",
   description:
     "Understand funded accounts, evaluation rules, payout rejections and how to compare CFD prop firms. A practical India-focused guide—no pass or payout promises.",
   alternates: { canonical: "/funded-account-guide" },
@@ -283,8 +283,8 @@ export default function FundedAccountGuidePage() {
                 </Link>
               </li>
               <li>
-                <Link href="/insights/prop-firm-payout-request-12-checks">
-                  What to check when a prop-firm payout is requested
+                <Link href="/insights/first-prop-firm-payout-request-checklist">
+                  First payout request: a 12-point checklist
                 </Link>
               </li>
               <li>

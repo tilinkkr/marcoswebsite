@@ -11,7 +11,7 @@ import { getWhatsAppUrl } from "@/lib/whatsapp";
 import styles from "../marketing.module.css";
 
 export const metadata: Metadata = {
-  title: "Membership",
+  title: "Trading Community Membership",
   description:
     "Build a more deliberate trading process through MARKOS community, education, risk frameworks and review.",
   alternates: { canonical: "/join" },

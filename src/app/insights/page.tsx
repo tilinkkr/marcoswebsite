@@ -90,7 +90,7 @@ const indiaSearchGuides = [
     answer:
       "Avoid a one-word legal answer: crypto assets, payment use, exchange services, tax treatment and cross-border activity raise different questions. The RBI cautions users about risks, and the Income Tax Department publishes separate virtual-digital-asset tax guidance. Neither tax rules nor an app’s availability by itself confirms that a particular activity is authorised or suitable; check current official requirements and qualified advice.",
     href: "https://www.incometax.gov.in/iec/foportal/help/FileITR-2Online-FAQ",
-    label: "INCOME TAX VDA FAQ",
+    label: "ITR-2 FAQ: VDA tax and disclosure",
   },
   {
     question: "How do I verify a broker in India?",
@@ -144,6 +144,14 @@ export default async function InsightsPage() {
             <span>PROCESS OVER IMPULSE</span>
             <span>PRIMARY SOURCES</span>
             <span>NO GUARANTEED RETURNS</span>
+          </div>
+          <div className={local.intentLinks} aria-label="Explore MARKOS">
+            <Link href="/trading-community">
+              UNDERSTAND THE COMMUNITY <span aria-hidden="true">↗</span>
+            </Link>
+            <Link href="/trading-education">
+              SEE EDUCATION TOPICS <span aria-hidden="true">↗</span>
+            </Link>
           </div>
         </section>
         <section
@@ -310,7 +318,12 @@ export default async function InsightsPage() {
               advice. Verify current rules with the relevant regulator,
               exchange, provider, or qualified professional.
             </p>
-            <Link href="/risk-disclosure">READ THE RISK DISCLOSURE →</Link>
+            <div>
+              <Link href="/risk-disclosure">READ THE RISK DISCLOSURE →</Link>
+              <Link href="/editorial-standards">
+                AUTHORSHIP &amp; CORRECTIONS →
+              </Link>
+            </div>
           </aside>
         </section>
         <script

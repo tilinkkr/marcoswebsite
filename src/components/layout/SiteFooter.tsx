@@ -23,7 +23,10 @@ const groups = [
     links: [
       ["OUR STORY", "/story"],
       ["INSIGHTS", "/insights"],
+      ["TRADING EDUCATION", "/trading-education"],
+      ["TRADING COMMUNITY", "/trading-community"],
       ["CONTACT", "/contact"],
+      ["EDITORIAL STANDARDS", "/editorial-standards"],
       ["FAQ", "/faq"],
     ],
   },
@@ -49,7 +52,9 @@ export function SiteFooter() {
     const context = gsap.context(() => {
       const light = footer.querySelector<HTMLElement>("[data-footer-light]");
       const word = footer.querySelector<HTMLElement>("[data-footer-word]");
-      const letters = footer.querySelectorAll<HTMLElement>("[data-footer-letter]");
+      const letters = footer.querySelectorAll<HTMLElement>(
+        "[data-footer-letter]",
+      );
       const ruler = footer.querySelector<HTMLElement>("[data-footer-ruler]");
       if (
         !light ||

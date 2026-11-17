@@ -7,6 +7,7 @@ import { SiteHeader } from "@/components/layout/SiteHeader";
 import { MarkdownArticle } from "@/components/insights/MarkdownArticle";
 import { authorPath, getAuthor } from "@/lib/authors";
 import { blogHeroImage, getBlog } from "@/lib/blogs";
+import { blogCanonicalUrl } from "@/lib/blog-sitemap";
 import { absoluteUrl, safeJsonLd, SITE_URL } from "@/lib/site";
 import local from "./article.module.css";
 type Props = { params: Promise<{ slug: string }> };
@@ -14,10 +15,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getBlog((await params).slug);
   if (!post) return {};
   const heroImage = blogHeroImage(post);
-  const canonical =
-    post.canonical_url?.startsWith(SITE_URL) === true
-      ? post.canonical_url
-      : absoluteUrl(`/insights/${post.slug}`);
+  const canonical = blogCanonicalUrl(post);
   return {
     title: { absolute: post.seo_title },
     description: post.seo_description,
@@ -48,7 +46,7 @@ export default async function ArticlePage({ params }: Props) {
   const isAutomated = post.publication_mode === "automated";
   const author = isAutomated ? null : getAuthor(post.author_slug ?? "");
   if (!isAutomated && !author) notFound();
-  const articleUrl = absoluteUrl(`/insights/${post.slug}`);
+  const articleUrl = blogCanonicalUrl(post);
   const heroImage = blogHeroImage(post);
   const authorUrl = author ? absoluteUrl(authorPath(author.slug)) : null;
   const automatedSummary = post.automated_review_report.summary;
@@ -86,7 +84,9 @@ export default async function ArticlePage({ params }: Props) {
         datePublished: post.published_at,
         dateModified: post.updated_at,
         image: absoluteUrl(heroImage),
-        keywords: post.tags.join(", "),
+        keywords: post.tags
+          .filter((tag) => !/^campaign-day-\d{2}$/i.test(tag))
+          .join(", "),
         articleSection: post.category,
         inLanguage: "en-IN",
         isAccessibleForFree: true,
@@ -265,6 +265,27 @@ export default async function ArticlePage({ params }: Props) {
                 ))}
               </ol>
             </article>
+          </div>
+        </section>
+        <section
+          className={local.accountability}
+          aria-labelledby="accountability-title"
+        >
+          <div>
+            <p>MARKOS / EDITORIAL ACCOUNTABILITY</p>
+            <h2 id="accountability-title">SPOT AN ERROR OR OUTDATED RULE?</h2>
+          </div>
+          <p>
+            Send the article URL, the exact statement, and a reliable source.
+            MARKOS assesses correction reports and updates material errors when
+            verified. Automated checks do not mean a person reviewed this
+            article.
+          </p>
+          <div>
+            <Link href="/contact">REPORT A CORRECTION ↗</Link>
+            <Link href="/editorial-standards">
+              READ OUR EDITORIAL STANDARDS ↗
+            </Link>
           </div>
         </section>
         <script

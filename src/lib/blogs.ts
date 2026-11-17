@@ -1,6 +1,13 @@
 import { unstable_cache } from "next/cache";
 
 import { createSupabasePublicClient } from "@/lib/supabase/public";
+import { BLOG_POST_REDIRECTS } from "@/lib/blog-sitemap";
+
+export {
+  BLOG_POST_REDIRECTS,
+  blogCanonicalUrl,
+  blogSitemapEntries,
+} from "@/lib/blog-sitemap";
 
 export type BlogPost = {
   id: string;
@@ -66,7 +73,10 @@ const getPublishedBlogs = unstable_cache(
 );
 
 export async function getBlogs(): Promise<BlogPost[]> {
-  return getPublishedBlogs();
+  const redirectedSlugs = new Set(Object.keys(BLOG_POST_REDIRECTS));
+  return (await getPublishedBlogs()).filter(
+    (post) => !redirectedSlugs.has(post.slug),
+  );
 }
 
 export async function getBlog(requested: string): Promise<BlogPost | null> {

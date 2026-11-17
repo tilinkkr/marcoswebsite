@@ -186,6 +186,42 @@
   margin: 1.2rem 0 0;
   padding-left: 1.4rem;
 }
+.accountability {
+  display: grid;
+  grid-template-columns: minmax(16rem, 0.8fr) minmax(0, 1.2fr) auto;
+  gap: 1.5rem 3rem;
+  align-items: center;
+  max-width: 84rem;
+  margin: 0 auto clamp(4rem, 8vw, 7rem);
+  border: 1px solid rgb(221 182 148 / 16%);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  background: #0b0d0c;
+}
+.accountability > div:first-child > p {
+  color: #bd704d;
+  font: 600 0.62rem var(--font-mono-family);
+  letter-spacing: 0.14em;
+}
+.accountability h2 {
+  margin: 0.75rem 0 0;
+  font: 600 clamp(1.5rem, 2.5vw, 2.5rem) / 1 var(--font-display-family);
+}
+.accountability > p {
+  color: rgb(240 231 221 / 64%);
+  line-height: 1.65;
+}
+.accountability > div:last-child {
+  display: grid;
+  gap: 0.75rem;
+  justify-items: start;
+}
+.accountability a {
+  color: #d7956e;
+  font: 700 0.66rem var(--font-body-family);
+  letter-spacing: 0.07em;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 @media (max-width: 767px) {
   .breadcrumbs {
     margin-bottom: -7rem;
@@ -223,10 +259,14 @@
   }
   .evidence,
   .evidenceGrid,
-  .sources ol {
+  .sources ol,
+  .accountability {
     grid-template-columns: 1fr;
   }
   .evidence .sources {
     grid-column: auto;
+  }
+  .accountability {
+    margin-inline: 1rem;
   }
 }

@@ -12,6 +12,22 @@
   font: 600 0.62rem var(--font-mono-family);
   letter-spacing: 0.13em;
 }
+.intentLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 1.5rem;
+  margin-top: 1.5rem;
+}
+.intentLinks a {
+  color: #d7956e;
+  font: 700 0.66rem var(--font-body-family);
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+.intentLinks a:hover,
+.intentLinks a:focus-visible {
+  color: #ffd2ad;
+}
 .noPosts {
   padding-top: clamp(2rem, 4vw, 4rem);
 }
@@ -261,6 +277,10 @@
   color: #d7956e;
   font: 700 0.72rem var(--font-body-family);
   letter-spacing: 0.08em;
+}
+.editorialNote > div {
+  display: grid;
+  gap: 0.65rem;
 }
 @media (max-width: 767px) {
   .featured {

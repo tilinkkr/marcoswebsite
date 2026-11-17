@@ -1,6 +1,6 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 import { writeAuditEvent } from "@/lib/audit";
 import { getAdmin } from "@/lib/auth/admin";
@@ -64,5 +64,7 @@ export async function POST(request: NextRequest) {
   });
   revalidatePath("/insights");
   revalidatePath(`/insights/${data.slug}`);
+  revalidatePath("/sitemap.xml");
+  revalidateTag("blogs", { expire: 0 });
   return NextResponse.json({ created: true, id: data.id }, { status: 201 });
 }

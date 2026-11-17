@@ -15,6 +15,23 @@ test("crawl controls use the production origin", async ({ page }) => {
   expect(robots).toContain("Disallow: /api/");
 });
 
+test("page title template adds one MARKOS suffix", async ({ page }) => {
+  for (const path of [
+    "/",
+    "/join",
+    "/faq",
+    "/funded-account-guide",
+    "/trading-community",
+    "/trading-education",
+  ]) {
+    await page.goto(path);
+    const title = await page.title();
+    expect(title, `${path} title`).toContain("MARKOS");
+    expect(title, `${path} title`).not.toContain("MARKOS | MARKOS");
+    expect(title.match(/MARKOS/g), `${path} title brand count`).toHaveLength(1);
+  }
+});
+
 test("funded-account guide answers high-intent questions and tracks WhatsApp CTA", async ({
   page,
 }) => {

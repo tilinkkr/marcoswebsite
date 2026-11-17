@@ -9,7 +9,7 @@ import { getWhatsAppUrl } from "@/lib/whatsapp";
 import local from "./faq.module.css";
 
 export const metadata: Metadata = {
-  title: "Funded Accounts & Prop-Firm FAQs for India | MARKOS",
+  title: "Funded Accounts & Prop-Firm FAQs for India",
   description:
     "Clear answers on funded accounts, payout checks, prop-firm evaluations and Indian forex questions—with official resources and no pass or payout promises.",
   alternates: { canonical: "/faq" },
@@ -308,7 +308,7 @@ export default function FAQPage() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Income Tax Department: virtual digital asset FAQ ↗
+                Income Tax Department: ITR-2 FAQ on VDA tax and disclosure ↗
               </a>
             </li>
             <li>
