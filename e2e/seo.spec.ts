@@ -113,3 +113,23 @@ test("funded-account guide exposes canonical URL and article schema", async ({
     .allTextContents();
   expect(schemas.join(" ")).toContain('"Article"');
 });
+
+test("www host permanently redirects to the apex canonical host", async ({
+  request,
+}) => {
+  const response = await request.get("/insights?ref=test", {
+    headers: { host: "www.markos.in" },
+    maxRedirects: 0,
+  });
+  expect(response.status()).toBe(308);
+  expect(response.headers()["location"]).toBe(
+    "https://markos.in/insights?ref=test",
+  );
+});
+
+test("home page has exactly one literal H1", async ({ page }) => {
+  await page.goto("/");
+  const h1 = page.locator("h1");
+  await expect(h1).toHaveCount(1);
+  await expect(h1).toContainText(/trading community for education/i);
+});

@@ -42,8 +42,8 @@ const practicalGuides = [
     question: "What is the difference between daily loss and maximum drawdown?",
     answer:
       "A daily loss limit usually caps losses within a defined trading day; maximum drawdown limits losses across a longer period or from a specified balance or equity peak. Providers define timing, open-position treatment and reset rules differently—check the exact calculation, not just the headline percentage.",
-    href: "/risk-disclosure",
-    action: "READ THE RISK DISCLOSURE",
+    href: "/faq#risk",
+    action: "READ THE DRAWDOWN ANSWERS",
   },
   {
     category: "TRADE REVIEW",
@@ -90,7 +90,7 @@ const indiaSearchGuides = [
     answer:
       "Avoid a one-word legal answer: crypto assets, payment use, exchange services, tax treatment and cross-border activity raise different questions. The RBI cautions users about risks, and the Income Tax Department publishes separate virtual-digital-asset tax guidance. Neither tax rules nor an app’s availability by itself confirms that a particular activity is authorised or suitable; check current official requirements and qualified advice.",
     href: "https://www.incometax.gov.in/iec/foportal/help/FileITR-2Online-FAQ",
-    label: "ITR-2 FAQ: VDA tax and disclosure",
+    label: "INCOME TAX DEPT: ITR-2 FILING FAQ",
   },
   {
     question: "How do I verify a broker in India?",

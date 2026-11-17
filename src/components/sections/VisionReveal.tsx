@@ -388,14 +388,16 @@ export function VisionReveal() {
 
         <div className={styles.opening} data-vision-opening>
           <p className={styles.openingEyebrow}>BEFORE THE MARKET MOVES</p>
-          <h1 className={styles.openingHeadline}>
+          {/* The slogan stays the visual headline; the literal description is
+              the H1 so search engines and screen readers get the offer. */}
+          <p className={styles.openingHeadline}>
             <span>MOST TRADERS SEE THE CHART.</span>
             <span>FEW SEE WHAT MOVES IT.</span>
-          </h1>
-          <p className={styles.openingPrompt}>
+          </p>
+          <h1 className={styles.openingPrompt}>
             An India-first trading community for education, live market learning
             and risk discipline.
-          </p>
+          </h1>
         </div>
 
         <div className={styles.copy}>

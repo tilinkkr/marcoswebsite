@@ -163,6 +163,8 @@
   color: rgb(235 226 214 / 58%);
   font-family: var(--font-body-family);
   font-size: clamp(0.84rem, 0.9vw, 1rem);
+  font-weight: 400;
+  line-height: normal;
 }
 
 .copy {

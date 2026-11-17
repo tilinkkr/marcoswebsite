@@ -308,7 +308,7 @@ export default function FAQPage() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Income Tax Department: ITR-2 FAQ on VDA tax and disclosure ↗
+                Income Tax Department: ITR-2 filing FAQ ↗
               </a>
             </li>
             <li>
