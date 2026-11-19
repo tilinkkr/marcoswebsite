@@ -23,8 +23,12 @@ test("connected MARCOS story renders without overflow", async ({ page }) => {
   await page.waitForLoadState("load");
   await expect(page.getByTestId("vision-reveal")).toBeVisible();
   if ((page.viewportSize()?.width ?? 0) >= 768) {
+    await expect(page.getByText(/most traders see the chart/i)).toBeVisible();
     await expect(
-      page.getByRole("heading", { name: /most traders see the chart/i }),
+      page.getByRole("heading", {
+        level: 1,
+        name: /trading community for education/i,
+      }),
     ).toBeVisible();
   }
   await expect(
@@ -160,6 +164,12 @@ test("connected MARCOS story renders without overflow", async ({ page }) => {
 test("desktop scroll story advances before the page bottom", async ({
   page,
 }) => {
+  // Lenis is intentionally disabled below 768px, so this desktop scroll
+  // story never activates on phone viewports.
+  test.skip(
+    (page.viewportSize()?.width ?? 0) < 768,
+    "Desktop-only smooth-scroll story",
+  );
   await page.goto("/", { waitUntil: "load" });
   await page.waitForFunction(
     () => document.documentElement.dataset.lenisActive === "true",

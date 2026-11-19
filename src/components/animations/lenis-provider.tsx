@@ -46,8 +46,7 @@ export function LenisProvider({
       reducedMotion ||
       prefersReducedMotion ||
       (disableOnMobile && (isMobile || mobileViewport)) ||
-      (disableOnLowPower &&
-        (isLowPower || saveData || constrainedHardware))
+      (disableOnLowPower && (isLowPower || saveData || constrainedHardware))
     ) {
       document.documentElement.removeAttribute("data-lenis-active");
       return;
@@ -57,14 +56,18 @@ export function LenisProvider({
     let cancelled = false;
     let cleanupRefreshListeners: (() => void) | undefined;
     let updateScrollTrigger: (() => void) | undefined;
-    const { ScrollTrigger } = getGSAP();
+    let tick: ((time: number) => void) | undefined;
+    const { gsap, ScrollTrigger } = getGSAP();
 
     void import("lenis").then(({ default: Lenis }) => {
       if (cancelled) return;
 
+      // Drive Lenis from GSAP's ticker instead of its own rAF loop. Two
+      // independent loops update scroll position and scrubbed animations on
+      // different frames, which shows up as judder on pinned sections.
       lenis = new Lenis({
-        autoRaf: true,
-        lerp: 0.16,
+        autoRaf: false,
+        lerp: 0.1,
         orientation: "vertical",
         gestureOrientation: "vertical",
         smoothWheel: true,
@@ -75,6 +78,10 @@ export function LenisProvider({
 
       updateScrollTrigger = () => ScrollTrigger.update();
       lenis.on("scroll", updateScrollTrigger);
+      tick = (time: number) => lenis?.raf(time * 1000);
+      gsap.ticker.add(tick);
+      // Lag smoothing would make Lenis jump after a slow frame.
+      gsap.ticker.lagSmoothing(0);
       lenis.resize();
       document.documentElement.setAttribute("data-lenis-active", "true");
 
@@ -115,6 +122,8 @@ export function LenisProvider({
       if (lenis && updateScrollTrigger) {
         lenis.off("scroll", updateScrollTrigger);
       }
+      if (tick) gsap.ticker.remove(tick);
+      gsap.ticker.lagSmoothing(500, 33);
       lenis?.destroy();
       document.documentElement.removeAttribute("data-lenis-active");
     };

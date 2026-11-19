@@ -228,8 +228,8 @@ export function CapitalMotion() {
             return () => mobileTimeline.kill();
           }
 
-          gsap.set(background, { autoAlpha: 0.42, scale: 1 });
-          gsap.set(redLight, { autoAlpha: 0.1, scale: 0.94, xPercent: 8 });
+          gsap.set(background, { autoAlpha: 0.62, scale: 1 });
+          gsap.set(redLight, { autoAlpha: 0.22, scale: 0.96, xPercent: 6 });
           gsap.set(notes, { autoAlpha: 0, force3D: true });
           gsap.set(transition, {
             autoAlpha: 0.78,
@@ -237,339 +237,233 @@ export function CapitalMotion() {
             yPercent: -48,
             scale: 0.94,
             rotationZ: 11,
-            rotationX: -4,
-            rotationY: 14,
             force3D: true,
           });
-          // Keep essential copy readable at every scrub position. Motion is
-          // reserved for the artwork, so a fast scroll cannot leave a blank
-          // panel or a headline stranded between masked lines.
+          // Copy stays readable at every scrub position; only the artwork
+          // moves, so a fast scroll never strands a half-revealed headline.
           gsap.set([eyebrow, body, meta, cta], { autoAlpha: 1, y: 0 });
           gsap.set(lines, { yPercent: 0, rotateX: 0, autoAlpha: 1 });
           gsap.set(ghost, { autoAlpha: 0, xPercent: -2 });
           gsap.set(attraction, { autoAlpha: 1, y: 0 });
           gsap.set(pressure, { autoAlpha: 0, y: 12 });
 
+          // One forward sequence over a 0–1 timeline. Each note is owned by
+          // one tween per phase and phases never overlap, so nothing is
+          // pulled in two directions at once. Sine easing keeps scrubbed
+          // motion continuous instead of snapping at phase boundaries.
           const timeline = gsap.timeline({
-            defaults: { ease: "power1.inOut" },
+            defaults: { ease: "sine.inOut" },
             scrollTrigger: {
               trigger: section,
               start: "top top",
               end: "bottom bottom",
-              scrub: true,
+              // A short catch-up smooths wheel steps when Lenis is off
+              // (low-power devices) and is imperceptible when it is on.
+              scrub: 0.35,
               invalidateOnRefresh: true,
             },
           });
 
           timeline
-            .addLabel("handoff", 0)
+            // 0.00 — the hand-off note from the hero clears, notes arrive.
             .to(
               transition,
               {
-                xPercent: 2,
-                yPercent: -8,
-                scale: 1.24,
+                xPercent: 8,
+                yPercent: -14,
+                scale: 1.18,
                 autoAlpha: 0,
-                duration: 0.16,
-                ease: "power1.out",
+                duration: 0.14,
+                ease: "sine.out",
               },
-              "handoff",
+              0,
             )
-            .to(
-              background,
-              { autoAlpha: 0.64, scale: 1.012, duration: 0.09 },
-              "handoff",
+            .to(background, { autoAlpha: 0.8, duration: 0.14 }, 0)
+            .to(redLight, { autoAlpha: 0.45, scale: 1, duration: 0.2 }, 0)
+            .fromTo(
+              farOne,
+              { autoAlpha: 0, scale: 0.62, xPercent: 18, yPercent: 4 },
+              {
+                autoAlpha: 0.6,
+                scale: 0.72,
+                xPercent: 10,
+                yPercent: -6,
+                duration: 0.14,
+              },
+              0.02,
             )
-            .addLabel("arrival", 0.04)
+            .fromTo(
+              farTwo,
+              { autoAlpha: 0, scale: 0.5, xPercent: -2 },
+              { autoAlpha: 0.5, scale: 0.6, xPercent: -8, duration: 0.14 },
+              0.05,
+            )
+            .fromTo(
+              midOne,
+              { autoAlpha: 0, scale: 0.74, yPercent: 10 },
+              { autoAlpha: 0.82, scale: 0.84, yPercent: 0, duration: 0.16 },
+              0.06,
+            )
+            .fromTo(
+              midTwo,
+              { autoAlpha: 0, scale: 0.68, yPercent: -8 },
+              { autoAlpha: 0.76, scale: 0.78, yPercent: 0, duration: 0.16 },
+              0.09,
+            )
+            .fromTo(
+              heroOne,
+              { autoAlpha: 0, scale: 0.82, yPercent: 8 },
+              { autoAlpha: 0.94, scale: 0.92, yPercent: 0, duration: 0.18 },
+              0.1,
+            )
+            .fromTo(
+              heroTwo,
+              { autoAlpha: 0, scale: 0.74, yPercent: -6 },
+              { autoAlpha: 0.86, scale: 0.84, yPercent: 0, duration: 0.18 },
+              0.13,
+            )
+            // 0.31 — the field drifts and rotates; phase copy swaps.
+            .to(attraction, { autoAlpha: 0, y: -10, duration: 0.06 }, 0.36)
+            .to(pressure, { autoAlpha: 1, y: 0, duration: 0.07 }, 0.4)
             .to(
               farOne,
               {
-                autoAlpha: 0.54,
-                scale: 0.7,
-                xPercent: 12,
-                yPercent: -8,
-                duration: 0.15,
+                xPercent: -24,
+                yPercent: -22,
+                scale: 0.98,
+                rotationZ: 13,
+                duration: 0.33,
               },
-              "arrival",
+              0.31,
             )
             .to(
               farTwo,
               {
-                autoAlpha: mobile ? 0 : 0.42,
-                scale: 0.58,
-                xPercent: -8,
-                duration: 0.15,
+                xPercent: 26,
+                yPercent: 20,
+                scale: 0.84,
+                rotationZ: -16,
+                duration: 0.33,
               },
-              "arrival+=0.055",
+              0.31,
             )
-            .addLabel("suspension", 0.12)
             .to(
               midOne,
-              { autoAlpha: 0.78, scale: 0.82, duration: 0.16 },
-              "suspension",
+              {
+                xPercent: 26,
+                yPercent: -26,
+                scale: 1.12,
+                rotationZ: -6,
+                rotationY: -14,
+                duration: 0.33,
+              },
+              0.31,
             )
             .to(
               midTwo,
-              { autoAlpha: 0.72, scale: 0.76, duration: 0.16 },
-              "suspension+=0.035",
-            )
-            .to(
-              heroOne,
-              { autoAlpha: 0.94, scale: 0.9, duration: 0.18 },
-              "suspension+=0.085",
+              {
+                xPercent: -30,
+                yPercent: 22,
+                scale: 1.18,
+                rotationZ: 24,
+                duration: 0.33,
+              },
+              0.31,
             )
             .to(
               heroTwo,
-              { autoAlpha: mobile ? 0 : 0.84, scale: 0.82, duration: 0.18 },
-              "suspension+=0.11",
-            )
-            .addLabel("rotation", 0.22)
-            .to(
-              attraction,
-              { autoAlpha: 0, y: -10, duration: 0.09 },
-              "rotation",
-            )
-            .to(
-              pressure,
-              { autoAlpha: 1, y: 0, duration: 0.11 },
-              "rotation+=0.05",
-            )
-            .to(
-              farOne,
               {
-                xPercent: -18,
+                xPercent: 22,
                 yPercent: -18,
-                scale: 0.92,
-                rotationZ: 13,
-                rotationY: -11,
-                duration: 0.25,
+                scale: 1.12,
+                rotationZ: -8,
+                duration: 0.33,
               },
-              "rotation",
-            )
-            .to(
-              farTwo,
-              {
-                xPercent: 20,
-                yPercent: 15,
-                scale: 0.78,
-                rotationZ: -18,
-                rotationX: 7,
-                duration: 0.25,
-              },
-              "rotation",
-            )
-            .to(
-              midOne,
-              {
-                xPercent: 18,
-                yPercent: -20,
-                scale: 1.04,
-                rotationZ: -6,
-                rotationY: -16,
-                duration: 0.26,
-              },
-              "rotation",
-            )
-            .to(
-              midTwo,
-              {
-                xPercent: -25,
-                yPercent: 18,
-                scale: 1.1,
-                rotationZ: 22,
-                rotationX: 8,
-                duration: 0.26,
-              },
-              "rotation",
+              0.31,
             )
             .to(
               heroOne,
               {
-                xPercent: -12,
-                yPercent: 10,
-                scale: 1.08,
+                xPercent: -10,
+                yPercent: 8,
+                scale: 1.06,
                 rotationZ: 5,
                 rotationY: -8,
-                duration: 0.27,
+                duration: 0.33,
               },
-              "rotation",
+              0.31,
             )
+            .to(background, { scale: 1.05, duration: 0.5 }, 0.31)
             .to(
-              heroTwo,
-              {
-                xPercent: 16,
-                yPercent: -14,
-                scale: 1.06,
-                rotationZ: -7,
-                rotationX: -6,
-                duration: 0.27,
-              },
-              "rotation",
+              redLight,
+              { autoAlpha: 0.75, scale: 1.05, xPercent: 0, duration: 0.3 },
+              0.4,
             )
-            .addLabel("flight", 0.35)
-            .to(background, { scale: 1.065, duration: 0.24 }, "flight")
+            // 0.64 — the outer notes fly past the camera and clear.
             .to(
-              farOne,
-              { xPercent: -48, yPercent: -30, scale: 1.18, duration: 0.25 },
-              "flight",
-            )
-            .to(
-              farTwo,
-              { xPercent: 52, yPercent: 34, scale: 1.08, duration: 0.25 },
-              "flight",
+              [farOne, farTwo],
+              { autoAlpha: 0, scale: 1.25, duration: 0.14, ease: "sine.in" },
+              0.64,
             )
             .to(
               midOne,
               {
-                xPercent: 62,
-                yPercent: -46,
-                scale: 1.48,
-                rotationY: -28,
-                duration: 0.25,
+                xPercent: 58,
+                yPercent: -42,
+                scale: 1.5,
+                autoAlpha: 0,
+                duration: 0.16,
+                ease: "sine.in",
               },
-              "flight",
+              0.64,
             )
             .to(
               midTwo,
               {
-                xPercent: -64,
-                yPercent: 42,
+                xPercent: -58,
+                yPercent: 40,
                 scale: 1.55,
-                rotationZ: 34,
-                duration: 0.25,
+                autoAlpha: 0,
+                duration: 0.16,
+                ease: "sine.in",
               },
-              "flight",
+              0.66,
             )
             .to(
               heroTwo,
               {
-                xPercent: 54,
-                yPercent: -38,
-                scale: 1.62,
-                rotationZ: 12,
-                duration: 0.25,
+                xPercent: 50,
+                yPercent: -34,
+                scale: 1.6,
+                autoAlpha: 0,
+                duration: 0.16,
+                ease: "sine.in",
               },
-              "flight",
+              0.68,
             )
-            .addLabel("intensity", 0.48)
-            .to(
-              redLight,
-              {
-                autoAlpha: mobile ? 0.5 : 0.7,
-                scale: 1.04,
-                xPercent: 0,
-                duration: 0.22,
-              },
-              "intensity",
-            )
-            .addLabel("approach", 0.18)
-            .set(
-              transition,
-              { xPercent: -34, yPercent: 30, scale: 1.05, rotationZ: -12 },
-              "approach+=0.045",
-            )
+            .to(pressure, { autoAlpha: 0, y: -10, duration: 0.06 }, 0.7)
+            // 0.70 — the hero note settles as the final image, so the
+            // section ends on a composed frame instead of an empty one.
             .to(
               heroOne,
               {
-                xPercent: mobile ? 18 : 44,
-                yPercent: mobile ? -22 : -38,
-                scale: mobile ? 1.72 : 2.05,
-                rotationZ: 13,
-                rotationY: -18,
-                duration: 0.17,
-                ease: "power2.in",
+                xPercent: 26,
+                yPercent: -10,
+                scale: 1.18,
+                rotationZ: 9,
+                rotationY: -4,
+                autoAlpha: 0.7,
+                duration: 0.24,
               },
-              "approach",
+              0.7,
             )
-            .to(
-              transition,
-              {
-                autoAlpha: 1,
-                xPercent: -34,
-                yPercent: 30,
-                scale: mobile ? 1.15 : 1.05,
-                duration: 0.1,
-              },
-              "approach+=0.055",
-            )
-            .addLabel("wipe", 0.08)
-            .to(pressure, { autoAlpha: 0, y: -10, duration: 0.08 }, "wipe")
-            .to(
-              transition,
-              {
-                xPercent: mobile ? 18 : 24,
-                yPercent: mobile ? -12 : -18,
-                scale: mobile ? 3.2 : 3.75,
-                rotationZ: 8,
-                rotationY: -7,
-                duration: 0.105,
-                ease: "power2.inOut",
-              },
-              "wipe",
-            )
-            .to(
-              notes,
-              { autoAlpha: 0, duration: 0.08, stagger: 0.005 },
-              "wipe+=0.045",
-            )
-            .addLabel("message", 0.12)
-            .to(
-              transition,
-              {
-                autoAlpha: 0,
-                xPercent: 78,
-                yPercent: -55,
-                duration: 0.075,
-                ease: "power1.out",
-              },
-              "message",
-            )
-            .to(
-              ghost,
-              { autoAlpha: 0.055, xPercent: 0, duration: 0.08 },
-              "message+=0.015",
-            )
-            .to(
-              eyebrow,
-              { autoAlpha: 1, y: 0, duration: 0.045 },
-              "message+=0.015",
-            )
-            .to(
-              lines[0],
-              { yPercent: 0, rotateX: 0, duration: 0.055, ease: "power2.out" },
-              "message+=0.025",
-            )
-            .to(
-              lines[1],
-              { yPercent: 0, rotateX: 0, duration: 0.055, ease: "power2.out" },
-              "message+=0.05",
-            )
-            .addLabel("settle", 0.2)
-            .to(
-              lines[2],
-              { yPercent: 0, rotateX: 0, duration: 0.05, ease: "power2.out" },
-              "settle",
-            )
+            .to(ghost, { autoAlpha: 0.06, xPercent: 0, duration: 0.14 }, 0.74)
             .to(
               redLight,
-              {
-                autoAlpha: mobile ? 0.58 : 0.82,
-                scale: 1.075,
-                duration: 0.055,
-              },
-              "settle+=0.025",
+              { autoAlpha: 0.85, scale: 1.075, duration: 0.2 },
+              0.76,
             )
-            .to(
-              lines[3],
-              { yPercent: 0, rotateX: 0, duration: 0.05, ease: "power2.out" },
-              "settle+=0.025",
-            )
-            .to(body, { autoAlpha: 1, y: 0, duration: 0.045 }, "settle+=0.04")
-            .to(meta, { autoAlpha: 1, y: 0, duration: 0.04 }, "settle+=0.06")
-            .to(cta, { autoAlpha: 1, y: 0, duration: 0.04 }, "settle+=0.08")
-            .addLabel("release", 0.64)
-            .to(background, { scale: 1.07, duration: 0.08 }, "release")
-            .to(redLight, { xPercent: -1.5, duration: 0.08 }, "release");
+            .to(background, { scale: 1.07, duration: 0.2 }, 0.8);
 
           return () => timeline.kill();
         },

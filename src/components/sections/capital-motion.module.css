@@ -74,16 +74,16 @@
   background:
     radial-gradient(
       circle at 42% 48%,
-      transparent 15%,
-      rgb(2 2 2 / 28%) 68%,
-      rgb(1 2 2 / 72%) 100%
+      transparent 22%,
+      rgb(2 2 2 / 18%) 70%,
+      rgb(1 2 2 / 52%) 100%
     ),
     linear-gradient(
       180deg,
-      rgb(5 6 6 / 55%) 0%,
-      transparent 24%,
-      transparent 78%,
-      rgb(4 5 5 / 54%) 100%
+      rgb(5 6 6 / 38%) 0%,
+      transparent 18%,
+      transparent 84%,
+      rgb(4 5 5 / 38%) 100%
     );
 }
 
@@ -173,8 +173,8 @@
   inset: -2.5rem -5rem -2.5rem -2rem;
   background: linear-gradient(
     90deg,
-    rgb(7 9 8 / 94%) 0%,
-    rgb(7 9 8 / 72%) 64%,
+    rgb(7 9 8 / 82%) 0%,
+    rgb(7 9 8 / 52%) 58%,
     transparent 100%
   );
   pointer-events: none;
@@ -193,8 +193,9 @@
   grid-area: 1 / 1;
   padding: 1rem 1.1rem;
   border: 1px solid rgb(228 190 157 / 16%);
-  background: rgb(8 10 9 / 72%);
-  backdrop-filter: blur(5px);
+  /* Opaque enough to read without backdrop-filter, which would re-blur the
+     moving notes behind it on every frame. */
+  background: rgb(8 10 9 / 86%);
 }
 .phaseRail article:nth-child(2) {
   opacity: 0;
