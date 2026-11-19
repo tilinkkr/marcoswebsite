@@ -13,7 +13,7 @@ import { VisionReveal } from "@/components/sections/VisionReveal";
 export const metadata: Metadata = {
   title: { absolute: "Trading Education & Community | MARKOS" },
   description:
-    "Plan, watch, review, and refine with an India-first trading community built around live reasoning, structured education, practical tools, and risk discipline.",
+    "Trading community for traders in India, UAE & GCC: live sessions, funded-account and prop-firm guidance, and risk discipline. Message us on WhatsApp to join.",
   alternates: { canonical: "/" },
   openGraph: {
     title: "Trading Education & Community | MARKOS",

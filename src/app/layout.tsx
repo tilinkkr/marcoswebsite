@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { LenisProvider } from "@/components/animations/lenis-provider";
 import { RouteBackButton } from "@/components/layout/RouteBackButton";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
+import { WhatsAppCommunityPrompt } from "@/components/layout/WhatsAppCommunityPrompt";
 import { ibmPlexMono, ibmPlexSans, manrope, spaceGrotesk } from "@/lib/fonts";
 import { safeJsonLd, SITE_NAME, SITE_URL } from "@/lib/site";
 
@@ -89,6 +90,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <RouteBackButton />
           {children}
           <WhatsAppButton />
+          <WhatsAppCommunityPrompt />
         </LenisProvider>
       </body>
     </html>

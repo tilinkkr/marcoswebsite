@@ -9,9 +9,9 @@ import { indicatorFeatures, indicatorProduct } from "@/config/products";
 import styles from "../marketing.module.css";
 
 export const metadata: Metadata = {
-  title: "Trading Indicators",
+  title: "MARKOS Trading Indicator: Market Context Without the Noise",
   description:
-    "Explore a MARKOS analytical indicator designed to add market context without replacing trader judgment.",
+    "See what the MARKOS indicator shows, how traders use it for market context, and what it can't do. Ask the team on WhatsApp before you decide.",
   alternates: { canonical: "/indicators" },
   openGraph: {
     title: "MARKOS Trading Tools",

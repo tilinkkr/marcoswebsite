@@ -10,15 +10,18 @@ import { getWhatsAppUrl } from "@/lib/whatsapp";
 import styles from "../marketing.module.css";
 
 export const metadata: Metadata = {
-  title: "Trading Community in India",
+  title: "Trading Community for India, UAE & GCC — Join on WhatsApp",
   description:
-    "Explore the MARKOS trading community: weekday screen shares, market discussion, process education and trade review—with no signal or outcome promises.",
+    "Join the MARKOS trading community from India, Dubai or the GCC: weekday live screen shares, funded-account and prop-firm guidance, and trade review. Message us on WhatsApp.",
   alternates: { canonical: "/trading-community" },
 };
 
 export default function TradingCommunityPage() {
   const whatsapp = getWhatsAppUrl(
     "Hi MARKOS, I am comparing trading communities. Could you explain the membership format, activities, and fees?",
+  );
+  const gccWhatsapp = getWhatsAppUrl(
+    "Hi MARKOS, I'm trading from the UAE/GCC. Can I join the community and live sessions?",
   );
 
   return (
@@ -73,6 +76,25 @@ export default function TradingCommunityPage() {
                 </WhatsAppLink>
               ) : null}
             </article>
+            <article className={styles.path}>
+              <p className={styles.label}>TRADING FROM DUBAI, UAE OR GCC?</p>
+              <h3>YOU&apos;RE WELCOME HERE.</h3>
+              <p>
+                Members join from India, the UAE and across the Gulf. Ask how
+                live sessions line up with your time zone (IST / GST) and how to
+                get started — one message is enough.
+              </p>
+              <WhatsAppLink
+                className={styles.action}
+                href={gccWhatsapp}
+                placement="trading-community-gcc"
+                target="_blank"
+                rel="noreferrer"
+                data-whatsapp-primary
+              >
+                MESSAGE US FROM THE GCC <ArrowUpRight size={17} aria-hidden />
+              </WhatsAppLink>
+            </article>
           </div>
           <div className={styles.sectionHeader}>
             <p className={styles.label}>A COMMUNITY IS NOT A SHORTCUT</p>
@@ -100,7 +122,17 @@ export default function TradingCommunityPage() {
           <p>
             Want to understand the topics first? Visit our{" "}
             <Link href="/trading-education">trading education overview</Link> or
-            browse <Link href="/insights">MARKOS Insights</Link>.
+            browse <Link href="/insights">MARKOS Insights</Link>. Popular
+            questions:{" "}
+            <Link href="/funded-account-guide">what is a funded account</Link>,{" "}
+            <Link href="/insights/pass-funded-account-challenge-in-3-days">
+              passing a challenge in 3 days
+            </Link>
+            ,{" "}
+            <Link href="/insights/top-10-prop-firms-funded-accounts-compared">
+              top 10 prop firms compared
+            </Link>
+            .
           </p>
         </section>
       </main>

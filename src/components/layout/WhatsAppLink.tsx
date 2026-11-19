@@ -1,12 +1,13 @@
 "use client";
 
-import type { AnchorHTMLAttributes, MouseEvent, ReactNode } from "react";
+import type { AnchorHTMLAttributes, MouseEvent, ReactNode, Ref } from "react";
 import { initializePostHog } from "@/lib/analytics/posthog";
 
 type Props = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href"> & {
   href: string;
   placement: string;
   children: ReactNode;
+  ref?: Ref<HTMLAnchorElement>;
 };
 
 export function WhatsAppLink({

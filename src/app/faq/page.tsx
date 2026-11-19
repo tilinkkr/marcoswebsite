@@ -11,7 +11,7 @@ import local from "./faq.module.css";
 export const metadata: Metadata = {
   title: "Funded Accounts & Prop-Firm FAQs for India",
   description:
-    "Clear answers on funded accounts, payout checks, prop-firm evaluations and Indian forex questions—with official resources and no pass or payout promises.",
+    "Straight answers on funded accounts, drawdown, payouts, passing prop-firm challenges and forex rules for traders in India, UAE & GCC — with official sources.",
   alternates: { canonical: "/faq" },
   openGraph: {
     title: "Funded Accounts & Prop-Firm FAQs for India | MARKOS",

@@ -9,12 +9,13 @@ import { getWhatsAppUrl } from "@/lib/whatsapp";
 import local from "./funded-account-guide.module.css";
 
 export const metadata: Metadata = {
-  title: "Funded Accounts: Rules, Payouts & Prop-Firm Checks",
+  title: "What Is a Funded Account? Rules, Payouts & Prop Firm Checks",
   description:
-    "Understand funded accounts, evaluation rules, payout rejections and how to compare CFD prop firms. A practical India-focused guide—no pass or payout promises.",
+    "What a funded account really is, how prop-firm challenges work, why payouts get rejected and how to compare firms — for traders in India, UAE & GCC.",
   alternates: { canonical: "/funded-account-guide" },
   openGraph: {
-    title: "Funded Accounts: Rules, Payouts & Prop-Firm Checks | MARKOS",
+    title:
+      "What Is a Funded Account? Rules, Payouts & Prop Firm Checks | MARKOS",
     description:
       "A clear guide to funded-account evaluations, payout requests, provider rules and questions to ask before paying.",
     url: "/funded-account-guide",

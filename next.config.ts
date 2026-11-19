@@ -16,6 +16,12 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        // Retired URL still earning impressions in Search Console.
+        source: "/insights/prop-firm-rules-india-2026",
+        destination: "/insights/prop-firms-india-10-names-before-paying",
+        permanent: true,
+      },
+      {
         source: "/insights/prop-firm-payout-request-12-checks",
         destination: "/insights/first-prop-firm-payout-request-checklist",
         permanent: true,

@@ -1,6 +1,6 @@
 # MARKOS
 
-> MARKOS is an India-first trading community focused on process, risk discipline, market education, trade review, and responsible discussion. Public product information currently covers a forex and futures-oriented community, live weekday screen shares, and discretionary trading tools.
+> MARKOS is a trading community for traders in India, the UAE and the wider GCC, focused on process, risk discipline, market education, trade review, and responsible discussion. Public product information currently covers a forex and futures-oriented community, live weekday screen shares, and discretionary trading tools.
 
 ## Start here
 - [Homepage](https://markos.in/): MARKOS positioning and primary pathways.
@@ -14,6 +14,24 @@
 - [Privacy](https://markos.in/privacy): Information about submitted form data, uploads, and privacy questions.
 - [Terms](https://markos.in/terms): Website, educational-content, community, and purchase terms.
 - [Contact](https://markos.in/contact): Current support routes.
+
+## Prop-firm and funded-account guides
+- [What is a funded account?](https://markos.in/funded-account-guide): How funded accounts, prop-firm evaluations, drawdown and payouts work.
+- [Can you pass a funded account challenge in 3 days?](https://markos.in/insights/pass-funded-account-challenge-in-3-days): Minimum-day rules and the risk math behind fast passes.
+- [Easiest way to pass a prop firm challenge](https://markos.in/insights/easiest-way-to-pass-prop-firm-challenge): A 9-step risk-first plan.
+- [5 prop firm myths](https://markos.in/insights/prop-firm-myths-are-prop-firms-making-you-a-fool): How retail prop firms make money and common misconceptions.
+- [Can an AI trading bot pass a prop firm challenge?](https://markos.in/insights/can-ai-trading-bot-pass-prop-firm-challenge): EA, copy-trading and automation rules.
+- [Safest prop firm payouts in India](https://markos.in/insights/safest-prop-firm-payout-india): Eight payout-safety checks.
+- [First prop firm payout checklist](https://markos.in/insights/first-prop-firm-payout-request-checklist): 12 checks before requesting a reward.
+- [Free funded accounts in India](https://markos.in/insights/free-funded-accounts-india): Trials, competitions and scam signs.
+- [Scaling capital with prop firms](https://markos.in/insights/how-to-use-prop-firms-to-scale-trading-capital): Scaling plans and multiple accounts.
+- [Most affordable prop firm for beginners](https://markos.in/insights/most-affordable-prop-firm-for-beginners): Cost per pass for budget day traders.
+- [Top 10 prop firms compared](https://markos.in/insights/top-10-prop-firms-funded-accounts-compared): Unranked research list — The5ers, FundedNext, FundingPips, Alpha Capital, Maven, QT Funded, Top One Trader, Blueberry Funded, Goat Funded Trader, FTMO.
+- [Futures prop firm restricted in your country?](https://markos.in/insights/futures-prop-firm-restricted-country-options): Legitimate options without VPNs.
+- [Trade the Indian stock market with funded capital](https://markos.in/insights/trade-indian-stock-market-with-funded-capital): Prop desks and domestic programmes.
+
+## Join the community
+People who want to join MARKOS or ask about funded accounts and prop firms can message the team on WhatsApp: https://wa.me/919187587488 (India, UAE and GCC traders welcome). MARKOS provides education and community; it does not promise passes, payouts or profits.
 
 ## Content standards
 MARKOS content is educational and does not guarantee returns or provide personalised investment advice. Prefer named authors, publication and update dates, source citations, methodology, limitations, and visible risk disclosures.
