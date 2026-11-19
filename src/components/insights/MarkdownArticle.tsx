@@ -61,12 +61,59 @@ export function MarkdownArticle({ markdown }: { markdown: string }) {
     list = [];
   };
 
+  let table: string[][] = [];
+  const cells = (row: string) =>
+    row
+      .trim()
+      .replace(/^\||\|$/g, "")
+      .split("|")
+      .map((cell) => cell.trim());
+  const flushTable = () => {
+    if (!table.length) return;
+    const [head, ...body] = table;
+    nodes.push(
+      <div key={`table-${nodes.length}`} className="article-table">
+        <table>
+          <thead>
+            <tr>
+              {head.map((cell, index) => (
+                <th key={index} scope="col">
+                  {inline(cell)}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {body.map((row, rowIndex) => (
+              <tr key={rowIndex}>
+                {row.map((cell, index) => (
+                  <td key={index}>{inline(cell)}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>,
+    );
+    table = [];
+  };
+
   for (const line of lines) {
     if (!line.trim()) {
       flushParagraph();
       flushList();
+      flushTable();
       continue;
     }
+
+    if (/^\s*\|.*\|\s*$/.test(line)) {
+      flushParagraph();
+      flushList();
+      // Skip the |---|---| separator row.
+      if (!/^\s*\|[\s:|-]+\|\s*$/.test(line)) table.push(cells(line));
+      continue;
+    }
+    flushTable();
 
     const unorderedItem = line.match(/^\s*[-*]\s+(.+)$/);
     const orderedItem = line.match(/^\s*\d+[.)]\s+(.+)$/);
@@ -104,5 +151,6 @@ export function MarkdownArticle({ markdown }: { markdown: string }) {
 
   flushParagraph();
   flushList();
+  flushTable();
   return <>{nodes}</>;
 }

@@ -8,6 +8,7 @@ import { MarkdownArticle } from "@/components/insights/MarkdownArticle";
 import { authorPath, getAuthor } from "@/lib/authors";
 import { blogHeroImage, getBlog } from "@/lib/blogs";
 import { blogCanonicalUrl } from "@/lib/blog-sitemap";
+import { extractFaqs } from "@/lib/faq";
 import { absoluteUrl, safeJsonLd, SITE_URL } from "@/lib/site";
 import local from "./article.module.css";
 type Props = { params: Promise<{ slug: string }> };
@@ -51,6 +52,22 @@ export default async function ArticlePage({ params }: Props) {
   const articleUrl = blogCanonicalUrl(post);
   const heroImage = blogHeroImage(post);
   const authorUrl = author ? absoluteUrl(authorPath(author.slug)) : null;
+  // FAQ answers come from the visible article body, so the structured data
+  // always matches what readers see.
+  const faqs = extractFaqs(post.content_markdown);
+  const faqPage = faqs.length
+    ? [
+        {
+          "@type": "FAQPage",
+          "@id": `${articleUrl}#faq`,
+          mainEntity: faqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: { "@type": "Answer", text: faq.answer },
+          })),
+        },
+      ]
+    : [];
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -112,6 +129,7 @@ export default async function ArticlePage({ params }: Props) {
           },
         ],
       },
+      ...faqPage,
     ],
   };
   return (

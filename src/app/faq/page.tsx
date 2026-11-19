@@ -128,6 +128,18 @@ const groups = [
     label: "INDIA",
     items: [
       [
+        "Which is the best funded account in India?",
+        "There is no single best funded account for every Indian trader. The right funded prop firm accepts Indian residents, has rules that fit how you trade (forex, indices, crypto or futures), explains payouts clearly and charges a fee you can afford to lose. MARKOS Insights compares the most-searched firms — The5ers, FundedNext, FundingPips, FTMO, Alpha Capital, Blueberry Funded and more — in an unranked top-10 list.",
+      ],
+      [
+        "Is a funded account legal in India?",
+        "There is no one-word answer. RBI says residents may deal in forex only with authorised persons and on authorised electronic trading platforms or recognised exchanges, and its alert list warns against unauthorised forex platforms. RBI's LRS FAQ also says LRS cannot be used for margins or margin calls to overseas exchanges or counterparties. How a specific funded-account product is treated depends on its structure; check current RBI guidance and take qualified advice.",
+      ],
+      [
+        "Can an Indian resident open a foreign currency account?",
+        "According to RBI's LRS FAQ, banks in India cannot open foreign currency accounts for residents under LRS, but no prior approval is needed to open and hold a foreign currency account with a bank outside India for remittances under LRS — for permitted purposes only.",
+      ],
+      [
         "Can Indian traders use prop firms?",
         "Provider structures, instruments, platforms and payment arrangements vary. Indian traders should verify current Indian law and authoritative regulatory guidance before participating; MARKOS does not provide legal or tax advice.",
       ],
@@ -161,7 +173,7 @@ const groups = [
       ],
       [
         "Can you name the best prop firms in India for 2026?",
-        "MARKOS does not publish a universal ‘best’ or ‘top’ ranking. Provider availability, product structure, fees, drawdown rules and payout terms can change. Compare current official contracts and independently check legal, payment and tax considerations before paying; a ranking is not a guarantee of safety or payout.",
+        "MARKOS does not publish a universal ‘best’ ranking, but Insights lists the ten most-searched funded firms with the checks that matter. Provider availability, product structure, fees, drawdown rules and payout terms can change. Compare current official contracts and independently check legal, payment and tax considerations before paying; a ranking is not a guarantee of safety or payout.",
       ],
       [
         "What are the best prop firms for beginners?",

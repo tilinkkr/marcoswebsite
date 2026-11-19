@@ -120,6 +120,37 @@
 .article li + li {
   margin-top: 0.65rem;
 }
+.article :global(.article-table) {
+  margin: 2rem 0;
+  overflow-x: auto;
+  border: 1px solid rgb(221 182 148 / 16%);
+}
+.article table {
+  width: 100%;
+  min-width: 34rem;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.article th,
+.article td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid rgb(221 182 148 / 12%);
+  color: rgb(240 231 221 / 78%);
+  line-height: 1.55;
+  text-align: left;
+  vertical-align: top;
+}
+.article th {
+  color: #e7d7c7;
+  background: rgb(255 255 255 / 3%);
+  font-family: var(--font-mono-family);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.article tr:last-child td {
+  border-bottom: 0;
+}
 .article a {
   color: #d7956e;
   text-decoration: underline;
