@@ -90,6 +90,13 @@
     transform 180ms ease,
     border-color 180ms ease;
 }
+/* Text-only layouts for articles without their own image. */
+.featured:not(:has(img)) {
+  grid-template-columns: 1fr;
+}
+.card:not(:has(img)) {
+  padding-top: 1.4rem;
+}
 .card:hover,
 .card:focus-visible {
   transform: translateY(-4px);

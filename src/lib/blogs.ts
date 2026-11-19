@@ -46,11 +46,13 @@ export type BlogPost = {
   editorial_verified: boolean;
 };
 
-export const DEFAULT_BLOG_HERO_IMAGE =
-  "/images/marcos/insights/prop-firm-rules-india-2026.webp";
-
-export function blogHeroImage(post: Pick<BlogPost, "hero_image">): string {
-  return post.hero_image?.trim() || DEFAULT_BLOG_HERO_IMAGE;
+// Articles show an image only when they have their own. There is no shared
+// fallback: a reused stock image across unrelated articles reads as a
+// placeholder to readers and adds nothing for search.
+export function blogHeroImage(
+  post: Pick<BlogPost, "hero_image">,
+): string | null {
+  return post.hero_image?.trim() || null;
 }
 
 const getPublishedBlogs = unstable_cache(

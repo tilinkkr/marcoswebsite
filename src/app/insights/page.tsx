@@ -167,21 +167,22 @@ export default async function InsightsPage() {
                 <h2>{featured.title}</h2>
                 <p>{featured.excerpt}</p>
                 <small>
-                  {featured.author_name} · {featured.reading_time} MIN READ ·
                   {featured.publication_mode === "automated"
-                    ? " AI-ASSISTED · NOT HUMAN REVIEWED ·"
-                    : ""}
-                  UPDATED{" "}
+                    ? "MARKOS"
+                    : featured.author_name}{" "}
+                  · {featured.reading_time} MIN READ · UPDATED{" "}
                   {new Date(featured.updated_at).toLocaleDateString("en-IN")}
                 </small>
               </div>
-              <Image
-                src={blogHeroImage(featured)}
-                alt={featured.title}
-                width={1600}
-                height={900}
-                sizes="(max-width: 767px) 100vw, 46vw"
-              />
+              {blogHeroImage(featured) && (
+                <Image
+                  src={blogHeroImage(featured) as string}
+                  alt={featured.title}
+                  width={1600}
+                  height={900}
+                  sizes="(max-width: 767px) 100vw, 46vw"
+                />
+              )}
             </Link>
           ) : null}
           {remaining.length > 0 && (
@@ -192,21 +193,20 @@ export default async function InsightsPage() {
                   href={`/insights/${post.slug}`}
                   key={post.id}
                 >
-                  <Image
-                    src={blogHeroImage(post)}
-                    alt={post.title}
-                    width={960}
-                    height={540}
-                    sizes="(max-width: 767px) 100vw, 33vw"
-                  />
+                  {blogHeroImage(post) && (
+                    <Image
+                      src={blogHeroImage(post) as string}
+                      alt={post.title}
+                      width={960}
+                      height={540}
+                      sizes="(max-width: 767px) 100vw, 33vw"
+                    />
+                  )}
                   <span>{post.category}</span>
                   <h2>{post.title}</h2>
                   <p>{post.excerpt}</p>
                   <small>
                     {post.reading_time} MIN READ ·{" "}
-                    {post.publication_mode === "automated"
-                      ? "AI-ASSISTED · NOT HUMAN REVIEWED · "
-                      : ""}
                     {new Date(post.updated_at).toLocaleDateString("en-IN")}
                   </small>
                 </Link>

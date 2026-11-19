@@ -14,7 +14,7 @@ type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getBlog((await params).slug);
   if (!post) return {};
-  const heroImage = blogHeroImage(post);
+  const socialImage = post.og_image ?? blogHeroImage(post);
   const canonical = blogCanonicalUrl(post);
   return {
     title: { absolute: post.seo_title },
@@ -27,16 +27,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: canonical,
       siteName: "MARKOS",
       locale: "en_IN",
-      images: [absoluteUrl(post.og_image ?? heroImage)],
+      ...(socialImage ? { images: [absoluteUrl(socialImage)] } : {}),
       publishedTime: post.published_at ?? undefined,
       modifiedTime: post.updated_at,
-      authors: [post.author_name],
+      authors: [
+        post.publication_mode === "automated" ? "MARKOS" : post.author_name,
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: post.seo_title,
       description: post.seo_description,
-      images: [absoluteUrl(post.og_image ?? heroImage)],
+      ...(socialImage ? { images: [absoluteUrl(socialImage)] } : {}),
     },
   };
 }
@@ -49,7 +51,6 @@ export default async function ArticlePage({ params }: Props) {
   const articleUrl = blogCanonicalUrl(post);
   const heroImage = blogHeroImage(post);
   const authorUrl = author ? absoluteUrl(authorPath(author.slug)) : null;
-  const automatedSummary = post.automated_review_report.summary;
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -67,11 +68,7 @@ export default async function ArticlePage({ params }: Props) {
               name: author.name,
               url: authorUrl,
             }
-          : {
-              "@type": "Organization",
-              name: "MARKOS AI Editorial Desk",
-              url: absoluteUrl("/insights"),
-            },
+          : { "@id": `${SITE_URL}/#organization` },
         ...(isAutomated
           ? {}
           : {
@@ -83,7 +80,7 @@ export default async function ArticlePage({ params }: Props) {
             }),
         datePublished: post.published_at,
         dateModified: post.updated_at,
-        image: absoluteUrl(heroImage),
+        ...(heroImage ? { image: absoluteUrl(heroImage) } : {}),
         keywords: post.tags
           .filter((tag) => !/^campaign-day-\d{2}$/i.test(tag))
           .join(", "),
@@ -142,9 +139,9 @@ export default async function ArticlePage({ params }: Props) {
               </Link>
             ) : (
               <p>
-                MARKOS AI Editorial Desk
+                MARKOS Editorial Team
                 <br />
-                <span>AI-assisted educational content; no human review</span>
+                <span>Trading education</span>
               </p>
             )}
             <p>
@@ -162,7 +159,7 @@ export default async function ArticlePage({ params }: Props) {
                 <>
                   <br />
                   <time dateTime={post.last_reviewed_at}>
-                    {isAutomated ? "Automated checks run " : "Reviewed "}
+                    {isAutomated ? "Sources checked " : "Reviewed "}
                     {new Date(post.last_reviewed_at).toLocaleDateString(
                       "en-IN",
                     )}
@@ -172,32 +169,28 @@ export default async function ArticlePage({ params }: Props) {
             </p>
           </div>
         </header>
-        <Image
-          className={local.hero}
-          src={heroImage}
-          alt={post.title}
-          width={1600}
-          height={900}
-          preload
-          sizes="100vw"
-        />
+        {heroImage && (
+          <Image
+            className={local.hero}
+            src={heroImage}
+            alt={post.title}
+            width={1600}
+            height={900}
+            preload
+            sizes="100vw"
+          />
+        )}
         <aside className={local.trustPanel} aria-label="Article standards">
           <div>
             <span>METHOD</span>
             <p>{post.methodology}</p>
           </div>
-          <div>
-            <span>
-              {isAutomated ? "AUTOMATED CONTENT CHECK" : "HUMAN REVIEW"}
-            </span>
-            <p>
-              {isAutomated
-                ? typeof automatedSummary === "string"
-                  ? automatedSummary
-                  : "Automated source, claim, risk-language, and attribution checks passed. No human editor reviewed this article."
-                : `Reviewed by ${post.reviewer_name}. ${post.reviewer_qualification}`}
-            </p>
-          </div>
+          {!isAutomated && (
+            <div>
+              <span>HUMAN REVIEW</span>
+              <p>{`Reviewed by ${post.reviewer_name}. ${post.reviewer_qualification}`}</p>
+            </div>
+          )}
           <div>
             <span>LIMITATIONS</span>
             <p>{post.limitations}</p>
@@ -216,7 +209,7 @@ export default async function ArticlePage({ params }: Props) {
             <h2 id="evidence-title">Evidence and accountability</h2>
             <p>
               {isAutomated
-                ? "These primary or authoritative links were checked by an automated editorial workflow. Automated checks can miss errors; verify current rules directly. They are not a guarantee of market outcomes."
+                ? "The primary and authoritative sources behind this article. Rules change, so verify current terms directly. Sources are not a guarantee of market outcomes."
                 : "These links support the article's named authorship and review. They are evidence to inspect, not a guarantee of market outcomes."}
             </p>
           </div>
@@ -278,8 +271,7 @@ export default async function ArticlePage({ params }: Props) {
           <p>
             Send the article URL, the exact statement, and a reliable source.
             MARKOS assesses correction reports and updates material errors when
-            verified. Automated checks do not mean a person reviewed this
-            article.
+            verified.
           </p>
           <div>
             <Link href="/contact">REPORT A CORRECTION ↗</Link>
