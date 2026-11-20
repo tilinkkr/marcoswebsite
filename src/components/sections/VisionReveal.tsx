@@ -16,6 +16,16 @@ const ASSET_ROOT = "/images/marcos/vision";
 export function VisionReveal() {
   const sectionRef = useRef<HTMLElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
+  const loadedLayers = useRef(0);
+
+  // The eye artwork stays hidden until both torn-paper layers have painted,
+  // so the uncovered eye never flashes before the paper covers it.
+  const markLayerLoaded = () => {
+    loadedLayers.current += 1;
+    if (loadedLayers.current >= 2) {
+      sectionRef.current?.setAttribute("data-vision-layers", "");
+    }
+  };
   const { isLowPower } = useAnimationPreferences();
 
   useEffect(() => {
@@ -292,6 +302,10 @@ export function VisionReveal() {
       );
     }, section);
 
+    // GSAP now owns the initial states, so the CSS pre-hydration guard that
+    // hides the second-scene copy can release (see vision-reveal.module.css).
+    section.setAttribute("data-vision-ready", "");
+
     let refreshTimer = 0;
     const refreshAfterOrientation = () => {
       window.clearTimeout(refreshTimer);
@@ -367,7 +381,9 @@ export function VisionReveal() {
             alt=""
             fill
             sizes="100vw"
+            preload
             unoptimized
+            onLoad={markLayerLoaded}
             className={styles.layerImage}
           />
         </div>
@@ -381,7 +397,9 @@ export function VisionReveal() {
             alt=""
             fill
             sizes="100vw"
+            preload
             unoptimized
+            onLoad={markLayerLoaded}
             className={styles.layerImage}
           />
         </div>

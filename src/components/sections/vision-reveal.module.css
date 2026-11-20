@@ -84,6 +84,33 @@
   will-change: clip-path;
 }
 
+/*
+ * Pre-hydration guard (desktop only — mobile shows the copy immediately).
+ * Before GSAP sets the scroll story's first frame, the server HTML would
+ * paint the second-scene copy over the opening headline and the uncropped
+ * eye. Match the timeline's starting state in CSS until the component marks
+ * itself ready; a delayed fallback reveals the copy if scripts never run.
+ */
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .story:not([data-vision-ready]) .gaze {
+    clip-path: circle(0% at 76% 47%);
+  }
+  .story:not([data-vision-layers]) .art {
+    visibility: hidden;
+    animation: revealCopyFallback 0s 2.5s forwards;
+  }
+  .story:not([data-vision-ready]) .copy {
+    visibility: hidden;
+    animation: revealCopyFallback 0s 4s forwards;
+  }
+}
+
+@keyframes revealCopyFallback {
+  to {
+    visibility: visible;
+  }
+}
+
 .seam {
   position: absolute;
   z-index: 5;
