@@ -8,12 +8,16 @@ import { getGSAP } from "@/lib/animations/gsap";
 import styles from "./team-system.module.css";
 
 const streams = [
-  ["RAHUL / COO", "OPERATIONS / EXECUTION / STANDARD", styles.vision],
-  ["LINU / CEO", "OPERATIONS / COMMUNITY / EXECUTION", styles.operations],
+  [
+    "RAHUL / COO + LEAD TRADER",
+    "10+ YEARS TRADING / FOREX / GOLD / FUNDED ACCOUNTS",
+    styles.vision,
+  ],
+  ["LINU / CFO", "FINANCE / PAYOUTS / OPERATIONS", styles.operations],
   ["TILIN / CTO", "TECHNOLOGY / INFRASTRUCTURE / PRODUCT", styles.tech],
   [
-    "SAHAL / CONTENT CREATOR + ANALYST",
-    "MARKET EDUCATION / ANALYSIS / CONTENT",
+    "SAHAL / CONTENT CREATOR + TRADER",
+    "MARKET EDUCATION / AI TOOLS / CONTENT",
     styles.market,
   ],
 ] as const;

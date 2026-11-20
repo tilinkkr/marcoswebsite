@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { ABROAD_COUNTRIES, GCC_COUNTRIES } from "@/config/gcc";
 import { authorPath, MARCOS_AUTHORS } from "@/lib/authors";
 import { getBlogs } from "@/lib/blogs";
 import { blogSitemapEntries } from "@/lib/blog-sitemap";
@@ -23,6 +24,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/editorial-standards",
     "/trading-community",
     "/trading-education",
+    "/kerala",
+    "/gcc",
+    ...GCC_COUNTRIES.map((country) => `/gcc/${country.slug}`),
+    "/abroad",
+    ...ABROAD_COUNTRIES.map((country) => `/abroad/${country.slug}`),
+    "/get-funded",
     "/faq",
     "/funded-account-guide",
     "/risk-disclosure",

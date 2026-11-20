@@ -5,7 +5,13 @@ import { notFound } from "next/navigation";
 import shared from "@/app/public-pages.module.css";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
-import { authorPath, getAuthor, MARCOS_AUTHORS } from "@/lib/authors";
+import {
+  AUTHOR_REGISTRATION_DISCLOSURE,
+  authorPath,
+  bylineSlugForPost,
+  getAuthor,
+  MARCOS_AUTHORS,
+} from "@/lib/authors";
 import { getBlogs } from "@/lib/blogs";
 import { absoluteUrl, safeJsonLd } from "@/lib/site";
 
@@ -31,7 +37,7 @@ export default async function AuthorPage({ params }: Props) {
   const author = getAuthor((await params).slug);
   if (!author) notFound();
   const posts = (await getBlogs()).filter(
-    (post) => post.author_slug === author.slug,
+    (post) => bylineSlugForPost(post) === author.slug,
   );
   const profileUrl = absoluteUrl(authorPath(author.slug));
   const jsonLd = {
@@ -43,6 +49,8 @@ export default async function AuthorPage({ params }: Props) {
     jobTitle: author.role,
     worksFor: { "@id": `${absoluteUrl("/")}#organization` },
     description: author.bio,
+    knowsAbout: author.knowsAbout,
+    knowsLanguage: ["en", "ml"],
   };
 
   return (
@@ -56,6 +64,7 @@ export default async function AuthorPage({ params }: Props) {
             {author.role} / {author.focus}
           </p>
           <p className={shared.lede}>{author.bio}</p>
+          <p className={styles.role}>{AUTHOR_REGISTRATION_DISCLOSURE}</p>
         </section>
 
         <section className={`${shared.section} ${styles.standard}`}>

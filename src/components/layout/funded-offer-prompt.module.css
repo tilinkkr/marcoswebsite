@@ -1,0 +1,221 @@
+/* Gold-themed partner offer card: floating on desktop, compact bottom sheet
+   on phones. Non-modal — the page behind stays usable. */
+.card {
+  position: fixed;
+  z-index: 118;
+  right: max(1.25rem, env(safe-area-inset-right));
+  bottom: max(5rem, calc(env(safe-area-inset-bottom) + 4.5rem));
+  width: min(23rem, calc(100vw - 2.5rem));
+  border: 1px solid rgb(232 186 92 / 45%);
+  border-radius: 1.1rem;
+  padding: 1.35rem 1.3rem 1.1rem;
+  overflow: hidden;
+  color: #f4ecdf;
+  background:
+    radial-gradient(
+      130% 90% at 100% 0%,
+      rgb(232 186 92 / 22%),
+      transparent 58%
+    ),
+    linear-gradient(160deg, #17130b 0%, #0d0c09 100%);
+  box-shadow:
+    0 1.5rem 4rem rgb(0 0 0 / 55%),
+    0 0 0 1px rgb(255 255 255 / 3%) inset;
+  animation: slideUp 420ms cubic-bezier(0.2, 0.85, 0.25, 1) both;
+}
+
+/* A slow light sweep draws the eye once without looping distraction. */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgb(255 226 160 / 10%) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  animation: sheen 1.6s 0.5s ease-out 1 both;
+  pointer-events: none;
+}
+
+.close {
+  position: absolute;
+  z-index: 1;
+  top: 0.7rem;
+  right: 0.7rem;
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border: 0;
+  border-radius: 999px;
+  color: rgb(244 236 223 / 60%);
+  background: rgb(255 255 255 / 5%);
+  cursor: pointer;
+}
+.close:hover,
+.close:focus-visible {
+  color: #fff;
+  background: rgb(255 255 255 / 12%);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid rgb(232 186 92 / 35%);
+  border-radius: 999px;
+  padding: 0.3rem 0.65rem;
+  color: #f0c46a;
+  background: rgb(232 186 92 / 8%);
+  font: 700 0.6rem/1 var(--font-mono-family);
+  letter-spacing: 0.12em;
+}
+.spark {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: #f0c46a;
+  box-shadow: 0 0 0.6rem #f0c46a;
+}
+
+.title {
+  margin: 0.85rem 0 0;
+  padding-right: 1.5rem;
+  font-family: var(--font-display-family);
+  font-size: 1.55rem;
+  font-weight: 650;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+.title em {
+  color: #f0c46a;
+  font-style: normal;
+}
+
+.body {
+  margin: 0.6rem 0 0;
+  color: rgb(244 236 223 / 72%);
+  font-family: var(--font-body-family);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.points {
+  display: grid;
+  gap: 0.3rem;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+  color: rgb(244 236 223 / 82%);
+  font-size: 0.82rem;
+}
+.points li::before {
+  content: "✓";
+  margin-right: 0.45rem;
+  color: #f0c46a;
+  font-weight: 700;
+}
+
+.primary {
+  display: flex;
+  min-height: 3.1rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-top: 1rem;
+  border-radius: 0.75rem;
+  color: #1a1204;
+  background: linear-gradient(180deg, #f6d07c 0%, #e2a93f 100%);
+  font: 800 0.98rem/1 var(--font-body-family);
+  text-decoration: none;
+  box-shadow:
+    0 0.6rem 1.6rem rgb(226 169 63 / 32%),
+    0 1px 0 rgb(255 255 255 / 45%) inset;
+  transition:
+    transform 140ms ease,
+    filter 140ms ease;
+}
+.primary:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
+.secondary {
+  display: flex;
+  min-height: 2.6rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 0.45rem;
+  color: #7ce6a7;
+  font: 600 0.84rem/1 var(--font-body-family);
+  text-decoration: none;
+}
+.secondary:hover {
+  text-decoration: underline;
+}
+
+.fineprint {
+  margin: 0.35rem 0 0;
+  color: rgb(244 236 223 / 40%);
+  font-size: 0.66rem;
+  line-height: 1.45;
+  text-align: center;
+}
+
+.primary:focus-visible,
+.secondary:focus-visible,
+.close:focus-visible {
+  outline: 2px solid #f0c46a;
+  outline-offset: 3px;
+}
+
+/* Hide the floating WhatsApp pill while the card is up; the card has its own. */
+:global(html[data-offer-open])
+  :global([aria-label="Message MARKOS on WhatsApp"]) {
+  visibility: hidden;
+}
+
+@media (max-width: 767px) {
+  .card {
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: auto;
+    border-bottom: 0;
+    border-radius: 1.2rem 1.2rem 0 0;
+    padding: 1.15rem 1.1rem max(0.9rem, env(safe-area-inset-bottom));
+  }
+  .title {
+    font-size: 1.35rem;
+  }
+  .body {
+    font-size: 0.86rem;
+  }
+  /* Keep the sheet short on small phones: the two checkmarks are extra. */
+  .points {
+    display: none;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+}
+@keyframes sheen {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card::after {
+    animation: none;
+  }
+}

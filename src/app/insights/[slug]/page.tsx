@@ -5,7 +5,12 @@ import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { MarkdownArticle } from "@/components/insights/MarkdownArticle";
-import { authorPath, getAuthor } from "@/lib/authors";
+import {
+  AUTHOR_REGISTRATION_DISCLOSURE,
+  authorPath,
+  bylineSlugForPost,
+  getAuthor,
+} from "@/lib/authors";
 import { blogHeroImage, getBlog } from "@/lib/blogs";
 import { blogCanonicalUrl } from "@/lib/blog-sitemap";
 import { extractFaqs } from "@/lib/faq";
@@ -51,7 +56,10 @@ export default async function ArticlePage({ params }: Props) {
   if (!isAutomated && !author) notFound();
   const articleUrl = blogCanonicalUrl(post);
   const heroImage = blogHeroImage(post);
-  const authorUrl = author ? absoluteUrl(authorPath(author.slug)) : null;
+  // The named team member for this topic; `author` above is reserved for
+  // posts with a recorded human review and its evidence panel.
+  const byline = author ?? getAuthor(bylineSlugForPost(post));
+  const authorUrl = byline ? absoluteUrl(authorPath(byline.slug)) : null;
   // FAQ answers come from the visible article body, so the structured data
   // always matches what readers see.
   const faqs = extractFaqs(post.content_markdown);
@@ -78,12 +86,14 @@ export default async function ArticlePage({ params }: Props) {
         description: post.seo_description,
         url: articleUrl,
         mainEntityOfPage: { "@id": articleUrl },
-        author: author
+        author: byline
           ? {
               "@type": "Person",
               "@id": `${authorUrl}#person`,
-              name: author.name,
+              name: byline.name,
+              jobTitle: byline.role,
               url: authorUrl,
+              worksFor: { "@id": `${SITE_URL}/#organization` },
             }
           : { "@id": `${SITE_URL}/#organization` },
         ...(isAutomated
@@ -149,11 +159,13 @@ export default async function ArticlePage({ params }: Props) {
           </p>
           <h1>{post.title}</h1>
           <div>
-            {author ? (
-              <Link href={authorPath(author.slug)}>
-                {author.name}
+            {byline ? (
+              <Link href={authorPath(byline.slug)}>
+                {byline.name}
                 <br />
-                <span>{author.role}</span>
+                <span>{byline.role}</span>
+                <br />
+                <small>{AUTHOR_REGISTRATION_DISCLOSURE}</small>
               </Link>
             ) : (
               <p>

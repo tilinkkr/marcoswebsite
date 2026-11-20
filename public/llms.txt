@@ -1,6 +1,6 @@
 # MARKOS
 
-> MARKOS is a trading community for traders in India, the UAE and the wider GCC, focused on process, risk discipline, market education, trade review, and responsible discussion. Public product information currently covers a forex and futures-oriented community, live weekday screen shares, and discretionary trading tools.
+> MARKOS is a Kerala-based forex, gold (XAUUSD) and funded-account trading community for Malayali traders in Kerala, India, the UAE and the wider GCC, focused on process, risk discipline, market education, trade review, and responsible discussion. Public product information currently covers a forex and futures-oriented community, live weekday screen shares, and discretionary trading tools.
 
 ## Start here
 - [Homepage](https://markos.in/): MARKOS positioning and primary pathways.
@@ -14,6 +14,28 @@
 - [Privacy](https://markos.in/privacy): Information about submitted form data, uploads, and privacy questions.
 - [Terms](https://markos.in/terms): Website, educational-content, community, and purchase terms.
 - [Contact](https://markos.in/contact): Current support routes.
+
+## Kerala and GCC (Malayali traders)
+- [Forex trading in Kerala — learn in Malayalam](https://markos.in/kerala): MARKOS is a Kerala-based forex, gold (XAUUSD) and funded-account trading community; forex courses and live sessions in Malayalam and English.
+- [Malayali forex & funded account community in the GCC](https://markos.in/gcc): For Malayali traders in the UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain.
+- [UAE](https://markos.in/gcc/uae), [Saudi Arabia](https://markos.in/gcc/saudi-arabia), [Qatar](https://markos.in/gcc/qatar), [Kuwait](https://markos.in/gcc/kuwait), [Oman](https://markos.in/gcc/oman), [Bahrain](https://markos.in/gcc/bahrain): Regulators, trading hours and prop-firm checks by country.
+- [Malayalis in Canada and Australia](https://markos.in/abroad): [Canada](https://markos.in/abroad/canada) and [Australia](https://markos.in/abroad/australia) — regulators (CIRO, ASIC), trading hours and funded-account checks.
+- [Get a funded account with MARKOS](https://markos.in/get-funded): Choose a prop firm and prepare for the challenge with the community.
+
+## Forex, gold and AI trading guides
+- [What is forex trading?](https://markos.in/insights/what-is-forex-trading-basics): Forex basics for beginners.
+- [How to trade XAUUSD for total beginners](https://markos.in/insights/how-to-trade-xauusd-for-beginners)
+- [Why traders only trade XAUUSD](https://markos.in/insights/why-trade-only-xauusd-gold)
+- [Free 30-day XAUUSD practice plan](https://markos.in/insights/xauusd-30-day-practice-plan)
+- [5 risk management rules every trader should follow](https://markos.in/insights/risk-management-rules-every-trader-should-follow)
+- [7 trading myths that hold you back](https://markos.in/insights/trading-myths-that-hold-you-back)
+- [Top 5 trading strategies for 2026](https://markos.in/insights/top-5-trading-strategies-2026)
+- [How to start trading in 2026 for beginners](https://markos.in/insights/how-to-start-trading-in-2026-beginners)
+- [Trading platforms in India for beginners](https://markos.in/insights/trading-platforms-india-beginners)
+- [How to use Claude AI for XAUUSD trading](https://markos.in/insights/how-to-use-claude-ai-for-xauusd-trading)
+- [Automatic stock trading with Claude](https://markos.in/insights/automatic-stock-trading-with-claude)
+- [What is quant trading?](https://markos.in/insights/what-is-quant-trading)
+- [How to trade crypto safely in 2026](https://markos.in/insights/how-to-trade-crypto-2026)
 
 ## Prop-firm and funded-account guides
 - [What is a funded account?](https://markos.in/funded-account-guide): How funded accounts, prop-firm evaluations, drawdown and payouts work.
@@ -30,6 +52,12 @@
 - [Is a funded account legal in India?](https://markos.in/insights/forex-prop-firms-india-legal-checklist): Funded accounts, forex prop firms and Blueberry Funded in India under RBI's forex FAQ, alert list and LRS rules, plus foreign currency accounts for residents.
 - [Futures prop firm restricted in your country?](https://markos.in/insights/futures-prop-firm-restricted-country-options): Legitimate options without VPNs.
 - [Best funded account for the Indian stock market](https://markos.in/insights/trade-indian-stock-market-with-funded-capital): Funded capital for NSE stocks and Nifty — prop desks, domestic programmes and SEBI checks.
+
+## Team
+- [Rahul Raja](https://markos.in/team/authors/rahul-raja): COO and lead trader, trading for more than 10 years; forex, gold and funded accounts.
+- [Linu Babu](https://markos.in/team/authors/linu-babu): CFO; costs, payouts and regulatory questions.
+- [Sahal](https://markos.in/team/authors/sahal): Content creator and trader; forex basics and AI tools.
+- None of the team is registered with SEBI as an investment adviser or research analyst, or licensed by a GCC, Canadian or Australian regulator. MARKOS content is education, not advice.
 
 ## Join the community
 People who want to join MARKOS or ask about funded accounts and prop firms can message the team on WhatsApp: https://wa.me/919187587488 (India, UAE and GCC traders welcome). MARKOS provides education and community; it does not promise passes, payouts or profits.

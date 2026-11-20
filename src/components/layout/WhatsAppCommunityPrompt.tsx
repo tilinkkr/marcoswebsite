@@ -4,7 +4,9 @@ import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { MessageCircle, X } from "lucide-react";
 
+import { FEATURED_PARTNER } from "@/config/funded-partners";
 import { initializePostHog } from "@/lib/analytics/posthog";
+import { isFundedIntentPath, POPUP_SESSION_KEY } from "@/lib/popups";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
 
 import { WhatsAppLink } from "./WhatsAppLink";
@@ -23,7 +25,8 @@ import styles from "./whatsapp-community-prompt.module.css";
  */
 
 const STORAGE_KEY = "markos-wa-prompt";
-const SESSION_KEY = "markos-wa-prompt-seen";
+// Shared with the funded offer so only one popup appears per session.
+const SESSION_KEY = POPUP_SESSION_KEY;
 const DISMISS_DAYS = 3;
 const CLICKED_DAYS = 30;
 const MIN_DELAY_MS = 9000;
@@ -54,6 +57,12 @@ const TOPICS = [
     label: "I'm in UAE / GCC",
     message:
       "Hi MARKOS, I'm trading from the UAE/GCC. Can I join the community and sessions?",
+  },
+  {
+    id: "gold",
+    label: "Free 30-day gold plan",
+    message:
+      "Hi MARKOS, please send me the free 30-day XAUUSD practice plan. I'd like to join the community.",
   },
 ] as const;
 
@@ -116,9 +125,11 @@ export function WhatsAppCommunityPrompt() {
   const primaryRef = useRef<HTMLAnchorElement>(null);
   const returnFocusRef = useRef<HTMLElement | null>(null);
 
-  const excluded = EXCLUDED_PREFIXES.some((prefix) =>
-    pathname.startsWith(prefix),
-  );
+  // Funded-intent pages show the partner offer instead (it also links to
+  // WhatsApp), so the two popups never compete.
+  const excluded =
+    EXCLUDED_PREFIXES.some((prefix) => pathname.startsWith(prefix)) ||
+    (Boolean(FEATURED_PARTNER) && isFundedIntentPath(pathname));
 
   const show = useCallback((trigger: string) => {
     try {

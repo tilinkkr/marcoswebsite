@@ -46,6 +46,14 @@
 .header span {
   color: #bd704d;
 }
+.header small {
+  display: block;
+  max-width: 26rem;
+  margin-top: 0.5rem;
+  color: rgb(238 226 214 / 46%);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
 .header > div > p {
   margin: 0;
   text-align: right;
