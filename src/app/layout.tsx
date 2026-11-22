@@ -65,7 +65,16 @@ const siteJsonLd = {
       "@id": `${SITE_URL}/#organization`,
       name: SITE_NAME,
       url: SITE_URL,
-      alternateName: ["MARKOS Trading Community", "MARKOS Kerala"],
+      // Spellings people search for (Search Console): markos, marcos,
+      // team markos, markos market.
+      alternateName: [
+        "Markos",
+        "Marcos",
+        "Team MARKOS",
+        "MARKOS Market",
+        "MARKOS Trading Community",
+        "MARKOS Kerala",
+      ],
       description:
         "MARKOS is a Kerala-based forex, gold (XAUUSD) and funded-account trading community and education platform for Malayali traders in Kerala, across India and in the GCC — UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain. It runs weekday live trading sessions, forex courses and prop-firm challenge preparation focused on risk discipline.",
       areaServed: [

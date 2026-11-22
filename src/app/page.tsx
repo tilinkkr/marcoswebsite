@@ -11,12 +11,13 @@ import { ModernTrader } from "@/components/sections/ModernTrader";
 import { VisionReveal } from "@/components/sections/VisionReveal";
 
 export const metadata: Metadata = {
-  title: { absolute: "Trading Education & Community | MARKOS" },
+  // Brand first: "markos" is the site's largest search query.
+  title: { absolute: "MARKOS | Forex & Funded Account Trading Community" },
   description:
     "Trading community for traders in India, UAE & GCC: live sessions, funded-account and prop-firm guidance, and risk discipline. Message us on WhatsApp to join.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Trading Education & Community | MARKOS",
+    title: "MARKOS | Forex & Funded Account Trading Community",
     description:
       "Learn with people, review decisions honestly, and build a repeatable trading process without guaranteed-return claims or signal hype.",
     url: "/",

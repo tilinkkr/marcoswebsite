@@ -8,7 +8,7 @@ import shared from "@/app/public-pages.module.css";
 import styles from "./team.module.css";
 
 export const metadata: Metadata = {
-  title: "Team",
+  title: { absolute: "Team MARKOS — Traders Behind the Community" },
   description:
     "Meet the people responsible for MARKOS strategy, operations, technology and trading education.",
   alternates: { canonical: "/team" },

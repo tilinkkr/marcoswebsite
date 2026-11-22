@@ -48,6 +48,18 @@ const groups = [
     label: "PROP TRADING",
     items: [
       [
+        "Is a funded account a scam?",
+        "Not by default — established prop firms sell paid evaluations and pay rewards under written terms. But fake 'funded account' offers are common, and even real firms earn most fees from traders who fail. Red flags: guaranteed passes, payments to individuals, passing services and 'release fees' before withdrawals.",
+      ],
+      [
+        "What is the payout limit of a funded account, and how fast can I get paid?",
+        "It depends on the firm: many set a maximum per payout (often for early payouts), a minimum amount and a profit split, and some futures firms require a buffer. Speed depends on the eligibility rule, the firm's review and your payment method.",
+      ],
+      [
+        "What is the consistency rule in a funded account?",
+        "A limit on how much of your total profit can come from one day or trade — for example, no single day above 30% of total profit. Breaking it is a common reason payouts are delayed or rejected.",
+      ],
+      [
         "What is prop trading?",
         "Prop trading generally describes trading under a firm's capital or simulated evaluation structure, subject to that firm's contract and risk rules.",
       ],
