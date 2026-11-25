@@ -134,6 +134,8 @@ export function IndicatorsPreview() {
           <img
             src="/images/marcos/indicators/indicator-chamber-desktop.webp"
             alt=""
+            loading="lazy"
+            decoding="async"
           />
         </picture>
         <div className={styles.shade} aria-hidden />

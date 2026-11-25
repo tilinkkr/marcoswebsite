@@ -73,7 +73,8 @@
 }
 
 .art picture,
-.gaze picture {
+.gaze picture,
+.layer picture {
   display: contents;
 }
 

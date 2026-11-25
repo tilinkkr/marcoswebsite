@@ -12,12 +12,21 @@ import {
   bylineSlugForPost,
   getAuthor,
 } from "@/lib/authors";
-import { blogHeroImage, getBlog } from "@/lib/blogs";
+import { blogHeroImage, getBlog, getBlogs } from "@/lib/blogs";
 import { blogCanonicalUrl } from "@/lib/blog-sitemap";
 import { extractFaqs } from "@/lib/faq";
 import { absoluteUrl, safeJsonLd, SITE_URL } from "@/lib/site";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
 import local from "./article.module.css";
+
+// Cache rendered article HTML at the edge (ISR) instead of uncached SSR.
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const posts = await getBlogs();
+  return posts.map((post) => ({ slug: post.slug }));
+}
+
 type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getBlog((await params).slug);

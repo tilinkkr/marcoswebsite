@@ -524,7 +524,6 @@ export function CapitalMotion() {
             className={styles.heroOne}
             file="note-hero-01.webp"
             name="hero-01"
-            preload
             width={1280}
             height={760}
           />

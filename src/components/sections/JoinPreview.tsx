@@ -119,7 +119,12 @@ export function JoinPreview() {
             media="(max-width: 767px)"
             srcSet="/images/marcos/join/join-collective-mobile.webp"
           />
-          <img src="/images/marcos/join/join-collective-desktop.webp" alt="" />
+          <img
+            src="/images/marcos/join/join-collective-desktop.webp"
+            alt=""
+            loading="lazy"
+            decoding="async"
+          />
         </picture>
         <div className={styles.shade} aria-hidden />
         <div className={styles.floor} data-floor aria-hidden />

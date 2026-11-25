@@ -336,14 +336,15 @@ export function VisionReveal() {
           <div className={styles.gaze} data-vision-gaze>
             <picture>
               <source
-                media="(max-width: 767px)"
-                srcSet={`${ASSET_ROOT}/marcos-vision-mobile.webp`}
+                media="(min-width: 768px)"
+                srcSet={`${ASSET_ROOT}/marcos-eye-right.webp`}
               />
               <img
-                src={`${ASSET_ROOT}/marcos-eye-right.webp`}
+                src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                 alt=""
                 className={styles.artImage}
-                loading="eager"
+                loading="lazy"
+                decoding="async"
               />
             </picture>
           </div>
@@ -356,32 +357,38 @@ export function VisionReveal() {
           data-vision-top
           aria-hidden
         >
-          <Image
-            src={`${ASSET_ROOT}/marcos-layer-top.webp`}
-            alt=""
-            fill
-            sizes="100vw"
-            preload
-            unoptimized
-            onLoad={markLayerLoaded}
-            className={styles.layerImage}
-          />
+          <picture>
+            <source
+              media="(min-width: 768px)"
+              srcSet={`${ASSET_ROOT}/marcos-layer-top.webp`}
+            />
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              alt=""
+              onLoad={markLayerLoaded}
+              className={styles.layerImage}
+              decoding="async"
+            />
+          </picture>
         </div>
         <div
           className={`${styles.layer} ${styles.bottomLayer}`}
           data-vision-bottom
           aria-hidden
         >
-          <Image
-            src={`${ASSET_ROOT}/marcos-layer-bottom.webp`}
-            alt=""
-            fill
-            sizes="100vw"
-            preload
-            unoptimized
-            onLoad={markLayerLoaded}
-            className={styles.layerImage}
-          />
+          <picture>
+            <source
+              media="(min-width: 768px)"
+              srcSet={`${ASSET_ROOT}/marcos-layer-bottom.webp`}
+            />
+            <img
+              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+              alt=""
+              onLoad={markLayerLoaded}
+              className={styles.layerImage}
+              decoding="async"
+            />
+          </picture>
         </div>
 
         <div className={styles.opening} data-vision-opening>
