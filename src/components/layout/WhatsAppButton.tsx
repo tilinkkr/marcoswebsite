@@ -20,34 +20,36 @@ export function WhatsAppButton() {
     );
     if (!primaryCtas.length || !("IntersectionObserver" in window)) return;
 
-    const visibleCtas = new Set<Element>();
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) visibleCtas.add(entry.target);
-          else visibleCtas.delete(entry.target);
-        }
-        setPrimaryCtaVisible(visibleCtas.size > 0);
-      },
-      { threshold: 0.01 },
-    );
-
-    const updateInitialVisibility = () => {
-      for (const cta of primaryCtas) {
-        const bounds = cta.getBoundingClientRect();
-        const isVisible =
-          bounds.bottom > 0 &&
-          bounds.right > 0 &&
-          bounds.top < window.innerHeight &&
-          bounds.left < window.innerWidth;
-        if (isVisible) visibleCtas.add(cta);
+    const isActuallyVisible = (el: HTMLElement) => {
+      const style = window.getComputedStyle(el);
+      if (style.display === "none" || style.visibility === "hidden" || Number(style.opacity) < 0.1) {
+        return false;
       }
-      setPrimaryCtaVisible(visibleCtas.size > 0);
+      const bounds = el.getBoundingClientRect();
+      return (
+        bounds.width > 0 &&
+        bounds.height > 0 &&
+        bounds.bottom > 0 &&
+        bounds.right > 0 &&
+        bounds.top < window.innerHeight &&
+        bounds.left < window.innerWidth
+      );
     };
 
-    updateInitialVisibility();
+    const refresh = () => {
+      setPrimaryCtaVisible(primaryCtas.some(isActuallyVisible));
+    };
+
+    const observer = new IntersectionObserver(refresh, { threshold: 0.01 });
+    refresh();
     primaryCtas.forEach((cta) => observer.observe(cta));
-    return () => observer.disconnect();
+    window.addEventListener("scroll", refresh, { passive: true });
+    window.addEventListener("resize", refresh);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", refresh);
+      window.removeEventListener("resize", refresh);
+    };
   }, []);
 
   return (

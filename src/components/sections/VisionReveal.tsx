@@ -392,50 +392,61 @@ export function VisionReveal() {
         </div>
 
         <div className={styles.opening} data-vision-opening>
-          <p className={styles.openingEyebrow}>
-            BEFORE THE MARKET MOVES · DAILY LIVE GOOGLE MEET DESK
-          </p>
-          {/* The slogan stays the visual headline; the literal description is
-              the H1 so search engines, AI Overviews and screen readers capture
-              the direct answer immediately in Section 1. */}
-          <p className={styles.openingHeadline}>
-            <span>MOST TRADERS SEE THE CHART.</span>
-            <span>FEW SEE WHAT MOVES IT.</span>
-          </p>
-          <h1 className={styles.openingPrompt}>
-            MARKOS is an India-first trading community for education, daily live
-            Google Meet trading streams, funded-account preparation, and risk
-            discipline across India, UAE &amp; GCC.
-          </h1>
-          <p className={styles.aeoSummary}>
-            <strong>What is a funded account?</strong> A prop-firm trading
-            account where traders pass rule-based drawdown and profit checks
-            (FundingPips, FTMO, Alpha Capital) to earn payouts without risking
-            large personal capital. Learn to pass honestly on our daily private
-            Google Meet stream.
-          </p>
-          <div className={styles.openingActions}>
-            <WhatsAppLink
-              className={styles.openingWhatsapp}
-              href={getWhatsAppUrl(
-                "Hi MARKOS, I want to know about your daily Google Meet live trading stream and funded-account community.",
-              )}
-              placement="home-opening-hero"
-              data-whatsapp-primary
-              target="_blank"
-              rel="noreferrer"
-            >
-              <span>MESSAGE ON WHATSAPP — JOIN LIVE GMEET</span>
-              <span aria-hidden>↗</span>
-            </WhatsAppLink>
-            <Link
-              className={styles.openingGuide}
-              href="/funded-account-guide"
-              prefetch={false}
-            >
-              <span>FUNDED ACCOUNT RULES GUIDE</span>
-              <span aria-hidden>→</span>
-            </Link>
+          <div className={styles.openingTop}>
+            <p className={styles.openingEyebrow}>
+              <span className={styles.eyebrowLine} aria-hidden />
+              BEFORE THE MARKET MOVES · DAILY LIVE GOOGLE MEET DESK
+            </p>
+            {/* The slogan stays the visual centerpiece; the literal description is
+                the H1 so search engines, AI Overviews and screen readers capture
+                the offer cleanly in Section 1. */}
+            <p className={styles.openingHeadline}>
+              <span>MOST TRADERS SEE THE CHART.</span>
+              <span>FEW SEE WHAT MOVES IT.</span>
+            </p>
+            <h1 className={styles.openingPrompt}>
+              An India-first trading community for education, daily live Google
+              Meet streams, funded-account preparation &amp; risk discipline.
+            </h1>
+          </div>
+
+          <div className={styles.openingDock}>
+            <div className={styles.aeoDockCard}>
+              <span className={styles.aeoLabel}>WHAT IS A FUNDED ACCOUNT?</span>
+              <p className={styles.aeoSummary}>
+                Pass rule-based prop-firm drawdown checks (FundingPips, FTMO,
+                Alpha Capital) to earn profit splits without risking large
+                savings. Learn to pass honestly on our daily private Google Meet
+                stream across India, UAE &amp; GCC.
+              </p>
+            </div>
+
+            <div className={styles.openingActions}>
+              <WhatsAppLink
+                className={styles.openingWhatsapp}
+                href={getWhatsAppUrl(
+                  "Hi MARKOS, I want to know about your daily Google Meet live trading stream and funded-account community.",
+                )}
+                placement="home-opening-hero"
+                data-whatsapp-primary
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className={styles.liveDot} aria-hidden />
+                <span>ASK ON WHATSAPP</span>
+                <span className={styles.ctaArrow} aria-hidden>
+                  ↗
+                </span>
+              </WhatsAppLink>
+              <Link
+                className={styles.openingGuide}
+                href="/funded-account-guide"
+                prefetch={false}
+              >
+                <span>FUNDED RULES GUIDE</span>
+                <span aria-hidden>→</span>
+              </Link>
+            </div>
           </div>
         </div>
 
