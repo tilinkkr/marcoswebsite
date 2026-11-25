@@ -1,7 +1,7 @@
 .story {
   position: relative;
-  min-height: 100vh;
-  min-height: 100dvh;
+  min-height: 145vh;
+  min-height: 145dvh;
   overflow: clip;
   color: #eee8dc;
   background: #050505;
@@ -9,7 +9,8 @@
 
 .stage {
   isolation: isolate;
-  position: relative;
+  position: sticky;
+  top: 0;
   width: 100%;
   height: 100vh;
   height: 100dvh;
@@ -152,29 +153,29 @@
 
 .opening {
   position: absolute;
-  z-index: 7;
+  z-index: 8;
   top: 50%;
   left: 50%;
-  width: min(58rem, calc(100% - 3rem));
+  width: min(56rem, calc(100% - 3rem));
   text-align: center;
-  pointer-events: none;
+  pointer-events: auto;
   transform: translate(-50%, -50%);
 }
 
 .openingEyebrow {
-  margin: 0 0 1.15rem;
+  margin: 0 0 0.85rem;
   color: #bd8155;
   font-family: var(--font-mono-family);
-  font-size: clamp(0.62rem, 0.68vw, 0.76rem);
+  font-size: clamp(0.62rem, 0.68vw, 0.74rem);
   font-weight: 500;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.22em;
 }
 
 .openingHeadline {
   margin: 0;
   color: #eee7dc;
   font-family: var(--font-display-family);
-  font-size: clamp(2.5rem, 4.8vw, 6rem);
+  font-size: clamp(2.25rem, 4.1vw, 4.8rem);
   font-weight: 600;
   letter-spacing: -0.052em;
   line-height: 0.94;
@@ -186,12 +187,90 @@
 }
 
 .openingPrompt {
-  margin: 1.35rem 0 0;
-  color: rgb(235 226 214 / 58%);
+  max-width: 45rem;
+  margin: 0.9rem auto 0;
+  color: rgb(235 226 214 / 82%);
   font-family: var(--font-body-family);
-  font-size: clamp(0.84rem, 0.9vw, 1rem);
-  font-weight: 400;
-  line-height: normal;
+  font-size: clamp(0.86rem, 0.94vw, 1rem);
+  font-weight: 500;
+  line-height: 1.48;
+}
+
+.aeoSummary {
+  max-width: 44rem;
+  margin: 0.75rem auto 0;
+  border: 1px solid rgb(221 182 148 / 18%);
+  border-radius: 0.75rem;
+  padding: 0.7rem 1rem;
+  color: rgb(235 226 214 / 72%);
+  background: rgb(8 10 9 / 76%);
+  font-family: var(--font-body-family);
+  font-size: clamp(0.76rem, 0.84vw, 0.88rem);
+  line-height: 1.5;
+}
+
+.aeoSummary strong {
+  color: #e7c9aa;
+}
+
+.openingActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.openingWhatsapp {
+  display: inline-flex;
+  min-height: 2.85rem;
+  align-items: center;
+  gap: 0.65rem;
+  border: 1px solid #25d366;
+  border-radius: 0.6rem;
+  padding: 0 1.2rem;
+  color: #04170c;
+  background: #25d366;
+  font-family: var(--font-mono-family);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  box-shadow: 0 0.75rem 2rem rgb(37 211 102 / 24%);
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.openingWhatsapp:hover,
+.openingWhatsapp:focus-visible {
+  background: #3ee07c;
+  transform: translateY(-2px);
+}
+
+.openingGuide {
+  display: inline-flex;
+  min-height: 2.85rem;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid rgb(218 199 180 / 32%);
+  border-radius: 0.6rem;
+  padding: 0 1.1rem;
+  color: #eee6d9;
+  background: rgb(8 10 9 / 78%);
+  font-family: var(--font-mono-family);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease;
+}
+
+.openingGuide:hover,
+.openingGuide:focus-visible {
+  border-color: rgb(204 137 84 / 75%);
+  background: rgb(157 91 48 / 18%);
 }
 
 .copy {
@@ -464,7 +543,7 @@
   .copy {
     top: auto;
     right: 1.25rem;
-    bottom: max(1.5rem, env(safe-area-inset-bottom));
+    bottom: max(4.75rem, calc(env(safe-area-inset-bottom) + 4rem));
     left: 1.25rem;
     width: auto;
     transform: none;
@@ -522,7 +601,7 @@
 @media (max-width: 430px) {
   .copy {
     right: 1rem;
-    bottom: max(1.25rem, env(safe-area-inset-bottom));
+    bottom: max(4.75rem, calc(env(safe-area-inset-bottom) + 4rem));
     left: 1rem;
   }
 

@@ -1,10 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MessageCircle } from "lucide-react";
 import { useEffect, useRef } from "react";
 
+import { WhatsAppLink } from "@/components/layout/WhatsAppLink";
 import { getGSAP } from "@/lib/animations/gsap";
+import { getWhatsAppUrl } from "@/lib/whatsapp";
 
 import styles from "./final-conversion.module.css";
 
@@ -182,11 +184,23 @@ export function FinalConversion() {
             people doing the same.
           </p>
           <div className={styles.actions}>
+            <WhatsAppLink
+              className={styles.whatsappPrimary}
+              href={getWhatsAppUrl(
+                "Hi MARKOS, I want to join the funded-account community and daily Google Meet live trading stream. How do I start?",
+              )}
+              placement="home-final-conversion"
+              data-whatsapp-primary
+              target="_blank"
+              rel="noreferrer"
+            >
+              <MessageCircle size={18} aria-hidden /> MESSAGE ON WHATSAPP
+            </WhatsAppLink>
             <Link className={styles.primary} href="/join" prefetch={false}>
               JOIN MARKOS — $100 <ArrowRight size={18} aria-hidden />
             </Link>
             <Link className={styles.secondary} href="#community">
-              EXPLORE THE COMMUNITY
+              EXPLORE THE LIVE GMEET
             </Link>
           </div>
         </div>

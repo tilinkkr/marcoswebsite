@@ -36,33 +36,34 @@ const EXCLUDED_PREFIXES = ["/admin", "/join/checkout", "/api"];
 
 const TOPICS = [
   {
-    id: "join",
-    label: "Join the community",
-    message: "Hi MARKOS, I'd like to join the community. How does it work?",
+    id: "gmeet",
+    label: "Daily Google Meet stream",
+    message:
+      "Hi MARKOS, I want to know how your daily private Google Meet live trading stream for passing funded accounts works.",
   },
   {
     id: "funded",
-    label: "Help me get funded",
+    label: "Pass my funded account",
     message:
-      "Hi MARKOS, I'm preparing for a funded-account challenge. Can you explain how your education helps?",
+      "Hi MARKOS, I'm preparing for a funded-account challenge. Can you explain how your community and risk plan help?",
   },
   {
     id: "choose",
-    label: "Which prop firm?",
+    label: "Safest prop firm / payouts",
     message:
-      "Hi MARKOS, I'm trying to choose a prop firm. What should I check first?",
+      "Hi MARKOS, I'm trying to choose a safe prop firm (FundingPips / FTMO / Alpha Capital) from India or GCC. What should I check first?",
   },
   {
-    id: "gcc",
-    label: "I'm in UAE / GCC",
+    id: "link",
+    label: "Link MT5 / TradingView",
     message:
-      "Hi MARKOS, I'm trading from the UAE/GCC. Can I join the community and sessions?",
+      "Hi MARKOS, I need help linking my funded account to TradingView, MT5 or Tradovate and setting up my risk plan.",
   },
   {
     id: "gold",
-    label: "Free 30-day gold plan",
+    label: "Free 30-day XAUUSD plan",
     message:
-      "Hi MARKOS, please send me the free 30-day XAUUSD practice plan. I'd like to join the community.",
+      "Hi MARKOS, please send me the free 30-day XAUUSD gold practice plan and community details.",
   },
 ] as const;
 
@@ -119,7 +120,7 @@ function pageContext(): string {
 export function WhatsAppCommunityPrompt() {
   const pathname = usePathname() ?? "/";
   const [open, setOpen] = useState(false);
-  const [topic, setTopic] = useState<TopicId>("join");
+  const [topic, setTopic] = useState<TopicId>("gmeet");
   const [context, setContext] = useState("");
   const dialogRef = useRef<HTMLDivElement>(null);
   const primaryRef = useRef<HTMLAnchorElement>(null);
@@ -197,30 +198,16 @@ export function WhatsAppCommunityPrompt() {
     returnFocusRef.current?.focus?.();
   }, []);
 
-  // Focus, Escape and a simple focus trap while open.
+  // Non-blocking keyboard escape handler without stealing scroll focus
+  // (focusing a fixed dialog mid-scroll caused Lenis/browser scroll jumps).
   useEffect(() => {
     if (!open) return;
     document.documentElement.setAttribute("data-wa-prompt-open", "true");
-    primaryRef.current?.focus({ preventScroll: true });
 
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         event.preventDefault();
         close("dismiss");
-        return;
-      }
-      if (event.key !== "Tab" || !dialogRef.current) return;
-      const focusable = dialogRef.current.querySelectorAll<HTMLElement>(
-        "a[href], button:not([disabled])",
-      );
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last?.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first?.focus();
       }
     };
     document.addEventListener("keydown", onKey);
@@ -236,87 +223,78 @@ export function WhatsAppCommunityPrompt() {
   const href = getWhatsAppUrl(`${selected.message}${context}`);
 
   return (
-    <div className={styles.layer} data-lenis-prevent>
+    <aside
+      ref={dialogRef}
+      className={styles.dialog}
+      role="dialog"
+      aria-modal="false"
+      aria-labelledby="wa-prompt-title"
+      aria-describedby="wa-prompt-body"
+      data-lenis-prevent
+    >
       <button
         type="button"
-        className={styles.backdrop}
-        aria-label="Close"
-        tabIndex={-1}
+        className={styles.close}
         onClick={() => close("dismiss")}
-      />
-      <div
-        ref={dialogRef}
-        className={styles.dialog}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="wa-prompt-title"
-        aria-describedby="wa-prompt-body"
+        aria-label="Close WhatsApp invitation"
       >
-        <button
-          type="button"
-          className={styles.close}
-          onClick={() => close("dismiss")}
-          aria-label="Close WhatsApp invitation"
-        >
-          <X size={18} strokeWidth={1.8} aria-hidden />
-        </button>
+        <X size={18} strokeWidth={1.8} aria-hidden />
+      </button>
 
-        <p className={styles.eyebrow}>
-          <span className={styles.liveDot} aria-hidden />
-          MARKOS COMMUNITY · INDIA, UAE &amp; GCC
-        </p>
-        <h2 id="wa-prompt-title" className={styles.title}>
-          Join the community. Just send us a message.
-        </h2>
-        <p id="wa-prompt-body" className={styles.body}>
-          Ask about funded accounts, prop-firm rules or our live sessions — the
-          team replies on WhatsApp. One message is all it takes to be part of
-          the team.
-        </p>
+      <p className={styles.eyebrow}>
+        <span className={styles.liveDot} aria-hidden />
+        DAILY GOOGLE MEET · INDIA, UAE &amp; GCC
+      </p>
+      <h2 id="wa-prompt-title" className={styles.title}>
+        Join our daily live trading stream. Ask on WhatsApp.
+      </h2>
+      <p id="wa-prompt-body" className={styles.body}>
+        Get straight answers on funded accounts, prop-firm rules (FundingPips,
+        FTMO, Alpha Capital), or our private weekday Google Meet sessions.
+      </p>
 
-        <fieldset className={styles.topics}>
-          <legend className={styles.legend}>What would you like to ask?</legend>
-          {TOPICS.map((item) => (
-            <button
-              key={item.id}
-              type="button"
-              className={styles.chip}
-              aria-pressed={item.id === topic}
-              onClick={() => {
-                setTopic(item.id);
-                track("whatsapp_prompt_topic", { topic: item.id });
-              }}
-            >
-              {item.label}
-            </button>
-          ))}
-        </fieldset>
+      <fieldset className={styles.topics}>
+        <legend className={styles.legend}>Pick your question (1-tap reply)</legend>
+        {TOPICS.map((item) => (
+          <button
+            key={item.id}
+            type="button"
+            className={styles.chip}
+            aria-pressed={item.id === topic}
+            onClick={() => {
+              setTopic(item.id);
+              track("whatsapp_prompt_topic", { topic: item.id });
+            }}
+          >
+            {item.label}
+          </button>
+        ))}
+      </fieldset>
 
-        <WhatsAppLink
-          ref={primaryRef}
-          className={styles.primary}
-          href={href}
-          placement={`community_prompt:${selected.id}`}
-          target="_blank"
-          rel="noreferrer"
-          onClick={() => close("clicked")}
-        >
-          <MessageCircle size={20} strokeWidth={1.9} aria-hidden />
-          Message us on WhatsApp
-        </WhatsAppLink>
+      <WhatsAppLink
+        ref={primaryRef}
+        className={styles.primary}
+        href={href}
+        placement={`community_prompt:${selected.id}`}
+        target="_blank"
+        rel="noreferrer"
+        onClick={() => close("clicked")}
+      >
+        <MessageCircle size={20} strokeWidth={1.9} aria-hidden />
+        Message MARKOS on WhatsApp
+      </WhatsAppLink>
 
-        <button
-          type="button"
-          className={styles.secondary}
-          onClick={() => close("dismiss")}
-        >
-          Maybe later
-        </button>
+      <button
+        type="button"
+        className={styles.secondary}
+        onClick={() => close("dismiss")}
+      >
+        Maybe later
+      </button>
 
-        <p className={styles.fineprint}>
-          Free to ask · No spam · Education only — no profit or payout promises.
-        </p>
-      </div>
-    </div>
+      <p className={styles.fineprint}>
+        Free to ask · Real team reply · Education only — no profit promises.
+      </p>
+    </aside>
   );
 }

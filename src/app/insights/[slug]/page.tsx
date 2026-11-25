@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { WhatsAppLink } from "@/components/layout/WhatsAppLink";
 import { MarkdownArticle } from "@/components/insights/MarkdownArticle";
 import {
   AUTHOR_REGISTRATION_DISCLOSURE,
@@ -15,6 +16,7 @@ import { blogHeroImage, getBlog } from "@/lib/blogs";
 import { blogCanonicalUrl } from "@/lib/blog-sitemap";
 import { extractFaqs } from "@/lib/faq";
 import { absoluteUrl, safeJsonLd, SITE_URL } from "@/lib/site";
+import { getWhatsAppUrl } from "@/lib/whatsapp";
 import local from "./article.module.css";
 type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -233,6 +235,62 @@ export default async function ArticlePage({ params }: Props) {
         <article className={local.article}>
           <MarkdownArticle markdown={post.content_markdown} />
         </article>
+        <section
+          className={local.whatsappBanner}
+          aria-labelledby="article-whatsapp-title"
+        >
+          <div>
+            <p className={local.whatsappEyebrow}>
+              MARKOS DAILY LIVE GOOGLE MEET · WHATSAPP DESK
+            </p>
+            <h2 id="article-whatsapp-title">
+              Questions about this guide or passing your funded account?
+            </h2>
+            <p>
+              Message our team directly on WhatsApp (+91 91875 87488). Ask about
+              prop-firm rules, daily private Google Meet live trading streams,
+              or our India, Kerala &amp; GCC trader community. Free to ask — no
+              spam, no guaranteed-profit hype.
+            </p>
+          </div>
+          <div className={local.whatsappActions}>
+            <WhatsAppLink
+              className={local.whatsappPrimary}
+              href={getWhatsAppUrl(
+                `Hi MARKOS, I just read "${post.title}" and want to ask about your daily live Google Meet stream and funded-account community.`,
+              )}
+              placement={`article:${post.slug}`}
+              data-whatsapp-primary
+              target="_blank"
+              rel="noreferrer"
+            >
+              MESSAGE MARKOS ON WHATSAPP ↗
+            </WhatsAppLink>
+            <Link className={local.whatsappSecondary} href="/funded-account-guide">
+              FUNDED ACCOUNT FIELD GUIDE →
+            </Link>
+          </div>
+        </section>
+        <nav
+          className={local.relatedLinks}
+          aria-label="Related guides and Indian city hubs"
+        >
+          <span>POPULAR GUIDES &amp; CITY HUBS:</span>
+          <Link href="/insights/fundingpips-rules-explained-challenge-rewards-pdf-checklist">
+            FundingPips Rules &amp; PDF Checklist
+          </Link>
+          <Link href="/insights/safest-prop-firms-and-payouts-in-india-ftmo-legal-guide-2026">
+            Safest Prop Firms &amp; FTMO Legal India
+          </Link>
+          <Link href="/insights/how-to-link-funded-account-tradingview-mt5-tradovate">
+            Link TradingView / MT5 / Tradovate
+          </Link>
+          <Link href="/insights/how-to-use-claude-for-trading-in-india-1000-dollar-workflow">
+            Claude AI Trading Workflow
+          </Link>
+          <Link href="/india/bangalore">Bangalore Traders</Link>
+          <Link href="/india">All Indian Cities</Link>
+        </nav>
         <section className={local.evidence} aria-labelledby="evidence-title">
           <div>
             <p>ARTICLE RECORD</p>

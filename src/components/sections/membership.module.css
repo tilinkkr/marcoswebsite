@@ -197,13 +197,42 @@
   line-height: 1.7;
   letter-spacing: 0.11em;
 }
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: 1.8rem;
+}
+.whatsappCta {
+  display: inline-flex;
+  min-height: 3.2rem;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid #25d366;
+  border-radius: 0.5rem;
+  padding: 0 1.25rem;
+  color: #04170c;
+  background: #25d366;
+  font-family: var(--font-mono-family);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+.whatsappCta:hover,
+.whatsappCta:focus-visible {
+  background: #3ee07c;
+  transform: translateY(-1px);
+}
 .cta {
   display: inline-flex;
   width: fit-content;
   min-height: 3.2rem;
   align-items: center;
   gap: 0.7rem;
-  margin-top: 1.8rem;
   border: 1px solid rgb(201 121 65 / 55%);
   padding: 0.9rem 1.2rem;
   color: #f0e4d8;

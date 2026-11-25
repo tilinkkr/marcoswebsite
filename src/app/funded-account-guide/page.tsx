@@ -49,6 +49,16 @@ const questions = [
     answer:
       "They can. Treat the funded stage as a separate agreement and read it before accepting. Re-check drawdown, payout timing and eligibility, consistency rules, permitted strategies, identity checks and account termination provisions rather than assuming evaluation rules carry over unchanged.",
   },
+  {
+    question: "Funded account kya hota hai — and can I get a funded account free?",
+    answer:
+      "In simple terms, a funded account lets you trade prop-firm capital after passing drawdown and profit rules, earning an 80%–90% profit split on verified rewards. Legitimate free routes are limited to official monthly prop-firm trading competitions and free practice trials — never pay personal UPI 'release fees' to strangers.",
+  },
+  {
+    question: "How do I link a funded account to TradingView, MT5, or Tradovate?",
+    answer:
+      "For MetaTrader 5 (MT5), use File -> Login to Trade Account with your firm's exact server name and master password. For Tradovate and TradingView, log into trader.tradovate.com first to sign CME data agreements, then connect inside TradingView's Trading Panel under the Demo environment.",
+  },
 ] as const;
 
 const comparison = [
@@ -81,16 +91,29 @@ const comparison = [
 export default function FundedAccountGuidePage() {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Article",
-    headline: "Funded Accounts: Rules, Payouts and Prop-Firm Checks",
-    description: metadata.description,
-    mainEntityOfPage: absoluteUrl("/funded-account-guide"),
-    inLanguage: "en-IN",
-    publisher: {
-      "@type": "Organization",
-      name: "MARKOS",
-      url: absoluteUrl("/"),
-    },
+    "@graph": [
+      {
+        "@type": "Article",
+        headline: "Funded Accounts: Rules, Payouts and Prop-Firm Checks",
+        description: metadata.description,
+        mainEntityOfPage: absoluteUrl("/funded-account-guide"),
+        inLanguage: "en-IN",
+        publisher: {
+          "@type": "Organization",
+          name: "MARKOS",
+          url: absoluteUrl("/"),
+        },
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${absoluteUrl("/funded-account-guide")}#faq`,
+        mainEntity: questions.map(({ question, answer }) => ({
+          "@type": "Question",
+          name: question,
+          acceptedAnswer: { "@type": "Answer", text: answer },
+        })),
+      },
+    ],
   };
 
   return (
@@ -279,23 +302,33 @@ export default function FundedAccountGuidePage() {
             </p>
             <ul>
               <li>
-                <Link href="/insights/prop-firms-india-10-names-before-paying">
-                  Ten prop-firm names to research before paying
+                <Link href="/insights/fundingpips-rules-explained-challenge-rewards-pdf-checklist">
+                  FundingPips rules explained (2024–2026) &amp; printable PDF checklist
                 </Link>
               </li>
               <li>
-                <Link href="/insights/first-prop-firm-payout-request-checklist">
-                  First payout request: a 12-point checklist
+                <Link href="/insights/safest-prop-firms-and-payouts-in-india-ftmo-legal-guide-2026">
+                  Which prop firm is safe now? Payouts in India &amp; FTMO legal check
                 </Link>
               </li>
               <li>
-                <Link href="/insights/how-to-compare-cfd-prop-firm-evaluations">
-                  How to compare CFD prop-firm evaluations
+                <Link href="/insights/funded-account-in-india-meaning-price-free-challenge-2026">
+                  Funded account kya hota hai? Meaning, price, free challenges &amp; India stocks
                 </Link>
               </li>
               <li>
-                <Link href="/insights/forex-prop-firms-india-legal-checklist">
-                  India-specific forex eligibility questions to verify
+                <Link href="/insights/how-to-link-funded-account-tradingview-mt5-tradovate">
+                  How to link a funded account to TradingView, MT5 &amp; Tradovate
+                </Link>
+              </li>
+              <li>
+                <Link href="/insights/daily-google-meet-live-trading-stream-funded-account-community">
+                  Daily private Google Meet live trading stream for passing funded accounts
+                </Link>
+              </li>
+              <li>
+                <Link href="/india">
+                  Funded trading groups near me across India (Bangalore, Mumbai, Delhi &amp; more)
                 </Link>
               </li>
             </ul>

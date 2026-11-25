@@ -1,5 +1,6 @@
 import { unstable_cache } from "next/cache";
 
+import { CURATED_BLOG_POSTS } from "@/content/curated-blogs";
 import { createSupabasePublicClient } from "@/lib/supabase/public";
 import { BLOG_POST_REDIRECTS } from "@/lib/blog-sitemap";
 
@@ -76,13 +77,27 @@ const getPublishedBlogs = unstable_cache(
 
 export async function getBlogs(): Promise<BlogPost[]> {
   const redirectedSlugs = new Set(Object.keys(BLOG_POST_REDIRECTS));
-  return (await getPublishedBlogs()).filter(
-    (post) => !redirectedSlugs.has(post.slug),
-  );
+  const dbPosts = await getPublishedBlogs();
+  const bySlug = new Map<string, BlogPost>();
+
+  for (const post of dbPosts) {
+    if (!redirectedSlugs.has(post.slug)) bySlug.set(post.slug, post);
+  }
+  for (const post of CURATED_BLOG_POSTS) {
+    if (!redirectedSlugs.has(post.slug) && !bySlug.has(post.slug)) {
+      bySlug.set(post.slug, post);
+    }
+  }
+
+  return [...bySlug.values()].sort((a, b) => {
+    const timeA = Date.parse(a.published_at ?? a.updated_at) || 0;
+    const timeB = Date.parse(b.published_at ?? b.updated_at) || 0;
+    return timeB - timeA;
+  });
 }
 
 export async function getBlog(requested: string): Promise<BlogPost | null> {
-  return unstable_cache(
+  const dbPost = await unstable_cache(
     async () => {
       const client = createSupabasePublicClient();
       if (!client) return null;
@@ -101,4 +116,7 @@ export async function getBlog(requested: string): Promise<BlogPost | null> {
     ["published-blog", requested],
     { revalidate: 60, tags: ["blogs", `blog:${requested}`] },
   )();
+
+  if (dbPost) return dbPost;
+  return CURATED_BLOG_POSTS.find((post) => post.slug === requested) ?? null;
 }

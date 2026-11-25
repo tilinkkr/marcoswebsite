@@ -138,6 +138,29 @@
   font-weight: 700;
   letter-spacing: 0.08em;
 }
+.whatsappPrimary {
+  display: inline-flex;
+  min-height: 3.1rem;
+  align-items: center;
+  gap: 0.65rem;
+  border: 1px solid #25d366;
+  border-radius: 0.5rem;
+  padding: 0 1.25rem;
+  color: #04170c;
+  background: #25d366;
+  font-family: var(--font-mono-family);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+.whatsappPrimary:hover,
+.whatsappPrimary:focus-visible {
+  background: #3ee07c;
+  transform: translateY(-1px);
+}
 .primary {
   gap: 0.7rem;
   border: 1px solid rgb(201 121 65 / 52%);
@@ -181,6 +204,11 @@
     align-items: stretch;
     flex-direction: column;
     gap: 0.9rem;
+  }
+  .whatsappPrimary {
+    width: 100%;
+    min-height: 3.25rem;
+    justify-content: center;
   }
   .primary {
     min-height: 3.25rem;

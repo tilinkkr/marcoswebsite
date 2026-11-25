@@ -130,12 +130,13 @@
   }
   html {
     @apply font-sans;
-    overflow-x: hidden;
+    height: auto;
+    overflow-x: clip;
     scroll-behavior: smooth;
   }
   body {
     @apply bg-background text-foreground;
-    /* hidden creates a non-scrolling overflow container and breaks sticky story stages. */
+    /* clip prevents horizontal overflow without creating a scroll container that breaks sticky stages. */
     overflow-x: clip;
   }
 
@@ -143,8 +144,18 @@
     overflow-x: clip;
   }
 
-  html[data-lenis-active] {
-    scroll-behavior: auto;
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  html[data-lenis-active],
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
   }
 
   @media (prefers-reduced-motion: reduce) {

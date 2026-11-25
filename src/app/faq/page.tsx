@@ -191,6 +191,26 @@ const groups = [
         "What are the best prop firms for beginners?",
         "There is no provider that is best for every beginner. Before paying, check whether the rules are understandable, the evaluation and funded-stage structures are clearly described, the fees are affordable to lose, and the current contract explains drawdown, restrictions, payout conditions and dispute handling. Do not treat a ranking or a passed challenge as guaranteed income.",
       ],
+      [
+        "Funded account kya hota hai — and what is the typical funded account price in India?",
+        "A funded account (funded account kya hota hai) is a prop-firm trading account where you pass rule-based drawdown and profit objectives to trade firm-backed or simulated capital for an 80%–90% profit split. Entry challenge prices typically range from $29–$59 (~₹2,500–₹5,000) for $5k accounts up to $449–$599 (~₹38,000–₹51,000) for $100k accounts.",
+      ],
+      [
+        "Is FTMO legal in India and how do prop firm payouts work in India?",
+        "Under RBI/FEMA rules, Indian residents may trade permitted currency pairs only on recognised Indian exchanges via SEBI-registered brokers. Global prop firms describe challenges as simulated evaluations and pay verified rewards via Riseworks, international wire, or crypto rails rather than domestic UPI. Always verify current country eligibility and consult a Chartered Accountant for Indian tax & FEMA compliance.",
+      ],
+      [
+        "How do I link a funded account to TradingView, MT5 (M5), or Tradovate?",
+        "For MT5, open File -> Login to Trade Account and enter your firm's exact server, Login ID, and master password. For Tradovate + TradingView, log into trader.tradovate.com first to sign CME market-data agreements, then connect inside TradingView's Trading Panel using the Demo tab.",
+      ],
+      [
+        "Does MARKOS run a daily Google Meet live trading stream for funded groups in Bangalore and across India?",
+        "Yes. MARKOS hosts a daily private, paid Google Meet live trading stream every weekday in IST and GST for traders across Bangalore, Mumbai, Delhi NCR, Hyderabad, Pune, Chennai, Ahmedabad, Kolkata, Kerala, and the UAE/GCC. Message us on WhatsApp (+91 91875 87488) for current session timings.",
+      ],
+      [
+        "Can I use Claude AI, ChatGPT, or Google Gemini to trade XAUUSD or funded accounts in India?",
+        "Yes — as analytical and risk-management assistants (Pine Script coding, CSV trade-log audits, pre-trade checklists, and IST macro-news summaries). No AI tool can predict candles or guarantee $100 or $1,000 days; always enforce strict human drawdown rules.",
+      ],
     ],
   },
 ] as const;

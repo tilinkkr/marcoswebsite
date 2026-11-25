@@ -69,7 +69,34 @@
   display: none;
 }
 .whatsapp {
-  display: none;
+  display: inline-flex;
+  min-height: 2.35rem;
+  align-items: center;
+  gap: 0.45rem;
+  border: 1px solid rgb(91 211 141 / 55%);
+  border-radius: 999px;
+  padding: 0 0.9rem;
+  color: #d9f7e5;
+  background: rgb(7 25 16 / 86%);
+  font-family: var(--font-mono-family);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+.whatsapp:hover,
+.whatsapp:focus-visible {
+  border-color: #6fe19d;
+  background: #0b2c1a;
+  transform: translateY(-1px);
+}
+@media (max-width: 767px) {
+  .whatsapp {
+    display: none;
+  }
 }
 .header a:focus-visible,
 .moreMenu summary:focus-visible,

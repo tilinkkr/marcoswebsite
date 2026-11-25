@@ -138,21 +138,14 @@ export function VisionReveal() {
             transformOrigin: "50% 100%",
           });
 
-          const foregroundTravel = isTablet ? 43 : 50;
+          const foregroundTravel = isTablet ? 44 : 52;
           const timeline = gsap.timeline({
             defaults: { ease: "power1.inOut" },
             scrollTrigger: {
               trigger: section,
               start: "top top",
-              end: () => `+=${window.innerHeight * (isTablet ? 1.2 : 1.5)}`,
-              pin: stage,
-              pinSpacing: true,
-              // Lenis already eases the physical scroll position. A numeric
-              // scrub adds a second lag layer and makes the story catch up
-              // only after the user stops scrolling.
+              end: "bottom bottom",
               scrub: true,
-              anticipatePin: 1,
-              refreshPriority: 100,
               invalidateOnRefresh: true,
             },
           });
@@ -161,41 +154,41 @@ export function VisionReveal() {
             .addLabel("pressure", 0)
             .to(
               opening,
-              { autoAlpha: 0, y: -18, duration: 0.1, ease: "power1.out" },
-              "pressure+=0.02",
+              { autoAlpha: 0, y: -22, duration: 0.14, ease: "power1.out" },
+              "pressure",
             )
             .to(
               [topLayer, bottomLayer],
-              { scale: isMobile ? 1.008 : 1.015, duration: 0.15 },
+              { scale: 1.012, duration: 0.08 },
               "pressure",
             )
             .to(
               atmosphere,
               {
-                scale: isLowPower ? 1.02 : isMobile ? 1.015 : 1.07,
-                yPercent: isLowPower || isMobile ? 0 : -0.6,
-                duration: 0.2,
+                scale: isLowPower ? 1.02 : 1.06,
+                yPercent: isLowPower ? 0 : -0.6,
+                duration: 0.16,
               },
               "pressure",
             )
             .to(
               art,
               {
-                scale: isMobile ? 1.012 : 1.04,
-                yPercent: isMobile ? -0.4 : -1.2,
-                duration: 0.18,
+                scale: 1.035,
+                yPercent: -1,
+                duration: 0.16,
               },
               "pressure",
             )
-            .to(seam, { autoAlpha: 0.34, scaleX: 1.08, duration: 0.14 }, 0.04)
-            .addLabel("break", 0.15)
+            .to(seam, { autoAlpha: 0.34, scaleX: 1.08, duration: 0.12 }, 0.02)
+            .addLabel("break", 0.08)
             .to(
               topLayer,
               {
                 yPercent: -foregroundTravel,
-                scale: isMobile ? 1.012 : 1.025,
-                rotationZ: isLowPower || isMobile ? 0 : -0.18,
-                duration: 0.29,
+                scale: 1.025,
+                rotationZ: isLowPower ? 0 : -0.18,
+                duration: 0.32,
                 ease: "power2.inOut",
               },
               "break",
@@ -204,21 +197,21 @@ export function VisionReveal() {
               bottomLayer,
               {
                 yPercent: foregroundTravel,
-                scale: isMobile ? 1.008 : 1.015,
-                rotationZ: isLowPower || isMobile ? 0 : 0.12,
-                duration: 0.3,
+                scale: 1.015,
+                rotationZ: isLowPower ? 0 : 0.12,
+                duration: 0.32,
                 ease: "power2.inOut",
               },
-              "break+=0.015",
+              "break+=0.01",
             )
-            .to(seam, { autoAlpha: 0.08, scaleX: 1.18, duration: 0.2 }, 0.24)
-            .addLabel("reveal", 0.3)
+            .to(seam, { autoAlpha: 0.08, scaleX: 1.18, duration: 0.2 }, 0.18)
+            .addLabel("reveal", 0.24)
             .to(
               art,
               {
-                yPercent: isMobile ? -1.5 : -5,
-                scale: isMobile ? 1.02 : 1.065,
-                duration: 0.25,
+                yPercent: -4,
+                scale: 1.065,
+                duration: 0.26,
                 ease: "power1.out",
               },
               "reveal",
@@ -226,75 +219,62 @@ export function VisionReveal() {
             .to(
               atmosphere,
               {
-                yPercent: isLowPower || isMobile ? 0 : -2,
-                scale: isLowPower ? 1.02 : isMobile ? 1.018 : 1.08,
+                yPercent: isLowPower ? 0 : -2,
+                scale: isLowPower ? 1.02 : 1.08,
                 duration: 0.28,
               },
               "reveal",
             )
-            .addLabel("gaze", 0.45)
+            .addLabel("gaze", 0.36)
             .to(
               gaze,
               {
                 clipPath: "circle(18% at 76% 47%)",
-                duration: 0.2,
+                duration: 0.22,
                 ease: "power1.inOut",
               },
               "gaze",
             )
-            .addLabel("shift", 0.55)
+            .addLabel("shift", 0.48)
             .to(
               art,
               {
-                xPercent: isMobile ? 2 : 8,
-                yPercent: isMobile ? -2 : -4,
-                scale: isMobile ? 1.022 : 1.09,
-                duration: 0.2,
+                xPercent: 8,
+                yPercent: -4,
+                scale: 1.09,
+                duration: 0.22,
                 ease: "power2.inOut",
               },
               "shift",
             )
-            .addLabel("copy", 0.25)
+            .addLabel("copy", 0.2)
             .to(
               eyebrow,
-              { autoAlpha: 1, y: 0, letterSpacing: "0.18em", duration: 0.07 },
+              { autoAlpha: 1, y: 0, letterSpacing: "0.18em", duration: 0.09 },
               "copy",
             )
             .to(
               headlineLines[0],
-              { yPercent: 0, rotateX: 0, duration: 0.09, ease: "power2.out" },
-              "copy+=0.025",
+              { yPercent: 0, rotateX: 0, duration: 0.12, ease: "power2.out" },
+              "copy+=0.02",
             )
             .to(
               headlineLines[1],
-              { yPercent: 0, rotateX: 0, duration: 0.1, ease: "power2.out" },
-              "copy+=0.065",
+              { yPercent: 0, rotateX: 0, duration: 0.12, ease: "power2.out" },
+              "copy+=0.06",
             )
-            .to(body, { autoAlpha: 1, y: 0, duration: 0.08 }, "copy+=0.1")
-            .to(meta, { autoAlpha: 1, y: 0, duration: 0.06 }, "copy+=0.13")
-            .to(cta, { autoAlpha: 1, y: 0, duration: 0.06 }, "copy+=0.15")
+            .to(body, { autoAlpha: 1, y: 0, duration: 0.1 }, "copy+=0.1")
+            .to(meta, { autoAlpha: 1, y: 0, duration: 0.08 }, "copy+=0.14")
+            .to(cta, { autoAlpha: 1, y: 0, duration: 0.08 }, "copy+=0.16")
             .addLabel("hold", 0.65)
-            .to(
-              art,
-              { scale: isMobile ? 1.024 : 1.092, duration: 0.08 },
-              "hold",
-            )
+            .to(art, { scale: 1.092, duration: 0.1 }, "hold")
             .to(
               atmosphere,
               {
-                yPercent: isLowPower || isMobile ? 0 : -2.2,
-                duration: 0.08,
+                yPercent: isLowPower ? 0 : -2.2,
+                duration: 0.1,
               },
               "hold",
-            )
-            .addLabel("release", 0.9)
-            .to(
-              atmosphere,
-              {
-                yPercent: isLowPower || isMobile ? 0 : -2.35,
-                duration: 0.04,
-              },
-              "release",
             );
 
           return () => timeline.kill();
@@ -405,23 +385,57 @@ export function VisionReveal() {
         </div>
 
         <div className={styles.opening} data-vision-opening>
-          <p className={styles.openingEyebrow}>BEFORE THE MARKET MOVES</p>
+          <p className={styles.openingEyebrow}>
+            BEFORE THE MARKET MOVES · DAILY LIVE GOOGLE MEET DESK
+          </p>
           {/* The slogan stays the visual headline; the literal description is
-              the H1 so search engines and screen readers get the offer. */}
+              the H1 so search engines, AI Overviews and screen readers capture
+              the direct answer immediately in Section 1. */}
           <p className={styles.openingHeadline}>
             <span>MOST TRADERS SEE THE CHART.</span>
             <span>FEW SEE WHAT MOVES IT.</span>
           </p>
           <h1 className={styles.openingPrompt}>
-            An India-first trading community for education, live market learning
-            and risk discipline.
+            MARKOS is an India-first trading community for education, daily live
+            Google Meet trading streams, funded-account preparation, and risk
+            discipline across India, UAE &amp; GCC.
           </h1>
+          <p className={styles.aeoSummary}>
+            <strong>What is a funded account?</strong> A prop-firm trading
+            account where traders pass rule-based drawdown and profit checks
+            (FundingPips, FTMO, Alpha Capital) to earn payouts without risking
+            large personal capital. Learn to pass honestly on our daily private
+            Google Meet stream.
+          </p>
+          <div className={styles.openingActions}>
+            <WhatsAppLink
+              className={styles.openingWhatsapp}
+              href={getWhatsAppUrl(
+                "Hi MARKOS, I want to know about your daily Google Meet live trading stream and funded-account community.",
+              )}
+              placement="home-opening-hero"
+              data-whatsapp-primary
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span>MESSAGE ON WHATSAPP — JOIN LIVE GMEET</span>
+              <span aria-hidden>↗</span>
+            </WhatsAppLink>
+            <Link
+              className={styles.openingGuide}
+              href="/funded-account-guide"
+              prefetch={false}
+            >
+              <span>FUNDED ACCOUNT RULES GUIDE</span>
+              <span aria-hidden>→</span>
+            </Link>
+          </div>
         </div>
 
         <div className={styles.copy}>
           <p className={styles.eyebrow} data-vision-eyebrow>
             <span aria-hidden />
-            MARKOS / THE TRADING COMMUNITY
+            MARKOS / DAILY LIVE GOOGLE MEET TRADING COMMUNITY
           </p>
           <h2 id="vision-reveal-title" className={styles.headline}>
             <span className={styles.lineMask}>
@@ -432,36 +446,40 @@ export function VisionReveal() {
             </span>
           </h2>
           <div className={styles.body} data-vision-body>
-            <p>Trading alone leaves you with one perspective.</p>
             <p>
-              MARKOS brings traders together through structure, shared analysis,
-              risk discipline and community — helping members work toward
-              becoming funded traders.
+              <strong>What is a funded account?</strong> A rule-based prop-firm
+              account where you prove drawdown discipline to earn profit splits
+              without risking personal savings.
+            </p>
+            <p>
+              MARKOS runs a daily private &amp; paid Google Meet live trading
+              stream for traders in India, UAE &amp; GCC — combining XAUUSD gold
+              execution, prop-firm rule breakdowns, and honest trade review.
             </p>
           </div>
           <p className={styles.meta} data-vision-meta>
-            LEARN / TRADE / IMPROVE / GET FUNDED
+            DAILY GOOGLE MEET / FUNDED ACCOUNT PASSING / XAUUSD / RISK DISCIPLINE
           </p>
           <div className={styles.actions} data-vision-cta>
-            <Link className={styles.cta} href="/join" prefetch={false}>
-              <span>EXPLORE MEMBERSHIP</span>
-              <span className={styles.arrow} aria-hidden>
-                →
-              </span>
-            </Link>
             <WhatsAppLink
               className={styles.whatsappCta}
               href={getWhatsAppUrl(
-                "Hi MARKOS, I'd like to understand the education and membership options.",
+                "Hi MARKOS, I'd like to join the daily live Google Meet trading stream and learn about membership.",
               )}
               placement="home-hero"
               data-whatsapp-primary
               target="_blank"
               rel="noreferrer"
             >
-              <span>ASK ON WHATSAPP</span>
+              <span>MESSAGE ON WHATSAPP</span>
               <span aria-hidden>↗</span>
             </WhatsAppLink>
+            <Link className={styles.cta} href="/join" prefetch={false}>
+              <span>EXPLORE MEMBERSHIP ($100)</span>
+              <span className={styles.arrow} aria-hidden>
+                →
+              </span>
+            </Link>
           </div>
         </div>
 

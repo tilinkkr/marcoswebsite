@@ -181,12 +181,46 @@
   background: rgb(225 218 207 / 30%);
 }
 
-.cta {
+.ctaRow {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem 1.4rem;
+  margin-top: 1.65rem;
+}
+
+.whatsappCta {
+  display: inline-flex;
+  min-height: 2.9rem;
+  align-items: center;
+  gap: 0.55rem;
+  border: 1px solid #25d366;
+  border-radius: 0.6rem;
+  padding: 0 1.25rem;
+  color: #04170c;
+  background: #25d366;
+  font-family: var(--font-mono-family);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  box-shadow: 0 0.75rem 2rem rgb(37 211 102 / 22%);
+  transition:
+    background-color 180ms ease,
+    transform 180ms ease;
+}
+
+.whatsappCta:hover,
+.whatsappCta:focus-visible {
+  background: #3ee07c;
+  transform: translateY(-2px);
+}
+
+.cta {
+  display: inline-flex;
   width: fit-content;
   align-items: center;
   gap: 0.55rem;
-  margin: 1.55rem auto 0;
   border-bottom: 1px solid rgb(82 196 134 / 35%);
   padding: 0.25rem 0 0.38rem;
   color: #62c991;

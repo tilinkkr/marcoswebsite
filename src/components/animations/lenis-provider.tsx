@@ -62,15 +62,17 @@ export function LenisProvider({
     void import("lenis").then(({ default: Lenis }) => {
       if (cancelled) return;
 
-      // Drive Lenis from GSAP's ticker instead of its own rAF loop. Two
-      // independent loops update scroll position and scrubbed animations on
-      // different frames, which shows up as judder on pinned sections.
+      // Keep Lenis attached for ScrollTrigger sync and smooth programmatic
+      // scrolling, while letting the browser's native GPU compositor handle
+      // mouse-wheel events (smoothWheel: false). Intercepting wheel events on
+      // the main thread caused >400ms stalls and burst jumps over heavy
+      // full-viewport hero artwork.
       lenis = new Lenis({
         autoRaf: false,
-        lerp: 0.1,
+        lerp: 0.16,
         orientation: "vertical",
         gestureOrientation: "vertical",
-        smoothWheel: true,
+        smoothWheel: false,
         wheelMultiplier: 1,
         touchMultiplier: 1,
         infinite: false,
@@ -87,30 +89,26 @@ export function LenisProvider({
 
       ScrollTrigger.config({ ignoreMobileResize: true, limitCallbacks: false });
 
+      let refreshTimer = 0;
       const refresh = () => {
         if (cancelled) return;
-        window.requestAnimationFrame(() => {
-          window.requestAnimationFrame(() => {
-            if (cancelled) return;
-            lenis?.resize();
-            ScrollTrigger.sort();
-            ScrollTrigger.refresh(true);
-            ScrollTrigger.update();
-          });
-        });
+        window.clearTimeout(refreshTimer);
+        refreshTimer = window.setTimeout(() => {
+          if (cancelled) return;
+          lenis?.resize();
+          ScrollTrigger.sort();
+          ScrollTrigger.refresh();
+          ScrollTrigger.update();
+        }, 80);
       };
 
       refresh();
       void document.fonts?.ready.then(refresh);
-      void Promise.allSettled(
-        Array.from(document.images, (image) =>
-          image.complete ? Promise.resolve() : image.decode(),
-        ),
-      ).then(refresh);
       window.addEventListener("load", refresh, { once: true });
       window.addEventListener("pageshow", refresh);
 
       cleanupRefreshListeners = () => {
+        window.clearTimeout(refreshTimer);
         window.removeEventListener("load", refresh);
         window.removeEventListener("pageshow", refresh);
       };

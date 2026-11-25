@@ -1,19 +1,21 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight, Check } from "lucide-react";
+import { ArrowUpRight, Check, MessageCircle } from "lucide-react";
 import { useEffect, useRef } from "react";
 
+import { WhatsAppLink } from "@/components/layout/WhatsAppLink";
 import { getGSAP } from "@/lib/animations/gsap";
+import { getWhatsAppUrl } from "@/lib/whatsapp";
 
 import styles from "./membership.module.css";
 
 const benefits = [
-  "Community discussion",
-  "Live weekday screen shares",
-  "Trade reasoning and review",
-  "Risk and process education",
-  "Prop-evaluation learning environment",
+  "Daily private Google Meet live trading stream",
+  "Funded-account passing & drawdown education",
+  "Live XAUUSD & forex decision review",
+  "Prop-firm rules checks (FundingPips, FTMO, Alpha)",
+  "Private trader community across India, UAE & GCC",
 ];
 
 export function Membership() {
@@ -171,15 +173,25 @@ export function Membership() {
             NO SIGNAL PROMISES. NO GUARANTEED OUTCOMES. JUST A BETTER
             ENVIRONMENT TO BUILD YOUR PROCESS.
           </p>
-          <Link
-            className={styles.cta}
-            href="/join"
-            prefetch={false}
-            data-membership-cta
-          >
-            JOIN MARKOS — $100{" "}
-            <ArrowUpRight size={18} strokeWidth={1.8} aria-hidden />
-          </Link>
+          <div className={styles.ctaRow} data-membership-cta>
+            <WhatsAppLink
+              className={styles.whatsappCta}
+              href={getWhatsAppUrl(
+                "Hi MARKOS, I saw the $100 founding membership. Can you share today's Google Meet details and how joining works?",
+              )}
+              placement="home-membership"
+              data-whatsapp-primary
+              target="_blank"
+              rel="noreferrer"
+            >
+              <MessageCircle size={17} strokeWidth={2} aria-hidden />
+              ASK ON WHATSAPP FIRST
+            </WhatsAppLink>
+            <Link className={styles.cta} href="/join" prefetch={false}>
+              JOIN MARKOS — $100{" "}
+              <ArrowUpRight size={18} strokeWidth={1.8} aria-hidden />
+            </Link>
+          </div>
         </div>
       </div>
     </section>

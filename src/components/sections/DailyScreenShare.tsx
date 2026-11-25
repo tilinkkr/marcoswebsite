@@ -7,14 +7,16 @@ import { useEffect, useRef } from "react";
 
 import { useAnimationPreferences } from "@/hooks/use-animation-preferences";
 import { getGSAP } from "@/lib/animations/gsap";
+import { getWhatsAppUrl } from "@/lib/whatsapp";
+import { WhatsAppLink } from "@/components/layout/WhatsAppLink";
 
 import styles from "./daily-screen-share.module.css";
 
 const headlineLines = [
-  ["WATCH", "OUR"],
-  ["LIVE", "TRADING"],
-  ["SESSION."],
-  ["EVERY", "WEEKDAY."],
+  ["DAILY", "LIVE"],
+  ["GOOGLE", "MEET"],
+  ["TRADING"],
+  ["STREAM."],
 ];
 
 export function DailyScreenShare() {
@@ -189,12 +191,12 @@ export function DailyScreenShare() {
 
         <div className={styles.content}>
           <p className={styles.eyebrow} data-share-eyebrow>
-            HOW IT WORKS
+            PRIVATE &amp; PAID DAILY TRADING STREAM · GOOGLE MEET
           </p>
           <h2
             id="daily-screen-share-title"
             className={styles.headline}
-            aria-label="Watch our live trading session every weekday."
+            aria-label="Daily live Google Meet trading stream for funded account passing."
           >
             {headlineLines.map((line, lineIndex) => (
               <span className={styles.wordLine} key={lineIndex} aria-hidden>
@@ -209,29 +211,41 @@ export function DailyScreenShare() {
 
           <div className={styles.body} data-share-body>
             <p>
-              Follow the session as it unfolds: market context, entries, exits,
-              stops, and the reasoning behind each decision. Educational
-              observation—not a signal to copy.
+              The community built around a daily private Google Meet live
+              trading stream for passing funded accounts: watch London &amp; New
+              York XAUUSD context, entries, stops, drawdown math, and honest
+              decision review every weekday. Educational live observation — no
+              signal hype or guaranteed passes.
             </p>
           </div>
 
           <div className={styles.status} data-share-status>
             <Radio size={15} strokeWidth={1.8} aria-hidden />
             <span className={styles.live}>LIVE</span>
-            <span>TRADING SESSION</span>
+            <span>GOOGLE MEET DESK</span>
             <i aria-hidden />
-            <span>WEEKDAYS</span>
+            <span>MON–FRI · IST &amp; GST</span>
           </div>
 
-          <Link
-            className={styles.cta}
-            href="/join"
-            prefetch={false}
-            data-share-cta
-          >
-            ENTER THE LIVE DESK
-            <ArrowUpRight size={16} strokeWidth={1.8} aria-hidden />
-          </Link>
+          <div className={styles.ctaRow} data-share-cta>
+            <WhatsAppLink
+              className={styles.whatsappCta}
+              href={getWhatsAppUrl(
+                "Hi MARKOS, I want details on joining the daily private Google Meet live trading stream for funded account passing.",
+              )}
+              placement="home-daily-gmeet"
+              data-whatsapp-primary
+              target="_blank"
+              rel="noreferrer"
+            >
+              JOIN TODAY&apos;S GOOGLE MEET ON WHATSAPP
+              <ArrowUpRight size={16} strokeWidth={1.8} aria-hidden />
+            </WhatsAppLink>
+            <Link className={styles.cta} href="/join" prefetch={false}>
+              MEMBERSHIP DETAILS
+              <ArrowUpRight size={16} strokeWidth={1.8} aria-hidden />
+            </Link>
+          </div>
         </div>
       </div>
     </section>
