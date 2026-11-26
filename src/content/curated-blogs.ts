@@ -1,4 +1,5 @@
 import type { BlogPost } from "@/lib/blogs";
+import { CLAUDE_AI_BLOG_POSTS } from "@/content/claude-ai-blogs";
 
 const NOW = "2026-11-26T09:00:00.000Z";
 const PARTNER_LINK =
@@ -63,6 +64,7 @@ function makePost(
 }
 
 export const CURATED_BLOG_POSTS: readonly BlogPost[] = [
+  ...CLAUDE_AI_BLOG_POSTS,
   // =========================================================================
   // 0A. BEST FOREX FUNDED ACCOUNT (INDIA, UK, USA, KERALA, REDDIT, CHALLENGE)
   // =========================================================================

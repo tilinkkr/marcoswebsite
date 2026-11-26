@@ -341,25 +341,26 @@ export default async function ArticlePage({ params }: Props) {
         >
           <span>POPULAR GUIDES &amp; REGIONAL HUBS:</span>
           <Link href="/insights/best-forex-funded-account-india-uk-usa-kerala-reddit-2026">
-            Best Forex Funded Account (India/UK/USA/Kerala)
+            Best Funded Account Broker (India/UK/USA/Kerala)
+          </Link>
+          <Link href="/insights/backtest-10000-trading-strategies-claude-code-tradingview-2026">
+            10,000+ Strategies with Claude Code &amp; TradingView
+          </Link>
+          <Link href="/insights/turn-claude-code-into-master-xauusd-gold-trader-5-prompts-2026">
+            Master XAUUSD Gold with Claude (5 Prompts)
+          </Link>
+          <Link href="/insights/connect-claude-directly-to-tradingview-and-broker-results-2026">
+            Connect Claude to TradingView &amp; Broker
+          </Link>
+          <Link href="/insights/7-free-github-repos-build-your-own-ai-trading-system-claude-2026">
+            7 Free GitHub AI Trading Repos
           </Link>
           <Link href="/insights/funded-account-passed-in-1-month-3-ways-india-mentor-guide">
             Passed in 1 Month? 3 Ways + Mentor Plan
           </Link>
-          <Link href="/insights/nasdaq-mnq-futures-funded-account-india-gcc-usa-2026">
-            NASDAQ (MNQ) &amp; Futures Prop Guide
-          </Link>
-          <Link href="/insights/fundingpips-rules-explained-challenge-rewards-pdf-checklist">
-            FundingPips Rules &amp; PDF Checklist
-          </Link>
-          <Link href="/insights/how-to-use-claude-for-trading-in-india-1000-dollar-workflow">
-            Claude AI Trading Workflow
-          </Link>
           <Link href="/kerala">Kerala Malayalam Group</Link>
+          <Link href="/gcc">GCC Malayali Desk</Link>
           <Link href="/india/bangalore">Bangalore</Link>
-          <Link href="/gcc/uae">Dubai / UAE</Link>
-          <Link href="/abroad/uk">UK</Link>
-          <Link href="/abroad/usa">USA</Link>
         </nav>
         <section className={local.evidence} aria-labelledby="evidence-title">
           <div>
