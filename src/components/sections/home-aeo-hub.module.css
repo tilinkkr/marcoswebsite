@@ -110,31 +110,38 @@
 }
 
 .partnerPrimary {
+  position: relative;
+  overflow: hidden;
   display: inline-flex;
   min-height: 3.1rem;
   align-items: center;
   justify-content: center;
   gap: 0.55rem;
+  border: 1px solid rgb(241 238 231 / 34%);
   border-radius: 0.6rem;
   padding: 0 1.35rem;
-  color: #0b0d0c;
-  background: linear-gradient(135deg, #ecc5a8, #c97941);
+  color: #f6f2eb;
+  background: rgb(255 255 255 / 7%);
   font-family: var(--font-mono-family);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-decoration: none;
   white-space: nowrap;
-  box-shadow: 0 0.7rem 1.8rem rgb(201 121 65 / 24%);
   transition:
-    filter 150ms ease,
-    transform 150ms ease;
+    background 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .partnerPrimary:hover,
 .partnerPrimary:focus-visible {
-  filter: brightness(1.07);
-  transform: translateY(-1px);
+  border-color: #ef4444;
+  color: #ffffff;
+  background: linear-gradient(135deg, #c82333, #8f1622);
+  box-shadow: 0 0.75rem 2.1rem rgb(200 35 51 / 38%);
+  transform: translateY(-2px);
 }
 
 .partnerSecondary {
@@ -143,21 +150,26 @@
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
-  border: 1px solid rgb(221 182 148 / 28%);
+  border: 1px solid rgb(241 238 231 / 24%);
   border-radius: 0.55rem;
   padding: 0 1rem;
-  color: #e7d7c7;
+  color: #e7dfd5;
   font-family: var(--font-mono-family);
   font-size: 0.65rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-decoration: none;
   white-space: nowrap;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    color 160ms ease;
 }
 
 .partnerSecondary:hover {
-  border-color: #c97941;
-  color: #f6efe6;
+  border-color: #ef4444;
+  background: rgb(200 35 51 / 18%);
+  color: #ffffff;
 }
 
 .waStrip {
@@ -216,9 +228,11 @@
 
 .waChip:hover,
 .waChip:focus-visible {
-  border-color: #5bd38d;
-  background: linear-gradient(180deg, rgb(22 80 47 / 98%), rgb(13 50 29 / 98%));
-  transform: translateY(-1px);
+  border-color: #4ade80;
+  color: #ffffff;
+  background: linear-gradient(135deg, #16a34a, #117a37);
+  box-shadow: 0 0.6rem 1.6rem rgb(22 163 74 / 36%);
+  transform: translateY(-2px);
 }
 
 .faqGrid {

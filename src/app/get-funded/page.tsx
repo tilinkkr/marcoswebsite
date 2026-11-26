@@ -11,7 +11,7 @@ import { getWhatsAppUrl } from "@/lib/whatsapp";
 import styles from "../marketing.module.css";
 import local from "../gcc/gcc.module.css";
 
-const title = "Get a Funded Trading Account — India, Kerala & GCC";
+const title = "Get a Funded Trading Account: India, Kerala & GCC";
 const description =
   "Want a funded account? MARKOS helps traders in Kerala, India and the GCC choose the right prop firm, prepare for the challenge and avoid passing scams. Start with one WhatsApp message.";
 
@@ -29,7 +29,7 @@ const steps = [
   },
   {
     title: "Pick the right challenge",
-    body: "We help you compare rules, drawdown, minimum days and payout terms for your country — India, UAE, Saudi, Qatar, Kuwait, Oman or Bahrain.",
+    body: "We help you compare rules, drawdown, minimum days and payout terms for your country: India, UAE, Saudi, Qatar, Kuwait, Oman or Bahrain.",
   },
   {
     title: "Prepare with the community",
@@ -37,7 +37,7 @@ const steps = [
   },
   {
     title: "Take the challenge yourself",
-    body: "You trade your own account. No passing services, no account sharing — so your payout isn't put at risk.",
+    body: "You trade your own account. No passing services, no account sharing, so your payout isn't put at risk.",
   },
 ];
 
@@ -76,11 +76,11 @@ export default function GetFundedPage() {
         <section className={styles.hero}>
           <div>
             <p className={styles.eyebrow}>MARKOS / GET FUNDED</p>
-            <h1>Get a funded trading account — the right way</h1>
+            <h1>Get a funded trading account: the right way</h1>
             <p className={styles.lede}>
               Many traders buy a prop-firm challenge and lose the fee within
               days. MARKOS helps you choose the right funded account for your
-              country and prepare properly first — for traders in Kerala, across
+              country and prepare properly first, for traders in Kerala, across
               India and in the GCC.
             </p>
             <div className={local.ctaBand}>
@@ -92,7 +92,7 @@ export default function GetFundedPage() {
                 rel="noreferrer"
                 data-whatsapp-primary
               >
-                Get funded — message us on WhatsApp
+                Get funded: message us on WhatsApp
               </WhatsAppLink>
               <Link
                 className={styles.action}
@@ -142,7 +142,7 @@ export default function GetFundedPage() {
                 Disclosure: these are partner links. MARKOS may earn a
                 commission if you buy a challenge through them, at no extra cost
                 to you. We are not the prop firm and cannot guarantee a pass or
-                payout — read the firm&apos;s current terms first.
+                payout: read the firm&apos;s current terms first.
               </p>
             </>
           )}
@@ -181,7 +181,7 @@ export default function GetFundedPage() {
           <p className={styles.legal}>
             Prop-firm challenges are paid evaluations and most traders do not
             pass. Funded stages are often simulated and rewards depend on each
-            firm&apos;s terms. Education only — not financial, legal or tax
+            firm&apos;s terms. Education only, not financial, legal or tax
             advice.
           </p>
         </section>

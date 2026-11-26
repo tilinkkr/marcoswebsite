@@ -205,29 +205,58 @@
   margin-top: 1.8rem;
 }
 .partnerCta {
+  position: relative;
+  overflow: hidden;
   display: inline-flex;
   min-height: 3.2rem;
   align-items: center;
   gap: 0.55rem;
-  border: 1px solid rgb(229 184 152 / 65%);
+  border: 1px solid rgb(241 238 231 / 34%);
   border-radius: 0.5rem;
-  padding: 0 1.25rem;
-  color: #0b0d0c;
-  background: linear-gradient(135deg, #ecc5a8, #c97941);
+  padding: 0 1.3rem;
+  color: #f6f2eb;
+  background: rgb(255 255 255 / 6%);
   font-family: var(--font-mono-family);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-decoration: none;
-  box-shadow: 0 0.65rem 1.8rem rgb(201 121 65 / 22%);
   transition:
-    filter 160ms ease,
-    transform 160ms ease;
+    background 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.partnerCta::after,
+.whatsappCta::after,
+.cta::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 65%;
+  height: 100%;
+  background: linear-gradient(
+    110deg,
+    transparent,
+    rgb(255 255 255 / 20%),
+    transparent
+  );
+  transition: left 420ms ease;
+  pointer-events: none;
+}
+.partnerCta:hover::after,
+.whatsappCta:hover::after,
+.cta:hover::after {
+  left: 145%;
 }
 .partnerCta:hover,
 .partnerCta:focus-visible {
-  filter: brightness(1.07);
-  transform: translateY(-1px);
+  border-color: #ef4444;
+  color: #ffffff;
+  background: linear-gradient(135deg, #c82333, #8f1622);
+  box-shadow: 0 0.75rem 2.1rem rgb(200 35 51 / 38%);
+  transform: translateY(-2px);
 }
 .partnerDisclosure {
   margin: 0.85rem 0 0;
@@ -238,53 +267,70 @@
   letter-spacing: 0.04em;
 }
 .whatsappCta {
+  position: relative;
+  overflow: hidden;
   display: inline-flex;
   min-height: 3.2rem;
   align-items: center;
   gap: 0.6rem;
-  border: 1px solid rgb(91 211 141 / 48%);
+  border: 1px solid rgb(74 222 128 / 46%);
   border-radius: 0.5rem;
   padding: 0 1.25rem;
   color: #e9fff1;
-  background: linear-gradient(180deg, rgb(17 61 36 / 95%), rgb(10 38 22 / 96%));
+  background: linear-gradient(135deg, #0f4c27, #092c17);
   font-family: var(--font-mono-family);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-decoration: none;
   transition:
-    border-color 160ms ease,
-    background-color 160ms ease,
-    transform 160ms ease;
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .whatsappCta:hover,
 .whatsappCta:focus-visible {
-  border-color: #5bd38d;
-  background: linear-gradient(180deg, rgb(22 80 47 / 98%), rgb(13 50 29 / 98%));
-  transform: translateY(-1px);
+  border-color: #4ade80;
+  color: #ffffff;
+  background: linear-gradient(135deg, #16a34a, #117a37);
+  box-shadow: 0 0.75rem 2rem rgb(22 163 74 / 40%);
+  transform: translateY(-2px);
 }
 .cta {
+  position: relative;
+  overflow: hidden;
   display: inline-flex;
   width: fit-content;
   min-height: 3.2rem;
   align-items: center;
   gap: 0.7rem;
-  border: 1px solid rgb(201 121 65 / 55%);
-  padding: 0.9rem 1.2rem;
+  border: 1px solid rgb(241 238 231 / 28%);
+  border-radius: 0.5rem;
+  padding: 0.9rem 1.25rem;
   color: #f0e4d8;
   font-family: var(--font-body-family);
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.09em;
-  background: rgb(112 23 34 / 15%);
+  background: rgb(255 255 255 / 4%);
+  text-decoration: none;
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 .cta:hover,
 .cta:focus-visible {
-  border-color: #c97941;
-  background: rgb(112 23 34 / 28%);
+  border-color: #ef4444;
+  color: #ffffff;
+  background: linear-gradient(135deg, #c82333, #8f1622);
+  box-shadow: 0 0.75rem 2rem rgb(200 35 51 / 36%);
+  transform: translateY(-2px);
 }
 .cta:focus-visible {
-  outline: 2px solid #c97941;
+  outline: 2px solid #ef4444;
   outline-offset: 4px;
 }
 

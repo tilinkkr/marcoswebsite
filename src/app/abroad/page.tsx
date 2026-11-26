@@ -52,7 +52,7 @@ export default function AbroadHubPage() {
             <h1>Forex &amp; funded account community for Malayalis abroad</h1>
             <p className={styles.lede}>
               Living in Toronto, Calgary, Melbourne, Sydney or Perth? Learn
-              forex and gold trading in Malayalam with MARKOS — a Kerala-based
+              forex and gold trading in Malayalam with MARKOS: a Kerala-based
               community with members in Kerala, the GCC, Canada and Australia.
             </p>
             <div className={local.ctaBand}>
@@ -92,7 +92,7 @@ export default function AbroadHubPage() {
             </Link>
           </div>
           <p className={styles.legal}>
-            Education and community only — not financial, legal or tax advice.
+            Education and community only, not financial, legal or tax advice.
             Trading carries a real risk of loss; no pass, payout or profit is
             promised.
           </p>

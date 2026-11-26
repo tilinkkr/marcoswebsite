@@ -11,7 +11,7 @@ import local from "./funded-account-guide.module.css";
 export const metadata: Metadata = {
   title: "What Is a Funded Account? Rules, Payouts & Prop Firm Checks",
   description:
-    "What a funded account really is, how prop-firm challenges work, why payouts get rejected and how to compare firms — for traders in India, UAE & GCC.",
+    "What a funded account really is, how prop-firm challenges work, why payouts get rejected and how to compare firms, for traders in India, UAE & GCC.",
   alternates: { canonical: "/funded-account-guide" },
   openGraph: {
     title:
@@ -32,7 +32,7 @@ const questions = [
   {
     question: "Can I pass a funded-account challenge in 3 days?",
     answer:
-      "Only if that exact programme's current rules permit completion in that time—and meeting a target does not guarantee approval. Check minimum trading days, consistency rules, review timing and all loss limits. Do not increase risk or force trades to meet an arbitrary deadline.",
+      "Only if that exact programme's current rules permit completion in that time, and meeting a target does not guarantee approval. Check minimum trading days, consistency rules, review timing and all loss limits. Do not increase risk or force trades to meet an arbitrary deadline.",
   },
   {
     question: "Why can a prop-firm payout request be rejected or delayed?",
@@ -50,9 +50,9 @@ const questions = [
       "They can. Treat the funded stage as a separate agreement and read it before accepting. Re-check drawdown, payout timing and eligibility, consistency rules, permitted strategies, identity checks and account termination provisions rather than assuming evaluation rules carry over unchanged.",
   },
   {
-    question: "Funded account kya hota hai — and can I get a funded account free?",
+    question: "Funded account kya hota hai, and can I get a funded account free?",
     answer:
-      "In simple terms, a funded account lets you trade prop-firm capital after passing drawdown and profit rules, earning an 80%–90% profit split on verified rewards. Legitimate free routes are limited to official monthly prop-firm trading competitions and free practice trials — never pay personal UPI 'release fees' to strangers.",
+      "In simple terms, a funded account lets you trade prop-firm capital after passing drawdown and profit rules, earning an 80%–90% profit split on verified rewards. Legitimate free routes are limited to official monthly prop-firm trading competitions and free practice trials, never pay personal UPI 'release fees' to strangers.",
   },
   {
     question: "How do I link a funded account to TradingView, MT5, or Tradovate?",
@@ -80,7 +80,7 @@ const comparison = [
   ],
   [
     "Total cost",
-    "Include evaluation, subscription, reset, platform/data and payment fees—not just the entry price.",
+    "Include evaluation, subscription, reset, platform/data and payment fees, not just the entry price.",
   ],
   [
     "Availability",
@@ -255,7 +255,7 @@ export default function FundedAccountGuidePage() {
           <section className={local.payout} aria-labelledby="payout-title">
             <p className={styles.sectionLabel}>IF A PAYOUT IS REJECTED</p>
             <h2 id="payout-title" className={local.subheading}>
-              GET THE SPECIFIC CLAUSE—NOT A GUESS.
+              GET THE SPECIFIC CLAUSE, NOT A GUESS.
             </h2>
             <ol>
               <li>

@@ -13,7 +13,7 @@ import styles from "./final-conversion.module.css";
 const steps = [
   ["01", "STUDY.", "Understand the setup before risking capital."],
   ["02", "EXECUTE.", "Follow the plan when the market gets loud."],
-  ["03", "REVIEW.", "Examine the decision—not only the result."],
+  ["03", "REVIEW.", "Examine the decision, not only the result."],
   ["04", "IMPROVE.", "Bring one useful lesson into the next session."],
 ] as const;
 
@@ -197,7 +197,7 @@ export function FinalConversion() {
               <MessageCircle size={18} aria-hidden /> MESSAGE ON WHATSAPP
             </WhatsAppLink>
             <Link className={styles.primary} href="/join" prefetch={false}>
-              JOIN MARKOS — $100 <ArrowRight size={18} aria-hidden />
+              JOIN MARKOS ($100) <ArrowRight size={18} aria-hidden />
             </Link>
             <Link className={styles.secondary} href="#community">
               EXPLORE THE LIVE GMEET

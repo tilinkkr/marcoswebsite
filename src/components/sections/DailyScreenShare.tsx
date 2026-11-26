@@ -214,7 +214,7 @@ export function DailyScreenShare() {
               The community built around a daily private Google Meet live
               trading stream for passing funded accounts: watch London &amp; New
               York XAUUSD context, entries, stops, drawdown math, and honest
-              decision review every weekday. Educational live observation — no
+              decision review every weekday. Educational live observation: no
               signal hype or guaranteed passes.
             </p>
           </div>

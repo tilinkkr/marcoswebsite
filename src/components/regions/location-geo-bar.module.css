@@ -1,0 +1,101 @@
+.bar {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) auto;
+  gap: 1.15rem 2rem;
+  align-items: center;
+  border: 1px solid rgb(74 222 128 / 34%);
+  border-radius: 0.85rem;
+  padding: clamp(1.1rem, 2.2vw, 1.55rem);
+  background:
+    radial-gradient(90% 110% at 0% 0%, rgb(22 163 74 / 14%), transparent 56%),
+    #0b100d;
+}
+
+.copy {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  color: #4ade80;
+  font: 700 0.61rem/1.2 var(--font-mono-family);
+  letter-spacing: 0.14em;
+}
+
+.headline {
+  color: #f6f2eb;
+  font: 600 clamp(1.1rem, 1.8vw, 1.42rem) / 1.18 var(--font-display-family);
+  letter-spacing: -0.025em;
+}
+
+.subline {
+  margin: 0;
+  color: rgb(241 238 231 / 76%);
+  font-size: 0.9rem;
+  line-height: 1.52;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.waBtn,
+.hubBtn {
+  display: inline-flex;
+  min-height: 2.8rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  border-radius: 0.52rem;
+  padding: 0 1.05rem;
+  font: 700 0.66rem/1 var(--font-mono-family);
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.waBtn {
+  border: 1px solid rgb(74 222 128 / 48%);
+  color: #ecfff3;
+  background: linear-gradient(135deg, #0f4c27, #092c17);
+}
+
+.waBtn:hover,
+.waBtn:focus-visible {
+  border-color: #4ade80;
+  color: #ffffff;
+  background: linear-gradient(135deg, #16a34a, #117a37);
+  box-shadow: 0 0.65rem 1.7rem rgb(22 163 74 / 38%);
+  transform: translateY(-2px);
+}
+
+.hubBtn {
+  border: 1px solid rgb(241 238 231 / 28%);
+  color: #f6f2eb;
+  background: rgb(255 255 255 / 6%);
+}
+
+.hubBtn:hover,
+.hubBtn:focus-visible {
+  border-color: #ef4444;
+  color: #ffffff;
+  background: linear-gradient(135deg, #c82333, #8f1622);
+  box-shadow: 0 0.65rem 1.7rem rgb(200 35 51 / 34%);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 960px) {
+  .bar {
+    grid-template-columns: 1fr;
+  }
+}

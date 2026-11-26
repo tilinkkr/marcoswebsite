@@ -51,7 +51,7 @@ export default async function IndiaCityPage({ params }: Props) {
     ...city.extraFaqs,
     {
       q: `Is a funded account legal for traders in ${city.name}, India?`,
-      a: "There is no one-word legal answer. Under RBI and FEMA rules, Indian residents may trade permitted currency derivatives only on recognised Indian exchanges through SEBI-registered brokers. Global prop-firm evaluations are typically structured as simulated skill assessments — check current RBI/FEMA guidance and consult a qualified CA before paying.",
+      a: "There is no one-word legal answer. Under RBI and FEMA rules, Indian residents may trade permitted currency derivatives only on recognised Indian exchanges through SEBI-registered brokers. Global prop-firm evaluations are typically structured as simulated skill assessments: check current RBI/FEMA guidance and consult a qualified CA before paying.",
     },
     {
       q: `How do traders in ${city.name} get payouts from prop firms like FundingPips or Alpha Capital?`,
@@ -59,7 +59,7 @@ export default async function IndiaCityPage({ params }: Props) {
     },
     {
       q: `How does MARKOS's daily Google Meet live trading stream help ${city.name} traders?`,
-      a: `Every weekday in IST, MARKOS runs a private live Google Meet session covering market context, XAUUSD gold and forex levels, 0.5%–1% risk sizing, and honest post-session trade reviews — helping ${city.name} traders build consistency without buying risky passing services.`,
+      a: `Every weekday in IST, MARKOS runs a private live Google Meet session covering market context, XAUUSD gold and forex levels, 0.5%–1% risk sizing, and honest post-session trade reviews: helping ${city.name} traders build consistency without buying risky passing services.`,
     },
   ];
 
@@ -276,7 +276,7 @@ export default async function IndiaCityPage({ params }: Props) {
           </div>
 
           <p className={styles.legal}>
-            Education and community only — not SEBI-registered investment
+            Education and community only, not SEBI-registered investment
             advice, legal advice, or tax advice. Prop-firm evaluations carry a
             high risk of loss and no pass, funding, or payout is guaranteed.
           </p>

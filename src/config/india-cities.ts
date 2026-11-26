@@ -35,11 +35,11 @@ export const INDIA_CITIES: IndiaCity[] = [
     extraFaqs: [
       {
         q: "Are there genuine funded firms groups in Bangalore (Bengaluru)?",
-        a: "Yes — MARKOS connects Bengaluru traders in Koramangala, Indiranagar, Whitefield, and HSR Layout through daily private Google Meet live trading streams and WhatsApp trade reviews. Unlike shady offline passing desks that risk account bans, MARKOS teaches you to trade and pass your own evaluation with strict drawdown discipline.",
+        a: "Yes. MARKOS connects Bengaluru traders in Koramangala, Indiranagar, Whitefield, and HSR Layout through daily private Google Meet live trading streams and WhatsApp trade reviews. Unlike shady offline passing desks that risk account bans, MARKOS teaches you to trade and pass your own evaluation with strict drawdown discipline.",
       },
       {
         q: "What is the best time to trade XAUUSD or funded accounts from Bangalore?",
-        a: "In IST (UTC+5:30), London opens around 1:30 PM IST in winter (12:30 PM in summer) and the high-liquidity London–New York overlap runs roughly 6:30 PM to 9:30 PM IST — fitting smoothly after office hours in Bengaluru.",
+        a: "In IST (UTC+5:30), London opens around 1:30 PM IST in winter (12:30 PM in summer) and the high-liquidity London–New York overlap runs roughly 6:30 PM to 9:30 PM IST: fitting smoothly after office hours in Bengaluru.",
       },
     ],
   },
@@ -104,7 +104,7 @@ export const INDIA_CITIES: IndiaCity[] = [
     extraFaqs: [
       {
         q: "Are there funded trading groups near me in Pune?",
-        a: "Yes — traders from Hinjawadi, Baner, Koregaon Park, and Viman Nagar join MARKOS's daily live Google Meet sessions and WhatsApp community for funded-account rule education and live market review.",
+        a: "Yes: traders from Hinjawadi, Baner, Koregaon Park, and Viman Nagar join MARKOS's daily live Google Meet sessions and WhatsApp community for funded-account rule education and live market review.",
       },
     ],
   },
@@ -166,11 +166,11 @@ export const INDIA_CITIES: IndiaCity[] = [
     traderProfile:
       "Kerala's hub of Malayali traders, Infopark professionals, and Gulf-connected families studying forex, XAUUSD gold, and prop-firm challenges.",
     localAngle:
-      "MARKOS is rooted in Kerala — Kochi and Ernakulam traders get full support in both Malayalam and English, daily Google Meet live sessions, and honest guidance that steers clear of 'passing group' scams.",
+      "MARKOS is rooted in Kerala. Kochi and Ernakulam traders get full support in both Malayalam and English, daily Google Meet live sessions, and honest guidance that steers clear of 'passing group' scams.",
     extraFaqs: [
       {
         q: "Does MARKOS have a trading community in Kochi and Kerala?",
-        a: "Yes — MARKOS is Kerala-based with active members across Kochi, Kakkanad, Trivandrum, Kozhikode, Thrissur, and the GCC. Ask us in Malayalam or English on WhatsApp (+91 91875 87488).",
+        a: "Yes. MARKOS is Kerala-based with active members across Kochi, Kakkanad, Trivandrum, Kozhikode, Thrissur, and the GCC. Ask us in Malayalam or English on WhatsApp (+91 91875 87488).",
       },
     ],
   },

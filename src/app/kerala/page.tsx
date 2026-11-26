@@ -4,6 +4,7 @@ import Link from "next/link";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { WhatsAppLink } from "@/components/layout/WhatsAppLink";
+import { LocationGeoBar } from "@/components/regions/LocationGeoBar";
 import { FEATURED_PARTNER } from "@/config/funded-partners";
 import { absoluteUrl, safeJsonLd, SITE_URL } from "@/lib/site";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
@@ -30,15 +31,15 @@ const faqs = [
   },
   {
     q: "Is forex trading legal in Kerala and India?",
-    a: "Indian residents may trade forex only in permitted instruments through authorised persons, authorised electronic trading platforms or recognised exchanges, as RBI's forex FAQ explains — for example INR currency pairs on Indian exchanges through a SEBI-registered broker. RBI's alert list warns against unauthorised forex platforms. Overseas forex apps and funded accounts raise separate questions; read our guide before paying.",
+    a: "Indian residents may trade forex only in permitted instruments through authorised persons, authorised electronic trading platforms or recognised exchanges, as RBI's forex FAQ explains, for example INR currency pairs on Indian exchanges through a SEBI-registered broker. RBI's alert list warns against unauthorised forex platforms. Overseas forex apps and funded accounts raise separate questions; read our guide before paying.",
   },
   {
     q: "Is there a group that passes funded accounts in Kerala?",
-    a: "Services that trade your challenge for you usually break the prop firm's rules on account sharing and third-party trading, and firms can cancel the account or refuse the payout. A safer route is learning to pass it yourself with a risk plan — that is what the MARKOS community helps with.",
+    a: "Services that trade your challenge for you usually break the prop firm's rules on account sharing and third-party trading, and firms can cancel the account or refuse the payout. A safer route is learning to pass it yourself with a risk plan, that is what the MARKOS community helps with.",
   },
   {
     q: "Which is the best forex trading institute, academy or course in Kerala?",
-    a: "Judge any Kerala forex institute, academy or course on what it actually teaches and how it behaves: a written syllabus, live trading you can watch, open discussion of losses and risk, no guaranteed-profit or account-management offers, and honesty about what is legal for Indian residents. MARKOS offers forex and gold courses and a live community in Malayalam — ask on WhatsApp for the current format.",
+    a: "Judge any Kerala forex institute, academy or course on what it actually teaches and how it behaves: a written syllabus, live trading you can watch, open discussion of losses and risk, no guaranteed-profit or account-management offers, and honesty about what is legal for Indian residents. MARKOS offers forex and gold courses and a live community in Malayalam: ask on WhatsApp for the current format.",
   },
   {
     q: "Which is the best forex funded account in Kerala right now?",
@@ -46,15 +47,15 @@ const faqs = [
   },
   {
     q: "Is there a genuine WhatsApp community for trading in Kerala?",
-    a: "Yes. To join the MARKOS WhatsApp community for trading in Kerala, message +91 91875 87488 — our team explains the daily Google Meet live trading desk, Malayalam & English mentorship, and risk rules before you join. Avoid spam public WhatsApp links selling guaranteed signals.",
+    a: "Yes. To join the MARKOS WhatsApp community for trading in Kerala, message +91 91875 87488: our team explains the daily Google Meet live trading desk, Malayalam & English mentorship, and risk rules before you join. Avoid spam public WhatsApp links selling guaranteed signals.",
   },
   {
     q: "Who teaches at MARKOS?",
-    a: "Rahul Raja, who has been trading for more than 10 years, leads trading education; Linu Babu is CFO; Sahal is a trader and content creator. None of them is registered with SEBI as an investment adviser or research analyst — MARKOS provides education and community, not investment advice.",
+    a: "Rahul Raja, who has been trading for more than 10 years, leads trading education; Linu Babu is CFO; Sahal is a trader and content creator. None of them is registered with SEBI as an investment adviser or research analyst. MARKOS provides education and community, not investment advice.",
   },
   {
     q: "Is there a forex broker that explains things in Malayalam?",
-    a: "Some Indian brokers publish Malayalam explainers, but a broker's language doesn't make it suitable. Indian residents should use a SEBI-registered broker for permitted currency derivatives. MARKOS is not a broker — it is a Malayalam-speaking education community.",
+    a: "Some Indian brokers publish Malayalam explainers, but a broker's language doesn't make it suitable. Indian residents should use a SEBI-registered broker for permitted currency derivatives. MARKOS is not a broker, it is a Malayalam-speaking education community.",
   },
   {
     q: "Which bank is best for forex trading in India?",
@@ -108,7 +109,7 @@ export default function KeralaPage() {
             <p className={styles.lede}>
               MARKOS is a Kerala-based forex, gold (XAUUSD) and funded-account
               trading community. Learn the basics, trade alongside weekday live
-              sessions and prepare for prop-firm challenges — with traders from
+              sessions and prepare for prop-firm challenges, with traders from
               Kochi, Kozhikode, Thrissur, Thiruvananthapuram and Malayalis
               across the Gulf.
             </p>
@@ -121,7 +122,7 @@ export default function KeralaPage() {
                 rel="noreferrer"
                 data-whatsapp-primary
               >
-                Join Kerala WhatsApp Community — Free to Ask
+                Join Kerala WhatsApp Community: Free to Ask
               </WhatsAppLink>
               {FEATURED_PARTNER ? (
                 <a
@@ -144,13 +145,14 @@ export default function KeralaPage() {
         </section>
 
         <section className={styles.section}>
+          <LocationGeoBar />
           <div className={local.malayalam} lang="ml">
             <span className={styles.label}>മലയാളത്തിൽ</span>
             <p>
               ഫോറെക്സ് ട്രേഡിംഗ് മലയാളത്തിൽ പഠിക്കണോ? കേരളം ആസ്ഥാനമായുള്ള MARKOS
               കമ്മ്യൂണിറ്റിയിൽ ഫോറെക്സ്, ഗോൾഡ് (XAUUSD), ഫണ്ടഡ് അക്കൗണ്ട്
               ചലഞ്ചുകൾ എന്നിവയെക്കുറിച്ച് പഠിക്കാം. ലാഭം ഉറപ്പ് നൽകുന്ന
-              ഗ്രൂപ്പുകളെ സൂക്ഷിക്കുക — റിസ്ക് മാനേജ്മെന്റ് ആണ് ആദ്യം. സംശയങ്ങൾ
+              ഗ്രൂപ്പുകളെ സൂക്ഷിക്കുക: റിസ്ക് മാനേജ്മെന്റ് ആണ് ആദ്യം. സംശയങ്ങൾ
               WhatsApp-ൽ ചോദിക്കാം.
             </p>
           </div>
@@ -172,7 +174,7 @@ export default function KeralaPage() {
             </li>
             <li>
               <Link href="/insights/how-to-start-trading-in-2026-beginners">
-                How to start trading in 2026 — explained for beginners
+                How to start trading in 2026: explained for beginners
               </Link>
             </li>
             <li>
@@ -212,10 +214,10 @@ export default function KeralaPage() {
           </div>
           <p>
             Traders from Thiruvananthapuram (Trivandrum), Kochi, Kozhikode,
-            Thrissur, Kannur and Kollam — and Malayalis in the{" "}
+            Thrissur, Kannur and Kollam, and Malayalis in the{" "}
             <Link href="/gcc">GCC</Link>,{" "}
             <Link href="/abroad/canada">Canada</Link> and{" "}
-            <Link href="/abroad/australia">Australia</Link> — join MARKOS by
+            <Link href="/abroad/australia">Australia</Link>: join MARKOS by
             sending one WhatsApp message. The team explains the community, live
             sessions and courses, then adds you. No signals for sale, no
             guaranteed profits.
@@ -245,7 +247,7 @@ export default function KeralaPage() {
           </div>
           <ul className={styles.benefits}>
             <li>
-              Most prop firms ban account sharing and third-party trading — a
+              Most prop firms ban account sharing and third-party trading: a
               &quot;passed&quot; account can be closed and the payout refused.
             </li>
             <li>
@@ -258,7 +260,7 @@ export default function KeralaPage() {
             </li>
             <li>
               The legitimate shortcut is a plan, a small fixed risk per trade
-              and people who review your trades with you — that is the MARKOS
+              and people who review your trades with you, that is the MARKOS
               community.
             </li>
           </ul>
@@ -297,7 +299,7 @@ export default function KeralaPage() {
             </Link>
           </div>
           <p className={styles.legal}>
-            Education and community only — not financial, legal or tax advice.
+            Education and community only, not financial, legal or tax advice.
             Trading carries a real risk of loss; no pass, payout or profit is
             promised.
           </p>

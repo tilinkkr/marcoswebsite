@@ -140,7 +140,7 @@ export function MarcosMethod() {
           <div className={styles.introduction}>
             <p>
               MARKOS turns a trading day into a process you can understand,
-              observe, review and improve—not a signal to copy.
+              observe, review and improve, not a signal to copy.
             </p>
             <p className={styles.loop}>PLAN / WATCH / REVIEW / REFINE</p>
           </div>

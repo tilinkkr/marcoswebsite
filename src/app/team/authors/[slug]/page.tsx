@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const author = getAuthor((await params).slug);
   if (!author) return {};
   return {
-    title: `${author.name} — ${author.role}`,
+    title: `${author.name}: ${author.role}`,
     description: `${author.name}'s public MARKOS role, editorial focus, and published contributions.`,
     alternates: { canonical: authorPath(author.slug) },
   };
@@ -109,7 +109,7 @@ export default async function AuthorPage({ params }: Props) {
                       ? new Date(post.last_reviewed_at).toLocaleDateString(
                           "en-IN",
                         )
-                      : "—"}
+                      : ", "}
                   </p>
                 </Link>
               ))

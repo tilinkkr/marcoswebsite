@@ -471,7 +471,7 @@ export function VisionReveal() {
             </p>
             <p>
               MARKOS runs a daily private &amp; paid Google Meet live trading
-              stream for traders in India, UAE &amp; GCC — combining XAUUSD gold
+              stream for traders in India, UAE &amp; GCC: combining XAUUSD gold
               execution, prop-firm rule breakdowns, and honest trade review.
             </p>
           </div>

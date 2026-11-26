@@ -2,6 +2,7 @@ import { ArrowUpRight, MessageCircle, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 
 import { WhatsAppLink } from "@/components/layout/WhatsAppLink";
+import { LocationGeoBar } from "@/components/regions/LocationGeoBar";
 import { FEATURED_PARTNER } from "@/config/funded-partners";
 import { INDIA_CITIES } from "@/config/india-cities";
 import { absoluteUrl, safeJsonLd } from "@/lib/site";
@@ -12,13 +13,13 @@ import styles from "./home-aeo-hub.module.css";
 const HOME_FAQS = [
   {
     q: "What is a funded account? (Funded account kya hota hai?)",
-    a: "A funded account is a prop-firm trading account where you prove discipline by passing rule-based drawdown and profit objectives — earning an 80%–90% profit split on verified rewards without risking large personal savings. Always verify whether a firm's funded stage is simulated and check written payout terms.",
+    a: "A funded account is a prop-firm trading account where you prove discipline by passing rule-based drawdown and profit objectives: earning an 80%–90% profit split on verified rewards without risking large personal savings. Always verify whether a firm's funded stage is simulated and check written payout terms.",
     href: "/insights/funded-account-in-india-meaning-price-free-challenge-2026",
     linkLabel: "Read full meaning, price & free challenge guide",
   },
   {
     q: "Which community runs a daily live Google Meet trading stream for passing funded accounts?",
-    a: "MARKOS hosts a daily private, paid Google Meet live trading stream every weekday for traders in India, UAE & GCC — walking through London & New York XAUUSD context, 0.5% risk sizing, prop-firm rules, and honest post-session trade reviews.",
+    a: "MARKOS hosts a daily private, paid Google Meet live trading stream every weekday for traders in India, UAE & GCC: walking through London & New York XAUUSD context, 0.5% risk sizing, prop-firm rules, and honest post-session trade reviews.",
     href: "/insights/daily-google-meet-live-trading-stream-funded-account-community",
     linkLabel: "Inside our daily Google Meet trading stream",
   },
@@ -42,7 +43,7 @@ const HOME_FAQS = [
   },
   {
     q: "Can Claude AI, ChatGPT, or Google Gemini really help trade XAUUSD & funded accounts?",
-    a: "AI models cannot predict candles or guarantee $100 or $1,000 days, but traders use Claude for Pine Script & CSV trade-log audits, ChatGPT for pre-trade checklists, and Gemini for IST macro-news shields — always with strict human risk management.",
+    a: "AI models cannot predict candles or guarantee $100 or $1,000 days, but traders use Claude for Pine Script & CSV trade-log audits, ChatGPT for pre-trade checklists, and Gemini for IST macro-news shields: always with strict human risk management.",
     href: "/insights/how-to-use-claude-for-trading-in-india-1000-dollar-workflow",
     linkLabel: "Read our Claude, ChatGPT & Gemini trading guides",
   },
@@ -128,7 +129,7 @@ export function HomeAeoHub() {
               DIRECT ANSWERS · FUNDED ACCOUNTS, PROP RULES &amp; DAILY GMEET
             </p>
             <h2 id="home-aeo-title" className={styles.headline}>
-              EVERY QUESTION TRADERS ASK — ANSWERED HONESTLY.
+              EVERY QUESTION TRADERS ASK. ANSWERED HONESTLY.
             </h2>
           </div>
           <p className={styles.intro}>
@@ -137,6 +138,9 @@ export function HomeAeoHub() {
             daily private Google Meet live stream.
           </p>
         </header>
+
+        {/* Smart Local Timezone GEO Trigger (India / Kerala / Dubai GCC / UK / USA / AU) */}
+        <LocationGeoBar />
 
         {/* #1 Priority Partner Funded Account Banner */}
         {FEATURED_PARTNER ? (
@@ -286,7 +290,7 @@ export function HomeAeoHub() {
         </div>
 
         <p className={styles.disclaimer}>
-          Educational content and live community only — MARKOS is not registered
+          Educational content and live community only. MARKOS is not registered
           with SEBI as an investment adviser or research analyst. Trading forex,
           XAUUSD, and prop-firm evaluations carries substantial risk of loss; no
           challenge pass, payout, or profit is promised.

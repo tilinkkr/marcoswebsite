@@ -4,6 +4,8 @@ import Link from "next/link";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { WhatsAppLink } from "@/components/layout/WhatsAppLink";
+import { LocationGeoBar } from "@/components/regions/LocationGeoBar";
+import { FEATURED_PARTNER } from "@/config/funded-partners";
 import { GCC_COUNTRIES } from "@/config/gcc";
 import { absoluteUrl, safeJsonLd, SITE_URL } from "@/lib/site";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
@@ -11,9 +13,10 @@ import { getWhatsAppUrl } from "@/lib/whatsapp";
 import styles from "../marketing.module.css";
 import local from "./gcc.module.css";
 
-const title = "Forex & Funded Account Community for Malayalis in the GCC";
+const title =
+  "Malayali Forex & Funded Account Community in GCC [2026]: Dubai, Saudi & Qatar";
 const description =
-  "Kerala-based forex, gold (XAUUSD) and funded-account trading community for Malayalis in the UAE, Saudi Arabia, Qatar, Kuwait, Oman and Bahrain. Live sessions in GCC evening hours. Join on WhatsApp.";
+  "Kerala-rooted forex, gold (XAUUSD) and funded-account trading community for Malayalis in Dubai/UAE, Saudi Arabia, Qatar, Kuwait, Oman & Bahrain. Live Malayalam/English Google Meet streams after work.";
 
 export const metadata: Metadata = {
   title,
@@ -33,7 +36,7 @@ const faqs = [
   },
   {
     q: "When can I trade gold after work in the GCC?",
-    a: "The London–New York overlap — usually the most active window for XAUUSD — falls around 16:00–19:00 in Saudi Arabia, Qatar, Kuwait and Bahrain, and 17:00–20:00 in the UAE and Oman in winter.",
+    a: "The London–New York overlap: usually the most active window for XAUUSD: falls around 16:00–19:00 in Saudi Arabia, Qatar, Kuwait and Bahrain, and 17:00–20:00 in the UAE and Oman in winter.",
   },
 ];
 
@@ -81,7 +84,7 @@ export default function GccHubPage() {
             <p className={styles.lede}>
               Working in Dubai, Riyadh, Doha, Kuwait, Muscat or Manama and
               learning to trade? MARKOS is a Kerala-based community for Malayali
-              traders — forex and gold (XAUUSD) education, weekday live sessions
+              traders: forex and gold (XAUUSD) education, weekday live sessions
               in your evening hours, and help preparing for funded account
               challenges.
             </p>
@@ -94,13 +97,27 @@ export default function GccHubPage() {
                 rel="noreferrer"
                 data-whatsapp-primary
               >
-                Join the community on WhatsApp
+                Join GCC Malayali Desk on WhatsApp
               </WhatsAppLink>
+              {FEATURED_PARTNER ? (
+                <a
+                  className={styles.action}
+                  href={FEATURED_PARTNER.url}
+                  target="_blank"
+                  rel="sponsored noopener noreferrer"
+                >
+                  START FUNDED ACCOUNT ({FEATURED_PARTNER.name.toUpperCase()}) ↗
+                </a>
+              ) : null}
               <Link className={styles.action} href="/get-funded">
-                GET A FUNDED ACCOUNT →
+                BEST FUNDED ACCOUNT BROKERS →
               </Link>
             </div>
           </div>
+        </section>
+
+        <section className={styles.section}>
+          <LocationGeoBar />
         </section>
 
         <section className={styles.section}>
@@ -138,25 +155,25 @@ export default function GccHubPage() {
         <section className={styles.section}>
           <div className={styles.sectionHeader}>
             <p className={styles.label}>STAY SAFE</p>
-            <h2>How Malayali traders get scammed — and how to avoid it</h2>
+            <h2>How Malayali traders get scammed, and how to avoid it</h2>
           </div>
           <ul className={styles.benefits}>
             <li>
               A &quot;broker&quot; contacts you on WhatsApp or Telegram and asks
-              you to deposit through a link — always find the provider yourself
+              you to deposit through a link: always find the provider yourself
               and check its licence.
             </li>
             <li>
               A group promises a guaranteed monthly return or offers to
-              &quot;manage&quot; your account — that is a red flag, not a
+              &quot;manage&quot; your account, that is a red flag, not a
               strategy.
             </li>
             <li>
-              Someone offers to pass your funded account for a fee — this
+              Someone offers to pass your funded account for a fee: this
               usually breaks the firm&apos;s rules and can cancel your payout.
             </li>
             <li>
-              You are asked for an extra &quot;release fee&quot; to withdraw —
+              You are asked for an extra &quot;release fee&quot; to withdraw , 
               stop and verify through the official website.
             </li>
           </ul>
@@ -173,7 +190,7 @@ export default function GccHubPage() {
             <Link href="/kerala">forex trading in Kerala</Link>.
           </p>
           <p className={styles.legal}>
-            Education and community only — not financial, legal or tax advice.
+            Education and community only, not financial, legal or tax advice.
             Trading carries a real risk of loss; no pass, payout or profit is
             promised.
           </p>

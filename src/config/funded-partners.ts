@@ -18,7 +18,7 @@ export const FUNDED_PARTNERS: FundedPartner[] = [
   {
     name: "BrightFunded",
     url: "https://affiliates.brightfunded.com/click?campaign_id=3&ref_id=103",
-    note: "Funded-account challenges for forex, gold and more — start through the MARKOS partner link",
+    note: "Funded-account challenges for forex, gold and more: start through the MARKOS partner link",
   },
 ];
 

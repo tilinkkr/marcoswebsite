@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowUpRight, MessageCircle, ShieldCheck, X } from "lucide-react";
@@ -13,67 +14,47 @@ import { WhatsAppLink } from "./WhatsAppLink";
 import styles from "./whatsapp-community-prompt.module.css";
 
 /*
- * Engagement-triggered WhatsApp & Funded-Account Mentor invitation.
+ * Scroll-triggered visual WhatsApp & Funded-Account Mentor card.
  *
- * - Never on arrival: opens only after genuine scroll depth, time on page,
- *   or desktop exit intent so it stays Google-compliant and non-intrusive.
+ * - Opens cleanly once a visitor starts scrolling (never blocking arrival).
+ * - Image-led with minimal, direct-to-the-point copy and 1-tap WhatsApp action.
  * - Frequency-capped per browser: once per session; hidden for 3 days after
  *   dismissal and 30 days after a click.
- * - Uses a clean 2-column grid of high-intent cards so visitors pick their
- *   exact goal in one tap without feeling spammed.
  */
 
 const STORAGE_KEY = "markos-wa-prompt";
 const SESSION_KEY = POPUP_SESSION_KEY;
 const DISMISS_DAYS = 3;
 const CLICKED_DAYS = 30;
-const MIN_DELAY_MS = 9000;
-const ENGAGED_MS = 28000;
-const SCROLL_DEPTH = 0.42;
+const MIN_DELAY_MS = 4500;
+const ENGAGED_MS = 18000;
+const SCROLL_DEPTH = 0.14;
 const EXCLUDED_PREFIXES = ["/admin", "/join/checkout", "/api"];
 
 const TOPICS = [
   {
     id: "partner",
-    kicker: "OUR PARTNER LINK",
-    label: "Start a funded account",
+    label: "Best Funded Broker",
     message:
-      "Hi MARKOS, I want to open a funded account using your verified partner link and get mentor guidance on drawdown rules.",
-  },
-  {
-    id: "pass-1m",
-    kicker: "MENTOR SUPPORT",
-    label: "1-month passing plan",
-    message:
-      "Hi MARKOS, I need structured mentor support and a 1-month risk plan to pass my funded account honestly.",
+      "Hi MARKOS, I want to start a funded account using your verified partner link and check rules first.",
   },
   {
     id: "gmeet",
-    kicker: "LIVE DAILY STREAM",
-    label: "Google Meet trading desk",
+    label: "Daily Google Meet",
     message:
-      "Hi MARKOS, how do I join your daily private Google Meet live trading stream for passing funded accounts?",
+      "Hi MARKOS, how do I join your daily private Google Meet live trading stream?",
   },
   {
-    id: "nasdaq",
-    kicker: "FUTURES & GOLD",
-    label: "NASDAQ (MNQ) & XAUUSD",
+    id: "kerala-gcc",
+    label: "Kerala & GCC Mallus",
     message:
-      "Hi MARKOS, I trade NASDAQ (MNQ/NQ), futures, or XAUUSD from India/GCC/UK/USA. Can you share your session timings?",
+      "Hi MARKOS, I'm a Malayali trader from Kerala / GCC and want to join your Malayalam & English WhatsApp community.",
   },
   {
-    id: "kerala",
-    kicker: "MALAYALAM GROUP",
-    label: "Kerala WhatsApp desk",
+    id: "pass-1m",
+    label: "Pass in 1 Month Plan",
     message:
-      "Hi MARKOS, I'm looking for the Kerala Malayalam forex & funded-account WhatsApp community. How can I join?",
-  },
-  {
-    id: "global",
-    kicker: "INDIA · GCC · UK · USA",
-    label: "Safest prop firm rules",
-    message:
-      "Hi MARKOS, I'm comparing BrightFunded, FundingPips, FTMO & Alpha Capital from my region. Which rules should I check first?",
+      "Hi MARKOS, I want mentor support and a 0.5% risk plan to pass my funded account cleanly.",
   },
 ] as const;
 
@@ -123,13 +104,13 @@ function pageContext(): string {
     .replace(/\s+/g, " ")
     .trim();
   if (!heading || window.location.pathname === "/") return "";
-  return ` (I was reading: "${heading.slice(0, 90)}")`;
+  return ` (Reading: "${heading.slice(0, 80)}")`;
 }
 
 export function WhatsAppCommunityPrompt() {
   const pathname = usePathname() ?? "/";
   const [open, setOpen] = useState(false);
-  const [topic, setTopic] = useState<TopicId>("partner");
+  const [topic, setTopic] = useState<TopicId>("gmeet");
   const [context, setContext] = useState("");
   const dialogRef = useRef<HTMLDivElement>(null);
   const primaryRef = useRef<HTMLAnchorElement>(null);
@@ -175,7 +156,9 @@ export function WhatsAppCommunityPrompt() {
     const onScroll = () => {
       const max =
         document.documentElement.scrollHeight - window.innerHeight || 1;
-      if (window.scrollY / max >= SCROLL_DEPTH) fire("scroll_depth");
+      if (window.scrollY > 360 || window.scrollY / max >= SCROLL_DEPTH) {
+        fire("scroll_start");
+      }
     };
     const onExit = (event: MouseEvent) => {
       if (event.clientY <= 0 && !event.relatedTarget) fire("exit_intent");
@@ -235,101 +218,102 @@ export function WhatsAppCommunityPrompt() {
       aria-describedby="wa-prompt-body"
       data-lenis-prevent
     >
-      <div className={styles.topBar}>
-        <p className={styles.eyebrow}>
+      <div className={styles.mediaWrap}>
+        <Image
+          src="/images/insights/daily-google-meet-live-trading-stream.jpg"
+          alt="MARKOS live Google Meet trading desk for India, Kerala and GCC traders"
+          width={640}
+          height={360}
+          className={styles.mediaImg}
+        />
+        <div className={styles.mediaOverlay} aria-hidden />
+        <span className={styles.liveBadge}>
           <span className={styles.liveDot} aria-hidden />
-          MARKOS LIVE DESK · INDIA · KERALA · GCC · UK · USA
-        </p>
+          LIVE DESK · KERALA · INDIA · GCC
+        </span>
         <button
           type="button"
           className={styles.close}
           onClick={() => close("dismiss")}
           aria-label="Close WhatsApp invitation"
         >
-          <X size={16} strokeWidth={1.9} aria-hidden />
+          <X size={15} strokeWidth={2} aria-hidden />
         </button>
       </div>
 
-      <h2 id="wa-prompt-title" className={styles.title}>
-        Pass your funded account with a real mentor desk.
-      </h2>
-      <p id="wa-prompt-body" className={styles.body}>
-        Pick what you need below and message our team directly on WhatsApp — or
-        start your funded account through our verified partner link.
-      </p>
+      <div className={styles.content}>
+        <h2 id="wa-prompt-title" className={styles.title}>
+          Trade with a live desk. Ask on WhatsApp.
+        </h2>
+        <p id="wa-prompt-body" className={styles.body}>
+          Daily Google Meet streams for Kerala, India &amp; GCC traders. Pick a
+          topic and tap below.
+        </p>
 
-      <fieldset className={styles.topics}>
-        <legend className={styles.legend}>
-          CHOOSE YOUR GOAL (PREFILLS WHATSAPP)
-        </legend>
-        <div className={styles.topicGrid}>
+        <div className={styles.topicGrid} role="group" aria-label="Quick topic">
           {TOPICS.map((item) => (
             <button
               key={item.id}
               type="button"
-              className={styles.topicCard}
+              className={styles.topicBtn}
               aria-pressed={item.id === topic}
               onClick={() => {
                 setTopic(item.id);
                 track("whatsapp_prompt_topic", { topic: item.id });
               }}
             >
-              <span className={styles.topicKicker}>{item.kicker}</span>
-              <strong className={styles.topicLabel}>{item.label}</strong>
+              {item.label}
             </button>
           ))}
         </div>
-      </fieldset>
 
-      <div className={styles.actions}>
-        <WhatsAppLink
-          ref={primaryRef}
-          className={styles.primary}
-          href={href}
-          placement={`community_prompt:${selected.id}`}
-          target="_blank"
-          rel="noreferrer"
-          onClick={() => close("clicked")}
-        >
-          <MessageCircle size={18} strokeWidth={2} aria-hidden />
-          <span>Message Mentor on WhatsApp</span>
-          <ArrowUpRight size={15} aria-hidden />
-        </WhatsAppLink>
-
-        {FEATURED_PARTNER ? (
-          <a
-            className={styles.partnerAction}
-            href={FEATURED_PARTNER.url}
+        <div className={styles.actions}>
+          <WhatsAppLink
+            ref={primaryRef}
+            className={styles.primary}
+            href={href}
+            placement={`community_prompt:${selected.id}`}
             target="_blank"
-            rel="sponsored noopener noreferrer"
-            onClick={() => {
-              track("whatsapp_prompt_partner_click", {
-                partner: FEATURED_PARTNER?.name ?? "partner",
-              });
-              close("clicked");
-            }}
+            rel="noreferrer"
+            onClick={() => close("clicked")}
           >
-            <ShieldCheck size={16} strokeWidth={1.9} aria-hidden />
-            <span>
-              Start Funded Account ({FEATURED_PARTNER.name}) — Our Link
-            </span>
-            <ArrowUpRight size={14} aria-hidden />
-          </a>
-        ) : null}
-      </div>
+            <MessageCircle size={17} strokeWidth={2.1} aria-hidden />
+            <span>Message MARKOS on WhatsApp</span>
+            <ArrowUpRight size={15} aria-hidden />
+          </WhatsAppLink>
 
-      <div className={styles.footerRow}>
-        <p className={styles.fineprint}>
-          Free to ask · +91 91875 87488 · Disclosed partner link · Education
-          only.
-        </p>
-        <button
-          type="button"
-          className={styles.secondary}
-          onClick={() => close("dismiss")}
-        >
-          Later
-        </button>
+          {FEATURED_PARTNER ? (
+            <a
+              className={styles.partnerAction}
+              href={FEATURED_PARTNER.url}
+              target="_blank"
+              rel="sponsored noopener noreferrer"
+              onClick={() => {
+                track("whatsapp_prompt_partner_click", {
+                  partner: FEATURED_PARTNER?.name ?? "partner",
+                });
+                close("clicked");
+              }}
+            >
+              <ShieldCheck size={15} strokeWidth={2} aria-hidden />
+              <span>Start Funded Account ({FEATURED_PARTNER.name})</span>
+              <ArrowUpRight size={14} aria-hidden />
+            </a>
+          ) : null}
+        </div>
+
+        <div className={styles.footerRow}>
+          <p className={styles.fineprint}>
+            +91 91875 87488 · Free to ask · Disclosed partner link.
+          </p>
+          <button
+            type="button"
+            className={styles.secondary}
+            onClick={() => close("dismiss")}
+          >
+            Later
+          </button>
+        </div>
       </div>
     </aside>
   );

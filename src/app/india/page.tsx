@@ -12,7 +12,7 @@ import styles from "../marketing.module.css";
 import local from "../gcc/gcc.module.css";
 
 const title =
-  "Funded Trading Groups Near Me in India — Bangalore, Mumbai, Delhi & More";
+  "Funded Trading Groups Near Me in India. Bangalore, Mumbai, Delhi & More";
 const description =
   "Searching for funded firms groups in Bangalore, Mumbai, Delhi NCR, Hyderabad, Pune, Chennai, Ahmedabad, Kolkata or Kochi? Join MARKOS's daily live Google Meet funded-account community on WhatsApp.";
 
@@ -30,7 +30,7 @@ const faqs = [
   },
   {
     q: "Why is a daily Google Meet live trading stream better than an offline 'passing group'?",
-    a: "Offline passing groups that trade your funded challenge for you usually breach prop-firm IP and third-party trading rules — getting accounts terminated at payout review. A daily private Google Meet live stream teaches you the execution and drawdown discipline to pass and keep your own funded account.",
+    a: "Offline passing groups that trade your funded challenge for you usually breach prop-firm IP and third-party trading rules: getting accounts terminated at payout review. A daily private Google Meet live stream teaches you the execution and drawdown discipline to pass and keep your own funded account.",
   },
   {
     q: "What time are MARKOS live sessions in Indian Standard Time (IST)?",
@@ -38,7 +38,7 @@ const faqs = [
   },
   {
     q: "Can beginners in India join MARKOS before buying a funded account?",
-    a: "Yes — in fact, learning drawdown rules, lot sizing, and XAUUSD/forex structure before paying an evaluation fee saves beginners from blowing challenges in the first week. Message us on WhatsApp (+91 91875 87488) to ask how it works.",
+    a: "Yes, in fact, learning drawdown rules, lot sizing, and XAUUSD/forex structure before paying an evaluation fee saves beginners from blowing challenges in the first week. Message us on WhatsApp (+91 91875 87488) to ask how it works.",
   },
 ];
 
@@ -106,7 +106,7 @@ export default function IndiaHubPage() {
               Looking for funded firms groups in Bangalore, Mumbai, Delhi NCR,
               Hyderabad, Pune, Chennai, Ahmedabad, Kolkata, or Kochi? MARKOS
               connects serious Indian traders in one daily private Google Meet
-              live trading stream — focused on prop-firm rules, XAUUSD gold
+              live trading stream: focused on prop-firm rules, XAUUSD gold
               context, and strict drawdown discipline.
             </p>
             <div className={local.ctaBand}>
@@ -118,7 +118,7 @@ export default function IndiaHubPage() {
                 rel="noreferrer"
                 data-whatsapp-primary
               >
-                Message MARKOS on WhatsApp — Join Today&apos;s Google Meet
+                Message MARKOS on WhatsApp: Join Today&apos;s Google Meet
               </WhatsAppLink>
               <Link className={styles.action} href="/funded-account-guide">
                 FUNDED ACCOUNT FIELD GUIDE →
@@ -163,7 +163,7 @@ export default function IndiaHubPage() {
             <li>
               <strong>Verify live transparency:</strong> MARKOS hosts daily
               private Google Meet sessions where context, stops, and reviews are
-              shown live — not edited profit screenshots.
+              shown live, not edited profit screenshots.
             </li>
             <li>
               <strong>Check RBI &amp; FEMA realities:</strong> Understand
@@ -203,7 +203,7 @@ export default function IndiaHubPage() {
             </Link>
           </div>
           <p className={styles.legal}>
-            Education and community only — not SEBI-registered investment
+            Education and community only, not SEBI-registered investment
             advice, legal advice, or tax advice. Trading carries substantial
             risk of loss; no pass, funded account, or payout is guaranteed.
           </p>

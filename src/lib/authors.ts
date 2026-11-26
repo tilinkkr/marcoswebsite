@@ -14,7 +14,7 @@ export type MarcosAuthor = {
  * Australian regulator. Content is education, not advice.
  */
 export const AUTHOR_REGISTRATION_DISCLOSURE =
-  "Not registered with SEBI as an investment adviser or research analyst, and not licensed by any GCC, Canadian or Australian financial regulator. Educational content only — not investment advice.";
+  "Not registered with SEBI as an investment adviser or research analyst, and not licensed by any GCC, Canadian or Australian financial regulator. Educational content only, not investment advice.";
 
 export const MARCOS_AUTHORS: readonly MarcosAuthor[] = [
   {
@@ -35,7 +35,7 @@ export const MARCOS_AUTHORS: readonly MarcosAuthor[] = [
     name: "Linu Babu",
     role: "CFO",
     focus: "Costs, payouts, compliance questions and operations",
-    bio: "Linu is the Chief Financial Officer of MARKOS. He writes about the money side of trading — challenge costs, payouts, payment routes and the regulatory questions traders in India and the GCC should check.",
+    bio: "Linu is the Chief Financial Officer of MARKOS. He writes about the money side of trading: challenge costs, payouts, payment routes and the regulatory questions traders in India and the GCC should check.",
     knowsAbout: [
       "Prop firm payouts",
       "Trading costs",
@@ -56,7 +56,7 @@ export const MARCOS_AUTHORS: readonly MarcosAuthor[] = [
     name: "Sahal",
     role: "Content Creator & Trader",
     focus: "Market education, AI tools and trading content",
-    bio: "Sahal is a trader and the content creator at MARKOS. He explains forex basics, AI tools for traders and market ideas in plain language — in Malayalam and English.",
+    bio: "Sahal is a trader and the content creator at MARKOS. He explains forex basics, AI tools for traders and market ideas in plain language, in Malayalam and English.",
     knowsAbout: [
       "Forex basics",
       "AI tools for trading",

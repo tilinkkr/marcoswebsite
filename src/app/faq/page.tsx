@@ -11,7 +11,7 @@ import local from "./faq.module.css";
 export const metadata: Metadata = {
   title: "Funded Accounts & Prop-Firm FAQs for India",
   description:
-    "Straight answers on funded accounts, drawdown, payouts, passing prop-firm challenges and forex rules for traders in India, UAE & GCC — with official sources.",
+    "Straight answers on funded accounts, drawdown, payouts, passing prop-firm challenges and forex rules for traders in India, UAE & GCC, with official sources.",
   alternates: { canonical: "/faq" },
   openGraph: {
     title: "Funded Accounts & Prop-Firm FAQs for India | MARKOS",
@@ -31,7 +31,7 @@ const groups = [
       ],
       [
         "Can beginners join MARKOS?",
-        "Yes. Beginners can join, but should expect education and process—not signals, guaranteed outcomes or a shortcut around practice.",
+        "Yes. Beginners can join, but should expect education and process, not signals, guaranteed outcomes or a shortcut around practice.",
       ],
       [
         "How do I join MARKOS?",
@@ -49,7 +49,7 @@ const groups = [
     items: [
       [
         "Is a funded account a scam?",
-        "Not by default — established prop firms sell paid evaluations and pay rewards under written terms. But fake 'funded account' offers are common, and even real firms earn most fees from traders who fail. Red flags: guaranteed passes, payments to individuals, passing services and 'release fees' before withdrawals.",
+        "Not by default: established prop firms sell paid evaluations and pay rewards under written terms. But fake 'funded account' offers are common, and even real firms earn most fees from traders who fail. Red flags: guaranteed passes, payments to individuals, passing services and 'release fees' before withdrawals.",
       ],
       [
         "What is the payout limit of a funded account, and how fast can I get paid?",
@@ -57,7 +57,7 @@ const groups = [
       ],
       [
         "What is the consistency rule in a funded account?",
-        "A limit on how much of your total profit can come from one day or trade — for example, no single day above 30% of total profit. Breaking it is a common reason payouts are delayed or rejected.",
+        "A limit on how much of your total profit can come from one day or trade, for example, no single day above 30% of total profit. Breaking it is a common reason payouts are delayed or rejected.",
       ],
       [
         "What is prop trading?",
@@ -141,7 +141,7 @@ const groups = [
     items: [
       [
         "Which is the best funded account in India?",
-        "There is no single best funded account for every Indian trader. The right funded prop firm accepts Indian residents, has rules that fit how you trade (forex, indices, crypto or futures), explains payouts clearly and charges a fee you can afford to lose. MARKOS Insights compares the most-searched firms — The5ers, FundedNext, FundingPips, FTMO, Alpha Capital, Blueberry Funded and more — in an unranked top-10 list.",
+        "There is no single best funded account for every Indian trader. The right funded prop firm accepts Indian residents, has rules that fit how you trade (forex, indices, crypto or futures), explains payouts clearly and charges a fee you can afford to lose. MARKOS Insights compares the most-searched firms. The5ers, FundedNext, FundingPips, FTMO, Alpha Capital, Blueberry Funded and more, in an unranked top-10 list.",
       ],
       [
         "Is a funded account legal in India?",
@@ -149,7 +149,7 @@ const groups = [
       ],
       [
         "Can an Indian resident open a foreign currency account?",
-        "According to RBI's LRS FAQ, banks in India cannot open foreign currency accounts for residents under LRS, but no prior approval is needed to open and hold a foreign currency account with a bank outside India for remittances under LRS — for permitted purposes only.",
+        "According to RBI's LRS FAQ, banks in India cannot open foreign currency accounts for residents under LRS, but no prior approval is needed to open and hold a foreign currency account with a bank outside India for remittances under LRS, for permitted purposes only.",
       ],
       [
         "Can Indian traders use prop firms?",
@@ -157,7 +157,7 @@ const groups = [
       ],
       [
         "What prop-firm rules should Indian traders check before paying?",
-        "Read the provider's current official terms—not just the headline profit target. Check how daily loss and maximum drawdown are calculated (including open losses, fees and reset time), breach consequences, minimum trading days, news or overnight restrictions, payout conditions, the contracting entity, supported instruments and payment route. Rules and legal or tax treatment can differ; verify current authoritative guidance for your situation. MARKOS is not a prop firm and cannot provide legal or tax advice or guarantee an evaluation result.",
+        "Read the provider's current official terms, not just the headline profit target. Check how daily loss and maximum drawdown are calculated (including open losses, fees and reset time), breach consequences, minimum trading days, news or overnight restrictions, payout conditions, the contracting entity, supported instruments and payment route. Rules and legal or tax treatment can differ; verify current authoritative guidance for your situation. MARKOS is not a prop firm and cannot provide legal or tax advice or guarantee an evaluation result.",
       ],
       [
         "What is forex trading in India, in simple words?",
@@ -192,7 +192,7 @@ const groups = [
         "There is no provider that is best for every beginner. Before paying, check whether the rules are understandable, the evaluation and funded-stage structures are clearly described, the fees are affordable to lose, and the current contract explains drawdown, restrictions, payout conditions and dispute handling. Do not treat a ranking or a passed challenge as guaranteed income.",
       ],
       [
-        "Funded account kya hota hai — and what is the typical funded account price in India?",
+        "Funded account kya hota hai, and what is the typical funded account price in India?",
         "A funded account (funded account kya hota hai) is a prop-firm trading account where you pass rule-based drawdown and profit objectives to trade firm-backed or simulated capital for an 80%–90% profit split. Entry challenge prices typically range from $29–$59 (~₹2,500–₹5,000) for $5k accounts up to $449–$599 (~₹38,000–₹51,000) for $100k accounts.",
       ],
       [
@@ -209,7 +209,7 @@ const groups = [
       ],
       [
         "Can I use Claude AI, ChatGPT, or Google Gemini to trade XAUUSD or funded accounts in India?",
-        "Yes — as analytical and risk-management assistants (Pine Script coding, CSV trade-log audits, pre-trade checklists, and IST macro-news summaries). No AI tool can predict candles or guarantee $100 or $1,000 days; always enforce strict human drawdown rules.",
+        "Yes: as analytical and risk-management assistants (Pine Script coding, CSV trade-log audits, pre-trade checklists, and IST macro-news summaries). No AI tool can predict candles or guarantee $100 or $1,000 days; always enforce strict human drawdown rules.",
       ],
     ],
   },

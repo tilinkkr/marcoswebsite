@@ -304,7 +304,7 @@ export function CapitalMotion() {
           });
 
           timeline
-            // 0.00 — the hand-off note from the hero clears, notes arrive.
+            // 0.00: the hand-off note from the hero clears, notes arrive.
             .to(
               transition,
               {
@@ -361,7 +361,7 @@ export function CapitalMotion() {
               { autoAlpha: 0.86, scale: 0.84, yPercent: 0, duration: 0.18 },
               0.13,
             )
-            // 0.31 — the field drifts and rotates; phase copy swaps.
+            // 0.31: the field drifts and rotates; phase copy swaps.
             .to(attraction, { autoAlpha: 0, y: -10, duration: 0.06 }, 0.36)
             .to(pressure, { autoAlpha: 1, y: 0, duration: 0.07 }, 0.4)
             .to(
@@ -438,7 +438,7 @@ export function CapitalMotion() {
               { autoAlpha: 0.75, scale: 1.05, xPercent: 0, duration: 0.3 },
               0.4,
             )
-            // 0.64 — the outer notes fly past the camera and clear.
+            // 0.64: the outer notes fly past the camera and clear.
             .to(
               [farOne, farTwo],
               { autoAlpha: 0, scale: 1.25, duration: 0.14, ease: "sine.in" },
@@ -481,7 +481,7 @@ export function CapitalMotion() {
               0.68,
             )
             .to(pressure, { autoAlpha: 0, y: -10, duration: 0.06 }, 0.7)
-            // 0.70 — the hero note settles as the final image, so the
+            // 0.70: the hero note settles as the final image, so the
             // section ends on a composed frame instead of an empty one.
             .to(
               heroOne,
@@ -636,7 +636,7 @@ export function CapitalMotion() {
             <p>
               <strong>How MARKOS helps you pass funded accounts:</strong> daily
               live Google Meet execution rooms, 0.5% fixed-risk rules, and
-              1-on-1 mentor review — built for Forex, Gold (XAUUSD) &amp;
+              1-on-1 mentor review, built for Forex, Gold (XAUUSD) &amp;
               NASDAQ (MNQ) traders.
             </p>
             <p>

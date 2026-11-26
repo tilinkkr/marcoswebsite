@@ -294,32 +294,57 @@
   margin-top: 1.45rem;
 }
 .partnerCta {
+  position: relative;
+  overflow: hidden;
   display: inline-flex;
   min-height: 2.95rem;
   align-items: center;
   gap: 0.52rem;
-  border: 1px solid rgb(201 121 65 / 68%);
+  border: 1px solid rgb(241 238 231 / 34%);
   border-radius: 0.45rem;
-  padding: 0 1.2rem;
-  color: #0b0d0c;
-  background: linear-gradient(135deg, #e5b898, #c97941);
+  padding: 0 1.25rem;
+  color: #f6f2eb;
+  background: rgb(255 255 255 / 6%);
   font-family: var(--font-mono-family);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-decoration: none;
-  box-shadow: 0 0.7rem 2rem rgb(201 121 65 / 22%);
   transition:
-    transform 160ms ease,
-    filter 160ms ease;
+    transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    background 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+.partnerCta::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 65%;
+  height: 100%;
+  background: linear-gradient(
+    110deg,
+    transparent,
+    rgb(255 255 255 / 22%),
+    transparent
+  );
+  transition: left 420ms ease;
+  pointer-events: none;
+}
+.partnerCta:hover::after {
+  left: 145%;
 }
 .partnerCta:hover,
 .partnerCta:focus-visible {
-  transform: translateY(-1px);
-  filter: brightness(1.07);
+  transform: translateY(-2px);
+  border-color: #ef4444;
+  color: #ffffff;
+  background: linear-gradient(135deg, #c82333, #8f1622);
+  box-shadow: 0 0.75rem 2.1rem rgb(200 35 51 / 38%);
 }
 .partnerCta:focus-visible {
-  outline: 2px solid #e5b898;
+  outline: 2px solid #ef4444;
   outline-offset: 4px;
 }
 .partnerNote {

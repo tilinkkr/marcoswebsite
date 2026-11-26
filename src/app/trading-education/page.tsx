@@ -21,7 +21,7 @@ const topics = [
   "Risk concepts, position discipline, and drawdown awareness",
   "Planning, execution, journaling, and post-session review",
   "How to read prop-evaluation rules without assuming a payout",
-  "Using indicators as context—not as guaranteed instructions",
+  "Using indicators as context, not as guaranteed instructions",
   "Trading psychology and learning from process, not only outcomes",
 ];
 

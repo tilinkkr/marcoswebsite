@@ -167,7 +167,7 @@ export function SiteFooter() {
       </div>
       <p className={styles.risk}>
         Trading involves substantial risk and is not suitable for every person.
-        MARKOS provides education and community—not financial advice or
+        MARKOS provides education and community, not financial advice or
         guaranteed outcomes.
       </p>
       <div className={styles.wordWrap} aria-label="MARKOS">

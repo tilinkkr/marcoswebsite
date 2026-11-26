@@ -161,7 +161,7 @@ export function FundedOfferPrompt() {
         Ready to trade a <em>funded account?</em>
       </h2>
       <p className={styles.body}>
-        Start your {FEATURED_PARTNER.name} challenge through MARKOS — and get
+        Start your {FEATURED_PARTNER.name} challenge through MARKOS, and get
         the community&apos;s help with your risk plan before day one.
       </p>
 
@@ -196,7 +196,7 @@ export function FundedOfferPrompt() {
       </WhatsAppLink>
 
       <p className={styles.fineprint}>
-        Partner link — MARKOS may earn a commission. Challenges are paid
+        Partner link. MARKOS may earn a commission. Challenges are paid
         evaluations; most traders don&apos;t pass and no payout is guaranteed.
       </p>
     </aside>

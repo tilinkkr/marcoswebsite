@@ -24,7 +24,7 @@ export default function MorePageThis() {
             STUDY THE PROCESS.
           </h1>
           <p className={styles.lede}>
-            Everything behind MARKOS — our story, resources, answers and ways to
+            Everything behind MARKOS: our story, resources, answers and ways to
             reach us.
           </p>
         </section>

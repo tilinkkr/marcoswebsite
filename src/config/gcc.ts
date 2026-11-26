@@ -42,7 +42,7 @@ export const GCC_COUNTRIES: GccCountry[] = [
     goldPrime: "17:00 – 20:00",
     currency: "UAE dirham (AED)",
     currencyNote:
-      "The dirham is pegged to the US dollar, so USD-denominated trading accounts and prop-firm rewards convert at a predictable rate — but your bank's conversion margin still applies.",
+      "The dirham is pegged to the US dollar, so USD-denominated trading accounts and prop-firm rewards convert at a predictable rate, but your bank's conversion margin still applies.",
     regulators: [
       {
         name: "UAE Capital Market Authority (formerly SCA)",
@@ -60,9 +60,9 @@ export const GCC_COUNTRIES: GccCountry[] = [
       },
     ],
     checks: [
-      "If a broker says it is UAE-regulated, find the exact entity on the Capital Market Authority, DFSA or FSRA register — a logo is not proof.",
+      "If a broker says it is UAE-regulated, find the exact entity on the Capital Market Authority, DFSA or FSRA register: a logo is not proof.",
       "Several well-known prop firms are headquartered in the UAE; a company address is not the same as a licence to offer leveraged trading to you.",
-      "Check whether a prop firm accepts UAE residents for the specific product — some firms restrict residents of their own home country.",
+      "Check whether a prop firm accepts UAE residents for the specific product: some firms restrict residents of their own home country.",
       "Keep payout records in AED and USD; personal tax treatment can change, so confirm with a UAE adviser rather than assuming 0%.",
     ],
     mlName: "യുഎഇ",
@@ -70,11 +70,11 @@ export const GCC_COUNTRIES: GccCountry[] = [
     extraFaqs: [
       {
         q: "Which is the best trading platform in the UAE for Malayali beginners?",
-        a: "Start with a broker licensed by the UAE Capital Market Authority, the DFSA or the FSRA, a demo account and a charting tool such as TradingView. The best platform is one that is licensed, has low costs and an app you understand — check the licence on the regulator's register, not the broker's website.",
+        a: "Start with a broker licensed by the UAE Capital Market Authority, the DFSA or the FSRA, a demo account and a charting tool such as TradingView. The best platform is one that is licensed, has low costs and an app you understand: check the licence on the regulator's register, not the broker's website.",
       },
       {
         q: "How do I start trading as a beginner in the UAE?",
-        a: "Learn the basics, practise on a demo for at least a month, then trade small with a licensed broker during the 17:00–20:00 gold window. MARKOS runs this path for Malayali beginners in Dubai, Abu Dhabi and Sharjah — message the team on WhatsApp.",
+        a: "Learn the basics, practise on a demo for at least a month, then trade small with a licensed broker during the 17:00–20:00 gold window. MARKOS runs this path for Malayali beginners in Dubai, Abu Dhabi and Sharjah: message the team on WhatsApp.",
       },
       {
         q: "Is there a Malayali trading company or community in Dubai?",
@@ -107,10 +107,10 @@ export const GCC_COUNTRIES: GccCountry[] = [
       },
     ],
     checks: [
-      "Confirm whether a broker is CMA-licensed in the Kingdom or only regulated elsewhere — overseas regulation gives you different protections.",
+      "Confirm whether a broker is CMA-licensed in the Kingdom or only regulated elsewhere: overseas regulation gives you different protections.",
       "Prop firms are usually overseas companies; read their country-eligibility list for Saudi residents before paying.",
       "Check which payout methods work with Saudi banks and wallets, and the fees involved.",
-      "Many Malayali traders in Saudi trade after work — plan around the 16:00–19:00 gold window rather than late-night US sessions.",
+      "Many Malayali traders in Saudi trade after work: plan around the 16:00–19:00 gold window rather than late-night US sessions.",
     ],
     mlName: "സൗദി അറേബ്യ",
     mlLocative: "സൗദി അറേബ്യയിൽ",
@@ -148,7 +148,7 @@ export const GCC_COUNTRIES: GccCountry[] = [
     checks: [
       "Verify any 'Qatar-regulated' claim with the QFMA, QCB or QFCRA rather than the broker's own website.",
       "Some brokers and prop firms restrict Qatar residents; check the eligibility list for your exact product.",
-      "Never send money to an individual's account to 'open' a trading account — use the provider's official payment page.",
+      "Never send money to an individual's account to 'open' a trading account: use the provider's official payment page.",
       "Keep records of every fee and payout for your own tax and banking questions.",
     ],
     mlName: "ഖത്തർ",
@@ -189,7 +189,7 @@ export const GCC_COUNTRIES: GccCountry[] = [
     extraFaqs: [
       {
         q: "Is there a list of Malayali trading companies in Kuwait?",
-        a: "There is no official list of 'Malayali' trading companies. What matters is whether a firm is licensed — ask any broker or investment company for its licence and verify it with Kuwait's Capital Markets Authority. MARKOS is a Kerala-based education community, not a broker.",
+        a: "There is no official list of 'Malayali' trading companies. What matters is whether a firm is licensed: ask any broker or investment company for its licence and verify it with Kuwait's Capital Markets Authority. MARKOS is a Kerala-based education community, not a broker.",
       },
     ],
   },
@@ -222,7 +222,7 @@ export const GCC_COUNTRIES: GccCountry[] = [
       "Check any local-regulation claim with Oman's Financial Services Authority.",
       "Confirm a prop firm accepts Omani residents and supports a payout method your bank accepts.",
       "Oman shares UAE time, so the 17:00–20:00 gold window fits an after-work routine.",
-      "Avoid 'investment groups' that ask you to deposit money with an agent — use regulated providers only.",
+      "Avoid 'investment groups' that ask you to deposit money with an agent: use regulated providers only.",
     ],
     mlName: "ഒമാൻ",
     mlLocative: "ഒമാനിൽ",
@@ -248,7 +248,7 @@ export const GCC_COUNTRIES: GccCountry[] = [
       },
     ],
     checks: [
-      "Bahrain has a single financial regulator — check any 'Bahrain-licensed' claim on the CBB's records.",
+      "Bahrain has a single financial regulator: check any 'Bahrain-licensed' claim on the CBB's records.",
       "Some brokers list Bahrain as a restricted country; read the eligibility page before opening an account.",
       "Check prop-firm eligibility for Bahrain residents and the payout routes available.",
       "Keep a record of every payment and payout for your own banking and tax questions.",
@@ -285,13 +285,13 @@ export const ABROAD_COUNTRIES: GccCountry[] = [
       },
       {
         name: "Provincial securities regulators (Canadian Securities Administrators)",
-        role: "Each province regulates securities and derivatives — e.g. the Ontario Securities Commission",
+        role: "Each province regulates securities and derivatives: e.g. the Ontario Securities Commission",
       },
     ],
     checks: [
       "Check that a broker is a CIRO-regulated dealer, or registered with your provincial regulator, before depositing.",
-      "Some prop firms and offshore brokers restrict Canadian residents or certain provinces — read the eligibility list for your province.",
-      "London–New York overlap falls in the Toronto morning (08:00–11:00 ET) — plan around work hours.",
+      "Some prop firms and offshore brokers restrict Canadian residents or certain provinces: read the eligibility list for your province.",
+      "London–New York overlap falls in the Toronto morning (08:00–11:00 ET): plan around work hours.",
       "Keep records of every fee and reward in CAD for your own tax filing.",
     ],
     mlName: "കാനഡ",
@@ -327,13 +327,13 @@ export const ABROAD_COUNTRIES: GccCountry[] = [
     checks: [
       "Check that a broker holds an Australian Financial Services licence on ASIC's professional register.",
       "ASIC caps leverage for retail CFD clients, so offers of very high leverage are a warning sign.",
-      "The London–New York overlap falls after midnight in Sydney and Melbourne — Perth traders get it at 21:00–00:00 AWST in the Australian summer.",
+      "The London–New York overlap falls after midnight in Sydney and Melbourne. Perth traders get it at 21:00–00:00 AWST in the Australian summer.",
       "Check prop-firm eligibility for Australian residents and keep records for your own tax return.",
     ],
     mlName: "ഓസ്ട്രേലിയ",
     mlLocative: "ഓസ്ട്രേലിയയിൽ",
     seasonNote:
-      "Times shown for Sydney and Melbourne in the Australian summer (AEDT, roughly October to April). In the Australian winter (AEST, with UK summer time) the sessions start about two hours earlier — the gold overlap is roughly 22:00 – 01:00 in Sydney.",
+      "Times shown for Sydney and Melbourne in the Australian summer (AEDT, roughly October to April). In the Australian winter (AEST, with UK summer time) the sessions start about two hours earlier: the gold overlap is roughly 22:00 – 01:00 in Sydney.",
   },
   {
     slug: "uk",
@@ -356,10 +356,10 @@ export const ABROAD_COUNTRIES: GccCountry[] = [
       },
     ],
     checks: [
-      "Verify any UK retail broker on the official FCA Register — FCA rules cap retail CFD leverage and prohibit binary options.",
+      "Verify any UK retail broker on the official FCA Register. FCA rules cap retail CFD leverage and prohibit binary options.",
       "Compare the best forex funded accounts in the UK on static vs trailing drawdown, GBP/USD Rise or Wise payout fees, and clean MT5/cTrader/Match-Trader access.",
       "UK traders sit directly in the London open (08:00 GMT) and London–New York overlap (13:00–16:00 GMT), ideal for both XAUUSD and NASDAQ (MNQ) index sessions.",
-      "Keep clear payout statements in GBP for HMRC self-assessment — check tax classification with a qualified UK accountant.",
+      "Keep clear payout statements in GBP for HMRC self-assessment: check tax classification with a qualified UK accountant.",
     ],
     mlName: "യുകെ",
     mlLocative: "യുകെയിൽ",
@@ -402,7 +402,7 @@ export const ABROAD_COUNTRIES: GccCountry[] = [
       },
     ],
     checks: [
-      "Many offshore CFD forex prop firms restrict US residents due to CFTC/NFA regulations — ALWAYS verify US residency eligibility in writing before paying any fee.",
+      "Many offshore CFD forex prop firms restrict US residents due to CFTC/NFA regulations. ALWAYS verify US residency eligibility in writing before paying any fee.",
       "US traders who want NASDAQ (MNQ/NQ), S&P 500 (MES/ES), or Gold (MGC) funded accounts typically choose US-compliant CME futures prop firms on Tradovate, Rithmic, or TradingView.",
       "New York cash open (09:30 ET) and the 08:00–11:00 ET overlap deliver peak liquidity for MNQ futures and XAUUSD structure.",
       "Save every evaluation receipt and 1099 payout form for your CPA at US federal/state tax time.",

@@ -10,7 +10,7 @@ import { getWhatsAppUrl } from "@/lib/whatsapp";
 import styles from "../marketing.module.css";
 
 export const metadata: Metadata = {
-  title: "Trading Community for India, UAE & GCC — Join on WhatsApp",
+  title: "Trading Community for India, UAE & GCC: Join on WhatsApp",
   description:
     "Join the MARKOS trading community from India, Dubai or the GCC: weekday live screen shares, funded-account and prop-firm guidance, and trade review. Message us on WhatsApp.",
   alternates: { canonical: "/trading-community" },
@@ -39,7 +39,7 @@ export default function TradingCommunityPage() {
             <p className={styles.lede}>
               MARKOS is a trading community for market discussion, weekday live
               screen shares, risk education, and reviewing decisions. It is a
-              place to study—not a signal service or a promise of funding.
+              place to study, not a signal service or a promise of funding.
             </p>
           </div>
         </section>
@@ -82,7 +82,7 @@ export default function TradingCommunityPage() {
               <p>
                 Members join from India, the UAE and across the Gulf. Ask how
                 live sessions line up with your time zone (IST / GST) and how to
-                get started — one message is enough.
+                get started, one message is enough.
               </p>
               <WhatsAppLink
                 className={styles.action}

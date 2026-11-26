@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 const practicalGuides = [
   {
     category: "FUNDED ACCOUNT GUIDE",
-    question: "What is a funded account—and what should I verify first?",
+    question: "What is a funded account, and what should I verify first?",
     answer:
       "Understand the account structure, evaluation rules, payout conditions and total costs before paying. A funded label is not a guarantee of live capital, a successful pass or a payout.",
     href: "/funded-account-guide",
@@ -44,7 +44,7 @@ const practicalGuides = [
     category: "RISK BASICS",
     question: "What is the difference between daily loss and maximum drawdown?",
     answer:
-      "A daily loss limit usually caps losses within a defined trading day; maximum drawdown limits losses across a longer period or from a specified balance or equity peak. Providers define timing, open-position treatment and reset rules differently—check the exact calculation, not just the headline percentage.",
+      "A daily loss limit usually caps losses within a defined trading day; maximum drawdown limits losses across a longer period or from a specified balance or equity peak. Providers define timing, open-position treatment and reset rules differently, check the exact calculation, not just the headline percentage.",
     href: "/faq#risk",
     action: "READ THE DRAWDOWN ANSWERS",
   },
@@ -141,7 +141,7 @@ export default async function InsightsPage() {
           <p className={styles.lede}>
             Evidence-led guides to prop-firm rules, forex and futures questions
             in India. Understand the terms, define the risk, and review the
-            decision—not chase tips.
+            decision, not chase tips.
           </p>
           <div className={local.principles} aria-label="Editorial principles">
             <span>PROCESS OVER IMPULSE</span>
@@ -309,7 +309,7 @@ export default async function InsightsPage() {
               <p>
                 Start with the question, understand the limits, then verify the
                 current rules that apply to you. These educational guides are
-                written for Indian traders—not as personalised financial advice.
+                written for Indian traders, not as personalised financial advice.
               </p>
             </header>
             <div className={local.guideGrid}>
@@ -339,7 +339,7 @@ export default async function InsightsPage() {
               <p>
                 SEBI&apos;s 2025 Investor Survey reports that market insights
                 were an information need for 81% of surveyed investors; risk
-                factors were named by 35%. These are survey findings—not
+                factors were named by 35%. These are survey findings, not
                 keyword-volume data or a prediction of returns. Use them as a
                 reminder to examine both opportunity and downside.
               </p>
@@ -368,7 +368,7 @@ export default async function InsightsPage() {
               <p>
                 Straight answers to common beginner questions, with official
                 sources for rules that can change. Search suggestions show
-                possible questions—not verified search volume or legal advice.
+                possible questions, not verified search volume or legal advice.
               </p>
             </header>
             <div className={local.guideGrid}>

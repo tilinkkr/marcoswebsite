@@ -41,7 +41,7 @@ function faqs(country: GccCountry) {
     },
     {
       q: `Is there a Malayalam forex trading community in ${country.shortName}?`,
-      a: `Yes — MARKOS is a Kerala-based trading community with Malayali members in Kerala, the GCC, Canada and Australia. You can ask questions in Malayalam or English on WhatsApp and join weekday live sessions.`,
+      a: `Yes. MARKOS is a Kerala-based trading community with Malayali members in Kerala, the GCC, Canada and Australia. You can ask questions in Malayalam or English on WhatsApp and join weekday live sessions.`,
     },
     ...(country.extraFaqs ?? []),
   ];
@@ -128,7 +128,7 @@ export function CountryLanding({
             <p className={styles.lede}>
               Trading forex or gold (XAUUSD) from{" "}
               {country.cities.slice(0, 3).join(", ")}? MARKOS is a Kerala-based
-              trading community for Malayalis in {country.shortName} — live
+              trading community for Malayalis in {country.shortName}: live
               weekday sessions, forex courses and funded-account preparation, in
               Malayalam and English.
             </p>
@@ -178,7 +178,7 @@ export function CountryLanding({
                   <td>London–New York overlap</td>
                   <td>{country.goldPrime}</td>
                   <td>
-                    Usually the most active window for XAUUSD — fits an
+                    Usually the most active window for XAUUSD: fits an
                     after-work routine.
                   </td>
                 </tr>
@@ -211,7 +211,7 @@ export function CountryLanding({
                 ) : (
                   regulator.name
                 )}{" "}
-                — {regulator.role}.
+               : {regulator.role}.
               </li>
             ))}
           </ul>
@@ -228,7 +228,7 @@ export function CountryLanding({
             <strong>NRI from Kerala?</strong> India&apos;s rules for forex and
             overseas remittances (FEMA and LRS) apply to persons resident in
             India. Your residential status decides which rules apply to you, so
-            check it — and keep records of money you send to or from India.
+            check it, and keep records of money you send to or from India.
           </p>
 
           <div className={local.malayalam} lang="ml">
@@ -238,7 +238,7 @@ export function CountryLanding({
               ഗോൾഡ് (XAUUSD), ഫണ്ടഡ് അക്കൗണ്ട് എന്നിവയെക്കുറിച്ച് മലയാളത്തിൽ
               സംശയങ്ങൾ ചോദിക്കാം. ഫീസ് അടയ്ക്കുന്നതിന് മുമ്പ് ബ്രോക്കറുടെ
               ലൈസൻസും പ്രോപ്പ് ഫേമിന്റെ നിയമങ്ങളും പരിശോധിക്കുക. ഒരു WhatsApp
-              മെസേജ് മതി — ഞങ്ങളുടെ കമ്മ്യൂണിറ്റിയിൽ ചേരാം.
+              മെസേജ് മതി: ഞങ്ങളുടെ കമ്മ്യൂണിറ്റിയിൽ ചേരാം.
             </p>
           </div>
         </section>
@@ -305,7 +305,7 @@ export function CountryLanding({
             </Link>
           </div>
           <p className={styles.legal}>
-            Education and community only — not financial, legal or tax advice.
+            Education and community only, not financial, legal or tax advice.
             Trading and prop-firm challenges carry a real risk of loss; no pass,
             payout or profit is promised.
           </p>

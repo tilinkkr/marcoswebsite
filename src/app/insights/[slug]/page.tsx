@@ -252,7 +252,7 @@ export default async function ArticlePage({ params }: Props) {
               <p>
                 Planning to start a forex, gold (XAUUSD), or index evaluation?
                 Open your <strong>{FEATURED_PARTNER.name}</strong> challenge
-                using our official partner link — then message our mentors on
+                using our official partner link: then message our mentors on
                 WhatsApp (+91 91875 87488) to map your 0.5% risk rules before
                 taking trade #1.
               </p>
@@ -297,7 +297,7 @@ export default async function ArticlePage({ params }: Props) {
               MARKOS PARTNER LINK &amp; DAILY LIVE GOOGLE MEET DESK
             </p>
             <h2 id="article-whatsapp-title">
-              Ready to take your funded account — with mentor support?
+              Ready to take your funded account, with mentor support?
             </h2>
             <p>
               Start your challenge through our verified{" "}

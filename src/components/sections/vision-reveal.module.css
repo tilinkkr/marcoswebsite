@@ -311,9 +311,11 @@
 
 .openingWhatsapp:hover,
 .openingWhatsapp:focus-visible {
-  border-color: #6fe19d;
-  background: #0d3a21;
-  transform: translateY(-1px);
+  border-color: #4ade80;
+  color: #ffffff;
+  background: linear-gradient(135deg, #16a34a, #117a37);
+  box-shadow: 0 0.75rem 2rem rgb(22 163 74 / 40%);
+  transform: translateY(-2px);
 }
 
 .openingWhatsapp:hover .ctaArrow {
@@ -325,25 +327,30 @@
   min-height: 2.9rem;
   align-items: center;
   gap: 0.55rem;
-  border: 1px solid rgb(221 182 148 / 26%);
+  border: 1px solid rgb(241 238 231 / 28%);
   border-radius: 0.5rem;
   padding: 0 1.05rem;
-  color: #eadfce;
-  background: rgb(255 255 255 / 3%);
+  color: #f3ede4;
+  background: rgb(255 255 255 / 5%);
   font-family: var(--font-mono-family);
   font-size: 0.64rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.11em;
   white-space: nowrap;
   transition:
     border-color 180ms ease,
-    background-color 180ms ease;
+    background 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
 }
 
 .openingGuide:hover,
 .openingGuide:focus-visible {
-  border-color: rgb(204 137 84 / 72%);
-  background: rgb(157 91 48 / 16%);
+  border-color: #ef4444;
+  color: #ffffff;
+  background: linear-gradient(135deg, #c82333, #8f1622);
+  box-shadow: 0 0.7rem 1.8rem rgb(200 35 51 / 36%);
+  transform: translateY(-2px);
 }
 
 .copy {

@@ -249,9 +249,9 @@ export function AdminConsole({
                   <td>
                     <code>{item.form_type}</code>
                   </td>
-                  <td>{item.name || "—"}</td>
-                  <td>{item.email || "—"}</td>
-                  <td>{item.phone || "—"}</td>
+                  <td>{item.name || "-"}</td>
+                  <td>{item.email || "-"}</td>
+                  <td>{item.phone || "-"}</td>
                   <td>
                     <select
                       value={item.status}
@@ -360,7 +360,7 @@ export function AdminConsole({
                 </option>
                 {MARCOS_AUTHORS.map((author) => (
                   <option value={author.slug} key={author.slug}>
-                    {author.name} — {author.role}
+                    {author.name}: {author.role}
                   </option>
                 ))}
               </select>
@@ -563,7 +563,7 @@ export function AdminConsole({
                   <code>{blog.status}</code>
                   <small>
                     {blog.publication_mode === "automated"
-                      ? "AI reviewed — no human review"
+                      ? "AI reviewed, no human review"
                       : "Human editorial route"}
                   </small>
                   <small>

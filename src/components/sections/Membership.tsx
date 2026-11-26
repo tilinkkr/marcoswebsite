@@ -202,7 +202,7 @@ export function Membership() {
               ASK MENTOR ON WHATSAPP
             </WhatsAppLink>
             <Link className={styles.cta} href="/join" prefetch={false}>
-              JOIN MARKOS — $100{" "}
+              JOIN MARKOS ($100){" "}
               <ArrowUpRight size={18} strokeWidth={1.8} aria-hidden />
             </Link>
           </div>
