@@ -97,8 +97,8 @@
 .copy {
   max-width: 39rem;
   margin: 1.35rem 0 0;
-  color: rgba(241, 238, 231, 0.68);
-  font: 500 1rem/1.65 var(--font-body-family);
+  color: rgba(244, 239, 232, 0.86);
+  font: 500 1rem/1.66 var(--font-body-family);
 }
 .paths {
   right: clamp(1.25rem, 4vw, 4rem);

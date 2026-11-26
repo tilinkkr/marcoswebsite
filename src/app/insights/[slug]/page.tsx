@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { WhatsAppLink } from "@/components/layout/WhatsAppLink";
 import { MarkdownArticle } from "@/components/insights/MarkdownArticle";
+import { FEATURED_PARTNER } from "@/config/funded-partners";
 import {
   AUTHOR_REGISTRATION_DISCLOSURE,
   authorPath,
@@ -241,6 +242,49 @@ export default async function ArticlePage({ params }: Props) {
             <p>{post.conflicts_disclosure}</p>
           </div>
         </aside>
+        {FEATURED_PARTNER ? (
+          <aside
+            className={local.partnerPeakStrip}
+            aria-label="Start your funded account via MARKOS partner link"
+          >
+            <div>
+              <span>MARKOS PARTNER LINK · START FUNDED</span>
+              <p>
+                Planning to start a forex, gold (XAUUSD), or index evaluation?
+                Open your <strong>{FEATURED_PARTNER.name}</strong> challenge
+                using our official partner link — then message our mentors on
+                WhatsApp (+91 91875 87488) to map your 0.5% risk rules before
+                taking trade #1.
+              </p>
+              <small>
+                Disclosed affiliate link: MARKOS may earn a partner commission
+                at zero extra cost to you. Always read the prop firm&apos;s
+                written terms before paying.
+              </small>
+            </div>
+            <div className={local.partnerPeakActions}>
+              <a
+                className={local.partnerPeakBtn}
+                href={FEATURED_PARTNER.url}
+                target="_blank"
+                rel="sponsored noopener noreferrer"
+              >
+                START FUNDED ACCOUNT ({FEATURED_PARTNER.name.toUpperCase()}) ↗
+              </a>
+              <WhatsAppLink
+                className={local.partnerPeakWa}
+                href={getWhatsAppUrl(
+                  `Hi MARKOS, I'm reading "${post.title}" and want to start a funded account using your partner link with mentor guidance.`,
+                )}
+                placement={`article-top:${post.slug}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                ASK MENTOR ON WHATSAPP ↗
+              </WhatsAppLink>
+            </div>
+          </aside>
+        ) : null}
         <article className={local.article}>
           <MarkdownArticle markdown={post.content_markdown} />
         </article>
@@ -250,23 +294,34 @@ export default async function ArticlePage({ params }: Props) {
         >
           <div>
             <p className={local.whatsappEyebrow}>
-              MARKOS DAILY LIVE GOOGLE MEET · WHATSAPP DESK
+              MARKOS PARTNER LINK &amp; DAILY LIVE GOOGLE MEET DESK
             </p>
             <h2 id="article-whatsapp-title">
-              Questions about this guide or passing your funded account?
+              Ready to take your funded account — with mentor support?
             </h2>
             <p>
-              Message our team directly on WhatsApp (+91 91875 87488). Ask about
-              prop-firm rules, daily private Google Meet live trading streams,
-              or our India, Kerala &amp; GCC trader community. Free to ask — no
-              spam, no guaranteed-profit hype.
+              Start your challenge through our verified{" "}
+              {FEATURED_PARTNER?.name ?? "partner"} link, or message our mentors
+              directly on WhatsApp (+91 91875 87488) to ask about daily private
+              Google Meet live trading streams, 1-month risk plans, and our
+              India, Kerala, GCC, UK &amp; USA trader community.
             </p>
           </div>
           <div className={local.whatsappActions}>
+            {FEATURED_PARTNER ? (
+              <a
+                className={local.partnerBannerPrimary}
+                href={FEATURED_PARTNER.url}
+                target="_blank"
+                rel="sponsored noopener noreferrer"
+              >
+                START FUNDED ACCOUNT ({FEATURED_PARTNER.name.toUpperCase()}) ↗
+              </a>
+            ) : null}
             <WhatsAppLink
               className={local.whatsappPrimary}
               href={getWhatsAppUrl(
-                `Hi MARKOS, I just read "${post.title}" and want to ask about your daily live Google Meet stream and funded-account community.`,
+                `Hi MARKOS, I just read "${post.title}" and want to start a funded account via your link and ask about your daily live Google Meet mentor stream.`,
               )}
               placement={`article:${post.slug}`}
               data-whatsapp-primary
@@ -275,30 +330,36 @@ export default async function ArticlePage({ params }: Props) {
             >
               MESSAGE MARKOS ON WHATSAPP ↗
             </WhatsAppLink>
-            <Link className={local.whatsappSecondary} href="/funded-account-guide">
-              FUNDED ACCOUNT FIELD GUIDE →
+            <Link className={local.whatsappSecondary} href="/get-funded">
+              COMPARE PARTNER DETAILS →
             </Link>
           </div>
         </section>
         <nav
           className={local.relatedLinks}
-          aria-label="Related guides and Indian city hubs"
+          aria-label="Related guides and global city hubs"
         >
-          <span>POPULAR GUIDES &amp; CITY HUBS:</span>
+          <span>POPULAR GUIDES &amp; REGIONAL HUBS:</span>
+          <Link href="/insights/best-forex-funded-account-india-uk-usa-kerala-reddit-2026">
+            Best Forex Funded Account (India/UK/USA/Kerala)
+          </Link>
+          <Link href="/insights/funded-account-passed-in-1-month-3-ways-india-mentor-guide">
+            Passed in 1 Month? 3 Ways + Mentor Plan
+          </Link>
+          <Link href="/insights/nasdaq-mnq-futures-funded-account-india-gcc-usa-2026">
+            NASDAQ (MNQ) &amp; Futures Prop Guide
+          </Link>
           <Link href="/insights/fundingpips-rules-explained-challenge-rewards-pdf-checklist">
             FundingPips Rules &amp; PDF Checklist
-          </Link>
-          <Link href="/insights/safest-prop-firms-and-payouts-in-india-ftmo-legal-guide-2026">
-            Safest Prop Firms &amp; FTMO Legal India
-          </Link>
-          <Link href="/insights/how-to-link-funded-account-tradingview-mt5-tradovate">
-            Link TradingView / MT5 / Tradovate
           </Link>
           <Link href="/insights/how-to-use-claude-for-trading-in-india-1000-dollar-workflow">
             Claude AI Trading Workflow
           </Link>
-          <Link href="/india/bangalore">Bangalore Traders</Link>
-          <Link href="/india">All Indian Cities</Link>
+          <Link href="/kerala">Kerala Malayalam Group</Link>
+          <Link href="/india/bangalore">Bangalore</Link>
+          <Link href="/gcc/uae">Dubai / UAE</Link>
+          <Link href="/abroad/uk">UK</Link>
+          <Link href="/abroad/usa">USA</Link>
         </nav>
         <section className={local.evidence} aria-labelledby="evidence-title">
           <div>

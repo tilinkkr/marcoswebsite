@@ -1,7 +1,8 @@
-import { ArrowUpRight, MessageCircle } from "lucide-react";
+import { ArrowUpRight, MessageCircle, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 
 import { WhatsAppLink } from "@/components/layout/WhatsAppLink";
+import { FEATURED_PARTNER } from "@/config/funded-partners";
 import { INDIA_CITIES } from "@/config/india-cities";
 import { absoluteUrl, safeJsonLd } from "@/lib/site";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
@@ -49,32 +50,32 @@ const HOME_FAQS = [
 
 const FEATURED_ARTICLES = [
   {
-    tag: "AI TRADING · CLAUDE",
+    tag: "BEST FUNDED ACCOUNTS · LINU BABU",
+    title: "Best Forex Funded Account (2026): India, UK, USA, Kerala & Reddit Reality Check",
+    href: "/insights/best-forex-funded-account-india-uk-usa-kerala-reddit-2026",
+  },
+  {
+    tag: "MENTOR PASSING PLAN · RAHUL RAJA",
+    title: "Funded Account Passed in 1 Month? 3 Ways I Used to Pass in India (With Mentor Support)",
+    href: "/insights/funded-account-passed-in-1-month-3-ways-india-mentor-guide",
+  },
+  {
+    tag: "NASDAQ / MNQ FUTURES · RAHUL RAJA",
+    title: "NASDAQ (MNQ) & Futures Funded Accounts for India, GCC, UK & USA Traders (2026)",
+    href: "/insights/nasdaq-mnq-futures-funded-account-india-gcc-usa-2026",
+  },
+  {
+    tag: "AI TRADING · SAHAL",
     title: "Make $1,000 Days Using Claude AI in India? (Real Workflow + Risk Rules)",
     href: "/insights/how-to-use-claude-for-trading-in-india-1000-dollar-workflow",
   },
   {
-    tag: "AI TRADING · CHATGPT",
-    title: "Make $100 a Day Using ChatGPT? The Honest 2026 Blueprint",
-    href: "/insights/make-100-dollars-a-day-using-chatgpt-trading-blueprint-2026",
-  },
-  {
-    tag: "AI TRADING · GEMINI",
-    title: "Using Google Gemini AI for XAUUSD & Funded Accounts in 2026",
-    href: "/insights/using-google-gemini-ai-for-xauusd-and-funded-accounts-2026",
-  },
-  {
-    tag: "PROP RULES · PDF",
-    title: "FundingPips Rules Explained (2024–2026) & Printable Checklist",
+    tag: "PROP RULES · LINU BABU",
+    title: "FundingPips Rules Explained (2024–2026) & Printable Challenge PDF Checklist",
     href: "/insights/fundingpips-rules-explained-challenge-rewards-pdf-checklist",
   },
   {
-    tag: "SAFETY & LEGAL",
-    title: "Safest Prop Firms, Payouts in India & Is FTMO Legal in India?",
-    href: "/insights/safest-prop-firms-and-payouts-in-india-ftmo-legal-guide-2026",
-  },
-  {
-    tag: "PLATFORM SETUP",
+    tag: "PLATFORM SETUP · SAHAL",
     title: "How to Link a Funded Account to TradingView, MT5 & Tradovate",
     href: "/insights/how-to-link-funded-account-tradingview-mt5-tradovate",
   },
@@ -82,20 +83,20 @@ const FEATURED_ARTICLES = [
 
 const QUICK_WHATSAPP_TOPICS = [
   {
-    label: "Join Daily Google Meet Stream",
-    msg: "Hi MARKOS, I want to know how to join your daily private Google Meet live trading stream for passing funded accounts.",
+    label: "Start Funded Account (Our Link + Mentor)",
+    msg: "Hi MARKOS, I want to start a funded account using your verified partner link and get mentor support on your daily Google Meet stream.",
   },
   {
-    label: "Which Prop Firm Is Safe Now?",
-    msg: "Hi MARKOS, I'm comparing FundingPips, FTMO & Alpha Capital from India/GCC. Can you guide me on rules before I pay?",
+    label: "Pass Funded Account in 1 Month Plan",
+    msg: "Hi MARKOS, I want mentor support and a structured 1-month risk plan to pass my funded account honestly.",
   },
   {
-    label: "Free 30-Day XAUUSD Plan",
-    msg: "Hi MARKOS, please send me the free 30-day XAUUSD gold practice plan and community details.",
+    label: "NASDAQ / MNQ & Futures Group (India / GCC)",
+    msg: "Hi MARKOS, I trade NASDAQ (MNQ/NQ), Gold (XAUUSD) or futures from India/GCC/UK/USA. How do your daily live sessions work?",
   },
   {
-    label: "Funded Group Near Me (India / GCC)",
-    msg: "Hi MARKOS, I'm looking for a genuine funded-account trading community near me. How do sessions work in IST/GST?",
+    label: "WhatsApp Community for Trading in Kerala",
+    msg: "Hi MARKOS, I'm looking for the Kerala Malayalam forex & funded-account WhatsApp community. How do I join?",
   },
 ] as const;
 
@@ -136,6 +137,47 @@ export function HomeAeoHub() {
             daily private Google Meet live stream.
           </p>
         </header>
+
+        {/* #1 Priority Partner Funded Account Banner */}
+        {FEATURED_PARTNER ? (
+          <div className={styles.partnerBanner}>
+            <div>
+              <p className={styles.partnerEyebrow}>
+                VERIFIED PARTNER LINK · FOREX, XAUUSD &amp; INDICES
+              </p>
+              <h3 className={styles.partnerTitle}>
+                Ready to take your funded account? Start via the official MARKOS
+                partner link.
+              </h3>
+              <p className={styles.partnerCopy}>
+                Open your {FEATURED_PARTNER.name} challenge through our verified
+                partner link, then message our mentors on WhatsApp (+91 91875
+                87488) to build your 0.5% risk plan and join our daily live
+                Google Meet desk.
+              </p>
+              <small className={styles.partnerDisclosure}>
+                Affiliate disclosure: MARKOS may earn a partner commission if
+                you purchase an evaluation via this link, at zero extra cost to
+                you. Always check written prop-firm terms before paying.
+              </small>
+            </div>
+            <div className={styles.partnerActions}>
+              <a
+                className={styles.partnerPrimary}
+                href={FEATURED_PARTNER.url}
+                target="_blank"
+                rel="sponsored noopener noreferrer"
+              >
+                <ShieldCheck size={17} strokeWidth={2} aria-hidden />
+                START FUNDED ACCOUNT ({FEATURED_PARTNER.name.toUpperCase()}){" "}
+                <ArrowUpRight size={15} aria-hidden />
+              </a>
+              <Link className={styles.partnerSecondary} href="/get-funded">
+                COMPARE PARTNER TERMS <ArrowUpRight size={14} aria-hidden />
+              </Link>
+            </div>
+          </div>
+        ) : null}
 
         {/* Instant 1-Tap WhatsApp Bar */}
         <div className={styles.waStrip}>
@@ -227,6 +269,18 @@ export function HomeAeoHub() {
             </Link>
             <Link href="/gcc" className={styles.cityPill}>
               All GCC Countries
+            </Link>
+            <Link href="/abroad/uk" className={styles.cityPill}>
+              United Kingdom
+            </Link>
+            <Link href="/abroad/usa" className={styles.cityPill}>
+              United States
+            </Link>
+            <Link href="/abroad/australia" className={styles.cityPill}>
+              Australia
+            </Link>
+            <Link href="/abroad/canada" className={styles.cityPill}>
+              Canada
             </Link>
           </div>
         </div>

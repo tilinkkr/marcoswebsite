@@ -61,12 +61,12 @@
   background:
     linear-gradient(
       90deg,
-      rgb(6 8 7 / 22%) 0%,
-      transparent 46%,
-      rgb(2 3 3 / 8%) 72%,
-      rgb(3 4 4 / 38%) 100%
+      rgb(5 7 6 / 92%) 0%,
+      rgb(5 7 6 / 74%) 42%,
+      rgb(2 3 3 / 18%) 72%,
+      rgb(3 4 4 / 45%) 100%
     ),
-    linear-gradient(180deg, rgb(5 7 6 / 22%), transparent 44%, rgb(4 5 5 / 48%));
+    linear-gradient(180deg, rgb(5 7 6 / 36%), transparent 40%, rgb(4 5 5 / 62%));
 }
 .copy {
   position: absolute;
@@ -107,10 +107,10 @@
 .body {
   width: min(36rem, 100%);
   margin-top: clamp(1.35rem, 2.2vw, 2.25rem);
-  color: rgb(232 224 214 / 68%);
+  color: rgb(241 235 227 / 86%);
   font-family: var(--font-body-family);
   font-size: clamp(1rem, 1vw, 1.1rem);
-  line-height: 1.62;
+  line-height: 1.64;
 }
 .body p {
   margin: 0;

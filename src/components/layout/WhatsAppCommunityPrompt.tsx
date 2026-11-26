@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { MessageCircle, X } from "lucide-react";
+import { ArrowUpRight, MessageCircle, ShieldCheck, X } from "lucide-react";
 
 import { FEATURED_PARTNER } from "@/config/funded-partners";
 import { initializePostHog } from "@/lib/analytics/posthog";
@@ -13,19 +13,17 @@ import { WhatsAppLink } from "./WhatsAppLink";
 import styles from "./whatsapp-community-prompt.module.css";
 
 /*
- * Engagement-triggered WhatsApp invitation.
+ * Engagement-triggered WhatsApp & Funded-Account Mentor invitation.
  *
- * - Never on arrival: Google treats arrival interstitials on mobile as
- *   intrusive, and cold visitors convert poorly. It opens after real
- *   engagement (scroll depth or time on page) or desktop exit intent.
+ * - Never on arrival: opens only after genuine scroll depth, time on page,
+ *   or desktop exit intent so it stays Google-compliant and non-intrusive.
  * - Frequency-capped per browser: once per session; hidden for 3 days after
- *   "Maybe later" and 30 days after a WhatsApp click.
- * - The prefilled message reflects the chosen topic and the page the visitor
- *   was reading, so the team knows the context of the first message.
+ *   dismissal and 30 days after a click.
+ * - Uses a clean 2-column grid of high-intent cards so visitors pick their
+ *   exact goal in one tap without feeling spammed.
  */
 
 const STORAGE_KEY = "markos-wa-prompt";
-// Shared with the funded offer so only one popup appears per session.
 const SESSION_KEY = POPUP_SESSION_KEY;
 const DISMISS_DAYS = 3;
 const CLICKED_DAYS = 30;
@@ -36,34 +34,46 @@ const EXCLUDED_PREFIXES = ["/admin", "/join/checkout", "/api"];
 
 const TOPICS = [
   {
+    id: "partner",
+    kicker: "OUR PARTNER LINK",
+    label: "Start a funded account",
+    message:
+      "Hi MARKOS, I want to open a funded account using your verified partner link and get mentor guidance on drawdown rules.",
+  },
+  {
+    id: "pass-1m",
+    kicker: "MENTOR SUPPORT",
+    label: "1-month passing plan",
+    message:
+      "Hi MARKOS, I need structured mentor support and a 1-month risk plan to pass my funded account honestly.",
+  },
+  {
     id: "gmeet",
-    label: "Daily Google Meet stream",
+    kicker: "LIVE DAILY STREAM",
+    label: "Google Meet trading desk",
     message:
-      "Hi MARKOS, I want to know how your daily private Google Meet live trading stream for passing funded accounts works.",
+      "Hi MARKOS, how do I join your daily private Google Meet live trading stream for passing funded accounts?",
   },
   {
-    id: "funded",
-    label: "Pass my funded account",
+    id: "nasdaq",
+    kicker: "FUTURES & GOLD",
+    label: "NASDAQ (MNQ) & XAUUSD",
     message:
-      "Hi MARKOS, I'm preparing for a funded-account challenge. Can you explain how your community and risk plan help?",
+      "Hi MARKOS, I trade NASDAQ (MNQ/NQ), futures, or XAUUSD from India/GCC/UK/USA. Can you share your session timings?",
   },
   {
-    id: "choose",
-    label: "Safest prop firm / payouts",
+    id: "kerala",
+    kicker: "MALAYALAM GROUP",
+    label: "Kerala WhatsApp desk",
     message:
-      "Hi MARKOS, I'm trying to choose a safe prop firm (FundingPips / FTMO / Alpha Capital) from India or GCC. What should I check first?",
+      "Hi MARKOS, I'm looking for the Kerala Malayalam forex & funded-account WhatsApp community. How can I join?",
   },
   {
-    id: "link",
-    label: "Link MT5 / TradingView",
+    id: "global",
+    kicker: "INDIA · GCC · UK · USA",
+    label: "Safest prop firm rules",
     message:
-      "Hi MARKOS, I need help linking my funded account to TradingView, MT5 or Tradovate and setting up my risk plan.",
-  },
-  {
-    id: "gold",
-    label: "Free 30-day XAUUSD plan",
-    message:
-      "Hi MARKOS, please send me the free 30-day XAUUSD gold practice plan and community details.",
+      "Hi MARKOS, I'm comparing BrightFunded, FundingPips, FTMO & Alpha Capital from my region. Which rules should I check first?",
   },
 ] as const;
 
@@ -107,7 +117,6 @@ function track(event: string, props: Record<string, unknown> = {}) {
 }
 
 function pageContext(): string {
-  // innerText keeps the visual line breaks (<br>) as spaces.
   const heading = (
     document.querySelector<HTMLElement>("main h1")?.innerText ?? ""
   )
@@ -120,14 +129,12 @@ function pageContext(): string {
 export function WhatsAppCommunityPrompt() {
   const pathname = usePathname() ?? "/";
   const [open, setOpen] = useState(false);
-  const [topic, setTopic] = useState<TopicId>("gmeet");
+  const [topic, setTopic] = useState<TopicId>("partner");
   const [context, setContext] = useState("");
   const dialogRef = useRef<HTMLDivElement>(null);
   const primaryRef = useRef<HTMLAnchorElement>(null);
   const returnFocusRef = useRef<HTMLElement | null>(null);
 
-  // Funded-intent pages show the partner offer instead (it also links to
-  // WhatsApp), so the two popups never compete.
   const excluded =
     EXCLUDED_PREFIXES.some((prefix) => pathname.startsWith(prefix)) ||
     (Boolean(FEATURED_PARTNER) && isFundedIntentPath(pathname));
@@ -146,10 +153,8 @@ export function WhatsAppCommunityPrompt() {
     track("whatsapp_prompt_shown", { trigger });
   }, []);
 
-  // Engagement triggers.
   useEffect(() => {
     if (excluded || open) return;
-    // Automated browsers (tests, crawlers) never see the invitation.
     if (navigator.webdriver) return;
     if (readHiddenUntil() > Date.now()) return;
     try {
@@ -198,8 +203,6 @@ export function WhatsAppCommunityPrompt() {
     returnFocusRef.current?.focus?.();
   }, []);
 
-  // Non-blocking keyboard escape handler without stealing scroll focus
-  // (focusing a fixed dialog mid-scroll caused Lenis/browser scroll jumps).
   useEffect(() => {
     if (!open) return;
     document.documentElement.setAttribute("data-wa-prompt-open", "true");
@@ -232,69 +235,102 @@ export function WhatsAppCommunityPrompt() {
       aria-describedby="wa-prompt-body"
       data-lenis-prevent
     >
-      <button
-        type="button"
-        className={styles.close}
-        onClick={() => close("dismiss")}
-        aria-label="Close WhatsApp invitation"
-      >
-        <X size={18} strokeWidth={1.8} aria-hidden />
-      </button>
+      <div className={styles.topBar}>
+        <p className={styles.eyebrow}>
+          <span className={styles.liveDot} aria-hidden />
+          MARKOS LIVE DESK · INDIA · KERALA · GCC · UK · USA
+        </p>
+        <button
+          type="button"
+          className={styles.close}
+          onClick={() => close("dismiss")}
+          aria-label="Close WhatsApp invitation"
+        >
+          <X size={16} strokeWidth={1.9} aria-hidden />
+        </button>
+      </div>
 
-      <p className={styles.eyebrow}>
-        <span className={styles.liveDot} aria-hidden />
-        DAILY GOOGLE MEET · INDIA, UAE &amp; GCC
-      </p>
       <h2 id="wa-prompt-title" className={styles.title}>
-        Join our daily live trading stream. Ask on WhatsApp.
+        Pass your funded account with a real mentor desk.
       </h2>
       <p id="wa-prompt-body" className={styles.body}>
-        Get straight answers on funded accounts, prop-firm rules (FundingPips,
-        FTMO, Alpha Capital), or our private weekday Google Meet sessions.
+        Pick what you need below and message our team directly on WhatsApp — or
+        start your funded account through our verified partner link.
       </p>
 
       <fieldset className={styles.topics}>
-        <legend className={styles.legend}>Pick your question (1-tap reply)</legend>
-        {TOPICS.map((item) => (
-          <button
-            key={item.id}
-            type="button"
-            className={styles.chip}
-            aria-pressed={item.id === topic}
-            onClick={() => {
-              setTopic(item.id);
-              track("whatsapp_prompt_topic", { topic: item.id });
-            }}
-          >
-            {item.label}
-          </button>
-        ))}
+        <legend className={styles.legend}>
+          CHOOSE YOUR GOAL (PREFILLS WHATSAPP)
+        </legend>
+        <div className={styles.topicGrid}>
+          {TOPICS.map((item) => (
+            <button
+              key={item.id}
+              type="button"
+              className={styles.topicCard}
+              aria-pressed={item.id === topic}
+              onClick={() => {
+                setTopic(item.id);
+                track("whatsapp_prompt_topic", { topic: item.id });
+              }}
+            >
+              <span className={styles.topicKicker}>{item.kicker}</span>
+              <strong className={styles.topicLabel}>{item.label}</strong>
+            </button>
+          ))}
+        </div>
       </fieldset>
 
-      <WhatsAppLink
-        ref={primaryRef}
-        className={styles.primary}
-        href={href}
-        placement={`community_prompt:${selected.id}`}
-        target="_blank"
-        rel="noreferrer"
-        onClick={() => close("clicked")}
-      >
-        <MessageCircle size={20} strokeWidth={1.9} aria-hidden />
-        Message MARKOS on WhatsApp
-      </WhatsAppLink>
+      <div className={styles.actions}>
+        <WhatsAppLink
+          ref={primaryRef}
+          className={styles.primary}
+          href={href}
+          placement={`community_prompt:${selected.id}`}
+          target="_blank"
+          rel="noreferrer"
+          onClick={() => close("clicked")}
+        >
+          <MessageCircle size={18} strokeWidth={2} aria-hidden />
+          <span>Message Mentor on WhatsApp</span>
+          <ArrowUpRight size={15} aria-hidden />
+        </WhatsAppLink>
 
-      <button
-        type="button"
-        className={styles.secondary}
-        onClick={() => close("dismiss")}
-      >
-        Maybe later
-      </button>
+        {FEATURED_PARTNER ? (
+          <a
+            className={styles.partnerAction}
+            href={FEATURED_PARTNER.url}
+            target="_blank"
+            rel="sponsored noopener noreferrer"
+            onClick={() => {
+              track("whatsapp_prompt_partner_click", {
+                partner: FEATURED_PARTNER?.name ?? "partner",
+              });
+              close("clicked");
+            }}
+          >
+            <ShieldCheck size={16} strokeWidth={1.9} aria-hidden />
+            <span>
+              Start Funded Account ({FEATURED_PARTNER.name}) — Our Link
+            </span>
+            <ArrowUpRight size={14} aria-hidden />
+          </a>
+        ) : null}
+      </div>
 
-      <p className={styles.fineprint}>
-        Free to ask · Real team reply · Education only — no profit promises.
-      </p>
+      <div className={styles.footerRow}>
+        <p className={styles.fineprint}>
+          Free to ask · +91 91875 87488 · Disclosed partner link · Education
+          only.
+        </p>
+        <button
+          type="button"
+          className={styles.secondary}
+          onClick={() => close("dismiss")}
+        >
+          Later
+        </button>
+      </div>
     </aside>
   );
 }

@@ -1,14 +1,21 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
+import { FEATURED_PARTNER } from "@/config/funded-partners";
 import { useAnimationPreferences } from "@/hooks/use-animation-preferences";
 import { getGSAP } from "@/lib/animations/gsap";
 
 import styles from "./capital-motion.module.css";
+
+const CapitalNotesCanvas = dynamic(
+  () => import("@/components/three/CapitalNotesCanvas"),
+  { ssr: false, loading: () => null },
+);
 
 const ASSET_ROOT = "/images/marcos/capital-motion";
 
@@ -47,7 +54,36 @@ function CapitalNote({
 
 export function CapitalMotion() {
   const sectionRef = useRef<HTMLElement>(null);
-  const { isLowPower } = useAnimationPreferences();
+  const scrollProgressRef = useRef(0);
+  const { isLowPower, reducedMotion } = useAnimationPreferences();
+  const [mountWebGL, setMountWebGL] = useState(false);
+  const [webglReady, setWebglReady] = useState(false);
+
+  const handleWebGLReady = useCallback(() => {
+    setWebglReady(true);
+  }, []);
+
+  // Lazily activate the Three.js 3D note canvas only on desktop when the
+  // section nears the viewport so mobile & initial FCP stay ultra-fast.
+  useEffect(() => {
+    if (isLowPower || reducedMotion) return;
+    if (typeof window === "undefined") return;
+    if (!window.matchMedia("(min-width: 768px)").matches) return;
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setMountWebGL(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "320px 0px" },
+    );
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, [isLowPower, reducedMotion]);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -261,6 +297,9 @@ export function CapitalMotion() {
               // (low-power devices) and is imperceptible when it is on.
               scrub: 0.35,
               invalidateOnRefresh: true,
+              onUpdate: (self) => {
+                scrollProgressRef.current = self.progress;
+              },
             },
           });
 
@@ -499,7 +538,18 @@ export function CapitalMotion() {
             className={styles.backgroundImage}
           />
         </div>
-        <div className={styles.depthField} aria-hidden>
+        {mountWebGL ? (
+          <div className={styles.webglLayer} aria-hidden>
+            <CapitalNotesCanvas
+              scrollProgressRef={scrollProgressRef}
+              onReady={handleWebGLReady}
+            />
+          </div>
+        ) : null}
+        <div
+          className={`${styles.depthField} ${webglReady ? styles.depthFieldHidden : ""}`}
+          aria-hidden
+        >
           <CapitalNote
             className={styles.farOne}
             file="note-far-01.webp"
@@ -583,24 +633,43 @@ export function CapitalMotion() {
             </span>
           </h2>
           <div className={styles.body} data-capital-body>
-            <p>Funding isn&apos;t the finish line.</p>
             <p>
-              The traders who last learn to protect capital, control risk and
-              execute with discipline — especially when the market gets loud.
+              <strong>How MARKOS helps you pass funded accounts:</strong> daily
+              live Google Meet execution rooms, 0.5% fixed-risk rules, and
+              1-on-1 mentor review — built for Forex, Gold (XAUUSD) &amp;
+              NASDAQ (MNQ) traders.
+            </p>
+            <p>
+              Start a verified evaluation through our partner link or join our
+              $100 founding pass so you never risk challenge fees blind.
             </p>
           </div>
           <p className={styles.meta} data-capital-meta>
-            RISK / PROCESS / DISCIPLINE / CONSISTENCY
+            PARTNER LINK / DAILY GMEET / MENTOR SUPPORT / 0.5% RISK DISCIPLINE
           </p>
-          <Link
-            className={styles.cta}
-            href="/join"
-            prefetch={false}
-            data-capital-cta
-          >
-            BUILD YOUR EDGE{" "}
-            <ArrowUpRight size={17} strokeWidth={1.7} aria-hidden />
-          </Link>
+          <div className={styles.ctaGroup} data-capital-cta>
+            {FEATURED_PARTNER ? (
+              <a
+                className={styles.partnerCta}
+                href={FEATURED_PARTNER.url}
+                target="_blank"
+                rel="sponsored noopener noreferrer"
+              >
+                START FUNDED ACCOUNT ({FEATURED_PARTNER.name.toUpperCase()}){" "}
+                <ArrowUpRight size={16} strokeWidth={1.9} aria-hidden />
+              </a>
+            ) : null}
+            <Link className={styles.cta} href="/join" prefetch={false}>
+              SEE $100 FOUNDING PLAN{" "}
+              <ArrowUpRight size={17} strokeWidth={1.7} aria-hidden />
+            </Link>
+          </div>
+          {FEATURED_PARTNER ? (
+            <p className={styles.partnerNote}>
+              Disclosed partner link · MARKOS may earn a commission at zero
+              extra cost to you.
+            </p>
+          ) : null}
         </div>
 
         <CapitalNote

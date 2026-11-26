@@ -4,15 +4,17 @@ import Link from "next/link";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { WhatsAppLink } from "@/components/layout/WhatsAppLink";
+import { FEATURED_PARTNER } from "@/config/funded-partners";
 import { absoluteUrl, safeJsonLd, SITE_URL } from "@/lib/site";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
 
 import styles from "../marketing.module.css";
 import local from "../gcc/gcc.module.css";
 
-const title = "Forex Trading Course & Community in Kerala — Learn in Malayalam";
+const title =
+  "Best Forex Funded Account & WhatsApp Trading Community in Kerala (Malayalam)";
 const description =
-  "Looking for a forex trading academy, course or WhatsApp group in Kerala? MARKOS is a Kerala-based forex, gold and funded-account community for Malayalis in Kochi, Trivandrum, Kozhikode and the GCC.";
+  "Looking for the best forex funded account in Kerala or a genuine WhatsApp community for trading in Kerala? MARKOS teaches forex, XAUUSD, NASDAQ (MNQ) and funded-account risk plans in Malayalam & English for Kochi, Trivandrum, Kozhikode & GCC Malayalis.";
 
 export const metadata: Metadata = {
   title: { absolute: `${title} | MARKOS` },
@@ -39,8 +41,12 @@ const faqs = [
     a: "Judge any Kerala forex institute, academy or course on what it actually teaches and how it behaves: a written syllabus, live trading you can watch, open discussion of losses and risk, no guaranteed-profit or account-management offers, and honesty about what is legal for Indian residents. MARKOS offers forex and gold courses and a live community in Malayalam — ask on WhatsApp for the current format.",
   },
   {
-    q: "Is there a Kerala trading WhatsApp group link?",
-    a: "To join the MARKOS community, message the team on WhatsApp (+91 91875 87488) — they explain the community and sessions and add you from there. Be careful with public 'trading WhatsApp group links' that promise signals or guaranteed returns.",
+    q: "Which is the best forex funded account in Kerala right now?",
+    a: "There is no single magic firm, so Kerala traders should compare static drawdown rules, India residency acceptance, and reliable Rise/bank payout rails across established firms such as BrightFunded, FundingPips, FTMO, The5ers, and Alpha Capital. Read our 2026 Kerala & India comparison guide or start through MARKOS's verified partner link with mentor support.",
+  },
+  {
+    q: "Is there a genuine WhatsApp community for trading in Kerala?",
+    a: "Yes. To join the MARKOS WhatsApp community for trading in Kerala, message +91 91875 87488 — our team explains the daily Google Meet live trading desk, Malayalam & English mentorship, and risk rules before you join. Avoid spam public WhatsApp links selling guaranteed signals.",
   },
   {
     q: "Who teaches at MARKOS?",
@@ -115,13 +121,23 @@ export default function KeralaPage() {
                 rel="noreferrer"
                 data-whatsapp-primary
               >
-                Join on WhatsApp — it&apos;s free to ask
+                Join Kerala WhatsApp Community — Free to Ask
               </WhatsAppLink>
+              {FEATURED_PARTNER ? (
+                <a
+                  className={styles.action}
+                  href={FEATURED_PARTNER.url}
+                  target="_blank"
+                  rel="sponsored noopener noreferrer"
+                >
+                  START FUNDED ACCOUNT ({FEATURED_PARTNER.name.toUpperCase()}) ↗
+                </a>
+              ) : null}
               <Link
                 className={styles.action}
-                href="/insights/xauusd-30-day-practice-plan"
+                href="/insights/best-forex-funded-account-india-uk-usa-kerala-reddit-2026"
               >
-                FREE 30-DAY GOLD PLAN →
+                BEST FOREX FUNDED ACCOUNT IN KERALA →
               </Link>
             </div>
           </div>
@@ -165,8 +181,20 @@ export default function KeralaPage() {
               </Link>
             </li>
             <li>
-              <Link href="/insights/top-10-prop-firms-funded-accounts-compared">
-                Best funded accounts in India: top 10 prop firms
+              <Link href="/insights/best-forex-funded-account-india-uk-usa-kerala-reddit-2026">
+                Best forex funded account in Kerala, India, UK &amp; USA (2026)
+              </Link>
+            </li>
+            <li>
+              <Link href="/insights/funded-account-passed-in-1-month-3-ways-india-mentor-guide">
+                Funded account passed in 1 month? 3 ways I used in India + mentor
+                support
+              </Link>
+            </li>
+            <li>
+              <Link href="/insights/nasdaq-mnq-futures-funded-account-india-gcc-usa-2026">
+                NASDAQ (MNQ) &amp; futures funded accounts for Kerala, India
+                &amp; GCC traders
               </Link>
             </li>
             <li>

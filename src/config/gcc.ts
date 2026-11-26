@@ -335,6 +335,93 @@ export const ABROAD_COUNTRIES: GccCountry[] = [
     seasonNote:
       "Times shown for Sydney and Melbourne in the Australian summer (AEDT, roughly October to April). In the Australian winter (AEST, with UK summer time) the sessions start about two hours earlier — the gold overlap is roughly 22:00 – 01:00 in Sydney.",
   },
+  {
+    slug: "uk",
+    name: "United Kingdom",
+    shortName: "UK",
+    demonym: "UK",
+    cities: ["London", "Manchester", "Birmingham", "Edinburgh"],
+    utcOffset: "UTC+0 (GMT)",
+    timeZone: "Greenwich Mean Time (GMT / BST)",
+    londonOpen: "08:00",
+    goldPrime: "13:00 – 16:00",
+    currency: "British pound (GBP)",
+    currencyNote:
+      "Most prop firms price evaluations and payouts in USD or EUR, so GBP-denominated bank accounts experience daily FX conversion spreads unless you settle into a multi-currency GBP/USD wallet.",
+    regulators: [
+      {
+        name: "Financial Conduct Authority (FCA)",
+        role: "Regulates financial services, retail CFD brokers, and leverage caps in the UK",
+        url: "https://register.fca.org.uk/",
+      },
+    ],
+    checks: [
+      "Verify any UK retail broker on the official FCA Register — FCA rules cap retail CFD leverage and prohibit binary options.",
+      "Compare the best forex funded accounts in the UK on static vs trailing drawdown, GBP/USD Rise or Wise payout fees, and clean MT5/cTrader/Match-Trader access.",
+      "UK traders sit directly in the London open (08:00 GMT) and London–New York overlap (13:00–16:00 GMT), ideal for both XAUUSD and NASDAQ (MNQ) index sessions.",
+      "Keep clear payout statements in GBP for HMRC self-assessment — check tax classification with a qualified UK accountant.",
+    ],
+    mlName: "യുകെ",
+    mlLocative: "യുകെയിൽ",
+    seasonNote:
+      "Times shown in GMT (winter). During British Summer Time (BST, late March to late October), London open remains 08:00 local time and the New York overlap stays aligned at 13:00 – 16:00 BST.",
+    extraFaqs: [
+      {
+        q: "What is the best forex funded account in the UK for 2026?",
+        a: "UK traders generally have wide eligibility across top prop firms (BrightFunded, FTMO, The5ers, FundingPips, Alpha Capital Group). The best forex funded account in the UK depends on whether you want a static 2-step drawdown model, fast GBP/USD Rise payouts, and low spreads on GBPUSD, EURUSD, XAUUSD, or NASDAQ.",
+      },
+      {
+        q: "Are prop firm payouts taxable in the UK?",
+        a: "Prop-firm challenge rewards paid to UK residents are usually treated differently from FCA-regulated spread betting. Keep every payout invoice and consult a UK accountant regarding HMRC reporting.",
+      },
+    ],
+  },
+  {
+    slug: "usa",
+    name: "United States",
+    shortName: "USA",
+    demonym: "US",
+    cities: ["New York", "Houston", "Dallas", "Chicago", "San Jose"],
+    utcOffset: "UTC-5 (EST)",
+    timeZone: "Eastern Time (ET)",
+    londonOpen: "03:00",
+    goldPrime: "08:00 – 11:00",
+    currency: "US dollar (USD)",
+    currencyNote:
+      "USD-denominated accounts and payouts eliminate foreign-exchange conversion spreads for US residents, though 1099-NEC / tax reporting applies to prop-firm rewards.",
+    regulators: [
+      {
+        name: "Commodity Futures Trading Commission (CFTC)",
+        role: "Regulates US futures, options, and retail off-exchange forex markets",
+        url: "https://www.cftc.gov/",
+      },
+      {
+        name: "National Futures Association (NFA)",
+        role: "Self-regulatory organisation for US futures and retail forex dealers (check BASIC registry)",
+        url: "https://www.nfa.futures.org/basicnet/",
+      },
+    ],
+    checks: [
+      "Many offshore CFD forex prop firms restrict US residents due to CFTC/NFA regulations — ALWAYS verify US residency eligibility in writing before paying any fee.",
+      "US traders who want NASDAQ (MNQ/NQ), S&P 500 (MES/ES), or Gold (MGC) funded accounts typically choose US-compliant CME futures prop firms on Tradovate, Rithmic, or TradingView.",
+      "New York cash open (09:30 ET) and the 08:00–11:00 ET overlap deliver peak liquidity for MNQ futures and XAUUSD structure.",
+      "Save every evaluation receipt and 1099 payout form for your CPA at US federal/state tax time.",
+    ],
+    mlName: "അമേരിക്ക",
+    mlLocative: "അമേരിക്കയിൽ",
+    seasonNote:
+      "Times shown for Eastern Time (New York). Central Time (Chicago/Dallas/Houston) is 1 hour earlier; Pacific Time (San Jose/LA) is 3 hours earlier.",
+    extraFaqs: [
+      {
+        q: "What is the best forex funded account in the USA in 2026?",
+        a: "Because US CFTC/NFA rules restrict most offshore CFD prop firms from accepting US clients, the safest path for US residents is either a US-accepted futures prop firm trading CME contracts like MNQ (Micro E-mini Nasdaq-100) and MGC (Micro Gold) via Tradovate/TradingView, or a verified US-eligible spot/futures program. Always verify the restricted-countries list before checkout.",
+      },
+      {
+        q: "Can US traders join MARKOS daily Google Meet mentor sessions?",
+        a: "Yes. Our London–New York overlap analysis runs during the US morning window (08:00–11:00 ET), making it easy for US forex and NASDAQ (MNQ) futures traders to study live risk sizing and trade reviews.",
+      },
+    ],
+  },
 ];
 
 export function getAbroadCountry(slug: string) {

@@ -1,21 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight, Check, MessageCircle } from "lucide-react";
+import { ArrowUpRight, Check, MessageCircle, ShieldCheck } from "lucide-react";
 import { useEffect, useRef } from "react";
 
 import { WhatsAppLink } from "@/components/layout/WhatsAppLink";
+import { FEATURED_PARTNER } from "@/config/funded-partners";
 import { getGSAP } from "@/lib/animations/gsap";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
 
 import styles from "./membership.module.css";
 
 const benefits = [
-  "Daily private Google Meet live trading stream",
-  "Funded-account passing & drawdown education",
-  "Live XAUUSD & forex decision review",
-  "Prop-firm rules checks (FundingPips, FTMO, Alpha)",
-  "Private trader community across India, UAE & GCC",
+  "Daily private Google Meet live trading stream (IST & GST)",
+  "1-on-1 mentor guidance to pass your funded account honestly",
+  "Live XAUUSD (Gold), Forex & NASDAQ (MNQ) context reviews",
+  "Prop-firm rules audit (BrightFunded, FundingPips, FTMO, Alpha)",
+  "Global WhatsApp community: India, Kerala, UAE/GCC, UK, USA & Australia",
+  "Fixed 0.5% risk sizing & drawdown survival blueprint",
 ];
 
 export function Membership() {
@@ -174,10 +176,22 @@ export function Membership() {
             ENVIRONMENT TO BUILD YOUR PROCESS.
           </p>
           <div className={styles.ctaRow} data-membership-cta>
+            {FEATURED_PARTNER ? (
+              <a
+                className={styles.partnerCta}
+                href={FEATURED_PARTNER.url}
+                target="_blank"
+                rel="sponsored noopener noreferrer"
+              >
+                <ShieldCheck size={17} strokeWidth={2} aria-hidden />
+                START FUNDED ACCOUNT ({FEATURED_PARTNER.name.toUpperCase()}){" "}
+                <ArrowUpRight size={16} strokeWidth={1.8} aria-hidden />
+              </a>
+            ) : null}
             <WhatsAppLink
               className={styles.whatsappCta}
               href={getWhatsAppUrl(
-                "Hi MARKOS, I saw the $100 founding membership. Can you share today's Google Meet details and how joining works?",
+                "Hi MARKOS, I want to start a funded account via your partner link and learn about your $100 founding pass + daily Google Meet mentor stream.",
               )}
               placement="home-membership"
               data-whatsapp-primary
@@ -185,13 +199,20 @@ export function Membership() {
               rel="noreferrer"
             >
               <MessageCircle size={17} strokeWidth={2} aria-hidden />
-              ASK ON WHATSAPP FIRST
+              ASK MENTOR ON WHATSAPP
             </WhatsAppLink>
             <Link className={styles.cta} href="/join" prefetch={false}>
               JOIN MARKOS — $100{" "}
               <ArrowUpRight size={18} strokeWidth={1.8} aria-hidden />
             </Link>
           </div>
+          {FEATURED_PARTNER ? (
+            <p className={styles.partnerDisclosure}>
+              Partner disclosure: Starting an evaluation via our{" "}
+              {FEATURED_PARTNER.name} partner link supports MARKOS via a
+              referral commission at zero extra cost to you.
+            </p>
+          ) : null}
         </div>
       </div>
     </section>

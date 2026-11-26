@@ -43,18 +43,17 @@
 .scrim {
   z-index: 1;
   background:
-    linear-gradient(
-      90deg,
-      rgb(2 3 3 / 90%) 0%,
-      rgb(2 3 3 / 62%) 48%,
-      rgb(2 3 3 / 38%) 78%,
-      rgb(2 3 3 / 52%) 100%
+    radial-gradient(
+      ellipse at 50% 48%,
+      rgb(2 4 4 / 64%) 0%,
+      rgb(2 3 3 / 82%) 68%,
+      rgb(2 3 3 / 92%) 100%
     ),
     linear-gradient(
       180deg,
-      rgb(2 3 3 / 52%) 0%,
-      transparent 32%,
-      rgb(2 3 3 / 76%) 100%
+      rgb(2 3 3 / 64%) 0%,
+      transparent 28%,
+      rgb(2 3 3 / 86%) 100%
     );
 }
 
@@ -192,27 +191,30 @@
 
 .whatsappCta {
   display: inline-flex;
-  min-height: 2.9rem;
+  min-height: 2.95rem;
   align-items: center;
   gap: 0.55rem;
-  border: 1px solid #25d366;
+  border: 1px solid rgb(91 211 141 / 52%);
   border-radius: 0.6rem;
-  padding: 0 1.25rem;
-  color: #04170c;
-  background: #25d366;
+  padding: 0 1.3rem;
+  color: #f1fff6;
+  background: linear-gradient(180deg, #176638, #0e4425);
   font-family: var(--font-mono-family);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  box-shadow: 0 0.75rem 2rem rgb(37 211 102 / 22%);
+  text-decoration: none;
+  box-shadow: 0 0.75rem 2rem rgb(18 96 51 / 28%);
   transition:
-    background-color 180ms ease,
+    border-color 180ms ease,
+    filter 180ms ease,
     transform 180ms ease;
 }
 
 .whatsappCta:hover,
 .whatsappCta:focus-visible {
-  background: #3ee07c;
+  border-color: #7ce6a7;
+  filter: brightness(1.08);
   transform: translateY(-2px);
 }
 

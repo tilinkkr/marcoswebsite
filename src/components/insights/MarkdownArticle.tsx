@@ -10,8 +10,17 @@ function inline(text: string): ReactNode[] {
     const link = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
     if (link) {
       const [, label, href] = link;
+      const isSponsored =
+        /affiliates\.|brightfunded\.com|ref_id=|campaign_id=/i.test(href);
       return /^https?:\/\//i.test(href) ? (
-        <a key={index} href={href} target="_blank" rel="noreferrer noopener">
+        <a
+          key={index}
+          href={href}
+          target="_blank"
+          rel={
+            isSponsored ? "sponsored noopener noreferrer" : "noreferrer noopener"
+          }
+        >
           {label}
         </a>
       ) : (

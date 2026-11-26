@@ -38,6 +38,7 @@
 
 .background,
 .redLight,
+.webglLayer,
 .depthField,
 .grain {
   position: absolute;
@@ -60,9 +61,18 @@
   height: 100%;
   object-fit: cover;
 }
+.webglLayer {
+  z-index: 4;
+  pointer-events: none;
+}
 .depthField {
   z-index: 3;
   transform-style: preserve-3d;
+  transition: opacity 380ms ease;
+}
+.depthFieldHidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .stage::after {
@@ -170,11 +180,12 @@
   content: "";
   position: absolute;
   z-index: -1;
-  inset: -2.5rem -5rem -2.5rem -2rem;
+  inset: -3.5rem -7rem -3.5rem -3.5rem;
   background: linear-gradient(
     90deg,
-    rgb(7 9 8 / 82%) 0%,
-    rgb(7 9 8 / 52%) 58%,
+    rgb(6 8 7 / 94%) 0%,
+    rgb(6 8 7 / 82%) 62%,
+    rgb(6 8 7 / 28%) 86%,
     transparent 100%
   );
   pointer-events: none;
@@ -250,39 +261,86 @@
 }
 
 .body {
-  width: min(38rem, 88vw);
+  width: min(39rem, 88vw);
   margin-top: clamp(1.25rem, 2vw, 2rem);
-  color: rgb(234 225 215 / 70%);
+  color: rgb(241 235 227 / 88%);
   font-family: var(--font-body-family);
   font-size: clamp(1rem, 1.05vw, 1.12rem);
-  line-height: 1.62;
+  line-height: 1.64;
+}
+.body strong {
+  color: #f6efe6;
+  font-weight: 600;
 }
 .body p {
   margin: 0;
 }
 .body p + p {
-  margin-top: 0.48rem;
+  margin-top: 0.55rem;
 }
 .meta {
   margin: 1.25rem 0 0;
-  color: rgb(229 215 203 / 46%);
+  color: rgb(232 216 201 / 66%);
   font-family: var(--font-mono-family);
-  font-size: clamp(0.68rem, 0.67vw, 0.74rem);
+  font-size: clamp(0.66rem, 0.67vw, 0.74rem);
   font-weight: 500;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.14em;
+}
+.ctaGroup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.45rem;
+  margin-top: 1.45rem;
+}
+.partnerCta {
+  display: inline-flex;
+  min-height: 2.95rem;
+  align-items: center;
+  gap: 0.52rem;
+  border: 1px solid rgb(201 121 65 / 68%);
+  border-radius: 0.45rem;
+  padding: 0 1.2rem;
+  color: #0b0d0c;
+  background: linear-gradient(135deg, #e5b898, #c97941);
+  font-family: var(--font-mono-family);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  box-shadow: 0 0.7rem 2rem rgb(201 121 65 / 22%);
+  transition:
+    transform 160ms ease,
+    filter 160ms ease;
+}
+.partnerCta:hover,
+.partnerCta:focus-visible {
+  transform: translateY(-1px);
+  filter: brightness(1.07);
+}
+.partnerCta:focus-visible {
+  outline: 2px solid #e5b898;
+  outline-offset: 4px;
+}
+.partnerNote {
+  margin: 0.6rem 0 0;
+  color: rgb(235 224 213 / 50%);
+  font-family: var(--font-mono-family);
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
 }
 .cta {
   display: inline-flex;
   align-items: center;
   gap: 0.58rem;
-  margin-top: 1.45rem;
-  border-bottom: 1px solid rgb(166 41 50 / 55%);
+  border-bottom: 1px solid rgb(166 41 50 / 62%);
   padding: 0.25rem 0 0.38rem;
-  color: #e0b39a;
+  color: #edd0be;
   font-family: var(--font-body-family);
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.09em;
+  text-decoration: none;
   transition:
     color 180ms ease,
     border-color 180ms ease;

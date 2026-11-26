@@ -4,8 +4,11 @@ import Link from "next/link";
 import styles from "@/app/public-pages.module.css";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { WhatsAppLink } from "@/components/layout/WhatsAppLink";
+import { FEATURED_PARTNER } from "@/config/funded-partners";
 import { blogHeroImage, getBlogs } from "@/lib/blogs";
 import { absoluteUrl, safeJsonLd } from "@/lib/site";
+import { getWhatsAppUrl } from "@/lib/whatsapp";
 import local from "./insights.module.css";
 export const metadata: Metadata = {
   title: "Trading Guides for India: Prop-Firm Rules, Forex & Risk",
@@ -162,55 +165,138 @@ export default async function InsightsPage() {
               className={local.featured}
               href={`/insights/${featured.slug}`}
             >
-              <div>
-                <span>{featured.category} / FEATURED</span>
+              <div className={local.featuredCopy}>
+                <span className={local.kicker}>
+                  {featured.category} / FEATURED GUIDE
+                </span>
                 <h2>{featured.title}</h2>
                 <p>{featured.excerpt}</p>
-                <small>
-                  {featured.publication_mode === "automated"
-                    ? "MARKOS"
-                    : featured.author_name}{" "}
-                  · {featured.reading_time} MIN READ · UPDATED{" "}
-                  {new Date(featured.updated_at).toLocaleDateString("en-IN")}
-                </small>
+                <div className={local.metaRow}>
+                  <small>
+                    BY{" "}
+                    {(featured.publication_mode === "automated"
+                      ? "MARKOS"
+                      : featured.author_name
+                    ).toUpperCase()}{" "}
+                    · {featured.reading_time} MIN READ ·{" "}
+                    {new Date(featured.updated_at).toLocaleDateString("en-IN")}
+                  </small>
+                  <span className={local.readCue}>READ FULL GUIDE ↗</span>
+                </div>
               </div>
               {blogHeroImage(featured) && (
-                <Image
-                  src={blogHeroImage(featured) as string}
-                  alt={featured.title}
-                  width={1600}
-                  height={900}
-                  sizes="(max-width: 767px) 100vw, 46vw"
-                />
+                <div className={local.featuredMedia}>
+                  <Image
+                    src={blogHeroImage(featured) as string}
+                    alt={featured.title}
+                    width={1600}
+                    height={900}
+                    preload
+                    sizes="(max-width: 767px) 100vw, 48vw"
+                  />
+                </div>
               )}
             </Link>
           ) : null}
+
+          {FEATURED_PARTNER ? (
+            <aside
+              className={local.partnerStrip}
+              aria-label="Start your funded account via MARKOS partner link"
+            >
+              <div>
+                <span className={local.partnerEyebrow}>
+                  VERIFIED FUNDED ACCOUNT PARTNER · INDIA · KERALA · GCC · UK ·
+                  USA
+                </span>
+                <h2>
+                  Ready to take your funded account? Use the official MARKOS
+                  partner link + live mentor desk.
+                </h2>
+                <p>
+                  Start your {FEATURED_PARTNER.name} challenge through our
+                  verified link, then message our mentors on WhatsApp (+91 91875
+                  87488) to build your 0.5% risk plan before placing your first
+                  trade.
+                </p>
+                <small>
+                  Partner disclosure: MARKOS may earn a commission on partner
+                  links at zero extra cost to you. Always read the prop
+                  firm&apos;s written rules first.
+                </small>
+              </div>
+              <div className={local.partnerButtons}>
+                <a
+                  className={local.partnerPrimary}
+                  href={FEATURED_PARTNER.url}
+                  target="_blank"
+                  rel="sponsored noopener noreferrer"
+                >
+                  START FUNDED ACCOUNT ({FEATURED_PARTNER.name.toUpperCase()}) ↗
+                </a>
+                <WhatsAppLink
+                  className={local.partnerWhatsapp}
+                  href={getWhatsAppUrl(
+                    "Hi MARKOS, I'm on your Insights page and want guidance on starting a funded account via your partner link and joining your daily Google Meet desk.",
+                  )}
+                  placement="insights-hub-strip"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  ASK MENTOR ON WHATSAPP ↗
+                </WhatsAppLink>
+              </div>
+            </aside>
+          ) : null}
+
           {remaining.length > 0 && (
             <div className={local.grid}>
-              {remaining.map((post) => (
-                <Link
-                  className={local.card}
-                  href={`/insights/${post.slug}`}
-                  key={post.id}
-                >
-                  {blogHeroImage(post) && (
-                    <Image
-                      src={blogHeroImage(post) as string}
-                      alt={post.title}
-                      width={960}
-                      height={540}
-                      sizes="(max-width: 767px) 100vw, 33vw"
-                    />
-                  )}
-                  <span>{post.category}</span>
-                  <h2>{post.title}</h2>
-                  <p>{post.excerpt}</p>
-                  <small>
-                    {post.reading_time} MIN READ ·{" "}
-                    {new Date(post.updated_at).toLocaleDateString("en-IN")}
-                  </small>
-                </Link>
-              ))}
+              {remaining.map((post, idx) => {
+                const hero = blogHeroImage(post);
+                const authorLabel =
+                  post.publication_mode === "automated"
+                    ? "MARKOS"
+                    : post.author_name;
+                return (
+                  <Link
+                    className={local.card}
+                    href={`/insights/${post.slug}`}
+                    key={post.id}
+                  >
+                    {hero ? (
+                      <div className={local.cardMedia}>
+                        <Image
+                          src={hero}
+                          alt={post.title}
+                          width={960}
+                          height={540}
+                          sizes="(max-width: 767px) 100vw, 33vw"
+                        />
+                      </div>
+                    ) : (
+                      <div className={local.cardTypoHeader} aria-hidden="true">
+                        <span>{String(idx + 2).padStart(2, "0")}</span>
+                        <strong>{post.category}</strong>
+                      </div>
+                    )}
+                    <div className={local.cardBody}>
+                      {hero ? (
+                        <span className={local.cardTag}>{post.category}</span>
+                      ) : null}
+                      <h2>{post.title}</h2>
+                      <p>{post.excerpt}</p>
+                      <div className={local.cardFooter}>
+                        <small>
+                          {authorLabel.toUpperCase()} · {post.reading_time} MIN
+                        </small>
+                        <span className={local.cardArrow} aria-hidden="true">
+                          READ ↗
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           )}
 

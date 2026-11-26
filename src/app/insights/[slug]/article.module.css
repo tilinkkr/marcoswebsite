@@ -92,6 +92,92 @@
   font-size: 0.85rem;
   line-height: 1.6;
 }
+.partnerPeakStrip {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) auto;
+  gap: 1.25rem 2rem;
+  align-items: center;
+  max-width: 84rem;
+  margin: 2.25rem auto 0;
+  border: 1px solid rgb(201 121 65 / 42%);
+  border-radius: 0.8rem;
+  padding: clamp(1.2rem, 2.4vw, 1.85rem);
+  background:
+    radial-gradient(
+      95% 120% at 100% 0%,
+      rgb(201 121 65 / 16%),
+      transparent 55%
+    ),
+    #0d100e;
+}
+.partnerPeakStrip span {
+  display: block;
+  color: #e2a478;
+  font: 600 0.62rem/1.2 var(--font-mono-family);
+  letter-spacing: 0.15em;
+}
+.partnerPeakStrip p {
+  margin: 0.55rem 0 0;
+  color: rgb(240 231 221 / 82%);
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+.partnerPeakStrip strong {
+  color: #f6f0e7;
+}
+.partnerPeakStrip small {
+  display: block;
+  margin-top: 0.55rem;
+  color: rgb(235 220 205 / 50%);
+  font: 500 0.62rem/1.45 var(--font-mono-family);
+}
+.partnerPeakActions {
+  display: grid;
+  gap: 0.55rem;
+  justify-items: stretch;
+}
+.partnerPeakBtn,
+.partnerBannerPrimary {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.6rem;
+  padding: 0 1.35rem;
+  color: #0b0d0c;
+  background: linear-gradient(135deg, #ecc5a8, #c97941);
+  font: 700 0.72rem/1 var(--font-mono-family);
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 0.7rem 1.8rem rgb(201 121 65 / 24%);
+  transition:
+    filter 150ms ease,
+    transform 150ms ease;
+}
+.partnerPeakBtn:hover,
+.partnerBannerPrimary:hover {
+  filter: brightness(1.07);
+  transform: translateY(-1px);
+}
+.partnerPeakWa {
+  display: inline-flex;
+  min-height: 2.6rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(91 211 141 / 46%);
+  border-radius: 0.55rem;
+  padding: 0 1.1rem;
+  color: #e9fff1;
+  background: linear-gradient(180deg, rgb(17 61 36 / 95%), rgb(10 38 22 / 96%));
+  font: 700 0.66rem/1 var(--font-mono-family);
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.partnerPeakWa:hover {
+  border-color: #7ce6a7;
+}
 .article {
   max-width: 47rem;
   margin: 0 auto;
@@ -208,21 +294,28 @@
 }
 .whatsappPrimary {
   display: inline-flex;
-  min-height: 3.1rem;
+  min-height: 2.95rem;
   align-items: center;
   justify-content: center;
-  border-radius: 0.65rem;
-  padding: 0 1.4rem;
-  color: #04170c;
-  background: #25d366;
-  font: 700 0.74rem/1 var(--font-mono-family);
+  border: 1px solid rgb(91 211 141 / 52%);
+  border-radius: 0.6rem;
+  padding: 0 1.35rem;
+  color: #f1fff6;
+  background: linear-gradient(180deg, #176638, #0e4425);
+  font: 700 0.72rem/1 var(--font-mono-family);
   letter-spacing: 0.08em;
   text-decoration: none;
   white-space: nowrap;
-  box-shadow: 0 0.75rem 2rem rgb(37 211 102 / 22%);
+  box-shadow: 0 0.75rem 2rem rgb(18 96 51 / 28%);
+  transition:
+    filter 150ms ease,
+    border-color 150ms ease,
+    transform 150ms ease;
 }
 .whatsappPrimary:hover {
-  background: #3ee07c;
+  border-color: #7ce6a7;
+  filter: brightness(1.08);
+  transform: translateY(-1px);
 }
 .whatsappSecondary {
   display: inline-flex;
@@ -263,6 +356,7 @@
   color: #7ce6a7;
 }
 @media (max-width: 767px) {
+  .partnerPeakStrip,
   .whatsappBanner {
     grid-template-columns: 1fr;
     margin-inline: 1rem;
