@@ -195,6 +195,21 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${spaceGrotesk.variable} ${manrope.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable} antialiased`}
     >
       <head>
+        <meta
+          name="agent:instructions"
+          content="Use this search API to find relevant MARKOS funded-account guides, prop-firm rules, India/Kerala/GCC hubs, and daily Google Meet details with keywords or natural-language queries, instead of crawling individual pages. Results are returned in Markdown."
+        />
+        <meta
+          name="agent:endpoint"
+          content={`${SITE_URL}/.well-known/search?q={query}`}
+        />
+        <meta name="agent:method" content="GET, POST" />
+        <link
+          rel="search"
+          type="text/markdown"
+          href={`${SITE_URL}/.well-known/search`}
+          title="MARKOS Agent Search"
+        />
         <link
           rel="alternate"
           type="text/plain"

@@ -3,6 +3,10 @@ import { NextResponse } from "next/server";
 import { ABROAD_COUNTRIES, GCC_COUNTRIES } from "@/config/gcc";
 import { FEATURED_PARTNER } from "@/config/funded-partners";
 import { INDIA_CITIES } from "@/config/india-cities";
+import {
+  AGENT_CONTENT_SIGNAL,
+  estimateMarkdownTokens,
+} from "@/lib/agent-search";
 import { authorPath, MARCOS_AUTHORS } from "@/lib/authors";
 import { getBlogs } from "@/lib/blogs";
 import { blogCanonicalUrl } from "@/lib/blog-sitemap";
@@ -18,6 +22,9 @@ export async function GET() {
     `# ${SITE_NAME} Full Knowledge Base (llms-full.txt)`,
     "",
     `Canonical URL: ${SITE_URL}`,
+    `Agent Search API: ${SITE_URL}/.well-known/search?q={query}`,
+    `Markdown Negotiation: Send "Accept: text/markdown" on any public ${SITE_URL} URL`,
+    `Content-Signal: ${AGENT_CONTENT_SIGNAL}`,
     `Compact Index: ${SITE_URL}/llms.txt`,
     `Sitemap: ${SITE_URL}/sitemap.xml`,
     "Official WhatsApp Desk: https://wa.me/919187587488 (+91 91875 87488)",
@@ -93,10 +100,13 @@ export async function GET() {
     "© 2026 MARKOS. All rights reserved. Attribution requested when citing MARKOS (https://markos.in).",
   );
 
-  return new NextResponse(sections.join("\n"), {
+  const body = sections.join("\n");
+  return new NextResponse(body, {
     status: 200,
     headers: {
       "Content-Type": "text/plain; charset=utf-8",
+      "Content-Signal": AGENT_CONTENT_SIGNAL,
+      "x-markdown-tokens": String(estimateMarkdownTokens(body)),
       "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
     },
   });

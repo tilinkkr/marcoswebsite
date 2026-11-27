@@ -65,7 +65,18 @@ const nextConfig: NextConfig = {
     },
     {
       source: "/(.*)",
-      headers: securityHeaders,
+      headers: [
+        ...securityHeaders,
+        {
+          key: "Content-Signal",
+          value: "ai-train=yes, search=yes, ai-input=yes",
+        },
+        {
+          key: "Link",
+          value:
+            '</.well-known/search>; rel="search"; type="text/markdown", </llms.txt>; rel="alternate"; type="text/plain"',
+        },
+      ],
     },
   ],
 };
