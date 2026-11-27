@@ -1,6 +1,7 @@
 import { absoluteUrl, SITE_URL } from "@/lib/site";
 
 export const BLOG_POST_REDIRECTS: Readonly<Record<string, string>> = {
+  "prop-firm-rules-india-2026": "prop-firms-india-10-names-before-paying",
   "prop-firm-payout-request-12-checks":
     "first-prop-firm-payout-request-checklist",
 };

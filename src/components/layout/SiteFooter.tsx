@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { useEffect, useRef } from "react";
@@ -22,6 +23,7 @@ const groups = [
     label: "MARKOS",
     links: [
       ["OUR STORY", "/story"],
+      ["OUR METHOD", "/method"],
       ["INSIGHTS", "/insights"],
       ["TRADING EDUCATION", "/trading-education"],
       ["TRADING COMMUNITY", "/trading-community"],
@@ -31,18 +33,19 @@ const groups = [
       ["BANGALORE TRADERS", "/india/bangalore"],
       ["FOREX IN KERALA", "/kerala"],
       ["MALAYALIS IN THE GCC", "/gcc"],
-      ["CANADA & AUSTRALIA", "/abroad"],
+      ["UK, USA, CANADA & AU", "/abroad"],
       ["CONTACT", "/contact"],
       ["EDITORIAL STANDARDS", "/editorial-standards"],
       ["FAQ", "/faq"],
     ],
   },
   {
-    label: "LEGAL",
+    label: "LEGAL & AI INDEX",
     links: [
       ["PRIVACY", "/privacy"],
       ["TERMS", "/terms"],
       ["RISK DISCLOSURE", "/risk-disclosure"],
+      ["LLMS.TXT (AI INDEX)", "/llms.txt"],
     ],
   },
 ];
@@ -148,7 +151,16 @@ export function SiteFooter() {
   return (
     <footer ref={footerRef} className={styles.footer}>
       <div className={styles.top}>
-        <p>JOIN THE FLOOR.</p>
+        <div className={styles.topBrand}>
+          <Image
+            src="/images/brand/markos-logo.webp"
+            alt="MARKOS Official Logo"
+            width={156}
+            height={52}
+            className={styles.footerLogo}
+          />
+          <p>JOIN THE FLOOR.</p>
+        </div>
         <Link href="/join" prefetch={false}>
           JOIN MARKOS <ArrowUpRight size={18} aria-hidden />
         </Link>
@@ -184,7 +196,7 @@ export function SiteFooter() {
         <span className={styles.ruler} data-footer-ruler aria-hidden />
       </div>
       <div className={styles.bottom}>
-        <span>© 2026 MARKOS</span>
+        <span>© 2026 MARKOS. ALL RIGHTS RESERVED.</span>
         <span>PROCESS OVER PROMISES.</span>
       </div>
     </footer>

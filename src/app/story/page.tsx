@@ -106,10 +106,10 @@ export default function StoryPage() {
             </div>
             <div className={styles.heroMedia}>
               <Image
-                src="/images/insights/passed-funded-account-1-month-mentor-guide.jpg"
-                alt="MARKOS mentors reviewing structured risk charts during a live desk session"
-                width={1280}
-                height={720}
+                src="/images/studio/markos-kerala-mentorship-table.webp"
+                alt="MARKOS Kerala mentors and traders reviewing trade journals around the desk"
+                width={1440}
+                height={960}
                 preload
                 sizes="(max-width: 900px) 100vw, 46vw"
               />

@@ -14,12 +14,22 @@
   padding-bottom: clamp(3rem, 5vw, 5rem);
   border-bottom: 1px solid rgb(235 219 202 / 14%);
 }
+.topBrand {
+  display: grid;
+  gap: 0.75rem;
+}
+.footerLogo {
+  display: block;
+  width: auto;
+  height: clamp(1.9rem, 2.8vw, 2.5rem);
+  object-fit: contain;
+}
 .top p {
   margin: 0;
   font-family: var(--font-display-family);
-  font-size: clamp(2.5rem, 5vw, 6rem);
+  font-size: clamp(2.1rem, 4.2vw, 4.4rem);
   font-weight: 600;
-  letter-spacing: -0.055em;
+  letter-spacing: -0.045em;
 }
 .top a {
   display: inline-flex;

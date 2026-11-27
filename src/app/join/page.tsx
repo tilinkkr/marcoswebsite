@@ -132,10 +132,10 @@ export default function JoinPage() {
             </div>
             <div className={styles.heroMedia}>
               <Image
-                src="/images/insights/daily-google-meet-live-trading-stream.jpg"
-                alt="MARKOS weekday private Google Meet live trading stream workstation"
-                width={1280}
-                height={720}
+                src="/images/studio/markos-mentor-chart-session.webp"
+                alt="MARKOS mentor breaking down live candlestick market structure with community traders"
+                width={1440}
+                height={960}
                 preload
                 sizes="(max-width: 960px) 100vw, 46vw"
               />

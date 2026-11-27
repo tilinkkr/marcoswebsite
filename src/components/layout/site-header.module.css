@@ -12,10 +12,24 @@
   color: #eee8dc;
 }
 .brand {
+  display: inline-flex;
+  align-items: center;
   font-family: var(--font-display-family);
   font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.18em;
+}
+.brandLogo {
+  display: block;
+  width: auto;
+  height: clamp(1.65rem, 2.3vw, 2.05rem);
+  object-fit: contain;
+  filter: drop-shadow(0 2px 12px rgb(124 58 237 / 28%));
+  transition: transform 160ms ease, filter 160ms ease;
+}
+.brand:hover .brandLogo {
+  transform: translateY(-1px);
+  filter: drop-shadow(0 4px 16px rgb(139 92 246 / 44%));
 }
 .desktopNav {
   display: flex;

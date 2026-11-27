@@ -190,10 +190,11 @@ export function WhatsAppCommunityPrompt() {
     >
       <div className={styles.mediaCol}>
         <Image
-          src="/images/insights/daily-google-meet-live-trading-stream.jpg"
+          src="/images/studio/markos-live-stream-studio.webp"
           alt="MARKOS live funded-account trading course and daily Google Meet desk"
           width={480}
           height={360}
+          sizes="(max-width: 600px) 100vw, 210px"
           className={styles.mediaImg}
         />
         <span className={styles.liveTag}>

@@ -367,6 +367,7 @@ export function VisionReveal() {
               alt=""
               onLoad={markLayerLoaded}
               className={styles.layerImage}
+              fetchPriority="high"
               decoding="async"
             />
           </picture>
@@ -386,6 +387,7 @@ export function VisionReveal() {
               alt=""
               onLoad={markLayerLoaded}
               className={styles.layerImage}
+              fetchPriority="high"
               decoding="async"
             />
           </picture>

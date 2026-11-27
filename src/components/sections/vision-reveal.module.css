@@ -87,7 +87,7 @@
 }
 
 /*
- * Pre-hydration guard (desktop only — mobile shows the copy immediately).
+ * Pre-hydration guard (desktop only; mobile shows the copy immediately).
  * Before GSAP sets the scroll story's first frame, the server HTML would
  * paint the second-scene copy over the opening headline and the uncropped
  * eye. Match the timeline's starting state in CSS until the component marks

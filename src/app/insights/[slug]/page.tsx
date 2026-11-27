@@ -127,6 +127,8 @@ export default async function ArticlePage({ params }: Props) {
         articleSection: post.category,
         inLanguage: "en-IN",
         isAccessibleForFree: true,
+        copyrightYear: 2026,
+        copyrightHolder: { "@id": `${SITE_URL}/#organization` },
         publisher: { "@id": `${SITE_URL}/#organization` },
       },
       {

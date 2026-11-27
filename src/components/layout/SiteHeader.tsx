@@ -1,6 +1,7 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -35,7 +36,14 @@ export function SiteHeader() {
   return (
     <header className={styles.header}>
       <Link className={styles.brand} href="/" aria-label="MARKOS home">
-        MARKOS
+        <Image
+          src="/images/brand/markos-logo.webp"
+          alt="MARKOS"
+          width={132}
+          height={44}
+          priority
+          className={styles.brandLogo}
+        />
       </Link>
       <nav className={styles.desktopNav} aria-label="Primary navigation">
         {primaryLinks.map(([label, href]) => (

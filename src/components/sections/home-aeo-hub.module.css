@@ -231,6 +231,74 @@
   transform: translateY(-2px);
 }
 
+.studioGrid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.studioCard {
+  margin: 0;
+  grid-column: span 2;
+  display: grid;
+  border: 1px solid rgb(241 238 231 / 14%);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background: #0c0f0d;
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.studioCard:hover {
+  border-color: rgb(34 197 94 / 52%);
+  transform: translateY(-2px);
+}
+
+.studioWide {
+  grid-column: span 3;
+}
+
+.studioFrame {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #050706;
+}
+
+.studioImg {
+  object-fit: cover;
+  object-position: center;
+  transition: transform 320ms ease;
+}
+
+.studioCard:hover .studioImg {
+  transform: scale(1.03);
+}
+
+.studioCaption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 0.95rem;
+  border-top: 1px solid rgb(241 238 231 / 10%);
+}
+
+.studioCaption span {
+  color: #4ade80;
+  font-family: var(--font-mono-family);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.studioCaption strong {
+  color: #f3f1ec;
+  font-family: var(--font-display-family);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-align: right;
+}
+
 .faqGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -247,10 +315,10 @@
 }
 
 .index {
-  color: #c97941;
+  color: #ef4444;
   font-family: var(--font-mono-family);
   font-size: 0.66rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.16em;
 }
 
@@ -276,7 +344,7 @@
   align-items: center;
   gap: 0.35rem;
   margin-top: 1.1rem;
-  color: #d7956e;
+  color: #4ade80;
   font-family: var(--font-mono-family);
   font-size: 0.68rem;
   font-weight: 600;
@@ -286,7 +354,7 @@
 }
 
 .cardLink:hover {
-  color: #7ce6a7;
+  color: #86efac;
 }
 
 .subBlock {
@@ -339,9 +407,10 @@
 }
 
 .articleCard span {
-  color: #c97941;
+  color: #ef4444;
   font-family: var(--font-mono-family);
   font-size: 0.62rem;
+  font-weight: 700;
   letter-spacing: 0.14em;
 }
 
@@ -396,6 +465,13 @@
   .partnerBanner {
     grid-template-columns: 1fr;
   }
+  .studioGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .studioCard,
+  .studioWide {
+    grid-column: span 1;
+  }
   .faqGrid,
   .articleGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -403,6 +479,7 @@
 }
 
 @media (max-width: 680px) {
+  .studioGrid,
   .faqGrid,
   .articleGrid {
     grid-template-columns: 1fr;

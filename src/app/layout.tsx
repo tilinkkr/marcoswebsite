@@ -22,9 +22,12 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   category: "finance",
   icons: {
-    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
-    shortcut: ["/icon.svg"],
-    apple: [{ url: "/icon.svg" }],
+    icon: [
+      { url: "/images/brand/markos-logo-google.png", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.ico", sizes: "48x48" },
+    ],
+    shortcut: ["/favicon.ico"],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
   },
   keywords: [
     "best funded account broker",
@@ -88,13 +91,19 @@ const siteJsonLd = {
       logo: {
         "@type": "ImageObject",
         "@id": `${SITE_URL}/#logo`,
-        url: `${SITE_URL}/icon.svg`,
-        contentUrl: `${SITE_URL}/icon.svg`,
+        url: `${SITE_URL}/images/brand/markos-logo.png`,
+        contentUrl: `${SITE_URL}/images/brand/markos-logo.png`,
+        width: 900,
+        height: 299,
+        caption: "MARKOS Official Trading Community Logo",
+      },
+      image: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/images/brand/markos-logo-google.png`,
         width: 512,
         height: 512,
-        caption: "MARKOS Trading Community Logo",
+        caption: "MARKOS Emblem",
       },
-      image: `${SITE_URL}/icon.svg`,
       // Spellings people search for (Search Console): markos, marcos,
       // team markos, markos market.
       alternateName: [
@@ -172,6 +181,8 @@ const siteJsonLd = {
       url: SITE_URL,
       name: SITE_NAME,
       inLanguage: "en-IN",
+      copyrightYear: 2026,
+      copyrightHolder: { "@id": `${SITE_URL}/#organization` },
       publisher: { "@id": `${SITE_URL}/#organization` },
     },
   ],
@@ -184,6 +195,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${spaceGrotesk.variable} ${manrope.variable} ${ibmPlexSans.variable} ${ibmPlexMono.variable} antialiased`}
     >
       <head>
+        <link
+          rel="alternate"
+          type="text/plain"
+          href={`${SITE_URL}/llms.txt`}
+          title="MARKOS LLM Index"
+        />
+        <link
+          rel="alternate"
+          type="text/plain"
+          href={`${SITE_URL}/llms-full.txt`}
+          title="MARKOS Full LLM Knowledge Base"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: safeJsonLd(siteJsonLd) }}

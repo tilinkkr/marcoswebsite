@@ -12,9 +12,9 @@ import styles from "../marketing.module.css";
 import local from "../gcc/gcc.module.css";
 
 const title =
-  "Forex & Funded Account Community for Malayalis in Canada and Australia";
+  "Best Forex & Funded Account Community for Traders in the UK, USA, Canada & Australia";
 const description =
-  "Malayali traders in Canada and Australia: learn forex, gold (XAUUSD) and funded-account trading with MARKOS, a Kerala-based community. Regulators, trading hours and WhatsApp support.";
+  "Indian and Malayali traders in the UK, USA, Canada and Australia: compare funded account prop firms, local regulators (FCA, CFTC, CIRO, ASIC), XAUUSD & NASDAQ hours, and join MARKOS live Google Meet streams.";
 
 export const metadata: Metadata = {
   title: { absolute: `${title} | MARKOS` },
@@ -48,12 +48,13 @@ export default function AbroadHubPage() {
       <main>
         <section className={styles.hero}>
           <div>
-            <p className={styles.eyebrow}>MARKOS / MALAYALIS ABROAD</p>
-            <h1>Forex &amp; funded account community for Malayalis abroad</h1>
+            <p className={styles.eyebrow}>MARKOS / UK, USA, CANADA &amp; AUSTRALIA</p>
+            <h1>Forex &amp; funded account community for traders abroad</h1>
             <p className={styles.lede}>
-              Living in Toronto, Calgary, Melbourne, Sydney or Perth? Learn
-              forex and gold trading in Malayalam with MARKOS: a Kerala-based
-              community with members in Kerala, the GCC, Canada and Australia.
+              Living in London, New York, Texas, Toronto, Calgary, Melbourne,
+              Sydney or Perth? Learn XAUUSD, Forex, NASDAQ (MNQ) and funded
+              account risk rules in English and Malayalam with MARKOS, an active
+              global community anchored in Kerala, India and the GCC.
             </p>
             <div className={local.ctaBand}>
               <WhatsAppLink

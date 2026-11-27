@@ -173,11 +173,10 @@ export function DailyScreenShare() {
       <div className={styles.stage}>
         <div className={styles.backdrop} data-share-backdrop aria-hidden>
           <Image
-            src="/images/marcos/how-it-works/marcos-live-session.webp"
-            alt=""
+            src="/images/studio/markos-live-stream-studio.webp"
+            alt="MARKOS daily live Google Meet trading stream studio in Kerala"
             fill
             sizes="100vw"
-            unoptimized
             className={styles.backdropImage}
           />
         </div>

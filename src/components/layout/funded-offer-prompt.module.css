@@ -1,5 +1,5 @@
 /* Gold-themed partner offer card: floating on desktop, compact bottom sheet
-   on phones. Non-modal — the page behind stays usable. */
+   on phones. Non-modal: the page behind stays usable. */
 .card {
   position: fixed;
   z-index: 118;

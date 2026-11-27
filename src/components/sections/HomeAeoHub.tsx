@@ -1,4 +1,5 @@
 import { ArrowUpRight, ShieldCheck } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
@@ -80,6 +81,44 @@ const FEATURED_ARTICLES = [
     tag: "BEST BROKERS · LINU BABU",
     title: "Best Funded Account Broker & Forex Prop Firms [2026]: India, Kerala, GCC, UK & USA",
     href: "/insights/best-forex-funded-account-india-uk-usa-kerala-reddit-2026",
+  },
+] as const;
+
+const STUDIO_GALLERY = [
+  {
+    src: "/images/studio/markos-live-stream-studio.webp",
+    alt: "MARKOS mentor broadcasting the daily live Google Meet trading stream from Kerala",
+    tag: "DAILY GOOGLE MEET",
+    title: "Live Broadcast Desk",
+    wide: true,
+  },
+  {
+    src: "/images/studio/markos-dual-monitor-desk.webp",
+    alt: "MARKOS dual-monitor execution desk with volume profile and candlestick analysis",
+    tag: "EXECUTION DESK",
+    title: "London & NY Session Flow",
+    wide: true,
+  },
+  {
+    src: "/images/studio/markos-kerala-mentorship-table.webp",
+    alt: "MARKOS Kerala trading community roundtable reviewing risk journals",
+    tag: "KERALA & GCC COMMUNITY",
+    title: "Real Mentors, Real Traders",
+    wide: false,
+  },
+  {
+    src: "/images/studio/markos-mentor-chart-session.webp",
+    alt: "MARKOS live chart breakdown session on breakout structure and drawdown discipline",
+    tag: "STRUCTURE BREAKDOWN",
+    title: "Pre-Market Levels & Rules",
+    wide: false,
+  },
+  {
+    src: "/images/studio/markos-trading-journal-plan.webp",
+    alt: "MARKOS trading notebook showing Plan, Entry, and Risk framework",
+    tag: "PLAN · ENTRY · RISK",
+    title: "0.5% Fixed-Risk Journal",
+    wide: false,
   },
 ] as const;
 
@@ -204,6 +243,45 @@ export function HomeAeoHub() {
                 <span>{topic.label}</span>
                 <ArrowUpRight size={14} aria-hidden />
               </WhatsAppLink>
+            ))}
+          </div>
+        </div>
+
+        {/* Authentic MARKOS Studio Bento Gallery */}
+        <div className={styles.subBlock}>
+          <div className={styles.subHeader}>
+            <p className={styles.eyebrow}>
+              INSIDE THE MARKOS DESK · KERALA, INDIA &amp; GCC
+            </p>
+            <Link className={styles.allLink} href="/story">
+              EXPLORE OUR STORY <ArrowUpRight size={15} aria-hidden />
+            </Link>
+          </div>
+          <div className={styles.studioGrid}>
+            {STUDIO_GALLERY.map((shot) => (
+              <figure
+                key={shot.src}
+                className={`${styles.studioCard} ${shot.wide ? styles.studioWide : ""}`}
+              >
+                <div className={styles.studioFrame}>
+                  <Image
+                    src={shot.src}
+                    alt={shot.alt}
+                    fill
+                    loading="lazy"
+                    sizes={
+                      shot.wide
+                        ? "(max-width: 768px) 100vw, 56vw"
+                        : "(max-width: 768px) 100vw, 32vw"
+                    }
+                    className={styles.studioImg}
+                  />
+                </div>
+                <figcaption className={styles.studioCaption}>
+                  <span>{shot.tag}</span>
+                  <strong>{shot.title}</strong>
+                </figcaption>
+              </figure>
             ))}
           </div>
         </div>
