@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "@/app/public-pages.module.css";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { WhatsAppLink } from "@/components/layout/WhatsAppLink";
@@ -237,13 +238,14 @@ export default async function InsightsPage() {
                 <WhatsAppLink
                   className={local.partnerWhatsapp}
                   href={getWhatsAppUrl(
-                    "Hi MARKOS, I'm on your Insights page and want guidance on starting a funded account via your partner link and joining your daily Google Meet desk.",
+                    "Hi MARKOS, I'm on your Insights page and want your live strategy checklist and funded-account mentor desk details.",
                   )}
                   placement="insights-hub-strip"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  ASK MENTOR ON WHATSAPP ↗
+                  <WhatsAppIcon size={16} />
+                  <span>GET STRATEGY ON WHATSAPP</span>
                 </WhatsAppLink>
               </div>
             </aside>

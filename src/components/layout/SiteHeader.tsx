@@ -1,9 +1,10 @@
 "use client";
 
-import { Menu, MessageCircle, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
 
 import { WhatsAppLink } from "./WhatsAppLink";
@@ -66,7 +67,7 @@ export function SiteHeader() {
         rel="noreferrer"
         aria-label="Message MARKOS on WhatsApp"
       >
-        <MessageCircle size={16} aria-hidden />
+        <WhatsAppIcon size={16} />
         <span>WHATSAPP</span>
       </WhatsAppLink>
       <button
@@ -124,7 +125,7 @@ export function SiteHeader() {
           rel="noreferrer"
           onClick={() => setOpen(false)}
         >
-          <MessageCircle size={18} aria-hidden /> MESSAGE US ON WHATSAPP
+          <WhatsAppIcon size={18} /> MESSAGE US ON WHATSAPP
         </WhatsAppLink>
       </nav>
     </header>

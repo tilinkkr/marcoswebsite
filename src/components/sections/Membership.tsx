@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight, Check, MessageCircle, ShieldCheck } from "lucide-react";
+import { ArrowUpRight, Check, ShieldCheck } from "lucide-react";
 import { useEffect, useRef } from "react";
 
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { WhatsAppLink } from "@/components/layout/WhatsAppLink";
 import { FEATURED_PARTNER } from "@/config/funded-partners";
 import { getGSAP } from "@/lib/animations/gsap";
@@ -198,7 +199,7 @@ export function Membership() {
               target="_blank"
               rel="noreferrer"
             >
-              <MessageCircle size={17} strokeWidth={2} aria-hidden />
+              <WhatsAppIcon size={17} />
               ASK MENTOR ON WHATSAPP
             </WhatsAppLink>
             <Link className={styles.cta} href="/join" prefetch={false}>

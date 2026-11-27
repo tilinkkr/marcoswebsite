@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowUpRight, MessageCircle } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { WhatsAppLink } from "@/components/layout/WhatsAppLink";
@@ -157,7 +158,7 @@ export default function TeamPage() {
               rel="noreferrer"
               data-whatsapp-primary
             >
-              <MessageCircle size={16} aria-hidden />
+              <WhatsAppIcon size={17} />
               MESSAGE TEAM ON WHATSAPP
               <ArrowUpRight size={15} aria-hidden />
             </WhatsAppLink>

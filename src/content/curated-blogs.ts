@@ -1,5 +1,6 @@
 import type { BlogPost } from "@/lib/blogs";
 import { CLAUDE_AI_BLOG_POSTS } from "@/content/claude-ai-blogs";
+import { PROP_FIRM_VIRAL_POSTS } from "@/content/prop-firm-viral-blogs";
 
 const NOW = "2026-11-26T09:00:00.000Z";
 const PARTNER_LINK =
@@ -64,6 +65,7 @@ function makePost(
 }
 
 export const CURATED_BLOG_POSTS: readonly BlogPost[] = [
+  ...PROP_FIRM_VIRAL_POSTS,
   ...CLAUDE_AI_BLOG_POSTS,
   // =========================================================================
   // 0A. BEST FOREX FUNDED ACCOUNT (INDIA, UK, USA, KERALA, REDDIT, CHALLENGE)
@@ -179,7 +181,15 @@ UK traders have broad access to top forex and index prop firms such as BrightFun
 
 ### How do I join the WhatsApp community for trading in Kerala?
 
-Message MARKOS directly on WhatsApp at +91 91875 87488. Our Kerala-based team explains our Malayalam and English daily Google Meet live trading sessions, funded-account risk rules, and $100 founding membership, with zero spam signals and zero guaranteed-profit hype.`,
+Message MARKOS directly on WhatsApp at +91 91875 87488. Our Kerala-based team explains our Malayalam and English daily Google Meet live trading sessions, funded-account risk rules, and $100 founding membership, with zero spam signals and zero guaranteed-profit hype.
+
+### Which prop firm is best for traders in Bengaluru, Mumbai, and Dubai (GCC)?
+
+Traders in Bengaluru, Mumbai, Kerala, and GCC hubs (Dubai/UAE, Saudi Arabia, Qatar, Kuwait, Oman, Bahrain) consistently prioritize static 2-step drawdown clarity, clean XAUUSD/EURUSD spreads, and Riseworks bank-wire payout trails, comparing BrightFunded, FundingPips, The5ers, Alpha Capital Group, and FTMO (verify live country list before paying).
+
+### What is the safest way to get my first forex funded account payout?
+
+Use Riseworks (Rise) to a personal bank account whose legal name matches your PAN/Passport/Emirates ID 100%, cap funded-stage risk at 0.25% to 0.5%, avoid red-folder news windows, and keep single-day profits below 25% of total gain so automated consistency reviews pass cleanly.`,
   }),
 
   // =========================================================================

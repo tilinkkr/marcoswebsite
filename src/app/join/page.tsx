@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Check, MessageCircle, ShieldCheck } from "lucide-react";
+import { ArrowUpRight, Check, ShieldCheck } from "lucide-react";
 
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { WhatsAppLink } from "@/components/layout/WhatsAppLink";
@@ -123,7 +124,7 @@ export default function JoinPage() {
                   rel="noreferrer"
                   data-whatsapp-primary
                 >
-                  <MessageCircle size={16} aria-hidden />
+                  <WhatsAppIcon size={17} />
                   ASK ON WHATSAPP FIRST
                   <ArrowUpRight size={15} aria-hidden />
                 </WhatsAppLink>
@@ -219,7 +220,7 @@ export default function JoinPage() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <MessageCircle size={16} aria-hidden />
+                <WhatsAppIcon size={17} />
                 MESSAGE ON WHATSAPP
                 <ArrowUpRight size={15} aria-hidden />
               </WhatsAppLink>

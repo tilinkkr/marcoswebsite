@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUpRight, MapPin, MessageCircle } from "lucide-react";
+import { ArrowUpRight, MapPin } from "lucide-react";
 import { useSyncExternalStore } from "react";
 
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { WhatsAppLink } from "@/components/layout/WhatsAppLink";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
 
@@ -148,7 +149,7 @@ export function LocationGeoBar() {
           target="_blank"
           rel="noreferrer"
         >
-          <MessageCircle size={15} strokeWidth={2} aria-hidden />
+          <WhatsAppIcon size={16} />
           <span>JOIN LOCAL DESK ON WHATSAPP</span>
           <ArrowUpRight size={14} aria-hidden />
         </WhatsAppLink>

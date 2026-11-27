@@ -1,8 +1,8 @@
 "use client";
 
 import { useLayoutEffect, useState } from "react";
-import { MessageCircle } from "lucide-react";
 
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { getWhatsAppUrl } from "@/lib/whatsapp";
 
 import { WhatsAppLink } from "./WhatsAppLink";
@@ -64,7 +64,7 @@ export function WhatsAppButton() {
       rel="noreferrer"
       aria-label="Message MARKOS on WhatsApp"
     >
-      <MessageCircle size={20} strokeWidth={1.8} aria-hidden />
+      <WhatsAppIcon size={19} />
       <span>WHATSAPP</span>
     </WhatsAppLink>
   );

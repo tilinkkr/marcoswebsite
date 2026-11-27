@@ -1,6 +1,7 @@
-import { ArrowUpRight, MessageCircle, ShieldCheck } from "lucide-react";
+import { ArrowUpRight, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { WhatsAppLink } from "@/components/layout/WhatsAppLink";
 import { LocationGeoBar } from "@/components/regions/LocationGeoBar";
 import { FEATURED_PARTNER } from "@/config/funded-partners";
@@ -51,34 +52,34 @@ const HOME_FAQS = [
 
 const FEATURED_ARTICLES = [
   {
-    tag: "BEST FUNDED ACCOUNTS · LINU BABU",
-    title: "Best Forex Funded Account (2026): India, UK, USA, Kerala & Reddit Reality Check",
+    tag: "XAUUSD & PASSING · RAHUL RAJA",
+    title: "Pass a Funded Account in 3 Days or 3 Trades? How I Passed 8 Accounts & My XAUUSD EMA Entry",
+    href: "/insights/pass-funded-account-in-3-days-3-trades-8-accounts-strategy-2026",
+  },
+  {
+    tag: "30-POINT AUDIT · LINU BABU",
+    title: "30 Important Things to Check Before Buying a Prop Firm Challenge (+ $1 $5K Reality)",
+    href: "/insights/30-things-to-check-before-buying-prop-firm-challenge-5k-1-dollar-2026",
+  },
+  {
+    tag: "PAYOUT HACKS · LINU BABU",
+    title: "12 Hacks to Get Your First Prop Firm Payout (India & GCC) + Why 90% Fail",
+    href: "/insights/12-hacks-first-prop-firm-payout-india-gcc-why-payout-rejected-2026",
+  },
+  {
+    tag: "CLAUDE CODE · SAHAL",
+    title: "I Backtested 10,000+ Trading Strategies with Claude Code & TradingView [2026]",
+    href: "/insights/backtest-10000-trading-strategies-claude-code-tradingview-2026",
+  },
+  {
+    tag: "INDIA & DUBAI · LINU BABU",
+    title: "Forex Is Legal in India (Most Trade It Illegally): Basics, XAUUSD, Dubai Life & 5 Apps",
+    href: "/insights/forex-trading-basics-legal-india-dubai-golden-city-apps-myths-2026",
+  },
+  {
+    tag: "BEST BROKERS · LINU BABU",
+    title: "Best Funded Account Broker & Forex Prop Firms [2026]: India, Kerala, GCC, UK & USA",
     href: "/insights/best-forex-funded-account-india-uk-usa-kerala-reddit-2026",
-  },
-  {
-    tag: "MENTOR PASSING PLAN · RAHUL RAJA",
-    title: "Funded Account Passed in 1 Month? 3 Ways I Used to Pass in India (With Mentor Support)",
-    href: "/insights/funded-account-passed-in-1-month-3-ways-india-mentor-guide",
-  },
-  {
-    tag: "NASDAQ / MNQ FUTURES · RAHUL RAJA",
-    title: "NASDAQ (MNQ) & Futures Funded Accounts for India, GCC, UK & USA Traders (2026)",
-    href: "/insights/nasdaq-mnq-futures-funded-account-india-gcc-usa-2026",
-  },
-  {
-    tag: "AI TRADING · SAHAL",
-    title: "Make $1,000 Days Using Claude AI in India? (Real Workflow + Risk Rules)",
-    href: "/insights/how-to-use-claude-for-trading-in-india-1000-dollar-workflow",
-  },
-  {
-    tag: "PROP RULES · LINU BABU",
-    title: "FundingPips Rules Explained (2024–2026) & Printable Challenge PDF Checklist",
-    href: "/insights/fundingpips-rules-explained-challenge-rewards-pdf-checklist",
-  },
-  {
-    tag: "PLATFORM SETUP · SAHAL",
-    title: "How to Link a Funded Account to TradingView, MT5 & Tradovate",
-    href: "/insights/how-to-link-funded-account-tradingview-mt5-tradovate",
   },
 ] as const;
 
@@ -199,7 +200,7 @@ export function HomeAeoHub() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <MessageCircle size={15} strokeWidth={2} aria-hidden />
+                <WhatsAppIcon size={16} />
                 <span>{topic.label}</span>
                 <ArrowUpRight size={14} aria-hidden />
               </WhatsAppLink>

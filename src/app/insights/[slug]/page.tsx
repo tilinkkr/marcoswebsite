@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { WhatsAppLink } from "@/components/layout/WhatsAppLink";
@@ -211,17 +212,80 @@ export default async function ArticlePage({ params }: Props) {
             </p>
           </div>
         </header>
-        {heroImage && (
-          <Image
-            className={local.hero}
-            src={heroImage}
-            alt={post.title}
-            width={1600}
-            height={900}
-            preload
-            sizes="100vw"
-          />
-        )}
+        <div className={local.articleShell}>
+          <article className={local.article}>
+            {heroImage && (
+              <div className={local.heroFrame}>
+                <Image
+                  className={local.hero}
+                  src={heroImage}
+                  alt={post.title}
+                  width={1280}
+                  height={720}
+                  preload
+                  sizes="(max-width: 1024px) 100vw, 52rem"
+                />
+              </div>
+            )}
+            <MarkdownArticle markdown={post.content_markdown} />
+          </article>
+          <aside
+            className={local.stickyRail}
+            aria-label="Strategy desk and funded account partner"
+          >
+            <div className={local.railCardWa}>
+              <span className={local.railBadge}>
+                <span className={local.railDot} aria-hidden />
+                LIVE DESK · KERALA · INDIA · GCC
+              </span>
+              <h2>Want the exact strategy &amp; live Google Meet desk?</h2>
+              <p>
+                Ask our mentors free on WhatsApp in English or Malayalam. Get
+                today&apos;s XAUUSD / FX risk checklist before paying any fee.
+              </p>
+              <WhatsAppLink
+                className={local.railGlassWa}
+                href={getWhatsAppUrl(
+                  `Hi MARKOS, I'm reading "${post.title}". Please share your exact strategy checklist and daily Google Meet details.`,
+                )}
+                placement={`article-rail:${post.slug}`}
+                data-whatsapp-primary
+                target="_blank"
+                rel="noreferrer"
+              >
+                <WhatsAppIcon size={18} />
+                <span>Get Strategy on WhatsApp</span>
+              </WhatsAppLink>
+            </div>
+
+            {FEATURED_PARTNER ? (
+              <div className={local.railCardPartner}>
+                <span className={local.railBadgeRed}>
+                  VERIFIED PARTNER LINK
+                </span>
+                <h3>Start your funded account cleanly</h3>
+                <p>
+                  Open your {FEATURED_PARTNER.name} challenge via our verified
+                  partner link, then send your drawdown rules to our desk before
+                  trade #1.
+                </p>
+                <a
+                  className={local.railRedBtn}
+                  href={FEATURED_PARTNER.url}
+                  target="_blank"
+                  rel="sponsored noopener noreferrer"
+                >
+                  START VIA {FEATURED_PARTNER.name.toUpperCase()} ↗
+                </a>
+                <small>
+                  Disclosed affiliate link: MARKOS may earn a commission at zero
+                  extra cost to you.
+                </small>
+              </div>
+            ) : null}
+          </aside>
+        </div>
+
         <aside className={local.trustPanel} aria-label="Article standards">
           <div>
             <span>METHOD</span>
@@ -242,72 +306,36 @@ export default async function ArticlePage({ params }: Props) {
             <p>{post.conflicts_disclosure}</p>
           </div>
         </aside>
-        {FEATURED_PARTNER ? (
-          <aside
-            className={local.partnerPeakStrip}
-            aria-label="Start your funded account via MARKOS partner link"
-          >
-            <div>
-              <span>MARKOS PARTNER LINK · START FUNDED</span>
-              <p>
-                Planning to start a forex, gold (XAUUSD), or index evaluation?
-                Open your <strong>{FEATURED_PARTNER.name}</strong> challenge
-                using our official partner link: then message our mentors on
-                WhatsApp (+91 91875 87488) to map your 0.5% risk rules before
-                taking trade #1.
-              </p>
-              <small>
-                Disclosed affiliate link: MARKOS may earn a partner commission
-                at zero extra cost to you. Always read the prop firm&apos;s
-                written terms before paying.
-              </small>
-            </div>
-            <div className={local.partnerPeakActions}>
-              <a
-                className={local.partnerPeakBtn}
-                href={FEATURED_PARTNER.url}
-                target="_blank"
-                rel="sponsored noopener noreferrer"
-              >
-                START FUNDED ACCOUNT ({FEATURED_PARTNER.name.toUpperCase()}) ↗
-              </a>
-              <WhatsAppLink
-                className={local.partnerPeakWa}
-                href={getWhatsAppUrl(
-                  `Hi MARKOS, I'm reading "${post.title}" and want to start a funded account using your partner link with mentor guidance.`,
-                )}
-                placement={`article-top:${post.slug}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                ASK MENTOR ON WHATSAPP ↗
-              </WhatsAppLink>
-            </div>
-          </aside>
-        ) : null}
-        <article className={local.article}>
-          <MarkdownArticle markdown={post.content_markdown} />
-        </article>
         <section
           className={local.whatsappBanner}
           aria-labelledby="article-whatsapp-title"
         >
           <div>
             <p className={local.whatsappEyebrow}>
-              MARKOS PARTNER LINK &amp; DAILY LIVE GOOGLE MEET DESK
+              MARKOS LIVE DESK · KERALA, BENGALURU, MUMBAI &amp; GCC
             </p>
             <h2 id="article-whatsapp-title">
-              Ready to take your funded account, with mentor support?
+              Ready to pass with a real strategy and mentor review?
             </h2>
             <p>
-              Start your challenge through our verified{" "}
-              {FEATURED_PARTNER?.name ?? "partner"} link, or message our mentors
-              directly on WhatsApp (+91 91875 87488) to ask about daily private
-              Google Meet live trading streams, 1-month risk plans, and our
-              India, Kerala, GCC, UK &amp; USA trader community.
+              Message our desk on WhatsApp (+91 91875 87488) to ask for our live
+              Google Meet timings, or start a clean funded evaluation via our
+              verified {FEATURED_PARTNER?.name ?? "partner"} link.
             </p>
           </div>
           <div className={local.whatsappActions}>
+            <WhatsAppLink
+              className={local.whatsappPrimary}
+              href={getWhatsAppUrl(
+                `Hi MARKOS, I finished reading "${post.title}" and want to ask about your exact strategy and daily Google Meet community.`,
+              )}
+              placement={`article:${post.slug}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <WhatsAppIcon size={18} />
+              <span>MESSAGE ON WHATSAPP</span>
+            </WhatsAppLink>
             {FEATURED_PARTNER ? (
               <a
                 className={local.partnerBannerPrimary}
@@ -318,21 +346,6 @@ export default async function ArticlePage({ params }: Props) {
                 START FUNDED ACCOUNT ({FEATURED_PARTNER.name.toUpperCase()}) ↗
               </a>
             ) : null}
-            <WhatsAppLink
-              className={local.whatsappPrimary}
-              href={getWhatsAppUrl(
-                `Hi MARKOS, I just read "${post.title}" and want to start a funded account via your link and ask about your daily live Google Meet mentor stream.`,
-              )}
-              placement={`article:${post.slug}`}
-              data-whatsapp-primary
-              target="_blank"
-              rel="noreferrer"
-            >
-              MESSAGE MARKOS ON WHATSAPP ↗
-            </WhatsAppLink>
-            <Link className={local.whatsappSecondary} href="/get-funded">
-              COMPARE PARTNER DETAILS →
-            </Link>
           </div>
         </section>
         <nav
@@ -340,27 +353,25 @@ export default async function ArticlePage({ params }: Props) {
           aria-label="Related guides and global city hubs"
         >
           <span>POPULAR GUIDES &amp; REGIONAL HUBS:</span>
-          <Link href="/insights/best-forex-funded-account-india-uk-usa-kerala-reddit-2026">
-            Best Funded Account Broker (India/UK/USA/Kerala)
+          <Link href="/insights/pass-funded-account-in-3-days-3-trades-8-accounts-strategy-2026">
+            Pass in 3 Days / 8 Accounts &amp; XAUUSD EMA
           </Link>
-          <Link href="/insights/backtest-10000-trading-strategies-claude-code-tradingview-2026">
-            10,000+ Strategies with Claude Code &amp; TradingView
+          <Link href="/insights/30-things-to-check-before-buying-prop-firm-challenge-5k-1-dollar-2026">
+            30 Checks Before Buying (+ $1 $5K Reality)
           </Link>
-          <Link href="/insights/turn-claude-code-into-master-xauusd-gold-trader-5-prompts-2026">
-            Master XAUUSD Gold with Claude (5 Prompts)
+          <Link href="/insights/12-hacks-first-prop-firm-payout-india-gcc-why-payout-rejected-2026">
+            12 Payout Hacks &amp; Why Payouts Get Rejected
           </Link>
-          <Link href="/insights/connect-claude-directly-to-tradingview-and-broker-results-2026">
-            Connect Claude to TradingView &amp; Broker
+          <Link href="/insights/forex-trading-basics-legal-india-dubai-golden-city-apps-myths-2026">
+            Forex Legal India, Dubai Life &amp; Basics
           </Link>
-          <Link href="/insights/7-free-github-repos-build-your-own-ai-trading-system-claude-2026">
-            7 Free GitHub AI Trading Repos
+          <Link href="/insights/ultimate-self-improving-trading-bot-claude-codex-tradingview-2026">
+            Claude + Codex Self-Improving Bot
           </Link>
-          <Link href="/insights/funded-account-passed-in-1-month-3-ways-india-mentor-guide">
-            Passed in 1 Month? 3 Ways + Mentor Plan
-          </Link>
-          <Link href="/kerala">Kerala Malayalam Group</Link>
-          <Link href="/gcc">GCC Malayali Desk</Link>
-          <Link href="/india/bangalore">Bangalore</Link>
+          <Link href="/kerala">Kerala</Link>
+          <Link href="/gcc">Dubai &amp; GCC</Link>
+          <Link href="/india/bangalore">Bengaluru</Link>
+          <Link href="/india/mumbai">Mumbai</Link>
         </nav>
         <section className={local.evidence} aria-labelledby="evidence-title">
           <div>
