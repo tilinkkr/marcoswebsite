@@ -32,8 +32,22 @@ const SYNONYMS: Readonly<Record<string, readonly string[]>> = {
   mnq: ["nasdaq", "futures"],
   prop: ["funded", "propfirm", "evaluation"],
   funded: ["prop", "evaluation", "challenge"],
-  payout: ["withdrawal", "reward", "rise"],
+  payout: ["withdrawal", "reward", "rise", "weekly"],
   claude: ["ai", "bot", "tradingview"],
+  chronos: ["futures", "topstep", "activation", "payout"],
+  topstep: ["futures", "chronos", "combine", "eod"],
+  futures: ["mnq", "nq", "chronos", "topstep", "cme"],
+  sebi: ["legal", "india", "rbi", "fema", "mcx"],
+  fema: ["legal", "india", "rbi", "sebi"],
+  ftmo: ["prop", "india", "legal", "funded"],
+  fundingpips: ["weekly", "tuesday", "payout", "rules"],
+  alpha: ["qualified", "consistency", "rules"],
+  goat: ["payout", "india", "rules"],
+  blueberry: ["india", "legal", "rules"],
+  fundednext: ["payout", "cap", "india"],
+  consistency: ["payout", "rule", "rejected"],
+  broker: ["sebi", "apps", "mcx", "brightfunded", "partner"],
+  course: ["education", "kerala", "google", "meet", "join"],
 };
 
 const STOP_WORDS = new Set([

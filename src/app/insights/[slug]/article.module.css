@@ -95,6 +95,90 @@
   object-fit: cover;
 }
 
+.quickLeadBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  max-width: 78rem;
+  margin: 0 auto 1.45rem;
+  padding: 0 clamp(1rem, 4vw, 3rem);
+}
+
+.quickLeadWa {
+  display: inline-flex;
+  min-height: 2.6rem;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid rgb(74 222 128 / 55%);
+  border-radius: 999px;
+  padding: 0 1.05rem;
+  color: #ecfdf5;
+  background: linear-gradient(135deg, rgb(22 163 74 / 42%), rgb(10 42 23 / 88%));
+  backdrop-filter: blur(10px);
+  font-family: var(--font-body-family);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 150ms ease, background 150ms ease, border-color 150ms ease;
+}
+
+.quickLeadWa:hover,
+.quickLeadWa:focus-visible {
+  border-color: #4ade80;
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.quickLeadPartner {
+  display: inline-flex;
+  min-height: 2.6rem;
+  align-items: center;
+  border: 1px solid rgb(239 68 68 / 48%);
+  border-radius: 999px;
+  padding: 0 1.05rem;
+  color: #fef2f2;
+  background: rgb(200 35 51 / 16%);
+  font-family: var(--font-mono-family);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  transition: transform 150ms ease, background 150ms ease, border-color 150ms ease;
+}
+
+.quickLeadPartner:hover,
+.quickLeadPartner:focus-visible {
+  border-color: #ef4444;
+  background: linear-gradient(135deg, #c82333, #8f1622);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.quickLeadCourse {
+  display: inline-flex;
+  min-height: 2.6rem;
+  align-items: center;
+  border: 1px solid rgb(243 241 236 / 22%);
+  border-radius: 999px;
+  padding: 0 0.95rem;
+  color: rgb(243 241 236 / 84%);
+  background: rgb(255 255 255 / 4%);
+  font-family: var(--font-mono-family);
+  font-size: 0.67rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  transition: border-color 150ms ease, color 150ms ease;
+}
+
+.quickLeadCourse:hover,
+.quickLeadCourse:focus-visible {
+  border-color: #4ade80;
+  color: #86efac;
+}
+
 .articleShell {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 20.5rem;
@@ -605,6 +689,12 @@
 }
 
 @media (max-width: 767px) {
+  .quickLeadWa,
+  .quickLeadPartner,
+  .quickLeadCourse {
+    width: 100%;
+    justify-content: center;
+  }
   .header > div {
     align-items: flex-start;
     flex-direction: column;

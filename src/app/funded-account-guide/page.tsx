@@ -9,15 +9,15 @@ import { getWhatsAppUrl } from "@/lib/whatsapp";
 import local from "./funded-account-guide.module.css";
 
 export const metadata: Metadata = {
-  title: "What Is a Funded Account? Rules, Payouts & Prop Firm Checks",
+  title: "What Is a Funded Account? Prop Firms India Rules, Payouts & SEBI Reality",
   description:
-    "What a funded account really is, how prop-firm challenges work, why payouts get rejected and how to compare firms, for traders in India, UAE & GCC.",
+    "Are funded accounts legit in India? Compare prop firms India rules (FTMO, FundingPips weekly payouts, BrightFunded, Alpha Capital), SEBI reality, consistency rules, and how to buy safely.",
   alternates: { canonical: "/funded-account-guide" },
   openGraph: {
     title:
-      "What Is a Funded Account? Rules, Payouts & Prop Firm Checks | MARKOS",
+      "What Is a Funded Account? Prop Firms India Rules, Payouts & SEBI Reality | MARKOS",
     description:
-      "A clear guide to funded-account evaluations, payout requests, provider rules and questions to ask before paying.",
+      "Clear 2026 guide to funded-account evaluations, prop firms India rules, consistency limits, payout requests, and pre-purchase checks.",
     url: "/funded-account-guide",
     type: "article",
   },
@@ -58,6 +58,16 @@ const questions = [
     question: "How do I link a funded account to TradingView, MT5, or Tradovate?",
     answer:
       "For MetaTrader 5 (MT5), use File -> Login to Trade Account with your firm's exact server name and master password. For Tradovate and TradingView, log into trader.tradovate.com first to sign CME data agreements, then connect inside TradingView's Trading Panel under the Demo environment.",
+  },
+  {
+    question: "Are funded accounts legit or SEBI-registered in India?",
+    answer:
+      "Established offshore prop firms (FTMO, BrightFunded, FundingPips, The5ers, Alpha Capital) are legitimate skill-evaluation businesses that pay verified rewards, NOT SEBI-registered Indian brokers. No online challenge-fee prop firm is SEBI-registered; Indian residents should verify live country eligibility and consult a Chartered Accountant on FEMA and income tax reporting.",
+  },
+  {
+    question: "What does the consistency rule mean in funded accounts?",
+    answer:
+      "A consistency rule caps how much of your total profit can come from a single trading day (commonly 20% to 40%). If one big XAUUSD candle makes 60% of your total profit, payouts remain locked until you earn additional steady days so your best day drops below the cap.",
   },
 ] as const;
 

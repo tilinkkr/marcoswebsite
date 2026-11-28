@@ -53,19 +53,24 @@ const HOME_FAQS = [
 
 const FEATURED_ARTICLES = [
   {
+    tag: "XAUUSD & INDIA LEGAL · LINU BABU",
+    title: "How to Trade XAUUSD (Gold) Legally in India [2026]: SEBI Apps, FEMA & Prop Firms",
+    href: "/insights/how-to-trade-xauusd-gold-legally-in-india-2026-sebi-apps-prop-firms",
+  },
+  {
+    tag: "PROP FIRMS INDIA RULES · LINU BABU",
+    title: "Prop Firms India Rules [2026]: FTMO, FundingPips Weekly Payouts, Alpha, Goat & FundedNext",
+    href: "/insights/prop-firms-india-rules-2026-ftmo-fundingpips-alpha-goat-blueberry-fundednext",
+  },
+  {
+    tag: "FUTURES PROP FIRMS · LINU BABU",
+    title: "Best Futures Prop Firms [2026]: Chronos Funding, Topstep, Profit Split & Activation Fees",
+    href: "/insights/best-futures-prop-firms-2026-chronos-funding-topstep-rules-payouts",
+  },
+  {
     tag: "XAUUSD & PASSING · RAHUL RAJA",
     title: "Pass a Funded Account in 3 Days or 3 Trades? How I Passed 8 Accounts & My XAUUSD EMA Entry",
     href: "/insights/pass-funded-account-in-3-days-3-trades-8-accounts-strategy-2026",
-  },
-  {
-    tag: "30-POINT AUDIT · LINU BABU",
-    title: "30 Important Things to Check Before Buying a Prop Firm Challenge (+ $1 $5K Reality)",
-    href: "/insights/30-things-to-check-before-buying-prop-firm-challenge-5k-1-dollar-2026",
-  },
-  {
-    tag: "PAYOUT HACKS · LINU BABU",
-    title: "12 Hacks to Get Your First Prop Firm Payout (India & GCC) + Why 90% Fail",
-    href: "/insights/12-hacks-first-prop-firm-payout-india-gcc-why-payout-rejected-2026",
   },
   {
     tag: "CLAUDE CODE · SAHAL",
@@ -73,14 +78,9 @@ const FEATURED_ARTICLES = [
     href: "/insights/backtest-10000-trading-strategies-claude-code-tradingview-2026",
   },
   {
-    tag: "INDIA & DUBAI · LINU BABU",
-    title: "Forex Is Legal in India (Most Trade It Illegally): Basics, XAUUSD, Dubai Life & 5 Apps",
-    href: "/insights/forex-trading-basics-legal-india-dubai-golden-city-apps-myths-2026",
-  },
-  {
-    tag: "BEST BROKERS · LINU BABU",
-    title: "Best Funded Account Broker & Forex Prop Firms [2026]: India, Kerala, GCC, UK & USA",
-    href: "/insights/best-forex-funded-account-india-uk-usa-kerala-reddit-2026",
+    tag: "PAYOUT HACKS · LINU BABU",
+    title: "12 Hacks to Get Your First Prop Firm Payout (India & GCC) + Why 90% Fail",
+    href: "/insights/12-hacks-first-prop-firm-payout-india-gcc-why-payout-rejected-2026",
   },
 ] as const;
 
@@ -128,16 +128,16 @@ const QUICK_WHATSAPP_TOPICS = [
     msg: "Hi MARKOS, I want to start a funded account using your verified partner link and get mentor support on your daily Google Meet stream.",
   },
   {
-    label: "Pass Funded Account in 1 Month Plan",
-    msg: "Hi MARKOS, I want mentor support and a structured 1-month risk plan to pass my funded account honestly.",
+    label: "Best Forex Broker & XAUUSD Legal Check (India)",
+    msg: "Hi MARKOS, I want to check the safest legal way to trade XAUUSD / Forex from India (SEBI apps vs prop firms) before depositing.",
   },
   {
-    label: "NASDAQ / MNQ & Futures Group (India / GCC)",
-    msg: "Hi MARKOS, I trade NASDAQ (MNQ/NQ), Gold (XAUUSD) or futures from India/GCC/UK/USA. How do your daily live sessions work?",
+    label: "Trading Course & Daily Google Meet (Kerala / India)",
+    msg: "Hi MARKOS, I am looking for a genuine forex & funded-account trading course and daily Google Meet community in Kerala / India.",
   },
   {
-    label: "WhatsApp Community for Trading in Kerala",
-    msg: "Hi MARKOS, I'm looking for the Kerala Malayalam forex & funded-account WhatsApp community. How do I join?",
+    label: "Futures Prop Firms (Chronos / Topstep / MNQ)",
+    msg: "Hi MARKOS, I am comparing futures prop firms (Chronos Funding, Topstep, MNQ) vs forex/gold funded accounts. Please guide me.",
   },
 ] as const;
 

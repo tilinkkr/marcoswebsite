@@ -214,6 +214,36 @@ export default async function ArticlePage({ params }: Props) {
             </p>
           </div>
         </header>
+        <div
+          className={local.quickLeadBar}
+          aria-label="Direct broker, funded account and course actions"
+        >
+          <WhatsAppLink
+            className={local.quickLeadWa}
+            href={getWhatsAppUrl(
+              `Hi MARKOS, I'm reading "${post.title}". Please help me with the safest broker/prop-firm check and today's live Google Meet course timing.`,
+            )}
+            placement={`article-top-bar:${post.slug}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <WhatsAppIcon size={16} />
+            <span>Free Broker &amp; Prop-Firm Check on WhatsApp</span>
+          </WhatsAppLink>
+          {FEATURED_PARTNER ? (
+            <a
+              className={local.quickLeadPartner}
+              href={FEATURED_PARTNER.url}
+              target="_blank"
+              rel="sponsored noopener noreferrer"
+            >
+              Start Funded Account ({FEATURED_PARTNER.name}) ↗
+            </a>
+          ) : null}
+          <Link className={local.quickLeadCourse} href="/join" prefetch={false}>
+            Daily Google Meet Course ($100) →
+          </Link>
+        </div>
         <div className={local.articleShell}>
           <article className={local.article}>
             {heroImage && (
@@ -355,6 +385,15 @@ export default async function ArticlePage({ params }: Props) {
           aria-label="Related guides and global city hubs"
         >
           <span>POPULAR GUIDES &amp; REGIONAL HUBS:</span>
+          <Link href="/insights/how-to-trade-xauusd-gold-legally-in-india-2026-sebi-apps-prop-firms">
+            Trade XAUUSD Legally in India &amp; SEBI Apps
+          </Link>
+          <Link href="/insights/prop-firms-india-rules-2026-ftmo-fundingpips-alpha-goat-blueberry-fundednext">
+            Prop Firms India Rules (FTMO, FundingPips, Alpha)
+          </Link>
+          <Link href="/insights/best-futures-prop-firms-2026-chronos-funding-topstep-rules-payouts">
+            Futures Prop Firms: Chronos Funding &amp; Topstep
+          </Link>
           <Link href="/insights/pass-funded-account-in-3-days-3-trades-8-accounts-strategy-2026">
             Pass in 3 Days / 8 Accounts &amp; XAUUSD EMA
           </Link>
@@ -364,13 +403,8 @@ export default async function ArticlePage({ params }: Props) {
           <Link href="/insights/12-hacks-first-prop-firm-payout-india-gcc-why-payout-rejected-2026">
             12 Payout Hacks &amp; Why Payouts Get Rejected
           </Link>
-          <Link href="/insights/forex-trading-basics-legal-india-dubai-golden-city-apps-myths-2026">
-            Forex Legal India, Dubai Life &amp; Basics
-          </Link>
-          <Link href="/insights/ultimate-self-improving-trading-bot-claude-codex-tradingview-2026">
-            Claude + Codex Self-Improving Bot
-          </Link>
-          <Link href="/kerala">Kerala</Link>
+          <Link href="/funded-account-guide">Funded Account Guide</Link>
+          <Link href="/kerala">Kerala Course &amp; Community</Link>
           <Link href="/gcc">Dubai &amp; GCC</Link>
           <Link href="/india/bangalore">Bengaluru</Link>
           <Link href="/india/mumbai">Mumbai</Link>

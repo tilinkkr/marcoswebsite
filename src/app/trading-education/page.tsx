@@ -10,9 +10,9 @@ import { getWhatsAppUrl } from "@/lib/whatsapp";
 import styles from "../marketing.module.css";
 
 export const metadata: Metadata = {
-  title: "Trading Education in India",
+  title: "Forex & Funded Account Trading Course in India & Kerala (Live Google Meet)",
   description:
-    "See what MARKOS trading education covers: market context, risk concepts, evaluation-rule research, decision review and trading process basics.",
+    "Looking for a genuine forex, XAUUSD & funded-account trading course in Kerala or India? Join MARKOS weekday live Google Meet sessions, 0.5% risk rules, and mentor review in English & Malayalam.",
   alternates: { canonical: "/trading-education" },
 };
 

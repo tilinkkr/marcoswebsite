@@ -9,7 +9,7 @@ import { absoluteUrl } from "@/lib/site";
 // Rebuild periodically so newly published articles enter the sitemap without a redeploy.
 export const revalidate = 60;
 
-const LAST_CORE_UPDATE = new Date("2026-11-27T08:00:00.000Z");
+const LAST_CORE_UPDATE = new Date("2026-11-28T09:00:00.000Z");
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Keep sitemap focused strictly on high-value, index-worthy canonical pages.

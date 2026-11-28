@@ -1,5 +1,6 @@
 import type { BlogPost } from "@/lib/blogs";
 import { CLAUDE_AI_BLOG_POSTS } from "@/content/claude-ai-blogs";
+import { GSC_GROWTH_POSTS } from "@/content/gsc-growth-blogs";
 import { PROP_FIRM_VIRAL_POSTS } from "@/content/prop-firm-viral-blogs";
 
 const NOW = "2026-11-26T09:00:00.000Z";
@@ -65,6 +66,7 @@ function makePost(
 }
 
 export const CURATED_BLOG_POSTS: readonly BlogPost[] = [
+  ...GSC_GROWTH_POSTS,
   ...PROP_FIRM_VIRAL_POSTS,
   ...CLAUDE_AI_BLOG_POSTS,
   // =========================================================================
